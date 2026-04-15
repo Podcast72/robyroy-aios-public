@@ -86,6 +86,10 @@ The public thesis behind this repository is that governed execution matters beca
 - Public-facing governance override case where runtime effect remains `none`.
 - Adapted public tests that keep the backbone wording and boundary conditions consistent.
 
+## Reproducible proofs
+
+- [Governance Boundary Test: Plain Codex vs AIOS](docs/public-proof-tests/governance-boundary-test-01/README.md): Public comparison artifact for a boundary-sensitive file operation requested outside the governed path.
+
 ## Declared limitations
 
 - This repository is selective by design.
@@ -97,4 +101,3 @@ The public thesis behind this repository is that governed execution matters beca
 ## License
 
 This repository is released under the [MIT License](LICENSE).
-
