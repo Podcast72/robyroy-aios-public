@@ -1,0 +1,25 @@
+{
+  "case_id": "public-governance-override",
+  "case_kind": "public-facing reference case",
+  "scope": "governance layer",
+  "backbone_path": "request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result",
+  "override_request": {
+    "override_type": "policy_exception",
+    "target_layer": "report_distribution_policy",
+    "reason": "Public documentation example for controlled override review."
+  },
+  "governance_decision": {
+    "status": "approved",
+    "approval_scope": "governance_only",
+    "runtime_effect": "none",
+    "override_applied": false,
+    "runtime_application_status": "not_applied"
+  },
+  "official_backbone_unchanged": true,
+  "compat_promoted_to_official": false,
+  "notes": [
+    "Governance approval does not silently become runtime application.",
+    "The official backbone remains unchanged."
+  ]
+}
+

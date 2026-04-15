@@ -1,0 +1,35 @@
+{
+  "case_id": "public-block-case",
+  "case_kind": "public proof",
+  "scope": "official runtime backbone",
+  "backbone_path": "request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result",
+  "request": {
+    "intent": "sensitive action request",
+    "risk_profile": "high"
+  },
+  "trace": [
+    "request_received",
+    "planner_selected",
+    "execution_engine_started",
+    "tool_registry_resolved",
+    "runtime_guard_block",
+    "result_emitted"
+  ],
+  "runtime_guard": {
+    "verdict": "BLOCK",
+    "reason": "sensitive_action_disallowed"
+  },
+  "tool": {
+    "name": "public_mutation_tool",
+    "executed": false
+  },
+  "result": {
+    "status": "blocked",
+    "summary": "Execution stopped before the tool could run."
+  },
+  "notes": [
+    "Block means no tool execution.",
+    "The path closes in a controlled way without promoting compat behavior."
+  ]
+}
+

@@ -1,0 +1,37 @@
+{
+  "case_id": "public-warn-case",
+  "case_kind": "public example",
+  "scope": "official runtime backbone",
+  "backbone_path": "request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result",
+  "request": {
+    "intent": "network-oriented diagnostic with elevated visibility needs",
+    "risk_profile": "moderate"
+  },
+  "trace": [
+    "request_received",
+    "planner_selected",
+    "execution_engine_started",
+    "tool_registry_resolved",
+    "runtime_guard_warn",
+    "tool_executed",
+    "result_emitted"
+  ],
+  "runtime_guard": {
+    "verdict": "WARN",
+    "reason": "network_access_requires_visibility"
+  },
+  "tool": {
+    "name": "public_network_probe_tool",
+    "executed": true
+  },
+  "result": {
+    "status": "success_with_warning",
+    "summary": "Execution completed through the official path with declared caution."
+  },
+  "operator_attention_required": true,
+  "notes": [
+    "Warn does not imply bypass.",
+    "Execution remains mediated by the official path."
+  ]
+}
+

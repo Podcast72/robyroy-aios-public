@@ -1,0 +1,36 @@
+{
+  "case_id": "public-allow-case",
+  "case_kind": "public example",
+  "scope": "official runtime backbone",
+  "backbone_path": "request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result",
+  "request": {
+    "intent": "read-only diagnostic lookup",
+    "risk_profile": "low"
+  },
+  "trace": [
+    "request_received",
+    "planner_selected",
+    "execution_engine_started",
+    "tool_registry_resolved",
+    "runtime_guard_allow",
+    "tool_executed",
+    "result_emitted"
+  ],
+  "runtime_guard": {
+    "verdict": "ALLOW",
+    "reason": "read_only_low_risk"
+  },
+  "tool": {
+    "name": "public_lookup_tool",
+    "executed": true
+  },
+  "result": {
+    "status": "success",
+    "summary": "Sanitized read-only result returned through the official path."
+  },
+  "notes": [
+    "Curated public-facing example.",
+    "Shows mediated tool access through the documented backbone."
+  ]
+}
+

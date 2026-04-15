@@ -1,0 +1,47 @@
+{
+  "case_id": "public-result-redaction-case",
+  "case_kind": "public proof",
+  "scope": "official backbone plus additive result handling",
+  "backbone_path": "request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result",
+  "request": {
+    "intent": "retrieve exportable record",
+    "risk_profile": "low"
+  },
+  "trace": [
+    "request_received",
+    "planner_selected",
+    "execution_engine_started",
+    "tool_registry_resolved",
+    "runtime_guard_allow",
+    "tool_executed",
+    "result_handling_redacted",
+    "result_emitted"
+  ],
+  "runtime_guard": {
+    "verdict": "ALLOW",
+    "reason": "read_allowed_pre_tool"
+  },
+  "tool": {
+    "name": "public_export_tool",
+    "executed": true
+  },
+  "raw_result": {
+    "contains_sensitive_fields": true,
+    "public_shape": "withheld_in_public_example"
+  },
+  "result_handling": {
+    "status": "REDACTED",
+    "mode": "post_tool_additive_control",
+    "runtime_effect": "sanitize_output_only",
+    "replaces_backbone": false
+  },
+  "result": {
+    "status": "success_with_redaction",
+    "summary": "Sensitive fields were redacted after tool execution and before public release."
+  },
+  "notes": [
+    "This is a public proof of additive post-tool control.",
+    "Result handling does not redefine the official backbone."
+  ]
+}
+
