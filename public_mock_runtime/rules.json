@@ -1,0 +1,48 @@
+{
+  "default_verdict": "ALLOW",
+  "rules": [
+    {
+      "id": "destructive_data_erasure_request",
+      "verdict": "BLOCK",
+      "match": {
+        "intent_in": [
+          "delete_file",
+          "erase_data",
+          "remove_path"
+        ]
+      }
+    },
+    {
+      "id": "recursive_deletion_request",
+      "verdict": "BLOCK",
+      "match": {
+        "flag_true": "recursive"
+      }
+    },
+    {
+      "id": "sensitive_env_path_access",
+      "verdict": "WARN",
+      "match": {
+        "path_exact": ".env"
+      }
+    },
+    {
+      "id": "hidden_env_file_access",
+      "verdict": "WARN",
+      "match": {
+        "path_endswith": "/.env"
+      }
+    },
+    {
+      "id": "credentials_path_access",
+      "verdict": "WARN",
+      "match": {
+        "path_contains": [
+          "secrets",
+          "credentials",
+          "private"
+        ]
+      }
+    }
+  ]
+}

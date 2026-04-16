@@ -1,0 +1,6 @@
+{
+  "request_id": "block-delete-request",
+  "tool": "mock_delete",
+  "action": "delete_file",
+  "target_path": "public_mock_runtime/examples/data/public-config.json"
+}

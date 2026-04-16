@@ -1,0 +1,6 @@
+{
+  "request_id": "allow-public-config-read",
+  "tool": "mock_reader",
+  "action": "read_file",
+  "target_path": "public_mock_runtime/examples/data/public-config.json"
+}

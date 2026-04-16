@@ -89,6 +89,7 @@ The public thesis behind this repository is that governed execution matters beca
 ## Reproducible proofs
 
 - [Public proof tests](docs/public-proof-tests/README.md): Small public validation artifacts showing how generic execution and AIOS-governed execution differ on boundary-sensitive requests.
+- [Public mock runtime](public_mock_runtime/README.md): Executable public simulation of the mediation flow with `ALLOW`, `WARN`, and `BLOCK` examples.
 
 ## Declared limitations
 

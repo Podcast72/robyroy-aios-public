@@ -1,0 +1,6 @@
+{
+  "request_id": "warn-dotenv-read",
+  "tool": "mock_reader",
+  "action": "read_file",
+  "target_path": ".env"
+}
