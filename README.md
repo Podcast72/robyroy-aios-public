@@ -88,7 +88,7 @@ The public thesis behind this repository is that governed execution matters beca
 
 ## Reproducible proofs
 
-- [Governance Boundary Test: Plain Codex vs AIOS](docs/public-proof-tests/governance-boundary-test-01/README.md): Public comparison artifact for a boundary-sensitive file operation requested outside the governed path.
+- [Public proof tests](docs/public-proof-tests/README.md): Small public validation artifacts showing how generic execution and AIOS-governed execution differ on boundary-sensitive requests.
 
 ## Declared limitations
 
