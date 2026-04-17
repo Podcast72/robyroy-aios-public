@@ -14,6 +14,16 @@ This repository exists to make that direction readable in a sober and technical 
 It is not a brochure and it is not a public dump of the internal system.
 It is a curated public-facing reference for how RobyRoy AIOS frames governed execution.
 
+## Public mock runtime
+
+- [`public_mock_runtime/`](public_mock_runtime/README.md): Executable public demo of one minimal backbone flow with its own examples, proof tests, and run instructions.
+- It is a small runtime demo, not the full AIOS runtime.
+
+## Backbone public test
+
+- [`backbone_public_test/`](backbone_public_test/README.md): Public validation suite for the documented backbone path, the curated `ALLOW` / `WARN` / `BLOCK` cases, and the no-tool-after-`BLOCK` guarantee.
+- It is a test suite for public backbone consistency, not a runtime demo.
+
 ## What this repository is
 
 - A public technical repository for architecture, governance model, and technical proofs.
@@ -90,6 +100,7 @@ The public thesis behind this repository is that governed execution matters beca
 
 - [Public proof tests](docs/public-proof-tests/README.md): Small public validation artifacts showing how generic execution and AIOS-governed execution differ on boundary-sensitive requests.
 - [Public mock runtime](public_mock_runtime/README.md): Executable public simulation of the mediation flow with `ALLOW`, `WARN`, and `BLOCK` examples.
+- [Backbone public test](backbone_public_test/README.md): Documented public test suite that validates backbone order, public example behavior, and `BLOCK` before tool execution.
 
 ## Declared limitations
 

@@ -1,25 +1,25 @@
 # Public Mock Runtime
 
-`public_mock_runtime/` is a public, executable simulation of the AIOS mediation model.
+`public_mock_runtime/` is a public demo and a minimal reference implementation.
 
-It is meant to be:
+It shows one backbone flow only:
 
-- a contributor playground
-- a reference demo of the mediation flow
-- a small runnable artifact that explains the backbone in a few minutes
+`request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result`
+
+It is intentionally small, runnable, and easy to inspect.
 
 It is not:
 
 - the private AIOS core
 - the full AIOS runtime
-- proof of absolute coverage
+- a complete publication of internal modules
 - a 1:1 replica of the internal system
 
 ## What It Shows
 
-The mock keeps the mediation chain explicit in code and output:
-
-`request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result`
+The demo keeps the mediation chain explicit in code and output.
+It demonstrates one minimal read-only flow through the backbone, not the whole system.
+Its `proof_tests/` directory validates the demo itself, not the repository-level backbone public test suite.
 
 The runtime prints a readable JSON envelope with:
 
@@ -42,6 +42,7 @@ The three official examples demonstrate:
 - It does not claim complete policy coverage.
 - It does not execute real destructive operations.
 - It does not collapse the flow into one opaque function.
+- It is not the separate [Backbone public test](../backbone_public_test/README.md) area.
 
 ## Run It
 
@@ -56,7 +57,7 @@ python3 public_mock_runtime/mock_runtime.py public_mock_runtime/examples/block.j
 Run the tests:
 
 ```bash
-python3 -m unittest public_mock_runtime/tests/test_mock_runtime.py
+python3 -m unittest discover -s public_mock_runtime/proof_tests -p 'test_*.py'
 ```
 
 ## Official Examples
@@ -90,7 +91,7 @@ To extend the demo without changing its positioning:
 - add a new public rule in `rules.json`
 - add a new mock tool in `mock_runtime.py`
 - add or update an example JSON request
-- add a test in `tests/test_mock_runtime.py`
+- add a test in `proof_tests/test_mock_runtime.py`
 
 Keep the mediation model intact and visible:
 
