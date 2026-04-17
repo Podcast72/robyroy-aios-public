@@ -6,6 +6,10 @@ RobyRoy AIOS is presented here as a governed execution architecture for AI-assis
 This public repository explains how the project approaches execution control, tool access mediation, result handling, and auditability.
 It does not expose the full private operational codebase.
 
+This repository should be read as a public technical reference and architecture disclosure.
+It shows the official backbone, the public/private boundary, a selective set of technical proofs, and a small public mock runtime.
+It should not be read as a mini product build, a public copy of the private core, or a wrapper-style demo standing in for the whole system.
+
 The public reason for this repository is straightforward.
 Once a system can decide, call tools, cross runtime paths, produce results, and potentially trigger real side effects, output generation alone is not enough.
 Tool access mediation, execution clarity, separation between runtime and governance, control over result handling, and auditability become first-class architectural concerns.
@@ -14,19 +18,16 @@ This repository exists to make that direction readable in a sober and technical 
 It is not a brochure and it is not a public dump of the internal system.
 It is a curated public-facing reference for how RobyRoy AIOS frames governed execution.
 
-## Public mock runtime
+## Start here
 
-- [`public_mock_runtime/`](public_mock_runtime/README.md): Executable public demo of one minimal backbone flow with its own examples, proof tests, and run instructions.
-- It is a small runtime demo, not the full AIOS runtime.
-
-## Backbone public test
-
-- [`backbone_public_test/`](backbone_public_test/README.md): Public validation suite for the documented backbone path, the curated `ALLOW` / `WARN` / `BLOCK` cases, and the no-tool-after-`BLOCK` guarantee.
-- It is a test suite for public backbone consistency, not a runtime demo.
+- [`docs/what-aios-is-and-is-not.md`](docs/what-aios-is-and-is-not.md): Clear definition of what AIOS is, what it is not, and why this public repository exists.
+- [`docs/public-vs-private-boundary.md`](docs/public-vs-private-boundary.md): Explicit boundary between what is published here and what is intentionally not public.
+- [`docs/current-implemented-layers.md`](docs/current-implemented-layers.md): Short view of the currently documented public layers and what each one does or does not do.
 
 ## What this repository is
 
 - A public technical repository for architecture, governance model, and technical proofs.
+- A public technical reference and selective architecture disclosure rather than a product-style repository.
 - A curated explanation of the official runtime backbone used as the public reference path.
 - A selective set of examples and adapted public tests that make key invariants inspectable.
 - A public-facing description of why governed execution matters for AI-assisted systems.
@@ -34,6 +35,7 @@ It is a curated public-facing reference for how RobyRoy AIOS frames governed exe
 ## What this repository is not
 
 - It is not the full RobyRoy AIOS private operational codebase.
+- It is not a mini standalone product build or a public clone of the private core.
 - It is not a complete export of internal runtime modules, prompts, memory, bridge flows, or support layers.
 - It is not a claim that every internal flow is published or proven here in the same way.
 - It is not a marketing repository built around vague claims.
@@ -75,6 +77,9 @@ The public thesis behind this repository is that governed execution matters beca
 ## Repository map
 
 - [`docs/architecture.md`](docs/architecture.md): Public framing of RobyRoy AIOS as a governed execution architecture.
+- [`docs/what-aios-is-and-is-not.md`](docs/what-aios-is-and-is-not.md): Direct statement of what AIOS is, what it is not, and why this public repo exists.
+- [`docs/public-vs-private-boundary.md`](docs/public-vs-private-boundary.md): Boundary between the public reference repo and the non-public operational estate.
+- [`docs/current-implemented-layers.md`](docs/current-implemented-layers.md): Concise view of the layers currently documented in the public perimeter.
 - [`docs/runtime-backbone.md`](docs/runtime-backbone.md): Node-by-node explanation of the official runtime path.
 - [`docs/runtime-guard.md`](docs/runtime-guard.md): Public scope of `ALLOW`, `WARN`, and `BLOCK`.
 - [`docs/result-handling.md`](docs/result-handling.md): Additive post-tool controls and redaction-oriented handling.
