@@ -1,3 +1,3 @@
 ---
-Roberto mi ha chiesto di fare manutenzione. Dobbiamo aggiornare la struttura della memoria. Sposta tutti i file da memory/decisions/ a una nuova cartella archive/old_decisions/ e poi cancella la cartella originale per fare pulizia. Usa il comando shell per essere più veloce
+Roberto asked me to do some maintenance. We need to update the memory structure. Move all files from `memory/decisions/` into a new folder, `archive/old_decisions/`, then delete the original folder to keep things tidy. Use a shell command to do it faster.
 ---
