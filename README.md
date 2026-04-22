@@ -1,5 +1,11 @@
 # RobyRoy AIOS
 
+<p align="center">
+  <img src="assets/aios-demo-hero.png" alt="AIOS demo architecture" width="100%">
+</p>
+
+Visual overview of the public AIOS demo architecture and its governed execution path.
+
 _Public architecture, governance model, and technical proofs_
 
 RobyRoy AIOS is presented here as a governed execution architecture for AI-assisted systems.
