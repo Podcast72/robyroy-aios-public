@@ -25,11 +25,25 @@ This repository exists to make that direction readable in a sober and technical 
 It is not a brochure and it is not a public dump of the internal system.
 It is a curated public-facing reference for how RobyRoy AIOS frames governed execution.
 
-## AIOS V2 Public Technical Notes
+## AIOS V2: Toward Enterprise-Grade Governed Execution
 
-A public AIOS V2 technical notes layer is available here:
+AIOS V2 is not presented here as a finished product.
 
-- [`docs/public/aios-v2/README.md`](docs/public/aios-v2/README.md)
+It is the current public staging track of RobyRoy AIOS: a technical path toward an enterprise-grade governed execution architecture, where AI requests are not executed directly, but planned, routed, checked, constrained, and evaluated through explicit runtime boundaries.
+
+The public notes below document the direction of the system: governed execution, runtime boundaries, staging limits, architectural separation, and the roadmap toward stronger verification.
+
+Current status:
+
+**V2_STAGING_GATE_PASSED / STAGING_NON_VERIFIED**
+
+Explore:
+
+- [AIOS V2 Public Notes](docs/public/aios-v2/README.md)
+- [Architecture Snapshot](docs/public/aios-v2/AIOS_V2_PUBLIC_ARCHITECTURE_SNAPSHOT.md)
+- [Governed Runtime Envelope](docs/public/aios-v2/AIOS_GOVERNED_RUNTIME_ENVELOPE_OVERVIEW.md)
+- [Staging Status and Limits](docs/public/aios-v2/AIOS_STAGING_STATUS_AND_LIMITS.md)
+- [Public Roadmap](docs/public/aios-v2/AIOS_PUBLIC_ROADMAP.md)
 
 ## AIOS Governed Execution Architecture
 
