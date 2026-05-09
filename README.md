@@ -25,6 +25,12 @@ This repository exists to make that direction readable in a sober and technical 
 It is not a brochure and it is not a public dump of the internal system.
 It is a curated public-facing reference for how RobyRoy AIOS frames governed execution.
 
+## AIOS V2 Public Technical Notes
+
+A public AIOS V2 technical notes layer is available here:
+
+- [`docs/public/aios-v2/README.md`](docs/public/aios-v2/README.md)
+
 ## AIOS Governed Execution Architecture
 
 ### 1. Why AIOS exists
@@ -86,7 +92,7 @@ AIOS governs the path between request, tool and result.
 The public governed backbone is:
 
 ```text
-request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result
+request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result
 ```
 
 - `request`: the user or system request entering the governed flow
@@ -220,7 +226,7 @@ AIOS is also documented through a visual architecture presentation for readers w
 The official public reference path is:
 
 ```text
-request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result
+request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result
 ```
 
 This backbone is the architectural center of the public documentation.
