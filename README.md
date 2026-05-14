@@ -44,7 +44,7 @@ This public package is aligned with the current enterprise documentation and rep
 | --- | --- |
 | Enterprise staging gate | Passed with an explicit non-public-distribution posture. |
 | Package/installability | Non-editable package/install checks passed in controlled internal validation. |
-| Full suite evidence | Enterprise reports record a passing full suite, with the latest read report showing 516 tests OK. |
+| Enterprise validation evidence | Internal enterprise reports record 516 passing tests in the private enterprise/staging validation scope. |
 | Runtime hardening | Internal/staging runtime hardening checks passed. |
 | Governance hardening | Policy, capability, approval, budget, memory/state, and run-supervision evidence is documented internally. |
 | Runtime governance wiring | E2E enforcement demonstrated through the real planned-step path in internal/staging tests. |
@@ -105,6 +105,26 @@ request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool
 - governance records and audit evidence stay separate from runtime side effects
 - the value is not isolated controls; the value is preventing the governed path from being skipped
 
+## 🧱 10 enterprise governance layers already demonstrated
+
+AIOS is not based on a single control point.  
+It is designed as a governed execution path made of distinct enterprise governance layers.
+
+| Layer | Governance role |
+|---|---|
+| Agent Identity | Defines who or what is acting |
+| Capability Permissions | Defines what the agent is allowed to do |
+| Budget & Limits | Controls how much the run can consume |
+| State Control | Keeps state separate from authorization |
+| Approval Gates | Pauses sensitive actions for explicit approval |
+| Memory Governance | Controls how memory is used and constrained |
+| Tool Contract | Ensures tools are declared and bound |
+| Run Supervision | Handles loop, retry and escalation behavior |
+| Audit Replay | Supports run reconstruction and review |
+| Policy Packs | Applies operational postures and governance rules |
+
+Every AI action must be authorized, limited, traceable and validatable.
+
 ## What Can Be Tested
 
 The public package supports controlled, local, public-safe checks:
@@ -116,6 +136,18 @@ The public package supports controlled, local, public-safe checks:
 | Result handling as an additive post-tool control | [examples/result-redaction-case.json](examples/result-redaction-case.json) |
 | Governance approval without automatic runtime effect | [examples/governance-override-example.json](examples/governance-override-example.json) |
 | Public proof artifacts comparing governed and generic execution | [docs/public-proof-tests/README.md](docs/public-proof-tests/README.md) |
+| Public-safe enterprise test highlights | [docs/public/aios-v2/AIOS_TEST_HIGHLIGHTS.md](docs/public/aios-v2/AIOS_TEST_HIGHLIGHTS.md) |
+
+## 🧪 Tests and evidence
+
+This public repository includes a small public demo test surface and mock runtime proof tests.
+
+The private enterprise/staging validation suite is not published here. The latest read enterprise report records 516 passing tests in the private enterprise/staging validation scope, covering governance, runtime hardening, package/installability, result-boundary behavior, audit/replay and connector-readiness checks.
+
+The public tests make the concept inspectable.  
+The enterprise evidence shows that AIOS is not only a concept page.
+
+[Read the public-safe AIOS test highlights](docs/public/aios-v2/AIOS_TEST_HIGHLIGHTS.md)
 
 Example local checks:
 

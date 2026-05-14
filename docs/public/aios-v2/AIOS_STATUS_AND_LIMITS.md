@@ -8,7 +8,7 @@ This repository is a public technical package for AIOS.
 | --- | --- |
 | Repository type | Demo and documentation repository |
 | Runtime core | Source-private, not published here |
-| Public demo | Mock runtime and proof cases |
+| Public demo | Small public/demo tests, mock runtime proof tests and proof cases |
 | Enterprise alignment | Public-safe summary of internal/staging evidence |
 | Enterprise staging gate | Passed in internal reports with a non-public-distribution posture |
 | Package/installability | Controlled non-editable package/install checks passed internally |
@@ -22,8 +22,9 @@ This repository is a public technical package for AIOS.
 ## Evidence Supported
 
 - enterprise-staging-ready documentation/demo package
+- small public test surface plus selected public-safe evidence summaries
 - package/installability checks passed in controlled internal validation
-- latest read enterprise report records a passing 516-test full suite
+- latest read enterprise report records 516 passing tests in the private enterprise/staging validation scope
 - runtime hardening and result-boundary evidence exists internally
 - policy/capability/approval/budget/memory/state/supervision governance categories are documented internally
 - allow/warn/block, fail-closed, and no-silent-fallback behavior are covered in internal/staging evidence
@@ -54,6 +55,7 @@ This repository is a public technical package for AIOS.
 - The public mock runtime is intentionally minimal.
 - Public examples are curated.
 - Public tests are adapted to stand alone outside private internals.
+- The 516 passing tests belong to the internal enterprise/staging validation scope, not this public repository.
 - Enterprise reports are summarized rather than copied.
 - Private runtime files, prompts, memory surfaces, package internals, and environment wiring are not included.
 - Raw logs, raw traces, raw test files, machine paths, and implementation internals are not public material.

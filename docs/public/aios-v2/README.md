@@ -17,7 +17,7 @@ request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool
 | Enterprise track | Enterprise-staging-ready public demo/docs package, backed by internal/staging evidence. |
 | Gate evidence | Expanded enterprise staging gate passed in internal reports. |
 | Package evidence | Non-editable package/install checks passed in controlled internal validation. |
-| Test evidence | Enterprise reports include a passing full suite, latest read report showing 516 tests OK. |
+| Enterprise validation evidence | Internal enterprise reports record 516 passing tests in the private enterprise/staging validation scope. |
 | Governance evidence | Runtime hardening, governance hardening, and runtime governance wiring are documented internally. |
 | Connector evidence | Connector-readiness audit completed; minimal connector shape demonstrated; real external-agent target integration remains future work. |
 | Public boundary | Source-private core; no private runtime source or raw internal reports published here. |
@@ -30,6 +30,7 @@ request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool
 | [AIOS_ARCHITECTURE.md](AIOS_ARCHITECTURE.md) | Component-level view of the governed execution path. |
 | [AIOS_GOVERNANCE_MODEL.md](AIOS_GOVERNANCE_MODEL.md) | Public governance surfaces and control semantics. |
 | [AIOS_DEMO_AND_EVIDENCE_PACKAGE.md](AIOS_DEMO_AND_EVIDENCE_PACKAGE.md) | What can be run publicly and what enterprise evidence is summarized. |
+| [AIOS_TEST_HIGHLIGHTS.md](AIOS_TEST_HIGHLIGHTS.md) | Selected public-safe validation highlights without publishing the private suite. |
 | [AIOS_AGENT_INTEGRATION_READINESS.md](AIOS_AGENT_INTEGRATION_READINESS.md) | How external agent integration can be evaluated safely. |
 | [AIOS_STATUS_AND_LIMITS.md](AIOS_STATUS_AND_LIMITS.md) | Public status, boundaries, and claim limits. |
 | [AIOS_PUBLIC_ROADMAP.md](AIOS_PUBLIC_ROADMAP.md) | Public-facing roadmap for documentation and demo hardening. |
@@ -44,6 +45,7 @@ This folder documents:
 - the control model for tool execution
 - public mock-runtime behavior
 - public proof cases and adapted tests
+- selected public-safe test highlights
 - internal/staging evidence categories, summarized without raw private material
 - the public/private boundary
 - review and integration-evaluation posture

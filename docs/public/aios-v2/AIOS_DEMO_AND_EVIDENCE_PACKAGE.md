@@ -13,6 +13,7 @@ It is now aligned with enterprise documentation at a public-safe level: the publ
 | [tests/](../../../tests/) | Adapted public tests for backbone and boundary consistency. |
 | [backbone_public_test/](../../../backbone_public_test/) | Guide for the public backbone validation suite. |
 | [docs/public-proof-tests/](../../public-proof-tests/) | Public proof artifacts for governance-boundary cases. |
+| [AIOS_TEST_HIGHLIGHTS.md](AIOS_TEST_HIGHLIGHTS.md) | Public-safe highlights from broader private enterprise/staging validation. |
 
 ## What Can Be Tested Publicly
 
@@ -25,11 +26,13 @@ It is now aligned with enterprise documentation at a public-safe level: the publ
 
 ## Enterprise Evidence Summarized
 
+The public repository does not contain the full enterprise test suite. It includes small public/demo tests, mock runtime proof tests, readable evidence summaries, and selected public-safe test highlights.
+
 | Evidence category | Public-safe summary |
 | --- | --- |
 | Enterprise staging gate | Expanded gate passed with an explicit non-public-distribution posture. |
 | Package/installability | Non-editable wheel/install checks passed in controlled internal validation. |
-| Full suite | Latest read enterprise report records 516 tests OK. |
+| Enterprise/staging validation | Latest read enterprise report records 516 passing tests in the private enterprise/staging validation scope. |
 | Runtime hardening | Runtime guard, result gate, operational safety, logging, and access baselines are documented internally. |
 | Governance hardening | Policy, capability, approval, budget, memory/state, and supervision categories are covered internally. |
 | Runtime governance wiring | E2E enforcement demonstrated through the planned-step runtime path. |
@@ -38,6 +41,8 @@ It is now aligned with enterprise documentation at a public-safe level: the publ
 | Allow/warn/block | Internal/staging evidence covers allow, warn, block, fail-closed, and no-silent-fallback behavior. |
 | Connector readiness | Audit and minimal connector work support controlled adapter-based evaluation; real third-party agent target integration remains future work. |
 | Boundary review | Raw source, raw tests, commands, logs, traces, local paths, and package internals remain private. |
+
+For a concise validation overview, see [AIOS Test Highlights](AIOS_TEST_HIGHLIGHTS.md).
 
 ## Suggested Local Commands
 
@@ -54,3 +59,5 @@ The blocked mock request is a controlled stop condition. Its CLI behavior may si
 ## Evidence Limits
 
 The public demo is intentionally small. It demonstrates the control shape, not the private runtime core. Enterprise evidence is summarized only as sanitized status and capability categories. Public evidence should be read as bounded technical evidence for controlled review, not as unrestricted operational proof.
+
+The public tests make the concept inspectable. The enterprise validation evidence shows that AIOS is not only a concept page.
