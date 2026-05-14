@@ -12,7 +12,7 @@ Result handling does not redefine the official backbone.
 The official reference path remains:
 
 ```text
-request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result
+request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result
 ```
 
 Result handling therefore sits conceptually after tool execution and before final release of the outward result.

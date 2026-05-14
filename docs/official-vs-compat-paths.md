@@ -8,7 +8,7 @@ That distinction is necessary to avoid architectural ambiguity.
 The official public reference path is:
 
 ```text
-request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result
+request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result
 ```
 
 When this repository says "official path," it refers to that sequence.

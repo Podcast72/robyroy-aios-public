@@ -2,7 +2,7 @@
   "case_id": "public-result-redaction-case",
   "case_kind": "public proof",
   "scope": "official backbone plus additive result handling",
-  "backbone_path": "request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result",
+  "backbone_path": "request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result",
   "request": {
     "intent": "retrieve exportable record",
     "risk_profile": "low"
@@ -14,7 +14,7 @@
     "tool_registry_resolved",
     "runtime_guard_allow",
     "tool_executed",
-    "result_handling_redacted",
+    "result_gate_redacted",
     "result_emitted"
   ],
   "runtime_guard": {
@@ -31,7 +31,7 @@
   },
   "result_handling": {
     "status": "REDACTED",
-    "mode": "post_tool_additive_control",
+    "mode": "result_gate_post_tool_control",
     "runtime_effect": "sanitize_output_only",
     "replaces_backbone": false
   },
@@ -44,4 +44,3 @@
     "Result handling does not redefine the official backbone."
   ]
 }
-

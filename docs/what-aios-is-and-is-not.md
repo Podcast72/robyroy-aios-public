@@ -11,7 +11,7 @@ In practical terms, it is a control-plane model for how requests move through a 
 In this public repository, the official reference backbone is:
 
 ```text
-request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result
+request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result
 ```
 
 That backbone is the central public reference because it makes the execution order explicit and keeps planning, execution, tool mediation, runtime decisions, and result handling distinguishable.

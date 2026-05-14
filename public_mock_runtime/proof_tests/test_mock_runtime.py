@@ -48,10 +48,12 @@ class MockRuntimeTests(unittest.TestCase):
     def test_observed_path_for_allow_includes_tool(self) -> None:
         response, _ = self._run_example("allow")
         self.assertIn("tool", response["observed_path"])
+        self.assertIn("result_gate", response["observed_path"])
 
     def test_observed_path_for_block_does_not_include_tool(self) -> None:
         response, _ = self._run_example("block")
         self.assertNotIn("tool", response["observed_path"])
+        self.assertIn("result_gate", response["observed_path"])
 
     def test_matched_rules_are_reported_correctly(self) -> None:
         warn_response, _ = self._run_example("warn")

@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BACKBONE = "request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result"
+BACKBONE = "request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result"
 
 
 def load_json(name: str) -> dict:
@@ -17,13 +17,12 @@ class BackbonePublicTests(unittest.TestCase):
     def test_readme_contains_required_sections(self) -> None:
         text = (ROOT / "README.md").read_text(encoding="utf-8")
         required_sections = [
-            "## What this repository is",
-            "## What this repository is not",
-            "## Official runtime backbone",
-            "## Why this matters",
-            "## Repository map",
-            "## Current proof areas",
-            "## Declared limitations",
+            "## What AIOS Is",
+            "## Governed Execution Backbone",
+            "## What Can Be Tested",
+            "## What Is Not Public",
+            "## Repository Map",
+            "## Status",
         ]
         for section in required_sections:
             self.assertIn(section, text)
@@ -36,6 +35,8 @@ class BackbonePublicTests(unittest.TestCase):
             ROOT / "docs" / "runtime-guard.md",
             ROOT / "docs" / "result-handling.md",
             ROOT / "docs" / "official-vs-compat-paths.md",
+            ROOT / "docs" / "public" / "aios-v2" / "README.md",
+            ROOT / "docs" / "public" / "aios-v2" / "AIOS_ARCHITECTURE.md",
             ROOT / "reference" / "glossary.md",
             ROOT / "reference" / "invariants.md",
         ]
@@ -60,4 +61,3 @@ class BackbonePublicTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

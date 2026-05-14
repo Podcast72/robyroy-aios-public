@@ -3,7 +3,7 @@
 ## backbone
 
 The official public runtime reference path:
-`request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result`
+`request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result`
 
 ## planner
 

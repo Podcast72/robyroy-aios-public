@@ -38,7 +38,7 @@ The point is to keep runtime behavior interpretable and constrain where executio
 In this public repository, the official reference path is:
 
 ```text
-request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result
+request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result
 ```
 
 This path is presented as the public backbone because it makes mediation readable.

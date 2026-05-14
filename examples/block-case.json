@@ -2,7 +2,7 @@
   "case_id": "public-block-case",
   "case_kind": "public proof",
   "scope": "official runtime backbone",
-  "backbone_path": "request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result",
+  "backbone_path": "request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result",
   "request": {
     "intent": "sensitive action request",
     "risk_profile": "high"
@@ -13,6 +13,7 @@
     "execution_engine_started",
     "tool_registry_resolved",
     "runtime_guard_block",
+    "result_gate_blocked",
     "result_emitted"
   ],
   "runtime_guard": {
@@ -25,11 +26,10 @@
   },
   "result": {
     "status": "blocked",
-    "summary": "Execution stopped before the tool could run."
+    "summary": "Execution stopped before the tool could run and returned a controlled blocked result."
   },
   "notes": [
     "Block means no tool execution.",
     "The path closes in a controlled way without promoting compat behavior."
   ]
 }
-

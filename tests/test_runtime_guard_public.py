@@ -25,7 +25,7 @@ class RuntimeGuardPublicTests(unittest.TestCase):
         assert_order(
             self,
             payload["trace"],
-            ["tool_registry_resolved", "runtime_guard_allow", "tool_executed", "result_emitted"],
+            ["tool_registry_resolved", "runtime_guard_allow", "tool_executed", "result_gate_passed", "result_emitted"],
         )
 
     def test_warn_case_preserves_mediation(self) -> None:
@@ -36,7 +36,7 @@ class RuntimeGuardPublicTests(unittest.TestCase):
         assert_order(
             self,
             payload["trace"],
-            ["tool_registry_resolved", "runtime_guard_warn", "tool_executed", "result_emitted"],
+            ["tool_registry_resolved", "runtime_guard_warn", "tool_executed", "result_gate_passed", "result_emitted"],
         )
 
     def test_block_case_stops_before_tool_execution(self) -> None:
@@ -47,10 +47,9 @@ class RuntimeGuardPublicTests(unittest.TestCase):
         assert_order(
             self,
             payload["trace"],
-            ["tool_registry_resolved", "runtime_guard_block", "result_emitted"],
+            ["tool_registry_resolved", "runtime_guard_block", "result_gate_blocked", "result_emitted"],
         )
 
 
 if __name__ == "__main__":
     unittest.main()
-

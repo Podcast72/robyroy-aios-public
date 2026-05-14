@@ -27,7 +27,7 @@ class ResultHandlingPublicTests(unittest.TestCase):
         assert_order(
             self,
             payload["trace"],
-            ["runtime_guard_allow", "tool_executed", "result_handling_redacted", "result_emitted"],
+            ["runtime_guard_allow", "tool_executed", "result_gate_redacted", "result_emitted"],
         )
 
     def test_governance_override_has_no_automatic_runtime_effect(self) -> None:

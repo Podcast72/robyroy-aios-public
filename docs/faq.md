@@ -11,7 +11,7 @@ It documents architecture, governance model, and public technical proofs without
 The public reference path is:
 
 ```text
-request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result
+request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result
 ```
 
 ## Is governance the same as runtime execution?

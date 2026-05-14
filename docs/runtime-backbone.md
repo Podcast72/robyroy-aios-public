@@ -3,7 +3,7 @@
 The official public runtime backbone is:
 
 ```text
-request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result
+request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result
 ```
 
 This sequence is not presented as a loose list of components.
@@ -19,6 +19,7 @@ It is the documented reference order for governed execution in the public reposi
 | `tool_registry` | Official access layer for tools. | Tool invocation stays mediated and discoverable. |
 | `runtime_guard` | Pre-tool runtime decision layer. | Tool execution occurs only after explicit runtime assessment. |
 | `tool` | The concrete capability being invoked. | The tool is a downstream effect surface, not the first decision point. |
+| `result_gate` | Post-tool outward result boundary. | Tool output can be checked, shaped, redacted, or blocked before return. |
 | `result` | Controlled result returned after the official path. | Output remains attached to a governed execution path. |
 
 ## Backbone intent
@@ -29,6 +30,7 @@ The backbone makes several things legible:
 - where execution authority lives
 - where tool access is mediated
 - where runtime decisions happen before side effects
+- where result output is checked before release
 - where the visible result comes from
 
 ## What the backbone does not mean
@@ -44,4 +46,3 @@ Instead, it gives a stable public reference path for reasoning about the system.
 This repository also documents result handling, governance records, and audit evidence.
 Those areas matter, but they are described as additive or adjacent concerns.
 They do not replace the official sequence above.
-

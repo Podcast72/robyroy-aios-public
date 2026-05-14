@@ -7,7 +7,7 @@ The key point is positional as much as functional.
 In the official path, the guard stands before the tool:
 
 ```text
-request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result
+request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result
 ```
 
 ## Public decision states

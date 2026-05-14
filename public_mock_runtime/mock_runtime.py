@@ -110,6 +110,11 @@ def build_response(
     }
 
 
+def result_gate(result: dict[str, Any] | None, context: RuntimeContext) -> dict[str, Any] | None:
+    context.observed_path.append("result_gate")
+    return result
+
+
 def resolve_public_path(target_path: str) -> Path:
     resolved = Path(target_path)
     if not resolved.is_absolute():
@@ -190,6 +195,7 @@ def execute_request(
     try:
         tool = resolve_tool(plan["tool_name"], runtime_context)
     except KeyError:
+        result_gate(None, runtime_context)
         runtime_context.observed_path.append("result")
         return (
             build_response(
@@ -205,6 +211,7 @@ def execute_request(
 
     guard_verdict, matched_rules = runtime_guard(plan, active_rules, runtime_context)
     if guard_verdict == "BLOCK":
+        result_gate(None, runtime_context)
         runtime_context.observed_path.append("result")
         return (
             build_response(
@@ -220,7 +227,7 @@ def execute_request(
 
     runtime_context.observed_path.append("tool")
     try:
-        result = tool(plan, runtime_context)
+        result = result_gate(tool(plan, runtime_context), runtime_context)
         runtime_context.observed_path.append("result")
         return (
             build_response(
@@ -234,6 +241,7 @@ def execute_request(
             runtime_context,
         )
     except Exception as exc:  # pragma: no cover - defensive fallback
+        result_gate(None, runtime_context)
         runtime_context.observed_path.append("result")
         return (
             build_response(

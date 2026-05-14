@@ -1,42 +1,32 @@
 # AIOS Public Roadmap
 
-This roadmap presents a conservative public interpretation of the AIOS V2 direction represented in this repository.
+This roadmap covers the public demo and documentation package. It is focused on clarity, evidence quality, and controlled integration evaluation.
 
-It is not a release roadmap. It is a governance-oriented progression for a technical pilot.
+## Current Focus
 
-## Near-Term Public Priorities
+- keep the canonical backbone stable across public docs and tests
+- keep public status aligned with enterprise evidence without exposing private implementation
+- improve public proof cases for `ALLOW`, `WARN`, `BLOCK`, and result gating
+- make governance boundaries easier to review
+- document connector/adaptor evaluation boundaries
+- keep automated checks for private paths and unsupported claims
 
-1. Keep the canonical governed backbone stable in public documentation.
-2. Clarify the role of the major governance surfaces without exposing private implementation detail.
-3. Maintain disciplined public status language around `V2_STAGING_GATE_PASSED / STAGING_NON_VERIFIED`.
-4. Expand public evidence only when it can be disclosed without leaking internal code or operational internals.
+## Near-Term Public Work
 
-## Technical Pilot Direction
+1. Add a sanitized evidence matrix that maps enterprise evidence categories to public docs.
+2. Expand public proof cases for governance preflight concepts without copying private tests.
+3. Add a public connector-evaluation note for adapter-based external agent pilots.
+4. Add clearer public schemas for trace events and result-gate outcomes.
+5. Keep private implementation, raw logs, raw commands, and machine paths out of public artifacts.
 
-The current public documentation points toward a staged path:
+## Longer-Term Public Direction
 
-1. architecture clarity
-2. governed control semantics
-3. bounded staged design and pilot evidence
-4. controlled execution review
-5. later runtime-grade validation only after explicit review
+- richer public demo scenarios
+- stronger public evidence packaging
+- clearer integration handoff material for controlled review
+- additional public docs for policy posture and audit interpretation
+- continued separation between public demo assets and private runtime material
 
-## Documentation Priorities
+## Roadmap Boundary
 
-- keep architecture explanations readable for external technical readers
-- keep governance claims narrower than the internal design ambition
-- separate public principles from private implementation mechanics
-- preserve public/private boundaries as part of the architecture itself
-
-## Public Risk Discipline
-
-The public/demo repository should continue to avoid:
-
-- stronger maturity language than the evidence supports
-- publication of private operator instructions
-- exposure of runtime injection or adapter internals
-- direct reuse of staging-only commands and file-system assumptions
-
-## Recommended Public Next Step
-
-Continue improving the public narrative around governed execution and enterprise control surfaces, while only releasing additional technical evidence that remains bounded, non-destructive, and clearly marked as pilot-stage material.
+This roadmap does not announce a distributable runtime artifact or public deployment program. It describes the evolution of the public demo/documentation package and review surface.

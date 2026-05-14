@@ -1,317 +1,208 @@
-# RobyRoy AIOS
+# RobyRoy AIOS Public Demo
 
-<p align="center">
-  <img src="assets/aios-demo-hero.png" alt="AIOS demo architecture" width="100%">
-</p>
+![AIOS demo architecture](assets/aios-demo-hero.png)
 
-Visual overview of the public AIOS demo architecture and its governed execution path.
+[![Status](https://img.shields.io/badge/status-public%20demo%20package-2f6fed)](#status)
+[![Enterprise Evidence](https://img.shields.io/badge/evidence-enterprise--staging--ready-1f7a4d)](#enterprise-evidence-alignment)
+[![Scope](https://img.shields.io/badge/scope-source--private-lightgrey)](#what-is-not-public)
+[![Backbone](https://img.shields.io/badge/backbone-governed%20execution-6f42c1)](#governed-execution-backbone)
 
-_Public architecture, governance model, and technical proofs_
+AIOS is presented here as **a Governed AI Execution Layer**.
 
-RobyRoy AIOS is presented here as a governed execution architecture for AI-assisted systems.
-This public repository explains how the project approaches execution control, tool access mediation, result handling, and auditability.
-It does not expose the full private operational codebase.
+AIOS is a platform concept for governing how AI uses business tools, data, and workflows. This repository is the public-facing technical demo and documentation package for a source-private AIOS enterprise track. It explains the governed execution model, exposes a small public mock runtime, and summarizes public-safe internal/staging evidence without publishing private runtime source.
 
-This repository should be read as a public technical reference and architecture disclosure.
-It shows the official backbone, the public/private boundary, a selective set of technical proofs, and a small public mock runtime.
-The emphasis is on declared invariants, explicit separations, and public evidence rather than broad architectural claims.
-It should not be read as a mini product build, a public copy of the private core, or a wrapper-style demo standing in for the whole system.
+## Quick Links
 
-The public reason for this repository is straightforward.
-Once a system can decide, call tools, cross runtime paths, produce results, and potentially trigger real side effects, output generation alone is not enough.
-Tool access mediation, execution clarity, separation between runtime and governance, control over result handling, and auditability become first-class architectural concerns.
+| Area | Link |
+| --- | --- |
+| Public docs index | [docs/public/aios-v2/README.md](docs/public/aios-v2/README.md) |
+| Public overview | [AIOS_PUBLIC_OVERVIEW.md](docs/public/aios-v2/AIOS_PUBLIC_OVERVIEW.md) |
+| Architecture | [AIOS_ARCHITECTURE.md](docs/public/aios-v2/AIOS_ARCHITECTURE.md) |
+| Governance model | [AIOS_GOVERNANCE_MODEL.md](docs/public/aios-v2/AIOS_GOVERNANCE_MODEL.md) |
+| Demo and evidence package | [AIOS_DEMO_AND_EVIDENCE_PACKAGE.md](docs/public/aios-v2/AIOS_DEMO_AND_EVIDENCE_PACKAGE.md) |
+| Agent integration readiness | [AIOS_AGENT_INTEGRATION_READINESS.md](docs/public/aios-v2/AIOS_AGENT_INTEGRATION_READINESS.md) |
+| Status and limits | [AIOS_STATUS_AND_LIMITS.md](docs/public/aios-v2/AIOS_STATUS_AND_LIMITS.md) |
+| FAQ | [AIOS_FAQ.md](docs/public/aios-v2/AIOS_FAQ.md) |
 
-This repository exists to make that direction readable in a sober and technical way.
-It is not a brochure and it is not a public dump of the internal system.
-It is a curated public-facing reference for how RobyRoy AIOS frames governed execution.
+## What AIOS Is
 
-## AIOS V2: Toward Enterprise-Grade Governed Execution
+AIOS separates planning, authorization, execution, validation, and audit.
 
-AIOS V2 is not presented here as a finished product.
-
-It is the current public staging track of RobyRoy AIOS: a technical path toward an enterprise-grade governed execution architecture, where AI requests are not executed directly, but planned, routed, checked, constrained, and evaluated through explicit runtime boundaries.
-
-The public notes below document the direction of the system: governed execution, runtime boundaries, staging limits, architectural separation, and the roadmap toward stronger verification.
-
-Current status:
-
-**V2_STAGING_GATE_PASSED / STAGING_NON_VERIFIED**
-
-Explore:
-
-- [AIOS V2 Public Notes](docs/public/aios-v2/README.md)
-- [Architecture Snapshot](docs/public/aios-v2/AIOS_V2_PUBLIC_ARCHITECTURE_SNAPSHOT.md)
-- [Governed Runtime Envelope](docs/public/aios-v2/AIOS_GOVERNED_RUNTIME_ENVELOPE_OVERVIEW.md)
-- [Staging Status and Limits](docs/public/aios-v2/AIOS_STAGING_STATUS_AND_LIMITS.md)
-- [Public Roadmap](docs/public/aios-v2/AIOS_PUBLIC_ROADMAP.md)
-
-## AIOS Governed Execution Architecture
-
-### 1. Why AIOS exists
-
-Modern AI systems can answer users, analyze documents, call APIs, coordinate agents and automate workflows.
-This creates real value through speed, productivity and automation.
-But the moment AI starts using tools, accessing data or triggering workflows, the problem changes.
-The risk is no longer only what the model says.
-The risk is what the model-driven process is allowed to do before the final answer reaches the user.
-
-As long as AI writes, the risk is limited. When AI acts, governance becomes necessary.
-
-### 2. The risk shift: from response to action
-
-When AI moves from response generation into operational execution, the system must address a different class of risk:
-
-- Scope: AI can exceed the intended operating scope.
-- Tool: AI can use undeclared or unauthorized tools.
-- Output: AI can produce ambiguous or unvalidated results.
-- Fallback: AI can degrade into silent fallback paths.
-
-When AI uses APIs, data, tools or enterprise workflows, the execution path needs identity, permissions, limits, approval, result gate, and audit.
-
-### 3. The limit of traditional AI architectures
-
-Many AI architectures concentrate too much decision power around the model.
-The model may influence tool choice, parameters and operating path.
-Controls are often external, partial or applied afterward.
-Audit is fragile when it is hard to reconstruct why an action was executed.
-This can be powerful, but fragile.
-
-Traditional path:
+The public claim is specific: the model does not act directly. It plans. AIOS governs the path between request, tool, and result.
 
 ```text
-model -> tool -> output
+Model -> AIOS -> Tool -> Result
 ```
 
-AIOS path:
+In the fuller governed backbone, the agent can prepare intent, but execution must pass through explicit control surfaces. No tool is used outside the governed path.
 
-```text
-plan -> governance -> tool -> gate -> auditable result
-```
+## Enterprise Evidence Alignment
 
-### 4. What AIOS introduces
+This public package is aligned with the current enterprise documentation and reports at an aggregate, public-safe level.
 
-AIOS does not replace the model.
-AIOS governs the path between request, tool and result.
+| Evidence area | Public-safe status |
+| --- | --- |
+| Enterprise staging gate | Passed with an explicit non-public-distribution posture. |
+| Package/installability | Non-editable package/install checks passed in controlled internal validation. |
+| Full suite evidence | Enterprise reports record a passing full suite, with the latest read report showing 516 tests OK. |
+| Runtime hardening | Internal/staging runtime hardening checks passed. |
+| Governance hardening | Policy, capability, approval, budget, memory/state, and run-supervision evidence is documented internally. |
+| Runtime governance wiring | E2E enforcement demonstrated through the real planned-step path in internal/staging tests. |
+| Result boundary | Result-gate checks and raw-output protection are documented in internal/staging hardening evidence. |
+| Audit/replay | Minimal audit/replay and trace evidence is documented internally for reviewable execution order. |
+| External agent evaluation | Connector-readiness audit completed; minimal connector shape demonstrated; real third-party agent integration remains future work. |
+| Public/private boundary | Boundary review classifies raw implementation, raw tests, local paths, logs, and traces as private/internal. |
 
-> The model does not act directly. It plans. AIOS governs.
+The public interpretation is deliberately conservative: AIOS has internal/staging evidence for enterprise governance, runtime control, package/install checks, and connector evaluation. This repo does not publish the private runtime core and does not turn those internal results into unrestricted public deployment claims.
 
-- The model plans.
-- AIOS evaluates identity, permissions, policy and limits.
-- Tools are accessed only through declared and controlled paths.
-- The result passes through validation and result handling before reaching the user.
-- The goal is to make AI act within verifiable rules.
+## Why Agent Governance Needs A Control Layer
 
-### 5. Governed execution path
+Current AI systems accelerate answers, analysis, and automation. The risk shift happens when AI moves from response to action.
 
-The public governed backbone is:
+The risk is not only what the model answers. It is what the model-driven process can do before answering.
+
+Direct model-to-tool patterns are easy to prototype, but hard to govern once agents can touch files, APIs, workflows, data stores, or business operations. Traditional approaches often concentrate too much decision power inside the model. AIOS does not replace the model; it governs the path between request, tool, and result.
+
+AIOS focuses on the execution boundary:
+
+| Concern | Direct agent path | AIOS-governed path |
+| --- | --- | --- |
+| Planning | Model output may become action | Plan is separated from execution |
+| Tool access | Tool call can be implicit | Tool must be declared through a registry |
+| Runtime decision | Often external or partial | Guard decision occurs before tool execution |
+| Result release | Output may be returned as-is | Result passes through a result gate |
+| Evidence | Hard to reconstruct | Trace and proof cases make behavior inspectable |
+
+The difference is not "more AI". The difference is AI under control.
+
+## Governed Execution Backbone
+
+The canonical public backbone is:
 
 ```text
 request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result
 ```
 
-- `request`: the user or system request entering the governed flow
-- `planner`: interprets the request and prepares a controlled execution plan
-- `execution_engine`: executes planned steps instead of letting the model act directly
-- `tool_registry`: exposes only declared and registered tools
-- `runtime_guard`: can `ALLOW`, `WARN`, `BLOCK` or require approval before tool execution
-- `tool`: executes only inside the governed path
-- `result_gate / result handling`: validates, controls or blocks unsafe or invalid output before response
-- `result`: the final governed output returned to the user
-
-If you are reading the repository for technical reference, the narrower `Official runtime backbone` section below remains the precise public path statement. This section adds the narrative context for why that path matters.
-
-### 6. From isolated controls to a governed path
-
-The value is not simply having multiple controls.
-The value is preventing the system from silently skipping the governed path.
-
-- Before: identity, permissions, policy and budget define the scope.
-- During: runtime guard, tool contract and supervision prevent deviations.
-- After: result gate and audit replay make the result controlled and reconstructable.
-
-No silent fallback. Skips are blocked or made explicit.
-
-### 7. Enterprise governance layers
-
-| Layer | Meaning |
+| Stage | Public meaning |
 | --- | --- |
-| Agent Identity | who is acting |
-| Capability Permissions | what it can do |
-| Budget & Limits | how much it can consume |
-| State Control | state is not authorization |
-| Approval Gates | sensitive actions can be paused |
-| Memory Governance | memory access remains controlled |
-| Tool Contract | tools must be declared and bound |
-| Run Supervision | loops, retries and escalation stay visible |
-| Audit Replay | runs can be reconstructed |
-| Policy Packs | different operational postures can be applied |
+| `request` | A user, system, or normalized external-agent request enters the governed path. |
+| `planner` | The agent-facing planning layer prepares intended work. |
+| `execution_engine` | Planned work is executed through a controlled runtime sequence. |
+| `tool_registry` | Only declared tools are exposed to the governed path. |
+| `runtime_guard` | Tool execution is allowed, warned, blocked, or paused before the tool runs. |
+| `tool` | The selected capability runs only after the governed path permits it. |
+| `result_gate` | Tool output is checked, shaped, redacted, or blocked before release. |
+| `result` | The final output is returned with the governed path preserved. |
 
-Every AI action should be authorized, limited, traceable and validatable.
+## How AIOS Controls Tool Execution
 
-### 8. Technical difference from traditional AI solutions
+- tool access is mediated through `tool_registry`
+- `runtime_guard` stands before the tool
+- `BLOCK` means the tool does not execute
+- `WARN` keeps execution visible instead of silent
+- policy, capability, budget, approval, memory/state, and supervision checks can run before registry/tool execution when structured governance context is supplied
+- `result_gate` protects outward output after the tool runs
+- governance records and audit evidence stay separate from runtime side effects
+- the value is not isolated controls; the value is preventing the governed path from being skipped
 
-| Traditional AI approach | AIOS governed approach |
+## What Can Be Tested
+
+The public package supports controlled, local, public-safe checks:
+
+| Testable area | Where |
 | --- | --- |
-| The model decides and acts | The model plans, AIOS governs |
-| Tools can be called directly | Tools are accessed through the registry |
-| Controls are external or partial | Controls are inside the runtime path |
-| Output may be weakly validated | Result Gate before the response |
-| Audit may be partial or missing | Trace and replay of the run |
-| Fallbacks can be ambiguous | Fail-closed behavior and explicit blocks |
+| Public mock `ALLOW`, `WARN`, and `BLOCK` behavior | [public_mock_runtime/README.md](public_mock_runtime/README.md) |
+| Backbone consistency across public docs and examples | [backbone_public_test/README.md](backbone_public_test/README.md) |
+| Result handling as an additive post-tool control | [examples/result-redaction-case.json](examples/result-redaction-case.json) |
+| Governance approval without automatic runtime effect | [examples/governance-override-example.json](examples/governance-override-example.json) |
+| Public proof artifacts comparing governed and generic execution | [docs/public-proof-tests/README.md](docs/public-proof-tests/README.md) |
 
-The difference is not “more AI”. The difference is AI under control.
+Example local checks:
 
-### 9. Example business use case
+```bash
+python3 public_mock_runtime/mock_runtime.py public_mock_runtime/examples/allow.json
+python3 public_mock_runtime/mock_runtime.py public_mock_runtime/examples/warn.json
+python3 public_mock_runtime/mock_runtime.py public_mock_runtime/examples/block.json
+python3 -m unittest discover -s public_mock_runtime/proof_tests -p 'test_*.py'
+python3 -m unittest discover -s tests -p 'test_*_public.py'
+```
 
-A user asks AI to analyze business documents and prepare an operational result.
+The `BLOCK` mock case is expected to stop before tool execution. A non-zero CLI exit can be the expected controlled outcome for that blocked request.
 
-Without AIOS:
+## What Is Public Here
 
-- the model interprets the request
-- may use tools
-- produces an output
-- but it may be hard to know which steps were authorized, validated or blocked
+- public technical package
+- demo and documentation repository
+- governed execution backbone
+- public mock runtime
+- public JSON examples
+- adapted public tests
+- public proof artifacts
+- redacted enterprise evidence summary
+- architecture, governance, status, roadmap, and FAQ documents
 
-With AIOS:
+## What Is Not Public
 
-- identity is checked
-- permissions are evaluated
-- available tools are limited to declared tools
-- policy, budget and tool contracts are applied
-- violations can be blocked
-- the result is validated
-- the run trace is saved or reconstructable
+- private AIOS source code
+- private runtime core
+- private orchestration internals
+- private package internals
+- private prompts, memory, bridge flows, or operational wiring
+- private environment configuration
+- private runtime installation path
+- full private test files or raw internal reports
+- raw logs, trace payloads, or audit replay internals
 
-The customer does not just get an answer. They get a governed answer.
+The public repository is intentionally source-private. The core runtime is not publicly released here.
 
-### 10. Benefits for companies and teams
+## Controlled Technical Review
 
-From an architectural perspective, AIOS is valuable because it separates decision generation from authorization and execution. That creates a clearer control surface for pilots where organizations need to understand which actions are allowed, which are blocked, and how results are handled.
+This package is prepared for controlled technical review and agent-integration evaluation.
 
-- Control: separation between model, authorization and execution
-- Security: explicit blocks, runtime policy and fail-closed behavior
-- Audit: reconstructable run showing who, what, why and with which limits
-- Scalability: common foundation for business agents, tools and workflows
+The reviewable surface is intentionally bounded:
 
-This repository presents that value as a governance model and a controlled pilot direction, not as a claim that every layer is already fully deployed in the same way everywhere.
+- the public backbone can be inspected
+- the mock runtime can be run locally
+- the proof cases can be read and tested
+- the governance model can be evaluated at the architecture level
+- enterprise evidence can be reviewed as an aggregate public-safe summary
+- the public/private boundary is stated explicitly
 
-### 11. Adoption path
+The adoption path is intentionally progressive: controlled pilot, audit, then extension. The customer does not just get an answer; they get a governed answer.
 
-The right path is not to start from everything at once, but from a governable scope.
+## 📄 Public presentation
 
-1. Choose a controllable use case.
-2. Define policy, permissions, limits and operating posture.
-3. Connect declared tools.
-4. Run controlled demos or pilot runs.
-5. Audit, correct and extend progressively.
-
-Progressive adoption means first governing one scope well, then extending only after audit and validation.
-
-### 12. Visual architecture presentation
-
-AIOS is also documented through a visual architecture presentation for readers who cannot run the internal or private demo. The presentation explains the risk shift from AI responses to AI actions, the governed execution path, the enterprise governance layers, the difference from direct AI tool use, and the controlled pilot direction.
+The public presentation deck explains the AIOS concept, the governance problem, the controlled execution path and the adoption model.
 
 [Download the AIOS Governed AI Execution Layer PDF](docs/public/AIOS_Governed_AI_Execution_Layer.pdf)
 
-## Start here
+## Repository Map
 
-- [`docs/what-aios-is-and-is-not.md`](docs/what-aios-is-and-is-not.md): Clear definition of what AIOS is, what it is not, and why this public repository exists.
-- [`docs/public-vs-private-boundary.md`](docs/public-vs-private-boundary.md): Explicit boundary between what is published here and what is intentionally not public.
-- [`docs/current-implemented-layers.md`](docs/current-implemented-layers.md): Short view of the currently documented public layers and what each one does or does not do.
+| Path | Purpose |
+| --- | --- |
+| [docs/public/aios-v2/](docs/public/aios-v2/) | Main public documentation package |
+| [docs/public-proof-tests/](docs/public-proof-tests/) | Public proof artifacts |
+| [public_mock_runtime/](public_mock_runtime/) | Small executable public mock runtime |
+| [backbone_public_test/](backbone_public_test/) | Public backbone test guide |
+| [examples/](examples/) | Curated JSON cases |
+| [tests/](tests/) | Public invariant tests |
+| [assets/](assets/) | Public logo and hero assets |
+| [reference/](reference/) | Glossary and public invariants |
 
-## What this repository is
+## Status
 
-- A public technical repository for architecture, governance model, invariants, and technical proofs.
-- A public technical reference and selective architecture disclosure rather than a product-style repository.
-- A curated explanation of the official runtime backbone used as the public reference path.
-- A selective set of examples and adapted public tests that make key invariants inspectable rather than rhetorical.
-- A public-facing description of why governed execution matters for AI-assisted systems.
+This is a public demo and documentation repository for a source-private AIOS enterprise track.
 
-## What this repository is not
+Public-safe enterprise alignment supports these statements:
 
-- It is not the full RobyRoy AIOS private operational codebase.
-- It is not a mini standalone product build or a public clone of the private core.
-- It is not a complete export of internal runtime modules, prompts, memory, bridge flows, or support layers.
-- It is not a claim that every internal flow is published or proven here in the same way.
-- It is not a marketing repository built around vague claims.
+- enterprise-staging-ready documentation/demo package
+- internal/staging governance and runtime evidence exists
+- package/installability checks passed in controlled internal validation
+- governance wiring and E2E enforcement were demonstrated in internal/staging tests
+- external-agent connector evaluation is ready for controlled pilot work
+- public package is prepared for controlled technical review and agent-integration testing
 
-## Official runtime backbone
-
-The official public reference path is:
-
-```text
-request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result
-```
-
-This backbone is the architectural center of the public documentation.
-In this repository:
-
-- `planner` prepares and delegates execution.
-- `execution_engine` is the primary runtime execution layer for planned steps.
-- `tool_registry` is the official tool access layer.
-- `runtime_guard` stands before tool execution and issues `ALLOW`, `WARN`, or `BLOCK`.
-- `result` is the controlled output after the official path completes.
-
-In the public reference path, governed execution is fail-closed at the documented control decision:
-when `BLOCK` holds, the tool does not execute.
-The official path is not described as silently degrading into an ambiguous fallback on governed paths.
-
-Result handling is documented here as an additive post-tool / pre-return control surface.
-It does not replace the official backbone and it does not move `runtime_guard` after the tool.
-It exists to reduce raw leakage, unsafe outward results, or unreviewed tool output after execution.
-
-## Why AIOS is different
-
-The architectural difference described here is not that tools exist, but how sensitive paths are bounded, separated, and evidenced.
-
-- Governed execution is not treated as generic tool use; the official path keeps pre-tool mediation explicit and fail-closed on documented `BLOCK` conditions.
-- The governed path is not presented as silently degrading into unofficial fallback behavior when a required control step fails.
-- Governance and runtime stay separate: governance can observe, record, review, approve, deny, or revoke without becoming the runtime execution layer.
-- `approved` does not mean `applied`: a governance approval can remain governance-only while runtime effect stays `none`.
-- Result protection continues after the tool: post-tool / pre-return controls can inspect, redact, or block what is externally returned.
-- Compat or legacy surfaces may exist, but they remain non-core and are not promoted as substitutes for the official public backbone.
-
-## Repository map
-
-- [`docs/architecture.md`](docs/architecture.md): Public framing of RobyRoy AIOS as a governed execution architecture.
-- [`docs/what-aios-is-and-is-not.md`](docs/what-aios-is-and-is-not.md): Direct statement of what AIOS is, what it is not, and why this public repo exists.
-- [`docs/public-vs-private-boundary.md`](docs/public-vs-private-boundary.md): Boundary between the public reference repo and the non-public operational estate.
-- [`docs/current-implemented-layers.md`](docs/current-implemented-layers.md): Concise view of the layers currently documented in the public perimeter.
-- [`docs/runtime-backbone.md`](docs/runtime-backbone.md): Node-by-node explanation of the official runtime path.
-- [`docs/runtime-guard.md`](docs/runtime-guard.md): Public scope of `ALLOW`, `WARN`, and `BLOCK`.
-- [`docs/result-handling.md`](docs/result-handling.md): Additive post-tool controls and redaction-oriented handling.
-- [`docs/governance-layer.md`](docs/governance-layer.md): Governance records, approvals, and separation from runtime application.
-- [`docs/auditability.md`](docs/auditability.md): Traceability, append-only style evidence, and public proof artifacts.
-- [`docs/official-vs-compat-paths.md`](docs/official-vs-compat-paths.md): Boundary between the official backbone and non-core surfaces.
-- [`docs/technical-proofs.md`](docs/technical-proofs.md): Public examples, adapted tests, and proof labels.
-- [`reference/glossary.md`](reference/glossary.md): Key public terms.
-- [`reference/invariants.md`](reference/invariants.md): Short list of public architectural invariants.
-- [`examples/`](examples): Curated JSON cases for public discussion.
-- [`tests/`](tests): Adapted public tests that validate documented invariants.
-
-## Current proof areas
-
-- This repository adopts a proof posture rather than a marketing posture: it states invariants, keeps boundaries explicit, and ties claims to public examples or adapted tests.
-- Public example of an `ALLOW` decision in the official backbone.
-- Public example of a `WARN` decision that still preserves mediated execution.
-- Public example of a `BLOCK` decision where tool execution does not occur and the governed path does not silently continue as if it were cleared.
-- Public proof of result redaction as a post-tool additive control.
-- Public-facing governance override case where status may become `approved` while runtime effect remains `none`.
-- Adapted public tests that keep the backbone wording, invariants, and boundary conditions consistent.
-
-## Reproducible proofs
-
-- [Public proof tests](docs/public-proof-tests/README.md): Small public validation artifacts showing how generic execution and AIOS-governed execution differ on boundary-sensitive requests.
-- [Public mock runtime](public_mock_runtime/README.md): Executable public simulation of the mediation flow with `ALLOW`, `WARN`, and `BLOCK` examples.
-- [Backbone public test](backbone_public_test/README.md): Documented public test suite that validates backbone order, public example behavior, and `BLOCK` before tool execution.
-
-## Declared limitations
-
-- This repository is selective by design.
-- Not every internal component, runtime branch, or support module is published here.
-- Compat and legacy surfaces are documented as boundaries, not promoted as official backbone paths.
-- Public examples are curated and proof-oriented; they are not presented as full live dumps of the private system.
-- The public tests are adapted for public release and focus on architectural meaning rather than internal implementation breadth.
+It should not be interpreted as a public runtime distribution, unrestricted customer deployment evidence, external security certification, legal/compliance review, or publication of the private AIOS core.
 
 ## License
 

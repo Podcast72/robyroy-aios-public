@@ -2,7 +2,7 @@
   "case_id": "public-governance-override",
   "case_kind": "public-facing reference case",
   "scope": "governance layer",
-  "backbone_path": "request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result",
+  "backbone_path": "request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result",
   "override_request": {
     "override_type": "policy_exception",
     "target_layer": "report_distribution_policy",
