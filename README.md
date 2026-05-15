@@ -15,6 +15,7 @@ AIOS is a platform concept for governing how AI uses business tools, data, and w
 
 | Area | Link |
 | --- | --- |
+| AIOS in 5 minutes | [docs/public/AIOS_IN_5_MINUTES.md](docs/public/AIOS_IN_5_MINUTES.md) |
 | Public docs index | [docs/public/aios-v2/README.md](docs/public/aios-v2/README.md) |
 | Public overview | [AIOS_PUBLIC_OVERVIEW.md](docs/public/aios-v2/AIOS_PUBLIC_OVERVIEW.md) |
 | Architecture | [AIOS_ARCHITECTURE.md](docs/public/aios-v2/AIOS_ARCHITECTURE.md) |
