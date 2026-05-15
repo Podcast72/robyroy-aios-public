@@ -114,3 +114,5 @@ Enterprise AI agents need more than fluent answers. They need controlled executi
 When agents can call tools, the enterprise question becomes whether actions are authorized, limited, traceable, and result-gated. AIOS focuses on that governed execution layer: a place where planning is separated from tool use, tool access is explicit, guard decisions happen before execution, and outputs pass through a result boundary.
 
 For technical reviewers, this repository is a fast way to inspect the AIOS model without access to the private core: read the backbone, run the mock cases, review the public proof tests, and evaluate whether the execution boundary addresses the risks of direct agent-to-tool automation.
+
+For practical placement and integration examples, see [AIOS_INTEGRATION_MODEL.md](AIOS_INTEGRATION_MODEL.md).

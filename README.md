@@ -16,6 +16,7 @@ AIOS is a platform concept for governing how AI uses business tools, data, and w
 | Area | Link |
 | --- | --- |
 | AIOS in 5 minutes | [docs/public/AIOS_IN_5_MINUTES.md](docs/public/AIOS_IN_5_MINUTES.md) |
+| Integration model | [docs/public/AIOS_INTEGRATION_MODEL.md](docs/public/AIOS_INTEGRATION_MODEL.md) |
 | Public docs index | [docs/public/aios-v2/README.md](docs/public/aios-v2/README.md) |
 | Public overview | [AIOS_PUBLIC_OVERVIEW.md](docs/public/aios-v2/AIOS_PUBLIC_OVERVIEW.md) |
 | Architecture | [AIOS_ARCHITECTURE.md](docs/public/aios-v2/AIOS_ARCHITECTURE.md) |
@@ -24,6 +25,22 @@ AIOS is a platform concept for governing how AI uses business tools, data, and w
 | Agent integration readiness | [AIOS_AGENT_INTEGRATION_READINESS.md](docs/public/aios-v2/AIOS_AGENT_INTEGRATION_READINESS.md) |
 | Status and limits | [AIOS_STATUS_AND_LIMITS.md](docs/public/aios-v2/AIOS_STATUS_AND_LIMITS.md) |
 | FAQ | [AIOS_FAQ.md](docs/public/aios-v2/AIOS_FAQ.md) |
+
+## Where AIOS fits
+
+AIOS is designed to sit between agent intent and real-world execution.
+
+It can be used where an AI agent is allowed to do more than answer text: call APIs, read or modify files, query databases, launch scripts, update tickets, interact with CRM/ERP systems, generate sensitive outputs, or trigger business workflows.
+
+Instead of letting the model call tools directly, AIOS adds a governed execution boundary:
+
+```text
+agent intent -> governance check -> allow / warn / block / require approval -> tool execution -> result gate
+```
+
+This makes agent actions more explicit, reviewable, and controllable before they affect real systems.
+
+For practical examples, see [AIOS Integration Model](docs/public/AIOS_INTEGRATION_MODEL.md).
 
 ## What AIOS Is
 
