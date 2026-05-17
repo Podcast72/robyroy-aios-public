@@ -1,0 +1,25 @@
+{
+  "field_test": "ANDY / AIOS Controlled Field-Test",
+  "date": "2026-05-17",
+  "environment": "Controlled Docker VPS field-test",
+  "status": "ANDY_AIOS_GOVERNED_FIELD_TEST_READY_WITH_TANGIBLE_PROOF",
+  "summary": {
+    "total": 13,
+    "passed": 13,
+    "failed": 0,
+    "governed_cases": 9,
+    "tangible_checks": 4
+  },
+  "routing": {
+    "requests_routed_through_aios": true,
+    "direct_bypass_detected": false,
+    "public_ports_required": false
+  },
+  "leakage_checks": {
+    "terminal_stdout_payload": false,
+    "terminal_stderr_payload": false,
+    "token_like_value": false,
+    "exception_trace": false
+  },
+  "claim_boundary": "Controlled field-test only; not production readiness."
+}

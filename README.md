@@ -1,4 +1,4 @@
-# RobyRoy AIOS Public Demo
+# AIOS — Governed Execution Layer for AI Agents
 
 ![AIOS demo architecture](assets/aios-demo-hero.png)
 
@@ -9,7 +9,33 @@
 
 AIOS is presented here as **a Governed AI Execution Layer**.
 
+**Because AI agents need brakes, not just engines.**
+
 AIOS is a platform concept for governing how AI uses business tools, data, and workflows. This repository is the public-facing technical demo and documentation package for a source-private AIOS enterprise track. It explains the governed execution model, exposes a small public mock runtime, and summarizes public-safe internal/staging evidence without publishing private runtime source.
+
+AIOS is being tested as a governed execution layer: external agent requests are routed through AIOS, classified, allowed, warned, or blocked, with no direct bypass accepted in the controlled field-test.
+
+## Controlled Field-Test: ANDY -> AIOS
+
+AIOS was tested in a controlled Docker field-test where an external agent, ANDY, routed CLI and human-write simulation requests through AIOS. The test checked whether dangerous, secret-touching, raw-shell, and path-traversal attempts were governed instead of executed directly.
+
+| Signal | Result |
+| --- | ---: |
+| Governed checks | 13/13 passed |
+| Requests routed through AIOS | Yes |
+| Direct bypass detected | No |
+| Public ports required | No |
+| Destructive attempt | BLOCK, executed=false |
+| Secret/path attempts | BLOCK, executed=false |
+| Tangible filesystem effect | None observed for blocked cases |
+
+This is a controlled Docker field-test, not a production-readiness or security-certification claim.
+
+Read the field-test note: [docs/public/aios-v2/ANDY_CONTROLLED_FIELD_TEST.md](docs/public/aios-v2/ANDY_CONTROLLED_FIELD_TEST.md). Read the [human-readable evidence report](docs/public/field-tests/andy-aios-2026-05-17/README.md) for the full question/decision/risk-avoided breakdown.
+
+[![Read the field-test evidence](https://img.shields.io/badge/Read%20the%20field--test%20evidence-13%2F13%20passed-1f7a4d?style=for-the-badge)](docs/public/field-tests/andy-aios-2026-05-17/README.md)
+[![View sanitized result JSON](https://img.shields.io/badge/View%20sanitized%20JSON-public--safe-blue?style=for-the-badge)](docs/public/field-tests/andy-aios-2026-05-17/sanitized-result-summary.json)
+[![Read the technical field-test note](https://img.shields.io/badge/Read%20technical%20note-ANDY%20%E2%86%92%20AIOS-6f42c1?style=for-the-badge)](docs/public/aios-v2/ANDY_CONTROLLED_FIELD_TEST.md)
 
 ## Quick Links
 

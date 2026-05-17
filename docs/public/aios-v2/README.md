@@ -32,6 +32,7 @@ request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool
 | [AIOS_DEMO_AND_EVIDENCE_PACKAGE.md](AIOS_DEMO_AND_EVIDENCE_PACKAGE.md) | What can be run publicly and what enterprise evidence is summarized. |
 | [AIOS_TEST_HIGHLIGHTS.md](AIOS_TEST_HIGHLIGHTS.md) | Selected public-safe validation highlights without publishing the private suite. |
 | [AIOS_AGENT_INTEGRATION_READINESS.md](AIOS_AGENT_INTEGRATION_READINESS.md) | How external agent integration can be evaluated safely. |
+| [ANDY_CONTROLLED_FIELD_TEST.md](ANDY_CONTROLLED_FIELD_TEST.md) | Controlled Docker field-test note for ANDY-routed requests through AIOS. |
 | [AIOS_STATUS_AND_LIMITS.md](AIOS_STATUS_AND_LIMITS.md) | Public status, boundaries, and claim limits. |
 | [AIOS_PUBLIC_ROADMAP.md](AIOS_PUBLIC_ROADMAP.md) | Public-facing roadmap for documentation and demo hardening. |
 | [AIOS_FAQ.md](AIOS_FAQ.md) | Public Q&A for technical reviewers. |
