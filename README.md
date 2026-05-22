@@ -19,6 +19,8 @@ AIOS is being tested as a governed execution layer: external agent requests are 
 
 AIOS was tested in a controlled Docker field-test where an external agent, ANDY, routed CLI and human-write simulation requests through AIOS. The test checked whether dangerous, secret-touching, raw-shell, and path-traversal attempts were governed instead of executed directly.
 
+**Controlled field-test result:** in the Docker field-test, ANDY was constrained to route operational requests through AIOS governed endpoints, and the run reported 13/13 checks passed with no direct bypass observed.
+
 | Signal | Result |
 | --- | ---: |
 | Governed checks | 13/13 passed |
@@ -36,6 +38,12 @@ Read the field-test note: [docs/public/aios-v2/ANDY_CONTROLLED_FIELD_TEST.md](do
 [![Read the field-test evidence](https://img.shields.io/badge/Read%20the%20field--test%20evidence-13%2F13%20passed-1f7a4d?style=for-the-badge)](docs/public/field-tests/andy-aios-2026-05-17/README.md)
 [![View sanitized result JSON](https://img.shields.io/badge/View%20sanitized%20JSON-public--safe-blue?style=for-the-badge)](docs/public/field-tests/andy-aios-2026-05-17/sanitized-result-summary.json)
 [![Read the technical field-test note](https://img.shields.io/badge/Read%20technical%20note-ANDY%20%E2%86%92%20AIOS-6f42c1?style=for-the-badge)](docs/public/aios-v2/ANDY_CONTROLLED_FIELD_TEST.md)
+
+**Backbone bypass-attempt follow-up:** in a controlled Docker/VPS field-test, ANDY attempted non-governed operational paths. The run reported 8/8 scenarios PASS, with no useful action observed outside the governed backbone and no execution recorded outside the governed route.
+
+[![READ THE BYPASS-ATTEMPT EVIDENCE](https://img.shields.io/badge/READ%20THE%20BYPASS--ATTEMPT%20EVIDENCE-8%2F8%20PASSED-1f7a4d?style=for-the-badge)](docs/public/field-tests/andy-backbone-bypass-2026-05-22/ANDY_BACKBONE_BYPASS_ATTEMPT_EVIDENCE.md)
+[![READ HUMAN-READABLE REPORT](https://img.shields.io/badge/READ%20HUMAN--READABLE%20REPORT-ANDY%20%E2%86%92%20BACKBONE-6f42c1?style=for-the-badge)](docs/public/aios-v2/ANDY_BACKBONE_BYPASS_ATTEMPT_FIELD_TEST.md)
+[![VIEW SANITIZED JSON](https://img.shields.io/badge/VIEW%20SANITIZED%20JSON-PUBLIC--SAFE-blue?style=for-the-badge)](docs/public/field-tests/andy-backbone-bypass-2026-05-22/sanitized-results.json)
 
 ## Quick Links
 
