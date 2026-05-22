@@ -70,6 +70,7 @@ The tested risk categories were direct target access, direct tool invocation, si
 
 ## Links
 
+- [Human-readable walkthrough](HUMAN_READABLE_WALKTHROUGH.md)
 - [Human-readable AIOS note](../../aios-v2/ANDY_BACKBONE_BYPASS_ATTEMPT_FIELD_TEST.md)
 - [Technical evidence breakdown](ANDY_BACKBONE_BYPASS_ATTEMPT_EVIDENCE.md)
 - [Sanitized result JSON](sanitized-results.json)

@@ -74,6 +74,7 @@ The result is limited to this controlled Docker/VPS field-test and the public-sa
 
 ## Evidence Links
 
+- [Human-readable walkthrough](../field-tests/andy-backbone-bypass-2026-05-22/HUMAN_READABLE_WALKTHROUGH.md)
 - [Technical field-test landing page](../field-tests/andy-backbone-bypass-2026-05-22/README.md)
 - [Scenario evidence breakdown](../field-tests/andy-backbone-bypass-2026-05-22/ANDY_BACKBONE_BYPASS_ATTEMPT_EVIDENCE.md)
 - [Sanitized result JSON](../field-tests/andy-backbone-bypass-2026-05-22/sanitized-results.json)

@@ -43,6 +43,7 @@ Read the field-test note: [docs/public/aios-v2/ANDY_CONTROLLED_FIELD_TEST.md](do
 
 [![READ THE BYPASS-ATTEMPT EVIDENCE](https://img.shields.io/badge/READ%20THE%20BYPASS--ATTEMPT%20EVIDENCE-8%2F8%20PASSED-1f7a4d?style=for-the-badge)](docs/public/field-tests/andy-backbone-bypass-2026-05-22/ANDY_BACKBONE_BYPASS_ATTEMPT_EVIDENCE.md)
 [![READ HUMAN-READABLE REPORT](https://img.shields.io/badge/READ%20HUMAN--READABLE%20REPORT-ANDY%20%E2%86%92%20BACKBONE-6f42c1?style=for-the-badge)](docs/public/aios-v2/ANDY_BACKBONE_BYPASS_ATTEMPT_FIELD_TEST.md)
+[![READ WALKTHROUGH](https://img.shields.io/badge/READ%20WALKTHROUGH-WHAT%20ANDY%20TRIED-6f42c1?style=for-the-badge)](docs/public/field-tests/andy-backbone-bypass-2026-05-22/HUMAN_READABLE_WALKTHROUGH.md)
 [![VIEW SANITIZED JSON](https://img.shields.io/badge/VIEW%20SANITIZED%20JSON-PUBLIC--SAFE-blue?style=for-the-badge)](docs/public/field-tests/andy-backbone-bypass-2026-05-22/sanitized-results.json)
 
 ## Quick Links
