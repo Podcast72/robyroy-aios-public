@@ -46,6 +46,10 @@ Read the field-test note: [docs/public/aios-v2/ANDY_CONTROLLED_FIELD_TEST.md](do
 [![READ WALKTHROUGH](https://img.shields.io/badge/READ%20WALKTHROUGH-WHAT%20ANDY%20TRIED-6f42c1?style=for-the-badge)](docs/public/field-tests/andy-backbone-bypass-2026-05-22/HUMAN_READABLE_WALKTHROUGH.md)
 [![VIEW SANITIZED JSON](https://img.shields.io/badge/VIEW%20SANITIZED%20JSON-PUBLIC--SAFE-blue?style=for-the-badge)](docs/public/field-tests/andy-backbone-bypass-2026-05-22/sanitized-results.json)
 
+**External pipeline validation:** an independent technical analyst validated the public mock/simulated AIOS pipeline for guard behavior: destructive log deletion blocked, cyber-evasion search blocked, and a safe web search allowed and logged. No source code was reviewed and no real filesystem or network operations were executed.
+
+[![External Pipeline Validation](https://img.shields.io/badge/External%20Pipeline%20Validation-public%20mock%20report-2f6fed?style=for-the-badge)](docs/public/aios-v2/AIOS_EXTERNAL_PIPELINE_VALIDATION.md)
+
 ## Quick Links
 
 | Area | Link |
@@ -57,6 +61,7 @@ Read the field-test note: [docs/public/aios-v2/ANDY_CONTROLLED_FIELD_TEST.md](do
 | Architecture | [AIOS_ARCHITECTURE.md](docs/public/aios-v2/AIOS_ARCHITECTURE.md) |
 | Governance model | [AIOS_GOVERNANCE_MODEL.md](docs/public/aios-v2/AIOS_GOVERNANCE_MODEL.md) |
 | Demo and evidence package | [AIOS_DEMO_AND_EVIDENCE_PACKAGE.md](docs/public/aios-v2/AIOS_DEMO_AND_EVIDENCE_PACKAGE.md) |
+| External pipeline validation | [AIOS_EXTERNAL_PIPELINE_VALIDATION.md](docs/public/aios-v2/AIOS_EXTERNAL_PIPELINE_VALIDATION.md) |
 | Agent integration readiness | [AIOS_AGENT_INTEGRATION_READINESS.md](docs/public/aios-v2/AIOS_AGENT_INTEGRATION_READINESS.md) |
 | Status and limits | [AIOS_STATUS_AND_LIMITS.md](docs/public/aios-v2/AIOS_STATUS_AND_LIMITS.md) |
 | FAQ | [AIOS_FAQ.md](docs/public/aios-v2/AIOS_FAQ.md) |

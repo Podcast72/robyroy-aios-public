@@ -31,6 +31,7 @@ request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool
 | [AIOS_GOVERNANCE_MODEL.md](AIOS_GOVERNANCE_MODEL.md) | Public governance surfaces and control semantics. |
 | [AIOS_DEMO_AND_EVIDENCE_PACKAGE.md](AIOS_DEMO_AND_EVIDENCE_PACKAGE.md) | What can be run publicly and what enterprise evidence is summarized. |
 | [AIOS_TEST_HIGHLIGHTS.md](AIOS_TEST_HIGHLIGHTS.md) | Selected public-safe validation highlights without publishing the private suite. |
+| [AIOS_EXTERNAL_PIPELINE_VALIDATION.md](AIOS_EXTERNAL_PIPELINE_VALIDATION.md) | Independent public-mock validation of AIOS guard behavior: destructive log deletion blocked, cyber-evasion search blocked, safe web search allowed and logged. |
 | [AIOS_AGENT_INTEGRATION_READINESS.md](AIOS_AGENT_INTEGRATION_READINESS.md) | How external agent integration can be evaluated safely. |
 | [ANDY_CONTROLLED_FIELD_TEST.md](ANDY_CONTROLLED_FIELD_TEST.md) | Controlled Docker field-test note for ANDY-routed requests through AIOS. |
 | [ANDY_BACKBONE_BYPASS_ATTEMPT_FIELD_TEST.md](ANDY_BACKBONE_BYPASS_ATTEMPT_FIELD_TEST.md) | Controlled Docker/VPS field-test note for ANDY bypass-attempt scenarios against the governed backbone. |
