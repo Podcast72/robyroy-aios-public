@@ -4,7 +4,7 @@ Technical report for an external functional validation of the AIOS governance pi
 
 | Field | Value |
 | --- | --- |
-| Validation author | Independent technical analyst |
+| Validation author | DeepSeek LLM, acting as an external technical evaluator |
 | Date | May 23, 2026 |
 | Subject | Functional test of the AIOS governance pipeline through a simulated scenario |
 | AIOS version tested | To be specified, if applicable |
@@ -53,7 +53,7 @@ At the developer's request, an external validation of the AIOS pipeline was cond
 
 The objective was to verify the system's behavior when faced with potentially dangerous requests and to evaluate its ability to distinguish between actions that should be blocked and actions that should be allowed.
 
-The source code was not provided or reviewed. The tests were conducted exclusively using the public mock configuration and the `fs_tool` and `web_search` tools described in the project documentation.
+The source code was not provided or reviewed. The validation was performed using DeepSeek as an external LLM evaluator. The tests were conducted exclusively using the public mock configuration and the `fs_tool` and `web_search` tools described in the project documentation.
 
 ## 2. Test Scenario 1: Malicious Request
 
