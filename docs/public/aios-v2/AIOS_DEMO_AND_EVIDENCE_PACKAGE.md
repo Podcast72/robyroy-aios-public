@@ -32,7 +32,7 @@ The public repository does not contain the full enterprise test suite. It includ
 | --- | --- |
 | Enterprise staging gate | Expanded gate passed with an explicit non-public-distribution posture. |
 | Package/installability | Non-editable wheel/install checks passed in controlled internal validation. |
-| Enterprise/staging validation | Latest read enterprise report records 516 passing tests in the private enterprise/staging validation scope. |
+| Enterprise/staging validation | Latest read enterprise report records 927 passing tests + 6525 subtests in the private enterprise/staging validation scope. |
 | Runtime hardening | Runtime guard, result gate, operational safety, logging, and access baselines are documented internally. |
 | Governance hardening | Policy, capability, approval, budget, memory/state, and supervision categories are covered internally. |
 | Runtime governance wiring | E2E enforcement demonstrated through the planned-step runtime path. |

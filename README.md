@@ -15,6 +15,29 @@ AIOS is a platform concept for governing how AI uses business tools, data, and w
 
 AIOS is being tested as a governed execution layer: external agent requests are routed through AIOS, classified, allowed, warned, or blocked, with no direct bypass accepted in the controlled field-test.
 
+## At-Most-Once Execution Semantics
+
+AIOS governs more than whether an action is allowed to execute. It also governs what happens when execution is exposed to concurrency, retries, crashes, and partial failures.
+
+For side-effecting steps, the current persistent runtime has been adversarially validated against duplicate ownership and blind re-execution. If execution may already have produced an external effect but the runtime cannot prove the final outcome, AIOS converges to `UNKNOWN_EFFECT` instead of automatically retrying the action.
+
+> **AIOS governs execution semantics under concurrency, retries, and partial failures, protecting uncertain side effects from blind re-execution.**
+
+| Execution property | Public-safe result |
+| --- | --- |
+| At-most-once execution semantics | **VERIFIED** in the declared persistent-runtime scope |
+| Concurrent duplicate callers | Blocked from duplicate ownership/execution |
+| Crash after a possible side effect | Converges to `UNKNOWN_EFFECT` |
+| Blind automatic retry from uncertain state | Blocked |
+| Repeated race validation | **125/125 passed** |
+| Current private enterprise suite | **927 tests passed + 6525 subtests passed** |
+| Accounting / audit convergence | **PARTIAL** |
+| Distributed / multi-host guarantee | **NOT CLAIMED** |
+
+`AT_MOST_ONCE_VERIFIED = YES` applies only to the declared validation scope. It is not a claim of distributed exactly-once execution, and it does not imply unrestricted production readiness.
+
+[Read the public-safe at-most-once execution evidence](docs/public/aios-v2/AT_MOST_ONCE_EXECUTION_EVIDENCE.md).
+
 ## Controlled Field-Test: ANDY -> AIOS
 
 AIOS was tested in a controlled Docker field-test where an external agent, ANDY, routed CLI and human-write simulation requests through AIOS. The test checked whether dangerous, secret-touching, raw-shell, and path-traversal attempts were governed instead of executed directly.
@@ -102,7 +125,7 @@ This public package is aligned with the current enterprise documentation and rep
 | --- | --- |
 | Enterprise staging gate | Passed with an explicit non-public-distribution posture. |
 | Package/installability | Non-editable package/install checks passed in controlled internal validation. |
-| Enterprise validation evidence | Internal enterprise reports record 516 passing tests in the private enterprise/staging validation scope. |
+| Enterprise validation evidence | Internal enterprise reports record 927 passing tests + 6525 subtests in the private enterprise/staging validation scope. |
 | Runtime hardening | Internal/staging runtime hardening checks passed. |
 | Governance hardening | Policy, capability, approval, budget, memory/state, and run-supervision evidence is documented internally. |
 | Runtime governance wiring | E2E enforcement demonstrated through the real planned-step path in internal/staging tests. |
@@ -200,7 +223,7 @@ The public package supports controlled, local, public-safe checks:
 
 This public repository includes a small public demo test surface and mock runtime proof tests.
 
-The private enterprise/staging validation suite is not published here. The latest read enterprise report records 516 passing tests in the private enterprise/staging validation scope, covering governance, runtime hardening, package/installability, result-boundary behavior, audit/replay and connector-readiness checks.
+The private enterprise/staging validation suite is not published here. The latest read enterprise report records 927 passing tests + 6525 subtests in the private enterprise/staging validation scope, covering governance, runtime hardening, package/installability, result-boundary behavior, audit/replay and connector-readiness checks.
 
 The public tests make the concept inspectable.  
 The enterprise evidence shows that AIOS is not only a concept page.

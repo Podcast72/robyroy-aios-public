@@ -17,7 +17,7 @@ request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool
 | Enterprise track | Enterprise-staging-ready public demo/docs package, backed by internal/staging evidence. |
 | Gate evidence | Expanded enterprise staging gate passed in internal reports. |
 | Package evidence | Non-editable package/install checks passed in controlled internal validation. |
-| Enterprise validation evidence | Internal enterprise reports record 516 passing tests in the private enterprise/staging validation scope. |
+| Enterprise validation evidence | Internal enterprise reports record 927 passing tests + 6525 subtests in the private enterprise/staging validation scope. |
 | Governance evidence | Runtime hardening, governance hardening, and runtime governance wiring are documented internally. |
 | Connector evidence | Connector-readiness audit completed; minimal connector shape demonstrated; real external-agent target integration remains future work. |
 | Public boundary | Source-private core; no private runtime source or raw internal reports published here. |
