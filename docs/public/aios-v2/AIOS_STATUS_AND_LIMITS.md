@@ -24,12 +24,59 @@ This repository is a public technical package for AIOS.
 - enterprise-staging-ready documentation/demo package
 - small public test surface plus selected public-safe evidence summaries
 - package/installability checks passed in controlled internal validation
-- latest read enterprise report records 516 passing tests in the private enterprise/staging validation scope
+- latest read enterprise report records 927 passing tests + 6525 subtests in the private enterprise/staging validation scope
 - runtime hardening and result-boundary evidence exists internally
 - policy/capability/approval/budget/memory/state/supervision governance categories are documented internally
 - allow/warn/block, fail-closed, and no-silent-fallback behavior are covered in internal/staging evidence
 - audit/replay-oriented trace evidence exists internally
 - connector-readiness audit and minimal connector shape support controlled pilot evaluation
+
+## At-Most-Once Execution Semantics
+
+The current private enterprise runtime has been adversarially validated for at-most-once execution semantics within a declared persistent-runtime scope.
+
+Public-safe state model:
+
+ABSENT -> PREPARED -> AUTHORIZED -> RUNNING -> SUCCEEDED | FAILED | UNKNOWN_EFFECT
+
+`UNKNOWN_EFFECT` is intentionally conservative. It represents a case where execution may already have produced an external side effect, but the runtime cannot prove the final effect state. AIOS does not automatically retry from this state.
+
+Verified public-safe properties include:
+
+- duplicate callers cannot acquire duplicate execution ownership for the same logical execution identity
+- claim and budget reservation remain coherent under tested concurrent access
+- terminal states are not reopened
+- successful terminal execution is replayed without another tool call
+- uncertain post-execution failure converges to `UNKNOWN_EFFECT`
+- blind retry from `UNKNOWN_EFFECT` is blocked
+- repeated race validation completed **125/125** checks successfully
+- the current private enterprise suite records **927 passing tests + 6525 subtests**
+
+### Declared scope
+
+The verification applies to callers that share the same persistent runtime state and the same logical execution/request identity.
+
+It does not claim:
+
+- correctness after loss of the persistent RunStore
+- independent multi-host execution without shared authoritative storage
+- distributed exactly-once semantics
+- unrestricted production readiness
+
+### Accounting and audit limit
+
+`ACCOUNTING_AUDIT_CONVERGENCE = PARTIAL`
+
+A narrow crash window remains around external audit delivery: an audit sink may complete an external write before the runtime records the acknowledgement.
+
+AIOS does not automatically resend that audit because blind resend could create a duplicate audit record.
+
+A stronger future guarantee would require a transactional outbox and an idempotent audit sink. That is documented as an architectural evolution path, not as a current mandatory remediation.
+
+AT_MOST_ONCE_VERIFIED = YES
+ACCOUNTING_AUDIT_CONVERGENCE = PARTIAL
+
+See [At-Most-Once Execution Evidence](AT_MOST_ONCE_EXECUTION_EVIDENCE.md).
 
 ## What This Status Supports
 
@@ -55,7 +102,7 @@ This repository is a public technical package for AIOS.
 - The public mock runtime is intentionally minimal.
 - Public examples are curated.
 - Public tests are adapted to stand alone outside private internals.
-- The 516 passing tests belong to the internal enterprise/staging validation scope, not this public repository.
+- The 927 passing tests + 6525 subtests belong to the internal enterprise/staging validation scope, not this public repository.
 - Enterprise reports are summarized rather than copied.
 - Private runtime files, prompts, memory surfaces, package internals, and environment wiring are not included.
 - Raw logs, raw traces, raw test files, machine paths, and implementation internals are not public material.

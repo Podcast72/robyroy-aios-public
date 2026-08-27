@@ -15,11 +15,30 @@ This page summarizes selected public-safe validation highlights from the AIOS en
 | Package / installability checks | Validates controlled package/install boundaries in enterprise scope. | A governance runtime must be reproducible and bounded. |
 | Connector readiness for external agents | Validates a minimal connector shape for future controlled agent integration. | The next phase is connecting real or simulated agents and testing their actions through AIOS. |
 
+## At-Most-Once And Failure-Semantics Validation
+
+The private enterprise runtime was exercised with adversarial tests focused on concurrency, retries, partial failures, and uncertain side effects.
+
+Public-safe validation highlights:
+
+| Scenario | Result |
+| --- | --- |
+| Concurrent owner vs recovery race | Passed |
+| Duplicate ownership/execution attempt | Blocked |
+| Real filesystem append side effect + post-effect crash | Passed |
+| Crash during audit after successful execution commit | Passed |
+| Repeated race stress | **125/125 passed** |
+| Current private enterprise suite | **927 tests + 6525 subtests passed** |
+
+The validation specifically checks that an uncertain post-execution failure does not trigger blind re-execution. Such cases converge to `UNKNOWN_EFFECT` and require reconciliation rather than automatic retry.
+
+These are public-safe summaries only. Private test source, fixtures, raw logs, local paths, and implementation internals are not published.
+
 ## Public demo tests vs. enterprise validation
 
 The public tests are intentionally small. They make the governed execution concept inspectable through a mock runtime, curated examples and public-safe proof cases.
 
-The broader enterprise/staging validation scope is private. The latest enterprise evidence report records 516 passing tests in the internal validation scope, covering governance, runtime hardening, package/installability, result-boundary behavior, audit/replay and connector-readiness checks.
+The broader enterprise/staging validation scope is private. The latest enterprise evidence report records 927 passing tests + 6525 subtests in the internal validation scope, covering governance, runtime hardening, package/installability, result-boundary behavior, audit/replay and connector-readiness checks.
 
 This public repository does not expose the private enterprise suite, raw logs, private fixtures, source code, runtime internals or local paths. The selected highlights above are public-safe summaries only.
 
