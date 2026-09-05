@@ -1,15 +1,35 @@
 # Current Implemented Layers
 
-This page summarizes the layers that the public repository documents as implemented, demonstrated, or materially present in the public reference perimeter.
-It does not claim to list the full private system.
+This page separates the current private V3 P0 architecture from the preserved V2 public demonstration surface. Status terms describe the declared validation or public-evidence scope, not unrestricted production readiness.
 
-| Layer | Status | Role | What it does | What it does not do |
-| --- | --- | --- | --- | --- |
-| Backbone | Documented, test-backed, and reflected in the public mock runtime | Defines the official governed execution path | Keeps the reference sequence explicit: `request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result` | Does not claim to expose every private support surface or every internal branch |
-| Architectural Enforcement / pre-delegation enforcement | Documented as an architectural boundary, not published as a standalone public module | Keeps delegation and tool access on the official governed path before execution reaches the tool | Separates planning, execution, and tool access so the system is not framed as direct tool invocation | Does not replace `runtime_guard`, and is not published here as a separate private enforcement engine |
-| Runtime Guard | Documented, example-backed, and implemented in the public mock runtime | Governs runtime before tool execution | Issues `ALLOW`, `WARN`, or `BLOCK` before the tool runs, and stops blocked requests before tool execution | Does not perform post-tool output release control and does not turn governance records into runtime execution |
-| Result Gate / post-tool output enforcement | Documented publicly as additive result handling and backed by a public proof case | Validates or constrains outward output after tool execution | Supports post-tool inspection, redaction, or blocking of release when returned material should not be exposed as-is | Does not redefine the backbone, does not move `runtime_guard` after the tool, and does not grant tool access |
-| Governance Layer | Documented with a public reference case | Records, reviews, and scopes governance decisions | Preserves approvals, denials, revocations, and controlled override context as governance-layer actions | Does not automatically become runtime application, does not bypass the guard, and does not rewrite the backbone |
-| Auditability / evidence layer | Documented and supported by public proofs, invariants, and adapted tests | Observes and preserves reviewable evidence | Makes events, ordering, and decision points inspectable after the run | Does not decide runtime permission, does not validate release by itself, and does not modify the backbone |
+## Current V3 P0 Layers
 
-No learning loop is listed here because the current public repository does not document one as a public implemented layer.
+| Layer | Public status | Role | Authority limit |
+| --- | --- | --- | --- |
+| AgentLoop | P0 completed and covered by targeted private validation | Coordinates turns, requests governed model/tool work, and produces the final answer | Does not possess execution authority |
+| ModelPort / GovernedModelPort | Provider-neutral boundary validated in P0 | Decouples the runtime from a model provider and routes inference through governance | Does not let a provider or agent loop bypass `ExecutionEngine` |
+| ExecutionEngine | P0 execution authority | Admits and executes governed model or tool work | Remains the authoritative execution path |
+| Governed model/tool execution | Round-trip verified in the P0 scope | Performs admitted inference or capability work | Does not self-authorize |
+| RunStore | Persistence/reopen/resume verified in the synthetic P0 scope | Holds authoritative execution truth | Raw schema and internals are not public |
+| Conversation/checkpoint state | Present as a separate concern | Supports continuation of the agent interaction | Cannot rewrite execution truth |
+| ResultGate | Governed round-trip and live path evidence include result gating | Controls outward result release | Underlying success alone does not authorize release |
+| Audit | Aggregate P0 evidence confirms reviewable governed execution | Records evidence for review | Raw audit/log/trace material is private |
+| Execution identity and accounting | P0 property validated in the declared scope | Binds executable/artifact identity and authoritative budget accounting to governed execution | Enforcement mechanisms are private |
+| Egress and provenance governance | P0 property validated in the declared scope | Governs credential egress and content provenance | Does not support a universal no-leak claim |
+| Composition Root | P0 assembly completed | Wires the runtime so authority boundaries remain explicit | Source, configuration, and trust-boundary details remain private |
+
+## Preserved V2 Public Layers
+
+The executable public demonstrations still implement and test the V2 reference path:
+
+`request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result`
+
+| V2 public layer | Public evidence | Historical role |
+| --- | --- | --- |
+| Backbone | Documentation, examples, tests, and mock runtime | Makes the governed tool path explicit |
+| Runtime Guard | Public examples and mock implementation | Issues `ALLOW`, `WARN`, or `BLOCK` before tool execution |
+| Result Gate | Public proof case and documentation | Applies additive post-tool result handling |
+| Governance Layer | Public reference case | Keeps governance approval separate from runtime effect |
+| Auditability/evidence | Public proofs, invariants, and field-test summaries | Makes selected decisions and ordering reviewable |
+
+The V2 mock runtime is not upgraded into a V3 replica. V3 implementation layers remain source-private.

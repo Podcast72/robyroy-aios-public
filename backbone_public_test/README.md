@@ -2,6 +2,8 @@
 
 `backbone_public_test/` documents the public backbone validation suite for this repository.
 
+> **Version boundary:** this suite validates the minimal AIOS V2 governed-backbone demonstration. It is preserved as historical public evidence and is not a publication or test suite for the private AIOS V3 runtime.
+
 It is not a runtime.
 It is not the executable `public_mock_runtime/` demo.
 It is not the `docs/public-proof-tests/` artifact collection.
@@ -32,6 +34,7 @@ It is a consistency layer for the public reference path, not a simulation of a l
 ## What It Is Not
 
 - not the full AIOS runtime
+- not the private AIOS V3 governed agent runtime
 - not the public mock runtime demo
 - not an enterprise integration or governance engine
 - not a replacement for the `docs/public-proof-tests/` public artifacts

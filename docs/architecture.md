@@ -1,63 +1,79 @@
 # Architecture
 
-RobyRoy AIOS is documented here as a governed execution architecture for AI-assisted systems.
-That wording matters.
-The public claim is not that the project is simply a collection of agents, and not that it is only a wrapper around tools.
+AIOS is currently documented as a **governed agent runtime and execution layer**.
 
-The architectural problem starts when an AI-assisted system does more than generate text.
-Once the system can decide on execution steps, access tools, traverse runtime paths, and produce outputs that may shape later actions, the main question changes from "what did the model say?" to "how was execution governed?"
+> **Models propose. AIOS governs. AIOS executes.**
 
-This repository therefore focuses on a narrower and more technical concern:
+The architecture has evolved across two public milestones:
 
-- how requests enter a governed path
-- how execution is delegated
-- how tool access is mediated
-- how runtime control is made explicit
-- how results are handled after tool execution
-- how evidence remains reviewable
+```text
+AIOS V2 — Governed Execution Backbone
+->
+AIOS V3 P0 — Governed Agent Runtime
+```
 
-## Why this is not just assistant logic
+V3 does not erase V2. The V2 backbone, public demonstrations, field tests, and proof tests remain historical evidence for the earlier milestone.
 
-A simple assistant flow often collapses planning, tool choice, execution, and output into one opaque step.
-That can be acceptable for low-stakes or purely conversational cases.
-It becomes weaker when runtime behavior matters.
+## Current V3 P0 Architecture
 
-A governed runtime architecture introduces explicit boundaries instead:
+```text
+User
+  -> AgentLoop
+  -> ModelPort / GovernedModelPort
+  -> ExecutionEngine
+  -> governed model or tool execution
+  -> RunStore / ResultGate / audit
+  -> AgentLoop
+  -> final answer
+```
 
-- planning is distinct from execution
-- execution is distinct from tool access
-- tool access is distinct from runtime gatekeeping
-- runtime governance is distinct from post-tool result handling
-- governance approval is distinct from runtime application
+This is a high-level authority and data-flow view, not a copy of the private implementation.
 
-The point is not bureaucratic layering.
-The point is to keep runtime behavior interpretable and constrain where execution authority actually lives.
+## Authority Boundaries
 
-## Public architectural position
+The architectural problem changes when an AI-assisted system can request inference, use tools, and produce operational effects. V3 makes the authority split explicit:
 
-In this public repository, the official reference path is:
+- `AgentLoop` coordinates work but does not own execution authority;
+- model calls and tool calls traverse the governed execution backbone;
+- `ModelPort` makes the model provider replaceable;
+- `GovernedModelPort` keeps inference on the governed path;
+- `ExecutionEngine` remains the execution authority;
+- `ResultGate` controls outward result release;
+- `RunStore` represents authoritative execution truth;
+- conversation/checkpoint state remains separate from execution truth.
+
+A model proposal is input to the governed runtime. It is not authorization.
+
+## Governed Runtime Properties
+
+The V3 P0 public architecture describes these properties without exposing their private mechanisms:
+
+- retry and recovery fail closed;
+- `UNKNOWN_EFFECT` prevents blind automatic re-execution when an effect may have occurred;
+- executable and artifact identity are bound to the governed path;
+- budget accounting is authoritative within the verified scope;
+- credential egress and content provenance are governed;
+- persistence, replay, reopen, and resume avoid duplicate execution in the verified synthetic P0 scope;
+- a Composition Root assembles the runtime without giving the agent loop, provider, or tools an alternate authority path.
+
+## Provider Boundary
+
+`ModelPort` is provider-neutral. OpenAI is the first real provider validated through the governed path, and `gpt-5.6-sol` is the exact model used for the published live evidence.
+
+Provider-neutral does not mean every provider has been implemented or validated. It describes the architectural boundary between provider integration and execution authority.
+
+## Historical V2 Public Backbone
+
+The canonical V2 public reference path remains:
 
 ```text
 request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result
 ```
 
-This path is presented as the public backbone because it makes mediation readable.
-It shows that tool access is not implicit, that runtime checks happen before tool execution, and that output handling can be discussed without pretending it rewrites the core execution order.
+That path remains valid for the V2 public mock runtime, curated examples, and public invariant tests. The V3 architecture extends the governing model to agent and model calls; it does not retroactively redefine those artifacts.
 
-## Separation as a design principle
+## Public Scope
 
-The repository deliberately separates several categories:
+This repository publishes architectural roles, properties, aggregate evidence, and limits. It does not publish private V3 source, schemas, authorization, approval, or trust-boundary mechanisms, test fixtures, adversarial probes, prompts, local paths, credentials, raw logs or traces, configuration, or deployment wiring.
 
-- the official runtime backbone
-- additive layers such as result handling
-- governance-layer decisions and records
-- compat or legacy surfaces that are not promoted to the official path
-
-That separation is important for technical honesty.
-Without it, any useful path could be casually described as equivalent to the core architecture, which would make public claims less precise and harder to audit.
-
-## Public scope
-
-This repository documents the architecture, not the entire operational estate.
-It uses a selective and public-facing perimeter so that readers can understand the technical direction without exposing private runtime materials, operational memory, internal prompts, bridge layers, or other non-public internals.
-
+See [AIOS V3 Architecture](public/aios-v3/AIOS_V3_ARCHITECTURE.md) and [Public vs Private Boundary](public-vs-private-boundary.md).

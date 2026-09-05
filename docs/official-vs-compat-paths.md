@@ -1,17 +1,17 @@
-# Official vs Compat Paths
+# V2 Official vs Compat Paths
 
-This repository draws a strict public distinction between the official runtime backbone and other surfaces that may exist around it.
+This document preserves the AIOS V2 distinction between its official public backbone and other surfaces that may exist around it. AIOS V3 P0 has a separate high-level architecture described in [AIOS V3 Architecture](public/aios-v3/AIOS_V3_ARCHITECTURE.md).
 That distinction is necessary to avoid architectural ambiguity.
 
-## Official runtime backbone
+## V2 official runtime backbone
 
-The official public reference path is:
+The V2 official public reference path is:
 
 ```text
 request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result
 ```
 
-When this repository says "official path," it refers to that sequence.
+Within V2 public demonstrations and proof artifacts, "official path" refers to that sequence.
 
 ## Compat or legacy surfaces
 
@@ -43,10 +43,9 @@ If official, compat, governance, and result-control surfaces are all described a
 
 ## Public rule of interpretation
 
-In this repository:
+For the preserved V2 public surface:
 
 - the backbone remains explicit
 - compat remains non-core
 - governance remains separate from runtime application
 - result handling remains additive rather than redefining the backbone
-
