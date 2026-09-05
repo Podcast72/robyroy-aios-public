@@ -1,5 +1,7 @@
 # Governance Layer
 
+This page preserves the governance/runtime distinction demonstrated by the V2 public surface. In V3 P0, the same principle applies at the agent-runtime level: model proposals and `AgentLoop` coordination do not become execution authority, which remains with `ExecutionEngine`.
+
 The governance layer is documented here as a distinct concern from runtime execution.
 Its role is to record, review, approve, deny, or revoke governance decisions without pretending that those decisions automatically become runtime actions.
 
@@ -46,4 +48,3 @@ It is presented as evidence that governance decisions can be explicit without si
 - [`examples/governance-override-example.json`](../examples/governance-override-example.json)
 - [`docs/auditability.md`](auditability.md)
 - [`docs/official-vs-compat-paths.md`](official-vs-compat-paths.md)
-

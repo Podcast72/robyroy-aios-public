@@ -2,6 +2,8 @@
 
 `public_mock_runtime/` is a public demo and a minimal reference implementation.
 
+> **Version boundary:** this remains a minimal public demonstration of the AIOS V2 governed-backbone model. It is not the publication, port, or replica of the private AIOS V3 runtime.
+
 It shows one backbone flow only:
 
 `request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result`
@@ -12,6 +14,7 @@ It is not:
 
 - the private AIOS core
 - the full AIOS runtime
+- the private AIOS V3 governed agent runtime
 - a complete publication of internal modules
 - a 1:1 replica of the internal system
 

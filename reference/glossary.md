@@ -1,55 +1,117 @@
 # Glossary
 
-## backbone
+## AIOS V2 — Governed Execution Backbone
 
-The official public runtime reference path:
+The historical public milestone centered on this tool-oriented path:
+
 `request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result`
 
-## planner
+Its documentation, mock runtime, proof tests, and field-test evidence remain preserved.
 
-The layer that interprets a request and delegates execution.
+## AIOS V3 P0 — Governed Agent Runtime
 
-## execution_engine
+The current milestone in which agent coordination, model calls, and tool calls operate through a governed runtime while `ExecutionEngine` remains the execution authority.
 
-The primary runtime execution layer for planned steps in the public backbone.
+## AgentLoop
 
-## tool_registry
+The V3 coordinator for turns and requested work. It does not possess execution authority.
 
-The official tool access layer in the documented backbone.
+## ModelPort
+
+The provider-neutral model boundary. It allows provider integration to change without moving execution authority into the provider.
+
+## GovernedModelPort
+
+The V3 boundary that keeps model work on the governed execution path.
+
+## ExecutionEngine
+
+The execution authority for governed model and tool work. In V2 documents it appears as `execution_engine`; V3 public architecture uses the component name `ExecutionEngine`.
+
+## RunStore
+
+The authoritative execution-truth boundary for governed runs. This glossary defines its public role, not its private schema.
+
+## conversation state
+
+State used to continue the agent interaction or checkpoint. It remains separate from authoritative execution truth.
+
+## execution truth
+
+Authoritative state about whether governed work was admitted, executed, completed, failed, or became uncertain.
+
+## ResultGate
+
+The outward result-release boundary. A successful underlying call does not by itself authorize release.
+
+## UNKNOWN_EFFECT
+
+A terminal uncertainty state used when an external effect may have occurred but the runtime cannot prove the outcome. It blocks blind automatic re-execution and requires reconciliation.
+
+## provider-neutral
+
+An architectural property of `ModelPort`: the provider can be replaced behind the boundary without becoming the execution authority. It does not mean every provider is implemented or validated.
+
+## Composition Root
+
+The assembly boundary that wires P0 components and their allowed dependencies. Its public meaning is architectural; implementation and configuration remain private.
+
+## execution identity
+
+The governed identity that binds admitted work, executable/artifact identity, accounting, and replay behavior within the verified scope.
+
+## budget accounting
+
+Authoritative consumption accounting attached to governed execution in the declared P0 scope.
+
+## credential egress
+
+Governance over whether and how credentials may reach an external provider or capability. Public docs describe the property, not private enforcement mechanisms.
+
+## content provenance
+
+Governed information about the origin and handling of content across model and tool boundaries.
+
+## fail-closed
+
+A posture in which missing, invalid, exhausted, or uncertain authority does not silently fall back to ungoverned execution.
+
+## replay
+
+Returning or reconstructing an authoritative prior terminal outcome without executing the same governed work again.
+
+## resume
+
+Continuing a persisted run according to authoritative execution truth rather than conversational intent alone.
 
 ## runtime_guard
 
-The pre-tool runtime decision layer that can issue `ALLOW`, `WARN`, or `BLOCK`.
+The V2 public pre-tool decision layer that can issue `ALLOW`, `WARN`, or `BLOCK`.
+
+## tool_registry
+
+The V2 public tool-access layer in the historical backbone.
 
 ## governance
 
-The layer that records and reviews decisions without automatically becoming runtime execution.
+The controls and decisions that determine whether proposed work can proceed and what result can be released. Governance does not itself become an alternate execution path.
 
 ## result handling
 
-Additive post-tool control over returned output, such as redaction or blocking of release.
+Post-execution control over outward material, such as validation, redaction, shaping, or blocking of release.
 
 ## audit trail
 
-Structured evidence that supports later review of what happened and in what order.
+Reviewable evidence about governed execution. Raw V3 audit data is not part of the public disclosure.
 
-## decision memory
+## bounded technical disclosure
 
-Stored governance context or decision records used for traceability and later review.
-
-## controlled override
-
-A governance-layer request and decision process that is documented separately from runtime application.
+The repository policy of publishing architecture, properties, aggregate evidence, and limits without publishing private implementation mechanisms or raw internal artifacts.
 
 ## compat path
 
-A non-core path that remains outside the official backbone and must stay distinguishable from it.
-
-## official path
-
-The documented public runtime backbone used as the reference execution model.
+A non-core path that remains outside the applicable governed reference path and must stay distinguishable from it.
 
 ## proof area
 
-A bounded part of the repository where an architectural claim is supported by curated public evidence.
-
+A bounded repository area in which a specific public claim is supported by curated, version-scoped evidence.

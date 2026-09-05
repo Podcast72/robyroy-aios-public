@@ -1,6 +1,6 @@
-# Runtime Guard
+# Runtime Guard: V2 Public Demonstration
 
-Within the documented public perimeter, the `runtime_guard` is the pre-tool runtime decision layer.
+Within the preserved V2 public perimeter, the `runtime_guard` is the pre-tool runtime decision layer.
 Its public role is to assess execution intent before the tool runs.
 
 The key point is positional as much as functional.
@@ -40,7 +40,7 @@ This repository documents guard behavior at the level of architectural meaning:
 
 ## What is not claimed here
 
-This repository does not claim universal public coverage of every internal rule, every internal classifier, or every private runtime branch.
+This repository does not claim universal public coverage of every internal rule, every internal classifier, or every private runtime branch. It also does not present this V2-shaped demonstration as the private V3 runtime.
 The public material is selective and proof-oriented.
 It is meant to show how the boundary works, not to publish the entire private rule surface.
 
@@ -50,4 +50,3 @@ It is meant to show how the boundary works, not to publish the entire private ru
 - [`examples/warn-case.json`](../examples/warn-case.json)
 - [`examples/block-case.json`](../examples/block-case.json)
 - [`tests/test_runtime_guard_public.py`](../tests/test_runtime_guard_public.py)
-

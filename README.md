@@ -1,236 +1,184 @@
-# AIOS — Governed Execution Layer for AI Agents
+# AIOS — Governed Agent Runtime & Execution Layer
 
 ![AIOS demo architecture](assets/aios-demo-hero.png)
 
-[![Status](https://img.shields.io/badge/status-public%20demo%20package-2f6fed)](#status)
-[![Enterprise Evidence](https://img.shields.io/badge/evidence-enterprise--staging--ready-1f7a4d)](#enterprise-evidence-alignment)
-[![Scope](https://img.shields.io/badge/scope-source--private-lightgrey)](#what-is-not-public)
-[![Backbone](https://img.shields.io/badge/backbone-governed%20execution-6f42c1)](#governed-execution-backbone)
-
-AIOS is presented here as **a Governed AI Execution Layer**.
+[![V3 P0](https://img.shields.io/badge/AIOS%20V3%20P0-completed-1f7a4d)](docs/public/aios-v3/README.md)
+[![P0 Gate](https://img.shields.io/badge/AIOS__V3__P0__GATE-PASS-1f7a4d)](docs/public/aios-v3/AIOS_V3_P0_EVIDENCE.md)
+[![Scope](https://img.shields.io/badge/disclosure-bounded-lightgrey)](docs/public-vs-private-boundary.md)
+[![History](https://img.shields.io/badge/AIOS%20V2-evidence%20preserved-6f42c1)](docs/public/aios-v2/README.md)
 
 **Because AI agents need brakes, not just engines.**
 
-AIOS is a platform concept for governing how AI uses business tools, data, and workflows. This repository is the public-facing technical demo and documentation package for a source-private AIOS enterprise track. It explains the governed execution model, exposes a small public mock runtime, and summarizes public-safe internal/staging evidence without publishing private runtime source.
+AIOS is a governed agent runtime and execution layer for systems in which models can propose actions, call models, use tools, and affect real workflows.
 
-AIOS is being tested as a governed execution layer: external agent requests are routed through AIOS, classified, allowed, warned, or blocked, with no direct bypass accepted in the controlled field-test.
+> **Models propose. AIOS governs. AIOS executes.**
 
-## At-Most-Once Execution Semantics
+This repository is the public technical documentation and demonstration package for a source-private AIOS track. It publishes architecture, properties, limits, aggregate validation evidence, and small V2-shaped public demonstrations. It does not publish the private V3 runtime.
 
-AIOS governs more than whether an action is allowed to execute. It also governs what happens when execution is exposed to concurrency, retries, crashes, and partial failures.
+## V3 P0 Current Status
 
-For side-effecting steps, the current persistent runtime has been adversarially validated against duplicate ownership and blind re-execution. If execution may already have produced an external effect but the runtime cannot prove the final outcome, AIOS converges to `UNKNOWN_EFFECT` instead of automatically retrying the action.
+**AIOS V3 P0 — Governed Agent Runtime** is complete in its declared validation scope.
 
-> **AIOS governs execution semantics under concurrency, retries, and partial failures, protecting uncertain side effects from blind re-execution.**
-
-| Execution property | Public-safe result |
+| Signal | Public-safe result |
 | --- | --- |
-| At-most-once execution semantics | **VERIFIED** in the declared persistent-runtime scope |
-| Concurrent duplicate callers | Blocked from duplicate ownership/execution |
-| Crash after a possible side effect | Converges to `UNKNOWN_EFFECT` |
-| Blind automatic retry from uncertain state | Blocked |
-| Repeated race validation | **125/125 passed** |
-| Current private enterprise suite | **927 tests passed + 6525 subtests passed** |
-| Accounting / audit convergence | **PARTIAL** |
-| Distributed / multi-host guarantee | **NOT CLAIMED** |
+| Milestone | AIOS V3 P0 completed |
+| Gate | `AIOS_V3_P0_GATE=PASS` |
+| Targeted P0 tests | **562/562 PASS** |
+| Adversarial Remediation Gate | **354/354 PASS** |
+| Governed model/tool round-trip | Verified |
+| Persistence/reopen/resume | Verified in the synthetic P0 scope |
+| Model boundary | Provider-neutral `ModelPort` |
+| First real provider | OpenAI |
+| Exact validated model | `gpt-5.6-sol` |
+| Live provider evidence | One governed invocation returned `AIOS_LIVE_OK` |
 
-`AT_MOST_ONCE_VERIFIED = YES` applies only to the declared validation scope. It is not a claim of distributed exactly-once execution, and it does not imply unrestricted production readiness.
+These results are aggregate, scope-bound engineering evidence. They are not a security certification, formal verification, or an unrestricted production-readiness claim.
 
-[Read the public-safe at-most-once execution evidence](docs/public/aios-v2/AT_MOST_ONCE_EXECUTION_EVIDENCE.md).
-
-## Controlled Field-Test: ANDY -> AIOS
-
-AIOS was tested in a controlled Docker field-test where an external agent, ANDY, routed CLI and human-write simulation requests through AIOS. The test checked whether dangerous, secret-touching, raw-shell, and path-traversal attempts were governed instead of executed directly.
-
-**Controlled field-test result:** in the Docker field-test, ANDY was constrained to route operational requests through AIOS governed endpoints, and the run reported 13/13 checks passed with no direct bypass observed.
-
-| Signal | Result |
-| --- | ---: |
-| Governed checks | 13/13 passed |
-| Requests routed through AIOS | Yes |
-| Direct bypass detected | No |
-| Public ports required | No |
-| Destructive attempt | BLOCK, executed=false |
-| Secret/path attempts | BLOCK, executed=false |
-| Tangible filesystem effect | None observed for blocked cases |
-
-This is a controlled Docker field-test, not a production-readiness or security-certification claim.
-
-Read the field-test note: [docs/public/aios-v2/ANDY_CONTROLLED_FIELD_TEST.md](docs/public/aios-v2/ANDY_CONTROLLED_FIELD_TEST.md). Read the [human-readable evidence report](docs/public/field-tests/andy-aios-2026-05-17/README.md) for the full question/decision/risk-avoided breakdown.
-
-[![Read the field-test evidence](https://img.shields.io/badge/Read%20the%20field--test%20evidence-13%2F13%20passed-1f7a4d?style=for-the-badge)](docs/public/field-tests/andy-aios-2026-05-17/README.md)
-[![View sanitized result JSON](https://img.shields.io/badge/View%20sanitized%20JSON-public--safe-blue?style=for-the-badge)](docs/public/field-tests/andy-aios-2026-05-17/sanitized-result-summary.json)
-[![Read the technical field-test note](https://img.shields.io/badge/Read%20technical%20note-ANDY%20%E2%86%92%20AIOS-6f42c1?style=for-the-badge)](docs/public/aios-v2/ANDY_CONTROLLED_FIELD_TEST.md)
-
-**Backbone bypass-attempt follow-up:** in a controlled Docker/VPS field-test, ANDY attempted non-governed operational paths. The run reported 8/8 scenarios PASS, with no useful action observed outside the governed backbone and no execution recorded outside the governed route.
-
-[![READ THE BYPASS-ATTEMPT EVIDENCE](https://img.shields.io/badge/READ%20THE%20BYPASS--ATTEMPT%20EVIDENCE-8%2F8%20PASSED-1f7a4d?style=for-the-badge)](docs/public/field-tests/andy-backbone-bypass-2026-05-22/ANDY_BACKBONE_BYPASS_ATTEMPT_EVIDENCE.md)
-[![READ HUMAN-READABLE REPORT](https://img.shields.io/badge/READ%20HUMAN--READABLE%20REPORT-ANDY%20%E2%86%92%20BACKBONE-6f42c1?style=for-the-badge)](docs/public/aios-v2/ANDY_BACKBONE_BYPASS_ATTEMPT_FIELD_TEST.md)
-[![READ WALKTHROUGH](https://img.shields.io/badge/READ%20WALKTHROUGH-WHAT%20ANDY%20TRIED-6f42c1?style=for-the-badge)](docs/public/field-tests/andy-backbone-bypass-2026-05-22/HUMAN_READABLE_WALKTHROUGH.md)
-[![VIEW SANITIZED JSON](https://img.shields.io/badge/VIEW%20SANITIZED%20JSON-PUBLIC--SAFE-blue?style=for-the-badge)](docs/public/field-tests/andy-backbone-bypass-2026-05-22/sanitized-results.json)
-
-**External pipeline validation:** an independent technical analyst validated the public mock/simulated AIOS pipeline for guard behavior: destructive log deletion blocked, cyber-evasion search blocked, and a safe web search allowed and logged. No source code was reviewed and no real filesystem or network operations were executed.
-
-[![External Pipeline Validation](https://img.shields.io/badge/External%20Pipeline%20Validation-public%20mock%20report-2f6fed?style=for-the-badge)](docs/public/aios-v2/AIOS_EXTERNAL_PIPELINE_VALIDATION.md)
-
-## Quick Links
-
-| Area | Link |
-| --- | --- |
-| AIOS in 5 minutes | [docs/public/AIOS_IN_5_MINUTES.md](docs/public/AIOS_IN_5_MINUTES.md) |
-| Integration model | [docs/public/AIOS_INTEGRATION_MODEL.md](docs/public/AIOS_INTEGRATION_MODEL.md) |
-| Public docs index | [docs/public/aios-v2/README.md](docs/public/aios-v2/README.md) |
-| Public overview | [AIOS_PUBLIC_OVERVIEW.md](docs/public/aios-v2/AIOS_PUBLIC_OVERVIEW.md) |
-| Architecture | [AIOS_ARCHITECTURE.md](docs/public/aios-v2/AIOS_ARCHITECTURE.md) |
-| Governance model | [AIOS_GOVERNANCE_MODEL.md](docs/public/aios-v2/AIOS_GOVERNANCE_MODEL.md) |
-| Demo and evidence package | [AIOS_DEMO_AND_EVIDENCE_PACKAGE.md](docs/public/aios-v2/AIOS_DEMO_AND_EVIDENCE_PACKAGE.md) |
-| External pipeline validation | [AIOS_EXTERNAL_PIPELINE_VALIDATION.md](docs/public/aios-v2/AIOS_EXTERNAL_PIPELINE_VALIDATION.md) |
-| Agent integration readiness | [AIOS_AGENT_INTEGRATION_READINESS.md](docs/public/aios-v2/AIOS_AGENT_INTEGRATION_READINESS.md) |
-| Status and limits | [AIOS_STATUS_AND_LIMITS.md](docs/public/aios-v2/AIOS_STATUS_AND_LIMITS.md) |
-| FAQ | [AIOS_FAQ.md](docs/public/aios-v2/AIOS_FAQ.md) |
-
-## Where AIOS fits
-
-AIOS is designed to sit between agent intent and real-world execution.
-
-It can be used where an AI agent is allowed to do more than answer text: call APIs, read or modify files, query databases, launch scripts, update tickets, interact with CRM/ERP systems, generate sensitive outputs, or trigger business workflows.
-
-Instead of letting the model call tools directly, AIOS adds a governed execution boundary:
-
-```text
-agent intent -> governance check -> allow / warn / block / require approval -> tool execution -> result gate
-```
-
-This makes agent actions more explicit, reviewable, and controllable before they affect real systems.
-
-For practical examples, see [AIOS Integration Model](docs/public/AIOS_INTEGRATION_MODEL.md).
+[Read the AIOS V3 P0 public documentation](docs/public/aios-v3/README.md).
 
 ## What AIOS Is
 
-AIOS separates planning, authorization, execution, validation, and audit.
+AIOS separates model proposals and agent coordination from execution authority.
 
-The public claim is specific: the model does not act directly. It plans. AIOS governs the path between request, tool, and result.
+In V3 P0:
 
-```text
-Model -> AIOS -> Tool -> Result
-```
+- `AgentLoop` coordinates the run but does not possess execution authority;
+- model calls and tool calls traverse the governed execution backbone;
+- `ModelPort` keeps the provider replaceable;
+- `ExecutionEngine` remains the execution authority;
+- conversation state and execution truth remain separate;
+- retry and recovery fail closed;
+- `UNKNOWN_EFFECT` blocks blind re-execution;
+- executable/artifact identity, budget accounting, credential egress, and content provenance remain governed;
+- persistence, replay, reopen, and resume avoid duplicate execution within the verified P0 scope;
+- the Composition Root assembles P0 components without becoming a public implementation contract.
 
-In the fuller governed backbone, the agent can prepare intent, but execution must pass through explicit control surfaces. No tool is used outside the governed path.
-
-## Enterprise Evidence Alignment
-
-This public package is aligned with the current enterprise documentation and reports at an aggregate, public-safe level.
-
-| Evidence area | Public-safe status |
-| --- | --- |
-| Enterprise staging gate | Passed with an explicit non-public-distribution posture. |
-| Package/installability | Non-editable package/install checks passed in controlled internal validation. |
-| Enterprise validation evidence | Internal enterprise reports record 927 passing tests + 6525 subtests in the private enterprise/staging validation scope. |
-| Runtime hardening | Internal/staging runtime hardening checks passed. |
-| Governance hardening | Policy, capability, approval, budget, memory/state, and run-supervision evidence is documented internally. |
-| Runtime governance wiring | E2E enforcement demonstrated through the real planned-step path in internal/staging tests. |
-| Result boundary | Result-gate checks and raw-output protection are documented in internal/staging hardening evidence. |
-| Audit/replay | Minimal audit/replay and trace evidence is documented internally for reviewable execution order. |
-| External agent evaluation | Connector-readiness audit completed; minimal connector shape demonstrated; real third-party agent integration remains future work. |
-| Public/private boundary | Boundary review classifies raw implementation, raw tests, local paths, logs, and traces as private/internal. |
-
-The public interpretation is deliberately conservative: AIOS has internal/staging evidence for enterprise governance, runtime control, package/install checks, and connector evaluation. This repo does not publish the private runtime core and does not turn those internal results into unrestricted public deployment claims.
-
-## Why Agent Governance Needs A Control Layer
-
-Current AI systems accelerate answers, analysis, and automation. The risk shift happens when AI moves from response to action.
-
-The risk is not only what the model answers. It is what the model-driven process can do before answering.
-
-Direct model-to-tool patterns are easy to prototype, but hard to govern once agents can touch files, APIs, workflows, data stores, or business operations. Traditional approaches often concentrate too much decision power inside the model. AIOS does not replace the model; it governs the path between request, tool, and result.
-
-AIOS focuses on the execution boundary:
-
-| Concern | Direct agent path | AIOS-governed path |
-| --- | --- | --- |
-| Planning | Model output may become action | Plan is separated from execution |
-| Tool access | Tool call can be implicit | Tool must be declared through a registry |
-| Runtime decision | Often external or partial | Guard decision occurs before tool execution |
-| Result release | Output may be returned as-is | Result passes through a result gate |
-| Evidence | Hard to reconstruct | Trace and proof cases make behavior inspectable |
-
-The difference is not "more AI". The difference is AI under control.
+The model can propose work. It cannot make its proposal self-authorizing.
 
 ## Governed Execution Backbone
 
-The canonical public backbone is:
+### Current V3 P0 architecture
+
+```text
+User
+  -> AgentLoop
+  -> ModelPort / GovernedModelPort
+  -> ExecutionEngine
+  -> governed model or tool execution
+  -> RunStore / ResultGate / audit
+  -> AgentLoop
+  -> final answer
+```
+
+This is a high-level authority and data-flow description. Private class structure, schemas, authorization and approval mechanisms, trust-boundary details, probes, configuration, and deployment wiring are intentionally not disclosed.
+
+### V2 public backbone
+
+AIOS V2 established the public governed-execution reference path:
 
 ```text
 request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result
 ```
 
-| Stage | Public meaning |
+The V2 path remains the basis of the small public mock runtime and its public invariant tests. V3 extends governance into the agent loop and model-call path; it does not retroactively rewrite V2 evidence.
+
+## V2 Historical Evidence Preserved
+
+AIOS V2 remains documented as **AIOS V2 — Governed Execution Backbone**. The complete public V2 package, field tests, proof tests, and demonstration runtime remain in this repository as evidence of the preceding phase.
+
+### At-most-once execution evidence
+
+The V2 private enterprise runtime was adversarially validated within its declared persistent-runtime scope against duplicate ownership and blind re-execution. When an effect may have occurred but the outcome cannot be proven, the documented runtime converges to `UNKNOWN_EFFECT` rather than automatically retrying.
+
+| V2 evidence | Historical result |
 | --- | --- |
-| `request` | A user, system, or normalized external-agent request enters the governed path. |
-| `planner` | The agent-facing planning layer prepares intended work. |
-| `execution_engine` | Planned work is executed through a controlled runtime sequence. |
-| `tool_registry` | Only declared tools are exposed to the governed path. |
-| `runtime_guard` | Tool execution is allowed, warned, blocked, or paused before the tool runs. |
-| `tool` | The selected capability runs only after the governed path permits it. |
-| `result_gate` | Tool output is checked, shaped, redacted, or blocked before release. |
-| `result` | The final output is returned with the governed path preserved. |
+| At-most-once semantics | Verified in the declared V2 persistent-runtime scope |
+| Concurrent duplicate callers | Blocked from duplicate ownership/execution |
+| Repeated race validation | **125/125 passed** |
+| V2 private enterprise suite snapshot | **927 tests passed + 6525 subtests passed** |
+| Accounting/audit convergence | **PARTIAL** |
+| Distributed/multi-host guarantee | **NOT CLAIMED** |
 
-## How AIOS Controls Tool Execution
+[Read the V2 at-most-once evidence](docs/public/aios-v2/AT_MOST_ONCE_EXECUTION_EVIDENCE.md).
 
-- tool access is mediated through `tool_registry`
-- `runtime_guard` stands before the tool
-- `BLOCK` means the tool does not execute
-- `WARN` keeps execution visible instead of silent
-- policy, capability, budget, approval, memory/state, and supervision checks can run before registry/tool execution when structured governance context is supplied
-- `result_gate` protects outward output after the tool runs
-- governance records and audit evidence stay separate from runtime side effects
-- the value is not isolated controls; the value is preventing the governed path from being skipped
+### ANDY controlled field tests
 
-## 🧱 10 enterprise governance layers already demonstrated
+- The 2026-05-17 controlled Docker field test reported **13/13 checks passed**, with governed requests routed through AIOS, blocked cases remaining non-executed, and no direct bypass observed in that scope.
+- The 2026-05-22 controlled Docker/VPS bypass-attempt follow-up reported **8/8 scenarios PASS**, with no useful action observed outside the governed backbone and no execution recorded outside the governed route.
 
-AIOS is not based on a single control point.  
-It is designed as a governed execution path made of distinct enterprise governance layers.
+These are controlled V2 field-test snapshots, not production-readiness or security-certification claims.
 
-| Layer | Governance role |
-|---|---|
-| Agent Identity | Defines who or what is acting |
-| Capability Permissions | Defines what the agent is allowed to do |
-| Budget & Limits | Controls how much the run can consume |
-| State Control | Keeps state separate from authorization |
-| Approval Gates | Pauses sensitive actions for explicit approval |
-| Memory Governance | Controls how memory is used and constrained |
-| Tool Contract | Ensures tools are declared and bound |
-| Run Supervision | Handles loop, retry and escalation behavior |
-| Audit Replay | Supports run reconstruction and review |
-| Policy Packs | Applies operational postures and governance rules |
+- [ANDY controlled field-test evidence](docs/public/field-tests/andy-aios-2026-05-17/README.md)
+- [ANDY bypass-attempt evidence](docs/public/field-tests/andy-backbone-bypass-2026-05-22/ANDY_BACKBONE_BYPASS_ATTEMPT_EVIDENCE.md)
+- [V2 public proof tests](docs/public-proof-tests/README.md)
+- [V2 external public-mock validation](docs/public/aios-v2/AIOS_EXTERNAL_PIPELINE_VALIDATION.md)
 
-Every AI action must be authorized, limited, traceable and validatable.
+## V3 P0 Evidence
+
+The public V3 evidence is deliberately aggregate.
+
+One real OpenAI provider invocation passed through the governed path using exact model `gpt-5.6-sol`:
+
+| Signal | Observed result |
+| --- | --- |
+| Response | `AIOS_LIVE_OK` |
+| RunStore | `SUCCEEDED` |
+| `model_calls` | `1` |
+| `tool_calls` | `0` |
+| `network_calls` | `1` |
+| `retries` | `0` |
+| ResultGate | `ALLOW` |
+| Fallback | None |
+| Retry | None |
+| Raw-secret leak | None observed |
+
+This is one successful governed invocation, not a reliability benchmark or a broad provider claim. See [AIOS V3 P0 Evidence](docs/public/aios-v3/AIOS_V3_P0_EVIDENCE.md) and [Status and Limits](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md).
+
+## Quick Links
+
+| Area | Link |
+| --- | --- |
+| V3 public index | [docs/public/aios-v3/README.md](docs/public/aios-v3/README.md) |
+| V3 overview | [AIOS_V3_P0_OVERVIEW.md](docs/public/aios-v3/AIOS_V3_P0_OVERVIEW.md) |
+| V3 architecture | [AIOS_V3_ARCHITECTURE.md](docs/public/aios-v3/AIOS_V3_ARCHITECTURE.md) |
+| V3 evidence | [AIOS_V3_P0_EVIDENCE.md](docs/public/aios-v3/AIOS_V3_P0_EVIDENCE.md) |
+| V3 status and limits | [AIOS_V3_STATUS_AND_LIMITS.md](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md) |
+| AIOS in 5 minutes | [docs/public/AIOS_IN_5_MINUTES.md](docs/public/AIOS_IN_5_MINUTES.md) |
+| Integration model | [docs/public/AIOS_INTEGRATION_MODEL.md](docs/public/AIOS_INTEGRATION_MODEL.md) |
+| V2 historical index | [docs/public/aios-v2/README.md](docs/public/aios-v2/README.md) |
+| Public/private boundary | [docs/public-vs-private-boundary.md](docs/public-vs-private-boundary.md) |
+
+## Why Agent Governance Needs A Runtime
+
+The risk changes when AI moves from answer to action. A model that can request tools, files, APIs, databases, or business workflows can create effects before the final answer is reviewed.
+
+Direct model-to-tool patterns are useful prototypes, but the model should not be the final authority over execution. AIOS puts an independent runtime boundary between a proposal and its operational effect, then keeps result release and authoritative execution state inside that governed path.
+
+| Concern | Direct agent path | AIOS-governed path |
+| --- | --- | --- |
+| Model output | Proposal can become action | Proposal remains non-authoritative |
+| Model and tool calls | May use separate or implicit paths | Both traverse the governed backbone |
+| Execution authority | Can be blurred into orchestration | Remains with `ExecutionEngine` |
+| Recovery | Retry may duplicate an uncertain effect | Fail-closed recovery and `UNKNOWN_EFFECT` block blind retry |
+| State | Conversation and execution may be conflated | Conversation state and execution truth remain separate |
+| Results | Output may be returned directly | `ResultGate` controls outward release |
+| Evidence | Hard to reconstruct | Run state and audit remain reviewable |
 
 ## What Can Be Tested
 
-The public package supports controlled, local, public-safe checks:
+The repository's executable public test surface remains intentionally small and V2-shaped:
 
 | Testable area | Where |
 | --- | --- |
 | Public mock `ALLOW`, `WARN`, and `BLOCK` behavior | [public_mock_runtime/README.md](public_mock_runtime/README.md) |
-| Backbone consistency across public docs and examples | [backbone_public_test/README.md](backbone_public_test/README.md) |
+| V2 backbone consistency across docs and examples | [backbone_public_test/README.md](backbone_public_test/README.md) |
 | Result handling as an additive post-tool control | [examples/result-redaction-case.json](examples/result-redaction-case.json) |
 | Governance approval without automatic runtime effect | [examples/governance-override-example.json](examples/governance-override-example.json) |
-| Public proof artifacts comparing governed and generic execution | [docs/public-proof-tests/README.md](docs/public-proof-tests/README.md) |
-| Public-safe enterprise test highlights | [docs/public/aios-v2/AIOS_TEST_HIGHLIGHTS.md](docs/public/aios-v2/AIOS_TEST_HIGHLIGHTS.md) |
+| Public proof artifacts | [docs/public-proof-tests/README.md](docs/public-proof-tests/README.md) |
 
-## 🧪 Tests and evidence
+The V3 test suite and runtime source are private. The V3 evidence published here is aggregate and cannot be reproduced from the public mock runtime.
 
-This public repository includes a small public demo test surface and mock runtime proof tests.
-
-The private enterprise/staging validation suite is not published here. The latest read enterprise report records 927 passing tests + 6525 subtests in the private enterprise/staging validation scope, covering governance, runtime hardening, package/installability, result-boundary behavior, audit/replay and connector-readiness checks.
-
-The public tests make the concept inspectable.  
-The enterprise evidence shows that AIOS is not only a concept page.
-
-[Read the public-safe AIOS test highlights](docs/public/aios-v2/AIOS_TEST_HIGHLIGHTS.md)
-
-Example local checks:
+Local public checks:
 
 ```bash
 python3 public_mock_runtime/mock_runtime.py public_mock_runtime/examples/allow.json
@@ -240,82 +188,58 @@ python3 -m unittest discover -s public_mock_runtime/proof_tests -p 'test_*.py'
 python3 -m unittest discover -s tests -p 'test_*_public.py'
 ```
 
-The `BLOCK` mock case is expected to stop before tool execution. A non-zero CLI exit can be the expected controlled outcome for that blocked request.
+The `BLOCK` mock case is expected to stop before tool execution and can return a non-zero CLI exit code.
 
 ## What Is Public Here
 
-- public technical package
-- demo and documentation repository
-- governed execution backbone
-- public mock runtime
-- public JSON examples
-- adapted public tests
-- public proof artifacts
-- redacted enterprise evidence summary
-- architecture, governance, status, roadmap, and FAQ documents
+- V3 architecture, properties, status, limits, and aggregate evidence;
+- the complete historical V2 public documentation package;
+- a small V2-shaped public mock runtime;
+- curated JSON examples and adapted public tests;
+- public proof artifacts and sanitized field-test evidence;
+- reference terminology and invariants.
 
 ## What Is Not Public
 
-- private AIOS source code
-- private runtime core
-- private orchestration internals
-- private package internals
-- private prompts, memory, bridge flows, or operational wiring
-- private environment configuration
-- private runtime installation path
-- full private test files or raw internal reports
-- raw logs, trace payloads, or audit replay internals
+- V3 source code or private implementation details;
+- private test source or fixtures;
+- raw `RunStore` schema;
+- private authorization, approval, and trust-boundary mechanisms;
+- detailed exploit or adversarial probes;
+- private prompts or operator internals;
+- local paths, credentials, or credential fragments;
+- raw audit records, logs, or traces;
+- private configuration or deployment internals.
 
-The public repository is intentionally source-private. The core runtime is not publicly released here.
+This is **bounded technical disclosure**: public properties, architecture, and aggregate evidence without a public replica of the private runtime.
 
-## Controlled Technical Review
+## Public Presentation
 
-This package is prepared for controlled technical review and agent-integration evaluation.
+The existing presentation is an AIOS V2 historical artifact. It explains the governed execution concept and remains available without being relabeled as a V3 runtime publication.
 
-The reviewable surface is intentionally bounded:
-
-- the public backbone can be inspected
-- the mock runtime can be run locally
-- the proof cases can be read and tested
-- the governance model can be evaluated at the architecture level
-- enterprise evidence can be reviewed as an aggregate public-safe summary
-- the public/private boundary is stated explicitly
-
-The adoption path is intentionally progressive: controlled pilot, audit, then extension. The customer does not just get an answer; they get a governed answer.
-
-## 📄 Public presentation
-
-The public presentation deck explains the AIOS concept, the governance problem, the controlled execution path and the adoption model.
-
-[Download the AIOS Governed AI Execution Layer PDF](docs/public/AIOS_Governed_AI_Execution_Layer.pdf)
+[Download the AIOS V2 Governed AI Execution Layer PDF](docs/public/AIOS_Governed_AI_Execution_Layer.pdf).
 
 ## Repository Map
 
 | Path | Purpose |
 | --- | --- |
-| [docs/public/aios-v2/](docs/public/aios-v2/) | Main public documentation package |
-| [docs/public-proof-tests/](docs/public-proof-tests/) | Public proof artifacts |
-| [public_mock_runtime/](public_mock_runtime/) | Small executable public mock runtime |
-| [backbone_public_test/](backbone_public_test/) | Public backbone test guide |
-| [examples/](examples/) | Curated JSON cases |
-| [tests/](tests/) | Public invariant tests |
-| [assets/](assets/) | Public logo and hero assets |
-| [reference/](reference/) | Glossary and public invariants |
+| [docs/public/aios-v3/](docs/public/aios-v3/) | Current V3 P0 public documentation |
+| [docs/public/aios-v2/](docs/public/aios-v2/) | Preserved V2 historical documentation and evidence |
+| [docs/public/field-tests/](docs/public/field-tests/) | Sanitized V2 ANDY field-test evidence |
+| [docs/public-proof-tests/](docs/public-proof-tests/) | Preserved V2 public proof artifacts |
+| [public_mock_runtime/](public_mock_runtime/) | Minimal V2-shaped executable demonstration |
+| [backbone_public_test/](backbone_public_test/) | V2 backbone consistency guide |
+| [examples/](examples/) | Curated V2 public JSON cases |
+| [tests/](tests/) | Public invariant tests for the V2 demonstration surface |
+| [reference/](reference/) | Version-aware glossary and public invariants |
 
 ## Status
 
-This is a public demo and documentation repository for a source-private AIOS enterprise track.
+The current public milestone is **AIOS V3 P0 — Governed Agent Runtime**, with `AIOS_V3_P0_GATE=PASS` and the aggregate evidence stated above.
 
-Public-safe enterprise alignment supports these statements:
+The public repository remains a documentation and demonstration package, not a V3 runtime distribution. V2 evidence remains historical and testable. V3 implementation and validation internals remain private.
 
-- enterprise-staging-ready documentation/demo package
-- internal/staging governance and runtime evidence exists
-- package/installability checks passed in controlled internal validation
-- governance wiring and E2E enforcement were demonstrated in internal/staging tests
-- external-agent connector evaluation is ready for controlled pilot work
-- public package is prepared for controlled technical review and agent-integration testing
-
-It should not be interpreted as a public runtime distribution, unrestricted customer deployment evidence, external security certification, legal/compliance review, or publication of the private AIOS core.
+The repository should not be interpreted as unrestricted deployment evidence, a security certification, legal or compliance approval, or a claim that every integration and environment has been validated.
 
 ## License
 

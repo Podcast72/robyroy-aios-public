@@ -1,5 +1,7 @@
 # AIOS Public Documentation Index
 
+> **Historical milestone notice:** this directory preserves the public record for **AIOS V2 — Governed Execution Backbone**. Statements described here as “current” belong to that V2 evidence snapshot. For the current milestone, see [AIOS V3 P0 — Governed Agent Runtime](../aios-v3/README.md).
+
 AIOS is presented publicly as **a governed execution layer for AI agents**.
 
 This folder is the main public documentation package for the AIOS demo repository. It is aligned with current enterprise documentation and reports at a public-safe level: architecture, governance surfaces, internal/staging evidence, package/install checks, connector-readiness boundaries, and known limits.

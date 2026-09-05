@@ -1,49 +1,56 @@
 # What AIOS Is and Is Not
 
-This public repository documents AIOS in technical terms and with a deliberately limited scope.
-The goal is to make the architecture readable without presenting the public perimeter as the full private system.
+## What AIOS Is
 
-## What AIOS is
+AIOS V3 P0 is a governed agent runtime and execution layer.
 
-AIOS is presented here as a governed execution architecture for AI-assisted systems.
-In practical terms, it is a control-plane model for how requests move through a controlled path, how execution is delegated, how tool access is mediated, and how results remain reviewable.
+> **Models propose. AIOS governs. AIOS executes.**
 
-In this public repository, the official reference backbone is:
+The model can propose work and the `AgentLoop` can coordinate a run, but `ExecutionEngine` remains the execution authority. Model calls and tool calls traverse the governed execution backbone. Conversation state remains separate from authoritative execution truth, and result release remains governed.
+
+The current public architecture is:
+
+```text
+User
+  -> AgentLoop
+  -> ModelPort / GovernedModelPort
+  -> ExecutionEngine
+  -> governed model or tool execution
+  -> RunStore / ResultGate / audit
+  -> AgentLoop
+  -> final answer
+```
+
+This is an architecture-level description, not a public implementation map.
+
+## What AIOS Evolved From
+
+AIOS V2 documented the governed execution backbone:
 
 ```text
 request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result
 ```
 
-That backbone is the central public reference because it makes the execution order explicit and keeps planning, execution, tool mediation, runtime decisions, and result handling distinguishable.
+The V2 public mock runtime, examples, proof tests, ANDY field tests, and at-most-once evidence remain preserved as historical evidence. They are not relabeled as V3.
 
-This repository also shows selective public evidence around that model:
+## What AIOS Is Not
 
-- backbone documentation
-- runtime guard behavior
-- additive post-tool result handling
-- governance and runtime separation
-- public proofs and adapted public tests
-- a public mock runtime that illustrates the mediation flow
+AIOS is not an AI model, chatbot, prompt library, or a claim that a model can govern itself.
 
-## What AIOS is not
+This public repository is not:
 
-AIOS is not presented here as a simple chatbot.
-It is not described as a thin prompt layer or a cosmetic wrapper placed on top of a model.
+- the private AIOS V3 runtime;
+- a distributable V3 implementation;
+- a copy of private source, tests, schemas, prompts, or configuration;
+- a disclosure of private authorization, approval, or trust-boundary mechanisms;
+- a publication of raw logs, traces, audit records, paths, or credentials;
+- a security certification or formal proof;
+- unrestricted production-readiness evidence;
+- a universal provider, integration, or deployment claim;
+- a V3 label placed on the smaller V2 public mock.
 
-This public repository is also not the full private RobyRoy AIOS operational codebase.
-It does not publish the complete internal runtime, private orchestration surfaces, internal memory estate, or other non-public operational layers.
+## Why This Public Repository Exists
 
-It should also not be read as:
+The repository provides **bounded technical disclosure**: architecture, properties, aggregate evidence, explicit limitations, and preserved historical demonstrations.
 
-- a mini product build that happens to be incomplete
-- a fake mock standing in for a system that does not exist
-- a marketing wrapper around vague claims
-- a 1:1 public copy of the private core
-
-The public claim is narrower and more technical:
-this repository discloses the governed execution pattern, selected architectural boundaries, and a bounded set of proofs that can be inspected in public.
-
-## Why this public repo exists
-
-This repository exists as a public technical reference and disclosure.
-Its purpose is to show the backbone, boundary definitions, selected proofs, and some runnable public artifacts without misrepresenting the public perimeter as the full private system.
+It gives technical reviewers a truthful view of the AIOS evolution without publishing the mechanisms or operational artifacts required to reconstruct the private runtime.

@@ -1,5 +1,7 @@
 # Result Handling
 
+This document describes the result-handling surface used by the preserved V2 public backbone and examples. The current V3 P0 architecture also includes `ResultGate`, but its private implementation is not published here.
+
 This repository documents result handling as a post-tool control surface.
 It exists because execution governance does not end at tool invocation.
 Once a tool has produced output, the system may still need to inspect, constrain, redact, or reject what becomes externally visible.
@@ -9,7 +11,7 @@ Once a tool has produced output, the system may still need to inspect, constrain
 Result handling is documented here as additive to the official runtime backbone.
 Result handling does not redefine the official backbone.
 
-The official reference path remains:
+The V2 public reference path remains:
 
 ```text
 request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result
@@ -47,4 +49,3 @@ That proof is intentionally narrow and public-facing.
 
 - [`examples/result-redaction-case.json`](../examples/result-redaction-case.json)
 - [`tests/test_result_handling_public.py`](../tests/test_result_handling_public.py)
-

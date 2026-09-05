@@ -1,46 +1,101 @@
 # Public vs Private Boundary
 
-This repository is intentionally selective.
-It is designed to make the public architecture understandable without collapsing the difference between what is disclosed here and what remains outside the public perimeter.
+This repository follows **bounded technical disclosure**.
 
-## What is public in this repository
+It publishes enough architecture, properties, evidence, and limitations to support technical review without publishing the mechanisms required to reproduce the private AIOS V3 runtime.
 
-The public side of this repository includes the material needed to explain the architecture in a technical and inspectable way:
+## Public Evolution
 
-- architecture and backbone documentation
-- boundary documents for runtime, governance, result handling, and compat surfaces
-- a public mock runtime that demonstrates the mediated execution flow
-- proof-oriented JSON examples that show specific boundary cases
-- adapted public tests that validate the published invariants
-- glossary, invariants, and other reference documentation that make the public claims readable
+The public narrative is versioned:
 
-In other words, what is public here is a bounded technical disclosure:
-enough to explain the governed execution model, its backbone, and some proof-oriented behavior without pretending to publish the whole operational estate.
+```text
+AIOS V2 — Governed Execution Backbone
+->
+AIOS V3 P0 — Governed Agent Runtime
+```
 
-## What is intentionally not public here
+V2 remains public historical evidence. Its documentation, public mock runtime, proof tests, ANDY field tests, and public-safe validation summaries are not erased or presented as if they were V3.
 
-This repository does not publish the complete private operational system.
-The non-public side includes, among other things:
+V3 is documented through architecture-level descriptions and aggregate evidence only.
 
-- the full private runtime core and its wider operational estate
-- private orchestration and support surfaces that are not required for the public explanation
-- sensitive internal details, configurations, and environment-specific runtime material
-- unpublished internal memory, prompts, bridge flows, and operational wiring
-- internal surfaces that exist in practice but are not part of the public disclosure perimeter
+## What Is Public For V3
 
-That absence should not be read as a claim that those surfaces do not exist.
-It means they are not being published here.
+The public V3 surface includes:
 
-## Why the boundary exists
+- the principle **Models propose. AIOS governs. AIOS executes.**;
+- the high-level `User -> AgentLoop -> governed model/tool execution -> final answer` flow;
+- the fact that `AgentLoop` does not own execution authority;
+- the provider-neutral `ModelPort` boundary;
+- `ExecutionEngine` as execution authority;
+- separation of conversation state from execution truth;
+- fail-closed retry/recovery and `UNKNOWN_EFFECT` behavior;
+- governed executable/artifact identity, budget accounting, credential egress, and content provenance;
+- synthetic P0 persistence/reopen/resume properties;
+- Composition Root assembly as an architectural property;
+- aggregate P0 gate and live-provider results;
+- explicit scope limits and non-claims.
 
-The boundary exists for architectural honesty.
-Without it, a public reference repository can easily be mistaken for a complete operational system, a reduced product build, or a public copy of the private core.
+## What Remains Private
 
-Keeping the boundary explicit helps this repository stay credible:
+Do not publish:
 
-- the public proofs remain tied to what is actually shown
-- the mock runtime remains a public illustration rather than a claim of full exposure
-- the public repository remains a technical reference, not a confusing substitute for the internal system
+- V3 source code;
+- implementation-sensitive details;
+- private test source or fixtures;
+- raw `RunStore` schema;
+- private authorization, approval, and trust-boundary mechanisms;
+- detailed exploit or adversarial probes;
+- private prompts;
+- private operator internals;
+- local paths;
+- credentials or credential fragments;
+- raw audit records, logs, or traces;
+- private configuration;
+- deployment internals.
 
-The purpose of the boundary is therefore clarity, not mystique.
-It keeps the public disclosure precise and prevents readers from conflating the public repo with the complete private system.
+The absence of these materials is intentional and should not be interpreted as evidence that the underlying properties do or do not exist beyond the published aggregate statements.
+
+## Preserved V2 Public Surface
+
+The V2 public perimeter remains intentionally inspectable:
+
+- architecture and backbone documentation;
+- the small public mock runtime;
+- curated JSON examples;
+- adapted public invariant tests;
+- public proof artifacts;
+- sanitized ANDY field-test evidence;
+- bounded at-most-once evidence.
+
+The V2 path remains:
+
+`request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result`
+
+These artifacts demonstrate the V2 governed-backbone model. They are not the publication of the private V3 runtime.
+
+## Aggregate Evidence Rule
+
+Public V3 evidence must remain aggregate and conservatively worded.
+
+Allowed examples include a named gate result, a scoped test count, a high-level property verified in a named scope, and a sanitized one-shot provider outcome.
+
+A public claim must not imply:
+
+- access to or publication of raw private evidence;
+- a security certification;
+- production readiness;
+- universal provider or deployment support;
+- distributed exactly-once guarantees;
+- universal absence of secret leakage or bypasses.
+
+## Why The Boundary Exists
+
+The boundary keeps the public record technically honest:
+
+- reviewers can distinguish architecture from implementation;
+- historical V2 demonstrations remain reproducible;
+- V3 claims stay tied to aggregate evidence and explicit limits;
+- the public mock is not mistaken for the private runtime;
+- sensitive mechanisms and operational artifacts remain out of the repository.
+
+The purpose is clarity and controlled disclosure, not mystique.

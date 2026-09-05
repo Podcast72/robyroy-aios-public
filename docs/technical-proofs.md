@@ -3,6 +3,8 @@
 This repository publishes selective technical proofs rather than a complete dump of the private operational system.
 Each proof area is labeled conservatively so readers can understand what kind of evidence is being shown.
 
+The proof areas on this page belong to the preserved AIOS V2 public demonstration surface. They remain historical evidence and are not private V3 implementation tests.
+
 ## Proof labels used in this repository
 
 - `public example`: a curated public-facing example meant to explain an architectural case.
@@ -58,4 +60,3 @@ Instead, they validate the architectural meaning that the repository claims in p
 
 This repository values clarity over volume.
 A smaller proof set is preferable to a larger but ambiguous publication if the smaller set makes the architectural claims more readable and more defensible.
-

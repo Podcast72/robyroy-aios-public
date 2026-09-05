@@ -1,5 +1,7 @@
 # Auditability
 
+The V3 P0 public architecture includes `RunStore`, `ResultGate`, and audit as reviewable governed boundaries, while raw execution records, schemas, logs, and traces remain private. The curated artifacts below remain the V2 public proof surface.
+
 Auditability matters here because governed execution is difficult to evaluate if the path is opaque after the fact.
 A public architecture claim becomes more credible when readers can see what kinds of traces, events, and proof artifacts the system is expected to preserve.
 
@@ -38,4 +40,3 @@ This repository uses a small and selective proof set:
 
 The goal is not to publish every private trace.
 The goal is to publish enough structured evidence to make the architecture understandable and reviewable.
-
