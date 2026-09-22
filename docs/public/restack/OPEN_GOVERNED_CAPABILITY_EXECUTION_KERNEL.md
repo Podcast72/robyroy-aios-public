@@ -25,7 +25,7 @@ An AI-enabled application could be one possible external caller, just as a conve
 
 ## Standalone Open-Source Boundary
 
-If the proposal is selected, the funded project results would be developed publicly and published in their entirety under a recognised free/libre/open source licence. This would include the kernel implementation, public interfaces, tests, specifications, documentation, examples, and reproducible validation material produced within the funded scope.
+If the proposal is selected, the funded project results would be developed publicly and published in their entirety under the Apache License 2.0. This would include the kernel implementation, public interfaces, tests, specifications, documentation, examples, and reproducible validation material produced within the funded scope.
 
 The proposed kernel would remain usable, testable, and maintainable without access to private AIOS V3 source, private fixtures, internal schemas, private services, or proprietary model APIs. No private component would be required to build, run, validate, or extend the funded result.
 
@@ -60,7 +60,7 @@ These are proposed work areas, not statements of completed deliverables.
 
 ## Licensing And Governance Intent
 
-The repository currently uses the MIT License. The precise recognised free/libre/open source licence for the proposed kernel would be confirmed before funded implementation begins and applied to the complete funded result. Contributions would be accepted only where the project has the rights needed to publish and redistribute them under that licence.
+This existing repository remains under the MIT License. The separately scoped funded kernel and all of its project results would use the Apache License 2.0. Contributions would be accepted only where the project has the rights needed to publish and redistribute them under that licence.
 
 No patent grant, third-party right, contributor agreement, or ownership fact beyond the contents of the applicable licence is asserted by this document.
 

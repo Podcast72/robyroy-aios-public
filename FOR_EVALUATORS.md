@@ -4,7 +4,7 @@ This page provides a time-boxed path through the public AIOS evidence. The repos
 
 ## Restack Proposal Boundary
 
-The proposed **Open Governed Capability Execution Kernel** is future, separately scoped work. It is not the source-private AIOS V3 runtime and does not depend on that runtime. Its proposed funded scope is a standalone, model-neutral, fully open capability-execution kernel for general networked software; LLM/model development, integration, evaluation, and AI-specific orchestration are excluded.
+The proposed **Open Governed Capability Execution Kernel** is future, separately scoped work. It is not the source-private AIOS V3 runtime and does not depend on that runtime. Its proposed funded scope is a standalone, model-neutral capability-execution kernel for general networked software, released in its entirety under the Apache License 2.0; LLM/model development, integration, evaluation, and AI-specific orchestration are excluded.
 
 The detailed separation between existing evidence and proposed work is documented in [Open Governed Capability Execution Kernel](docs/public/restack/OPEN_GOVERNED_CAPABILITY_EXECUTION_KERNEL.md).
 
