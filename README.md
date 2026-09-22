@@ -15,6 +15,14 @@ AIOS is a governed agent runtime and execution layer for systems in which models
 
 This repository is the public technical documentation and demonstration package for a source-private AIOS track. It publishes architecture, properties, limits, aggregate validation evidence, and small V2-shaped public demonstrations. It does not publish the private V3 runtime.
 
+## Proposed Restack Project — Separate Open Kernel
+
+The **Open Governed Capability Execution Kernel** is a proposed future Restack project, not a claim about functionality already implemented in this repository. The proposed work would extract and develop a standalone, model-neutral capability-execution kernel for general networked software. It would govern explicitly declared capabilities, authorization, execution state, audit evidence, result release, and fail-closed recovery without requiring an AI model, an agent framework, OpenAI, or the private AIOS V3 runtime.
+
+If selected, all software, tests, specifications, documentation, and other project results funded through Restack would be developed publicly and released in their entirety under a recognised free/libre/open source licence. The funded scope would exclude LLM or model development, integration, evaluation, and AI-specific orchestration. Existing AIOS material would provide background and prior engineering evidence only; it would not be a closed dependency of the proposed kernel.
+
+[Read the proposed Restack project boundary](docs/public/restack/OPEN_GOVERNED_CAPABILITY_EXECUTION_KERNEL.md).
+
 ## Current Status
 
 AIOS has progressed beyond the completed **V3 P0 — Governed Agent Runtime** foundation. **P1 — Governed Real Execution** is complete in its declared scope. **P2.0 — initial natural-language governed interaction** is implemented and validated in its declared scope; further P2 work remains in progress.
@@ -130,6 +138,7 @@ These are controlled V2 field-test snapshots, not production-readiness or securi
 
 | Area | Link |
 | --- | --- |
+| Proposed Restack project boundary | [Open Governed Capability Execution Kernel](docs/public/restack/OPEN_GOVERNED_CAPABILITY_EXECUTION_KERNEL.md) |
 | Evaluator guide | [FOR_EVALUATORS.md](FOR_EVALUATORS.md) |
 | AIOS in 5 minutes | [docs/public/AIOS_IN_5_MINUTES.md](docs/public/AIOS_IN_5_MINUTES.md) |
 | V3 public index | [docs/public/aios-v3/README.md](docs/public/aios-v3/README.md) |
