@@ -2,11 +2,11 @@
 
 ## What AIOS Is
 
-AIOS V3 P0 is a governed agent runtime and execution layer.
+AIOS is a governed agent runtime and execution layer. Its V3 progression has completed the P0 governed-runtime foundation and P1 governed real execution in their declared scopes. P2.0 — initial natural-language governed interaction — is implemented and validated in its declared scope, while further P2 work remains in progress.
 
 > **Models propose. AIOS governs. AIOS executes.**
 
-The model can propose work and the `AgentLoop` can coordinate a run, but `ExecutionEngine` remains the execution authority. Model calls and tool calls traverse the governed execution backbone. Conversation state remains separate from authoritative execution truth, and result release remains governed.
+The model can propose work and the `AgentLoop` can coordinate a run, but `ExecutionEngine` remains the execution authority. Governed READ and bounded governed WRITE remain separately admitted, explicit approval applies where required, conversation/session state remains separate from authoritative execution truth, and result release remains governed.
 
 The current public architecture is:
 
@@ -46,7 +46,8 @@ This public repository is not:
 - a publication of raw logs, traces, audit records, paths, or credentials;
 - a security certification or formal proof;
 - unrestricted production-readiness evidence;
-- a universal provider, integration, or deployment claim;
+- a universal provider, integration, capability, or deployment claim;
+- a distributed exactly-once claim;
 - a V3 label placed on the smaller V2 public mock.
 
 ## Why This Public Repository Exists

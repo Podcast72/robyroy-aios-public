@@ -2,35 +2,35 @@
 
 ## 1. What AIOS is now
 
-AIOS V3 P0 is a governed agent runtime and execution layer.
+AIOS is a governed agent runtime and execution layer. Its V3 track has completed the P0 governed-runtime foundation and **P1 — Governed Real Execution** in their declared scopes. P2.0 — initial natural-language governed interaction — is implemented and validated in its declared scope.
 
 > **Models propose. AIOS governs. AIOS executes.**
 
-The model can propose the next step and the `AgentLoop` can coordinate the run, but neither owns execution authority. Model calls and tool calls cross the governed execution backbone, with `ExecutionEngine` remaining authoritative.
+The model can propose the next step and the `AgentLoop` can coordinate a run, but neither owns execution authority. Model calls, READ capabilities, and bounded WRITE capabilities cross the governed execution backbone, with `ExecutionEngine` remaining authoritative.
 
-This repository publishes a bounded technical disclosure of that architecture and preserves the earlier V2 public demonstrations and evidence.
+This repository publishes a bounded technical disclosure of that architecture and evidence. It preserves the earlier V2 public demonstrations but does not publish the private V3 runtime.
 
 ## 2. The evolution
 
 ```text
 AIOS V2 — Governed Execution Backbone
-->
-AIOS V3 P0 — Governed Agent Runtime
+-> AIOS V3 P0 — Governed Agent Runtime
+-> P1 — Governed Real Execution
+-> P2.0 — Initial natural-language governed interaction
+-> Further P2 work — In progress
 ```
 
-V2 made the governed tool-execution path explicit and testable through a small public mock runtime, curated examples, proof tests, and ANDY field tests.
+V2 made the governed tool-execution path explicit and publicly testable. P0 carried that principle into the agent loop and model-provider path. P1 validated governed READ, bounded governed WRITE, and durable SQLite WRITE in successive declared scopes.
 
-V3 P0 carries that principle into the agent loop and model-provider path. It adds a provider-neutral model boundary, governed model and tool round trips, authoritative execution persistence, fail-closed recovery, and Composition Root assembly.
-
-V2 remains historical evidence. It is not relabeled as V3.
+P2.0 is implemented and validated in its declared scope. Further P2 work remains in progress; the current evidence does not support broad P2 completion.
 
 ## 3. The problem
 
 A model that only returns text can still be wrong. A model or agent that can call providers, tools, files, APIs, databases, or workflows can create effects before a human reviews the final answer.
 
-Direct model-to-tool execution can blur proposal, authorization, execution, state, and result release. AIOS separates them so the model's proposal remains non-authoritative and execution stays governed.
+Direct model-to-tool execution can blur proposal, authorization, approval, execution, state, and result release. AIOS separates them so the model's proposal remains non-authoritative and execution stays governed.
 
-## 4. Current V3 P0 path
+## 4. Current V3 path
 
 ```text
 User
@@ -49,47 +49,49 @@ User
 | `AgentLoop` | Coordinates the interaction without owning execution authority. |
 | `ModelPort / GovernedModelPort` | Keeps the provider replaceable and inference on the governed path. |
 | `ExecutionEngine` | Admits and executes governed model or tool work. |
-| Governed execution | Performs only work accepted by the authority path. |
+| Governed execution | Performs only admitted work with applicable authority and approval. |
 | `RunStore / ResultGate / audit` | Preserves execution truth, controls release, and keeps evidence reviewable. |
-| `AgentLoop` | Continues from governed outcomes and produces the final answer. |
 
-The diagram is deliberately architectural. Private data structures and mechanisms are not disclosed.
+This diagram is deliberately architectural. Private data structures and mechanisms are not disclosed.
 
-## 5. Core P0 properties
+## 5. Pilot flow summary
 
-- conversation/checkpoint state is separate from authoritative execution truth;
+One observed OpenAI `gpt-5.6-sol` pilot connected natural-language interpretation, a governed READ, one bounded WRITE proposal, explicit approval, governed execution, result gating, and a final response. The canonical [illustrative public flow](aios-v3/AIOS_V3_ARCHITECTURE.md#illustrative-public-flow) is documented in the V3 architecture and is not a replica of the private runtime.
+
+## 6. Core properties
+
+- models propose; proposals do not self-authorize;
+- conversation/session state is separate from authoritative execution truth;
+- READ and WRITE capabilities remain independently admitted and scope-bound;
+- approval is explicit where the governed action requires it;
 - retry and recovery fail closed;
 - `UNKNOWN_EFFECT` blocks blind automatic re-execution;
-- terminal work is replayed rather than executed again;
-- executable and artifact identity are bound to the governed path;
-- budget accounting is authoritative in the verified scope;
-- credential egress and content provenance are governed;
-- persistence, reopen, replay, and resume avoid duplicate execution in the verified synthetic P0 scope;
-- the Composition Root assembles P0 without becoming a public implementation contract.
+- terminal work can be replayed from authoritative state rather than executed again;
+- `ResultGate` controls outward release;
+- persistence claims remain limited to their verified identity and persistence scopes.
 
-## 6. Provider model
-
-`ModelPort` is provider-neutral. OpenAI is the first real provider validated through it. The exact model used for the published live evidence is `gpt-5.6-sol`.
-
-Provider-neutral describes the boundary, not universal provider support.
-
-## 7. P0 evidence
+## 7. Current evidence
 
 | Evidence | Result |
 | --- | --- |
-| Milestone | AIOS V3 P0 completed |
-| Gate | `AIOS_V3_P0_GATE=PASS` |
-| Targeted P0 tests | **562/562 PASS** |
-| Adversarial Remediation Gate | **354/354 PASS** |
-| Governed model/tool round-trip | Verified |
-| Persistence/reopen/resume | Verified in the synthetic P0 scope |
-| Live provider path | One governed OpenAI invocation passed |
+| V3 P0 foundation | Completed in its declared scope |
+| P1 governed real execution | Completed in its declared scope |
+| P2.0 initial governed interaction | Implemented and validated in its declared scope |
+| Governed READ | Validated |
+| Bounded governed WRITE | Validated |
+| Durable SQLite WRITE | Validated in its declared scope |
+| Real-provider pilot | One governed OpenAI `gpt-5.6-sol` pilot completed |
+| Focused pilot gate | **10/10 tests PASS** |
 
-The live invocation used `gpt-5.6-sol`, returned `AIOS_LIVE_OK`, reached RunStore `SUCCEEDED`, and produced ResultGate `ALLOW`. Observed accounting was `model_calls=1`, `tool_calls=0`, `network_calls=1`, and `retries=0`. There was no fallback, no retry, and no raw-secret leak observed.
+The pilot passed through `ExecutionEngine` and governed persistence, trace, controlled execution-context, and result-release boundaries. That is one observed governed path, not a benchmark, certification, or unrestricted production-readiness claim.
 
-This is one governed live-path result, not a benchmark or certification.
+## 8. Synthetic and real evidence
 
-## 8. Historical V2 public surface
+Synthetic evidence isolates invariants, state handling, and failure posture under controlled conditions. Real end-to-end evidence adds an observed provider, allowed state, explicit approval, and a bounded durable action in one path.
+
+The two evidence types answer different questions. Neither establishes universal behavior beyond its declared scope.
+
+## 9. Historical V2 public surface
 
 The V2 reference path remains:
 
@@ -97,27 +99,14 @@ The V2 reference path remains:
 request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result
 ```
 
-The public mock runtime demonstrates V2-shaped `ALLOW`, `WARN`, and `BLOCK` behavior. The V2 package also preserves public proof tests, 13/13 and 8/8 ANDY field-test results, and scoped at-most-once evidence.
+The public mock runtime demonstrates V2-shaped `ALLOW`, `WARN`, and `BLOCK` behavior. The V2 package also preserves public proof tests, ANDY field-test results, and scoped at-most-once evidence. Those artifacts do not publish or reproduce V3.
 
-Those artifacts remain useful, but they do not publish or reproduce V3.
+## 10. Public, private, and claim limits
 
-## 9. What is public and private
+Public material includes V3 architecture, properties, status, limits, aggregate evidence, and preserved V2 demonstrations.
 
-Public:
+Private material includes V3 source, private tests and fixtures, raw schemas, logs, traces, audit records, prompts, credentials, configuration, authorization and approval internals, trust-boundary mechanisms, probes, and deployment wiring.
 
-- V3 architecture, properties, status, limits, and aggregate evidence;
-- V2 documentation, public examples, mock runtime, proof tests, and sanitized field-test evidence;
-- version-aware glossary and invariants.
+The evidence does not establish security certification, formal verification, universal provider support, arbitrary capability access, distributed exactly-once execution, or validation across every environment.
 
-Private:
-
-- V3 source and private test fixtures;
-- raw schemas, logs, traces, audit records, prompts, paths, credentials, and configuration;
-- private authorization, approval, and trust-boundary mechanisms;
-- detailed adversarial probes, deployment internals, and private operator internals.
-
-## 10. Claim limit
-
-AIOS V3 P0 is complete in its declared validation scope. That does not mean production readiness, security certification, formal verification, universal provider support, distributed exactly-once execution, or validation across every environment.
-
-Start with the [V3 public index](aios-v3/README.md), read the [architecture](aios-v3/AIOS_V3_ARCHITECTURE.md), then review the [evidence](aios-v3/AIOS_V3_P0_EVIDENCE.md) and [status limits](aios-v3/AIOS_V3_STATUS_AND_LIMITS.md).
+Start with the [V3 public index](aios-v3/README.md), review the [current evidence](aios-v3/AIOS_V3_CURRENT_EVIDENCE.md), then read the [architecture](aios-v3/AIOS_V3_ARCHITECTURE.md) and [status limits](aios-v3/AIOS_V3_STATUS_AND_LIMITS.md).

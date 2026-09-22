@@ -1,12 +1,12 @@
 # AIOS Integration Model
 
-AIOS V3 P0 is designed to sit between model or agent intent and operational execution.
+AIOS is designed to sit between model or agent intent and operational execution. The P0 foundation established the governed agent-runtime boundary; P1 validated bounded real execution in its declared scope.
 
 > **Models propose. AIOS governs. AIOS executes.**
 
-AIOS does not replace an AI model, agent framework, business application, identity system, or secure infrastructure. It provides the governed runtime path through which model calls and tool calls are admitted, executed, persisted, and result-gated.
+AIOS does not replace an AI model, agent framework, business application, identity system, or protected infrastructure. It provides the governed runtime path through which model calls and tool calls are admitted, executed, persisted, and result-gated.
 
-## Current V3 P0 Integration Shape
+## Current V3 Integration Shape
 
 ```text
 User
@@ -19,9 +19,13 @@ User
   -> final answer
 ```
 
-The `AgentLoop` coordinates work but does not own execution authority. The provider-neutral `ModelPort` keeps a model provider replaceable, while `GovernedModelPort` routes model work through `ExecutionEngine`. Tool work crosses the same governed authority boundary.
+The `AgentLoop` coordinates work but does not own execution authority. The provider-neutral `ModelPort` keeps a model provider replaceable, while `GovernedModelPort` routes model work through `ExecutionEngine`. Governed READ and bounded governed WRITE cross the same authority boundary as separately admitted capabilities.
 
 The public diagram does not define a private API, payload schema, deployment topology, or implementation recipe.
+
+## Illustrative Natural-Language Integration
+
+The public integration pattern connects natural-language interpretation to a governed READ and one bounded action proposal, with explicit approval where required, governed execution, result gating, and a final response. The canonical [illustrative public flow](aios-v3/AIOS_V3_ARCHITECTURE.md#illustrative-public-flow) is documented in the V3 architecture. It is not a replica of the private runtime.
 
 ## Where AIOS Can Sit
 
@@ -36,51 +40,56 @@ AIOS can govern agent work involving:
 - workflow automation;
 - sensitive output channels.
 
-Each integration still needs its own identity, permission, policy, infrastructure, and threat-model review.
+This list describes integration categories, not validated support for every system. Each integration still needs its own identity, permission, policy, infrastructure, and threat-model review.
 
 ## Example Integration Scenarios
 
 ### Enterprise assistant using a model and internal API
 
-The agent loop may request inference to interpret a task, then propose an internal API call. Both the model call and the tool call remain governed work. The provider response does not grant authority for the API call; `ExecutionEngine` admits each governed action separately.
+The agent loop may request inference to interpret a task, then propose an internal API call. Both calls remain governed work. The provider response does not grant authority for the API call; `ExecutionEngine` admits each governed action separately.
 
 ### Coding agent modifying files or running tests
 
-A coding agent may propose edits or commands. AIOS can keep path scope, capability, budget, approval, execution identity, result release, and audit inside the governed runtime rather than relying only on model instructions.
+A coding agent may propose edits or commands. AIOS can keep path scope, capability, budget, approval, execution identity, result release, and audit inside the governed runtime rather than relying only on model instructions. This is an architectural scenario, not a claim that arbitrary coding-agent writes are validated.
 
 ### Support agent updating tickets
 
-The agent can propose a ticket change, but the proposal does not become an update until the governed path admits the tool action. Conversation state remains separate from the authoritative execution record.
+The agent can propose a ticket change, but the proposal does not become an update until the governed path admits the action and obtains applicable approval. Conversation state remains separate from the authoritative execution record.
 
 ### Data agent querying protected data
 
-A model can propose a query or analyze results while credential egress and content provenance remain governed. ResultGate can prevent an otherwise successful call from releasing material that should not leave the boundary.
+A model can propose a query or analyze results while credential egress and content provenance remain governed. `ResultGate` can prevent an otherwise successful call from releasing material that should not leave the boundary.
 
 ### Workflow agent resuming after interruption
 
-The agent loop can reopen or resume from persisted state. The runtime uses authoritative execution truth to replay terminal outcomes or stop uncertain effects, avoiding blind duplicate execution in the verified P0 scope.
+The agent loop can reopen or resume from persisted state. The runtime uses authoritative execution truth to replay terminal outcomes or stop uncertain effects. This posture avoids blind re-execution within the verified scope; it does not establish distributed exactly-once semantics.
 
-## Model Provider Integration
+## Validated Real-Execution Scope
 
-`ModelPort` is provider-neutral by design. OpenAI is the first real provider validated through the governed path, using exact model `gpt-5.6-sol`.
+P1 public-safe evidence includes:
 
-A single live invocation returned `AIOS_LIVE_OK` with RunStore `SUCCEEDED`, ResultGate `ALLOW`, `model_calls=1`, `tool_calls=0`, `network_calls=1`, and `retries=0`. No fallback, retry, or raw-secret leak was observed.
+- governed READ in an admitted scope;
+- bounded governed WRITE with applicable authority and approval requirements;
+- durable SQLite WRITE in its declared scope;
+- one real OpenAI `gpt-5.6-sol` end-to-end pilot;
+- a focused pilot gate reporting **10/10 tests PASS**.
 
-This is a one-invocation path validation. It is not a provider reliability, availability, latency, cost, or security benchmark.
+In the pilot, the model read allowed state, selected one bounded WRITE, requested explicit approval, and completed through `ExecutionEngine` and governed persistence, trace, controlled execution-context, and result-release boundaries.
+
+This is one observed path. It is not a provider reliability, availability, latency, cost, scale, or security benchmark.
 
 ## Execution And Recovery Boundary
 
 An integration must not treat agent intent or conversation state as execution truth.
 
-Within the verified P0 scope:
+Within the applicable verified scopes:
 
 - `ExecutionEngine` remains authoritative;
-- executable and artifact identity are tied to the governed path;
-- budget accounting is authoritative;
-- terminal results are replayed rather than re-executed;
+- capabilities remain explicitly admitted and bounded;
+- terminal results can be replayed from authoritative state rather than re-executed;
 - retry/recovery fail closed;
 - `UNKNOWN_EFFECT` blocks blind re-execution when an effect may have occurred;
-- persistence, reopen, and resume avoid duplicate execution under the tested assumptions.
+- durable persistence claims remain tied to the tested identity and storage assumptions.
 
 The public documentation does not claim distributed exactly-once semantics or independent multi-host correctness.
 
@@ -100,7 +109,7 @@ AIOS does not replace:
 
 - model-provider safeguards;
 - identity and access management;
-- secure infrastructure and network controls;
+- protected infrastructure and network controls;
 - logging, monitoring, and incident response;
 - legal, compliance, or domain review;
 - environment-specific validation;
@@ -109,6 +118,6 @@ AIOS does not replace:
 
 ## Public Status
 
-The V3 P0 milestone has `AIOS_V3_P0_GATE=PASS`, with **562/562 targeted P0 tests PASS** and the Adversarial Remediation Gate at **354/354 PASS**.
+P0 and P1 are completed in their declared scopes. P2.0 — initial natural-language governed interaction — is implemented and validated in its declared scope. Further P2 work remains in progress; no broad P2 phase or unrestricted deployment capability is claimed.
 
 The private runtime source and integration internals are not distributed here. Public materials support architecture review and bounded technical evaluation, not deployment from this repository alone.

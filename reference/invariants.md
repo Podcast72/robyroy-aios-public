@@ -1,24 +1,26 @@
 # Invariants
 
-The public invariants are version-aware. V3 is the current architecture milestone; V2 remains the historical public demonstration.
+The public invariants are version-aware. V3 is the current source-private architecture and evidence track; V2 remains the historical public demonstration.
 
-## Current V3 P0 Invariants
+## Current V3 Invariants
 
 1. Models propose; proposals do not self-authorize.
 2. `AgentLoop` coordinates work and does not possess execution authority.
 3. Model calls and tool calls traverse the governed execution backbone.
 4. `ModelPort` remains provider-neutral, and provider integration does not become execution authority.
 5. `ExecutionEngine` remains the execution authority.
-6. Conversation/checkpoint state remains separate from authoritative execution truth.
-7. Retry and recovery fail closed.
-8. `UNKNOWN_EFFECT` blocks blind automatic re-execution and requires reconciliation.
-9. Executable/artifact identity and authoritative budget accounting remain bound to the governed path.
-10. Credential egress and content provenance remain governed.
-11. Persistence, replay, reopen, and resume must not create duplicate execution within the verified identity and persistence scope.
-12. `ResultGate` controls outward release after governed execution.
-13. The Composition Root must not create an alternate authority path for the agent loop, provider, or tools.
-14. Public V3 claims remain aggregate, scoped, conservative, and non-certifying.
-15. The private V3 implementation is not reconstructed in the public repository.
+6. Governed READ and bounded governed WRITE remain separately admitted and scope-bound.
+7. A WRITE that requires approval does not execute without the applicable explicit approval.
+8. Approval for one proposal does not imply authority for a different action or broader scope.
+9. Conversation/session state remains separate from authoritative execution truth.
+10. Retry and recovery fail closed.
+11. `UNKNOWN_EFFECT` blocks blind automatic re-execution and requires reconciliation.
+12. Persistence, replay, reopen, and resume claims remain limited to their verified identity and persistence assumptions.
+13. Durable SQLite WRITE evidence does not establish universal durability or distributed exactly-once semantics.
+14. `ResultGate` controls outward release after governed execution.
+15. Composition must not create an alternate authority path for the agent loop, provider, or tools.
+16. Public V3 claims remain aggregate, scoped, conservative, and non-certifying.
+17. The private V3 implementation is not reconstructed in the public repository.
 
 ## Preserved V2 Public Invariants
 

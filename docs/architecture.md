@@ -1,20 +1,22 @@
 # Architecture
 
-AIOS is currently documented as a **governed agent runtime and execution layer**.
+AIOS is documented as a **governed agent runtime and execution layer**.
 
 > **Models propose. AIOS governs. AIOS executes.**
 
-The architecture has evolved across two public milestones:
+The public narrative has evolved through these stages:
 
 ```text
 AIOS V2 — Governed Execution Backbone
-->
-AIOS V3 P0 — Governed Agent Runtime
+-> AIOS V3 P0 — Governed Agent Runtime
+-> P1 — Governed Real Execution
+-> P2.0 — Initial natural-language governed interaction
+-> Further P2 work — In progress
 ```
 
-V3 does not erase V2. The V2 backbone, public demonstrations, field tests, and proof tests remain historical evidence for the earlier milestone.
+P0 and P1 are complete in their declared scopes. P2.0 is implemented and validated in its declared scope. Further P2 work remains in progress; P2 is not presented as broadly complete.
 
-## Current V3 P0 Architecture
+## Current V3 Architecture
 
 ```text
 User
@@ -31,36 +33,27 @@ This is a high-level authority and data-flow view, not a copy of the private imp
 
 ## Authority Boundaries
 
-The architectural problem changes when an AI-assisted system can request inference, use tools, and produce operational effects. V3 makes the authority split explicit:
-
-- `AgentLoop` coordinates work but does not own execution authority;
-- model calls and tool calls traverse the governed execution backbone;
-- `ModelPort` makes the model provider replaceable;
-- `GovernedModelPort` keeps inference on the governed path;
-- `ExecutionEngine` remains the execution authority;
-- `ResultGate` controls outward result release;
-- `RunStore` represents authoritative execution truth;
-- conversation/checkpoint state remains separate from execution truth.
+- `AgentLoop` coordinates work but does not own execution authority.
+- Model calls and tool calls traverse the governed execution backbone.
+- Governed READ and bounded governed WRITE are separately admitted and scope-bound.
+- Explicit approval is required where the governed action requires it.
+- `ModelPort` makes the model provider replaceable.
+- `ExecutionEngine` remains the execution authority.
+- `ResultGate` controls outward result release.
+- Conversation/session state remains separate from authoritative execution truth.
 
 A model proposal is input to the governed runtime. It is not authorization.
 
 ## Governed Runtime Properties
 
-The V3 P0 public architecture describes these properties without exposing their private mechanisms:
+The public architecture describes these properties without exposing their private mechanisms:
 
 - retry and recovery fail closed;
 - `UNKNOWN_EFFECT` prevents blind automatic re-execution when an effect may have occurred;
-- executable and artifact identity are bound to the governed path;
-- budget accounting is authoritative within the verified scope;
-- credential egress and content provenance are governed;
-- persistence, replay, reopen, and resume avoid duplicate execution in the verified synthetic P0 scope;
-- a Composition Root assembles the runtime without giving the agent loop, provider, or tools an alternate authority path.
-
-## Provider Boundary
-
-`ModelPort` is provider-neutral. OpenAI is the first real provider validated through the governed path, and `gpt-5.6-sol` is the exact model used for the published live evidence.
-
-Provider-neutral does not mean every provider has been implemented or validated. It describes the architectural boundary between provider integration and execution authority.
+- terminal outcomes can be replayed from authoritative state within the verified scope;
+- durable SQLite WRITE has been validated in a bounded declared scope;
+- persistence and recovery claims do not establish distributed exactly-once semantics;
+- executable identity, accounting, credential egress, content provenance, and result release remain governed.
 
 ## Historical V2 Public Backbone
 
@@ -70,10 +63,10 @@ The canonical V2 public reference path remains:
 request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result
 ```
 
-That path remains valid for the V2 public mock runtime, curated examples, and public invariant tests. The V3 architecture extends the governing model to agent and model calls; it does not retroactively redefine those artifacts.
+That path remains valid for the V2 public mock runtime, curated examples, and public invariant tests. V3 extends the governing model; it does not relabel the V2 artifacts.
 
 ## Public Scope
 
-This repository publishes architectural roles, properties, aggregate evidence, and limits. It does not publish private V3 source, schemas, authorization, approval, or trust-boundary mechanisms, test fixtures, adversarial probes, prompts, local paths, credentials, raw logs or traces, configuration, or deployment wiring.
+This repository publishes architectural roles, properties, aggregate evidence, and limits. It does not publish private V3 source, schemas, authorization or approval mechanisms, trust-boundary internals, test fixtures, probes, prompts, local paths, credentials, raw logs or traces, configuration, or deployment wiring.
 
-See [AIOS V3 Architecture](public/aios-v3/AIOS_V3_ARCHITECTURE.md) and [Public vs Private Boundary](public-vs-private-boundary.md).
+See [AIOS V3 Architecture](public/aios-v3/AIOS_V3_ARCHITECTURE.md), [Current Evidence](public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md), and [Public vs Private Boundary](public-vs-private-boundary.md).

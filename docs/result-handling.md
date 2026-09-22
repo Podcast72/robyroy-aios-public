@@ -1,6 +1,6 @@
 # Result Handling
 
-This document describes the result-handling surface used by the preserved V2 public backbone and examples. The current V3 P0 architecture also includes `ResultGate`, but its private implementation is not published here.
+This document describes the result-handling surface used by the preserved V2 public backbone and examples. The current V3 architecture also includes `ResultGate`, but its private implementation is not published here.
 
 This repository documents result handling as a post-tool control surface.
 It exists because execution governance does not end at tool invocation.

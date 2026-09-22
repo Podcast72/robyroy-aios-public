@@ -2,8 +2,8 @@
 
 ![AIOS demo architecture](assets/aios-demo-hero.png)
 
-[![V3 P0](https://img.shields.io/badge/AIOS%20V3%20P0-completed-1f7a4d)](docs/public/aios-v3/README.md)
-[![P0 Gate](https://img.shields.io/badge/AIOS__V3__P0__GATE-PASS-1f7a4d)](docs/public/aios-v3/AIOS_V3_P0_EVIDENCE.md)
+[![V3 P1 scope](https://img.shields.io/badge/AIOS%20V3%20P1-scope--complete-1f7a4d)](docs/public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md)
+[![Pilot](https://img.shields.io/badge/focused%20pilot%20gate-10%2F10%20PASS-1f7a4d)](docs/public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md)
 [![Scope](https://img.shields.io/badge/disclosure-bounded-lightgrey)](docs/public-vs-private-boundary.md)
 [![History](https://img.shields.io/badge/AIOS%20V2-evidence%20preserved-6f42c1)](docs/public/aios-v2/README.md)
 
@@ -15,49 +15,50 @@ AIOS is a governed agent runtime and execution layer for systems in which models
 
 This repository is the public technical documentation and demonstration package for a source-private AIOS track. It publishes architecture, properties, limits, aggregate validation evidence, and small V2-shaped public demonstrations. It does not publish the private V3 runtime.
 
-## V3 P0 Current Status
+## Current Status
 
-**AIOS V3 P0 — Governed Agent Runtime** is complete in its declared validation scope.
+AIOS has progressed beyond the completed **V3 P0 — Governed Agent Runtime** foundation. **P1 — Governed Real Execution** is complete in its declared scope. **P2.0 — initial natural-language governed interaction** is implemented and validated in its declared scope; further P2 work remains in progress.
 
 | Signal | Public-safe result |
 | --- | --- |
-| Milestone | AIOS V3 P0 completed |
-| Gate | `AIOS_V3_P0_GATE=PASS` |
-| Targeted P0 tests | **562/562 PASS** |
-| Adversarial Remediation Gate | **354/354 PASS** |
-| Governed model/tool round-trip | Verified |
-| Persistence/reopen/resume | Verified in the synthetic P0 scope |
-| Model boundary | Provider-neutral `ModelPort` |
-| First real provider | OpenAI |
-| Exact validated model | `gpt-5.6-sol` |
-| Live provider evidence | One governed invocation returned `AIOS_LIVE_OK` |
+| V3 P0 foundation | Completed in its declared validation scope |
+| P1 governed real execution | Completed in its declared scope |
+| P2.0 initial governed interaction | Implemented and validated in its declared scope |
+| Governed capabilities | READ and bounded WRITE validated in successive milestones |
+| Durable persistence | Bounded SQLite WRITE validated in its declared scope |
+| Real end-to-end pilot | One observed governed OpenAI pilot completed |
+| Exact pilot model | `gpt-5.6-sol` |
+| Focused pilot gate | **10/10 tests PASS** |
+| Recovery posture | Fail-closed; no universal exactly-once claim |
 
-These results are aggregate, scope-bound engineering evidence. They are not a security certification, formal verification, or an unrestricted production-readiness claim.
+In the observed pilot, the model read allowed state, proposed one bounded WRITE, requested explicit approval, and completed the admitted action through `ExecutionEngine` and the governed persistence, context, trace, and result boundaries.
 
-[Read the AIOS V3 P0 public documentation](docs/public/aios-v3/README.md).
+These statements are aggregate, scope-bound engineering evidence. They do not establish unrestricted production readiness, security certification, formal proof, universal provider support, or distributed exactly-once semantics.
+
+[Read the current V3 evidence](docs/public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md).
 
 ## What AIOS Is
 
 AIOS separates model proposals and agent coordination from execution authority.
 
-In V3 P0:
+Across the P0 and P1 capabilities completed within their declared scopes:
 
-- `AgentLoop` coordinates the run but does not possess execution authority;
+- `AgentLoop` coordinates a run but does not possess execution authority;
 - model calls and tool calls traverse the governed execution backbone;
 - `ModelPort` keeps the provider replaceable;
 - `ExecutionEngine` remains the execution authority;
 - conversation state and execution truth remain separate;
+- bounded WRITE requires the applicable authority and explicit approval where required;
 - retry and recovery fail closed;
 - `UNKNOWN_EFFECT` blocks blind re-execution;
-- executable/artifact identity, budget accounting, credential egress, and content provenance remain governed;
-- persistence, replay, reopen, and resume avoid duplicate execution within the verified P0 scope;
-- the Composition Root assembles P0 components without becoming a public implementation contract.
+- persistence, replay, reopen, and resume remain limited to their verified identity and persistence scope;
+- `ResultGate` controls outward result release.
 
 The model can propose work. It cannot make its proposal self-authorizing.
 
 ## Governed Execution Backbone
 
-### Current V3 P0 architecture
+### Current V3 architecture
 
 ```text
 User
@@ -80,7 +81,19 @@ AIOS V2 established the public governed-execution reference path:
 request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result
 ```
 
-The V2 path remains the basis of the small public mock runtime and its public invariant tests. V3 extends governance into the agent loop and model-call path; it does not retroactively rewrite V2 evidence.
+The V2 path remains the basis of the small public mock runtime and its public invariant tests. V3 extends governance into the agent loop, model-call path, and bounded real execution; it does not retroactively rewrite V2 evidence.
+
+## Current V3 Evidence
+
+The current public evidence is deliberately aggregate.
+
+- P0 completed the governed agent-runtime foundation in its declared scope.
+- P1 validated governed READ, bounded governed WRITE, and a durable SQLite WRITE in their declared scopes.
+- P2.0 implemented and validated initial natural-language governed interaction in its declared scope; further P2 work remains in progress.
+- One real end-to-end pilot used OpenAI model `gpt-5.6-sol` to read allowed state, select one bounded WRITE, request explicit approval, and complete the governed path.
+- The focused pilot gate reported **10/10 tests PASS**.
+
+The pilot is one observed governed run, not a reliability benchmark, formal proof, certification, or broad deployment claim. See [Current Evidence](docs/public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md) and [Status and Limits](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md).
 
 ## V2 Historical Evidence Preserved
 
@@ -113,37 +126,17 @@ These are controlled V2 field-test snapshots, not production-readiness or securi
 - [V2 public proof tests](docs/public-proof-tests/README.md)
 - [V2 external public-mock validation](docs/public/aios-v2/AIOS_EXTERNAL_PIPELINE_VALIDATION.md)
 
-## V3 P0 Evidence
-
-The public V3 evidence is deliberately aggregate.
-
-One real OpenAI provider invocation passed through the governed path using exact model `gpt-5.6-sol`:
-
-| Signal | Observed result |
-| --- | --- |
-| Response | `AIOS_LIVE_OK` |
-| RunStore | `SUCCEEDED` |
-| `model_calls` | `1` |
-| `tool_calls` | `0` |
-| `network_calls` | `1` |
-| `retries` | `0` |
-| ResultGate | `ALLOW` |
-| Fallback | None |
-| Retry | None |
-| Raw-secret leak | None observed |
-
-This is one successful governed invocation, not a reliability benchmark or a broad provider claim. See [AIOS V3 P0 Evidence](docs/public/aios-v3/AIOS_V3_P0_EVIDENCE.md) and [Status and Limits](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md).
-
 ## Quick Links
 
 | Area | Link |
 | --- | --- |
-| V3 public index | [docs/public/aios-v3/README.md](docs/public/aios-v3/README.md) |
-| V3 overview | [AIOS_V3_P0_OVERVIEW.md](docs/public/aios-v3/AIOS_V3_P0_OVERVIEW.md) |
-| V3 architecture | [AIOS_V3_ARCHITECTURE.md](docs/public/aios-v3/AIOS_V3_ARCHITECTURE.md) |
-| V3 evidence | [AIOS_V3_P0_EVIDENCE.md](docs/public/aios-v3/AIOS_V3_P0_EVIDENCE.md) |
-| V3 status and limits | [AIOS_V3_STATUS_AND_LIMITS.md](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md) |
+| Evaluator guide | [FOR_EVALUATORS.md](FOR_EVALUATORS.md) |
 | AIOS in 5 minutes | [docs/public/AIOS_IN_5_MINUTES.md](docs/public/AIOS_IN_5_MINUTES.md) |
+| V3 public index | [docs/public/aios-v3/README.md](docs/public/aios-v3/README.md) |
+| Current V3 evidence | [AIOS_V3_CURRENT_EVIDENCE.md](docs/public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md) |
+| V3 architecture | [AIOS_V3_ARCHITECTURE.md](docs/public/aios-v3/AIOS_V3_ARCHITECTURE.md) |
+| V3 status and limits | [AIOS_V3_STATUS_AND_LIMITS.md](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md) |
+| Historical P0 evidence | [AIOS_V3_P0_EVIDENCE.md](docs/public/aios-v3/AIOS_V3_P0_EVIDENCE.md) |
 | Integration model | [docs/public/AIOS_INTEGRATION_MODEL.md](docs/public/AIOS_INTEGRATION_MODEL.md) |
 | V2 historical index | [docs/public/aios-v2/README.md](docs/public/aios-v2/README.md) |
 | Public/private boundary | [docs/public-vs-private-boundary.md](docs/public-vs-private-boundary.md) |
@@ -159,6 +152,7 @@ Direct model-to-tool patterns are useful prototypes, but the model should not be
 | Model output | Proposal can become action | Proposal remains non-authoritative |
 | Model and tool calls | May use separate or implicit paths | Both traverse the governed backbone |
 | Execution authority | Can be blurred into orchestration | Remains with `ExecutionEngine` |
+| Approval | May be implicit in the request | Applied explicitly where the governed action requires it |
 | Recovery | Retry may duplicate an uncertain effect | Fail-closed recovery and `UNKNOWN_EFFECT` block blind retry |
 | State | Conversation and execution may be conflated | Conversation state and execution truth remain separate |
 | Results | Output may be returned directly | `ResultGate` controls outward release |
@@ -223,7 +217,8 @@ The existing presentation is an AIOS V2 historical artifact. It explains the gov
 
 | Path | Purpose |
 | --- | --- |
-| [docs/public/aios-v3/](docs/public/aios-v3/) | Current V3 P0 public documentation |
+| [FOR_EVALUATORS.md](FOR_EVALUATORS.md) | Guided review path for technical and grant evaluators |
+| [docs/public/aios-v3/](docs/public/aios-v3/) | Current V3 architecture, evidence, status, and limits |
 | [docs/public/aios-v2/](docs/public/aios-v2/) | Preserved V2 historical documentation and evidence |
 | [docs/public/field-tests/](docs/public/field-tests/) | Sanitized V2 ANDY field-test evidence |
 | [docs/public-proof-tests/](docs/public-proof-tests/) | Preserved V2 public proof artifacts |
@@ -235,7 +230,7 @@ The existing presentation is an AIOS V2 historical artifact. It explains the gov
 
 ## Status
 
-The current public milestone is **AIOS V3 P0 — Governed Agent Runtime**, with `AIOS_V3_P0_GATE=PASS` and the aggregate evidence stated above.
+The current public narrative is **P1 — Governed Real Execution completed in its declared scope**, built on the V3 P0 governed-runtime foundation completed in its declared scope. **P2.0 — initial natural-language governed interaction** is implemented and validated in its declared scope, while further P2 work remains in progress. One real governed end-to-end pilot has completed with a focused pilot-gate result of **10/10 PASS**.
 
 The public repository remains a documentation and demonstration package, not a V3 runtime distribution. V2 evidence remains historical and testable. V3 implementation and validation internals remain private.
 

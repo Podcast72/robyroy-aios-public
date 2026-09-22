@@ -1,6 +1,6 @@
 # Runtime Backbone: V2 Public Reference
 
-This document preserves the AIOS V2 public governed-backbone reference. The current AIOS V3 P0 architecture extends governed execution into the agent loop and model-call path; see [AIOS V3 Architecture](public/aios-v3/AIOS_V3_ARCHITECTURE.md).
+This document preserves the AIOS V2 public governed-backbone reference. The current AIOS V3 track extends governed execution into the agent loop, model-call path, and bounded real capabilities; see [AIOS V3 Architecture](public/aios-v3/AIOS_V3_ARCHITECTURE.md).
 
 The V2 public runtime backbone is:
 

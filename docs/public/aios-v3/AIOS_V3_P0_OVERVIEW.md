@@ -1,5 +1,7 @@
 # AIOS V3 P0 Overview
 
+> **Historical milestone record:** P0 remains the governed-runtime foundation completed in its declared scope. For the current V3 status, including P2.0 and real-pilot evidence, see [AIOS V3 Current Evidence](AIOS_V3_CURRENT_EVIDENCE.md).
+
 AIOS V3 P0 is a governed agent runtime built on the execution discipline established by AIOS V2.
 
 > **Models propose. AIOS governs. AIOS executes.**
@@ -16,7 +18,7 @@ request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool
 
 AIOS V3 P0 retains that governing idea and extends it to the agent loop and model-call path. The historical V2 documentation is not superseded as evidence; it documents the earlier milestone and remains available under [`docs/public/aios-v2/`](../aios-v2/README.md).
 
-The current V3 P0 architecture is described at a deliberately higher level:
+The P0 architecture is described at a deliberately higher level:
 
 ```text
 User

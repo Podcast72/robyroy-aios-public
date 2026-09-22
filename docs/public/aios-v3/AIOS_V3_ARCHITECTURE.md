@@ -1,10 +1,10 @@
 # AIOS V3 Architecture
 
-AIOS V3 P0 is a governed agent runtime in which the model can propose work but cannot grant itself execution authority.
+AIOS V3 is a governed agent runtime in which the model can propose work but cannot grant itself execution authority. P0 established the governed runtime foundation; P1 extended it to governed real execution in a declared, bounded scope. P2.0 implemented and validated initial natural-language governed interaction in its declared scope; further P2 work remains in progress.
 
 > **Models propose. AIOS governs. AIOS executes.**
 
-## Current P0 Flow
+## Current High-Level Flow
 
 ```text
 User
@@ -28,10 +28,27 @@ This is an architectural disclosure. It intentionally omits private class relati
 | `ModelPort` | Defines the provider-neutral model boundary. | Keeps provider selection separate from runtime authority. |
 | `GovernedModelPort` | Routes model work through the governed execution path. | Does not bypass `ExecutionEngine` for provider calls. |
 | `ExecutionEngine` | Admits and executes governed model or tool work. | Remains the execution authority. |
-| Governed model or tool execution | Performs the admitted capability. | Runs only after the governed path accepts the work. |
+| Governed model or tool execution | Performs the admitted capability. | Runs only after the governed path accepts the work and applicable approval is present. |
 | `RunStore` | Holds authoritative execution truth for governed runs. | Is separate from conversation/checkpoint state. Raw schema is private. |
 | `ResultGate` | Controls release of governed results. | A successful underlying call does not by itself authorize outward release. |
 | Audit | Preserves reviewable execution evidence. | Public docs expose aggregate properties, not raw audit records or trace payloads. |
+
+## Illustrative Public Flow
+
+The following is an **illustrative public flow**, not a replica, API contract, or reconstruction of the private runtime:
+
+```text
+Natural-language request
+  -> model interpretation
+  -> governed READ
+  -> bounded action proposal
+  -> explicit approval where required
+  -> ExecutionEngine
+  -> evidence / ResultGate
+  -> final response
+```
+
+The observed pilot followed this shape for one allowed READ and one bounded WRITE. The implementation-specific action representation, approval binding, persistence schema, trace structure, and trust boundaries remain private.
 
 ## One Authority Path For Model And Tool Calls
 
@@ -39,6 +56,7 @@ V3 extends governance to both sides of the agent loop:
 
 - a model call is governed work;
 - a tool call is governed work;
+- READ and WRITE capabilities remain separately admitted and scope-bound;
 - neither call becomes authoritative merely because the `AgentLoop` requested it;
 - `ExecutionEngine` remains the common execution authority;
 - resulting state and outward content remain subject to the runtime's governed boundaries.
@@ -47,7 +65,7 @@ The public architecture does not expose private action formats or adapter wiring
 
 ## Provider-Neutral Model Boundary
 
-`ModelPort` makes the provider replaceable without making the provider the source of execution authority. `GovernedModelPort` places inference on the governed path. OpenAI is the first real provider validated through this boundary; `gpt-5.6-sol` is the exact model validated for the published live evidence.
+`ModelPort` makes the provider replaceable without making the provider the source of execution authority. `GovernedModelPort` places inference on the governed path. OpenAI is the first real provider validated through this boundary; `gpt-5.6-sol` is the exact model used in the published pilot evidence.
 
 This is not a claim that all model providers are implemented, equivalent, or certified.
 
@@ -57,7 +75,7 @@ Conversation state answers questions such as what the agent has seen and where a
 
 V3 keeps those concerns separate. Conversation or checkpoint state cannot silently rewrite authoritative execution history, and replay/resume decisions are based on governed execution truth rather than conversational intent alone.
 
-No raw persistence schema is published here.
+No raw persistence or session schema is published here.
 
 ## Fail-Closed Retry And Recovery
 
@@ -68,11 +86,17 @@ Retry and recovery remain conservative:
 - if an external effect may have occurred but cannot be proven, the run converges to `UNKNOWN_EFFECT`;
 - `UNKNOWN_EFFECT` blocks blind automatic re-execution and requires reconciliation.
 
-The published persistence/reopen/resume result applies only to the verified synthetic P0 scope. It is not a distributed exactly-once claim.
+These statements apply only to the verified identity and persistence scopes. They do not establish distributed exactly-once semantics.
+
+## P1 Real-Execution Boundary
+
+P1 adds public-safe evidence for governed READ, bounded governed WRITE, and durable SQLite WRITE. These are capability claims, not implementation disclosures. Each remains limited to its admitted operation, approval posture, persistence assumptions, and observed scope.
+
+The architecture does not claim arbitrary write access, universal transactional guarantees, or correctness across independent hosts.
 
 ## Identity, Accounting, Egress, And Provenance
 
-At the public architecture level, V3 P0 binds these properties to the governed path:
+At the public architecture level, V3 binds these properties to the governed path:
 
 - executable and artifact identity;
 - authoritative budget accounting;
@@ -84,7 +108,7 @@ These are public properties, not a disclosure of private validation logic or enf
 
 ## Composition Root
 
-The Composition Root assembles the P0 components and their allowed dependencies. Its public significance is architectural: the runtime is composed so that the `AgentLoop`, model provider, and tools do not acquire an alternate execution-authority path.
+The Composition Root assembles the governed runtime components and their allowed dependencies. Its public significance is architectural: the runtime is composed so that the `AgentLoop`, model provider, and tools do not acquire an alternate execution-authority path.
 
 The Composition Root's code, configuration, dependency construction, and trust-boundary details remain private.
 
@@ -96,4 +120,4 @@ The V2 public backbone remains the historical public demonstration:
 request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result
 ```
 
-The V3 diagram does not retroactively redefine V2 proof artifacts. It shows how the current P0 carries governed execution into the agent loop and model-provider path.
+The V3 diagrams do not retroactively redefine V2 proof artifacts. They show how the current V3 track carries governed execution into the agent loop, model-provider path, and bounded real-execution capabilities.

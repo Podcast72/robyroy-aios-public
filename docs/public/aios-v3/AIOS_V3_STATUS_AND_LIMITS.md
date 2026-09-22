@@ -2,42 +2,42 @@
 
 ## Current Status
 
-AIOS V3 P0 is complete in its declared validation scope.
-
-```text
-AIOS_V3_P0_GATE=PASS
-```
-
-The current public description is **AIOS V3 P0 — Governed Agent Runtime**.
+AIOS V3 P0 completed the governed agent-runtime foundation in its declared validation scope. **P1 — Governed Real Execution** is also complete in its declared scope. **P2.0 — initial natural-language governed interaction** is implemented and validated in its declared scope; further P2 work remains in progress.
 
 > **Models propose. AIOS governs. AIOS executes.**
 
 | Area | Public status |
 | --- | --- |
-| Agent runtime | P0 completed in the declared private validation scope |
+| Governed agent runtime | P0 completed in its declared scope |
+| Governed real execution | P1 completed in its declared scope |
+| Initial governed interaction | P2.0 implemented and validated in its declared scope |
+| Governed READ | Validated in a successive real-execution milestone |
+| Bounded governed WRITE | Validated with applicable authority and approval requirements |
+| Durable persistence | Bounded SQLite WRITE validated in its declared scope |
 | Execution authority | `ExecutionEngine` remains authoritative |
 | Agent loop | Coordinates work; does not own execution authority |
-| Model path | Governed through provider-neutral `ModelPort` / `GovernedModelPort` |
-| Tool path | Governed through the execution backbone |
-| State model | Conversation state and execution truth remain separate |
+| State model | Conversation/session state and execution truth remain separate |
 | Recovery | Fail-closed; `UNKNOWN_EFFECT` blocks blind re-execution |
-| Persistence | Reopen/replay/resume verified in the synthetic P0 scope |
-| Test evidence | 562/562 targeted P0 tests PASS |
-| Adversarial gate | 354/354 PASS |
-| Real provider | OpenAI, exact model `gpt-5.6-sol` |
-| Live evidence | One governed invocation returned `AIOS_LIVE_OK` |
+| Real-provider pilot | One OpenAI `gpt-5.6-sol` governed pilot completed |
+| Focused pilot gate | **10/10 tests PASS** |
 | Public distribution | Documentation and minimal V2 demonstrations only; private V3 runtime not distributed |
 
 ## Current Claim Boundary
 
-The P0 evidence supports an engineering milestone claim, not an assurance claim. `PASS`, `verified`, and `completed` refer to the specifically named gate or tested scope.
+The published evidence supports engineering milestone and observed-pilot claims, not assurance claims. `PASS`, `verified`, and `completed` refer only to the named gate, capability, or tested scope.
 
 The public material may state that:
 
-- the targeted P0 and adversarial gates passed;
-- governed model/tool round-trip and synthetic persistence/reopen/resume were verified;
-- the provider-neutral model boundary was exercised with a real OpenAI provider;
-- one `gpt-5.6-sol` invocation completed through the governed path with no fallback, no retry, and no observed raw-secret leak.
+- P0 and P1 completed in their respective declared scopes;
+- P2.0 implemented and validated initial natural-language governed interaction in its declared scope;
+- governed READ, bounded governed WRITE, and a durable SQLite WRITE were validated in successive scopes;
+- recovery remains fail-closed and uncertain effects stop at `UNKNOWN_EFFECT`;
+- one `gpt-5.6-sol` end-to-end pilot read allowed state, selected one bounded WRITE, obtained explicit approval, and completed through the governed runtime;
+- the focused pilot gate reported **10/10 tests PASS**.
+
+## P2 Progression Posture
+
+P2.0 — initial natural-language governed interaction — is implemented and validated in its declared scope. Further P2 work remains in progress. This does not establish completion of a broad P2 phase, general autonomous operation, or unrestricted deployment readiness.
 
 ## Limits And Non-Claims
 
@@ -47,22 +47,24 @@ This public status does not claim:
 - security certification, penetration-test certification, or formal verification;
 - that all providers, tools, integrations, or environments are supported;
 - that every possible failure, bypass, or adversarial condition has been eliminated;
+- arbitrary READ or WRITE access outside the admitted capability scope;
+- universal persistence or transactional guarantees;
 - distributed exactly-once behavior or independent multi-host correctness;
 - correctness after loss or corruption of authoritative persistence;
 - that no secret could ever leak under a different configuration or threat model;
 - that the public mock runtime is the private V3 runtime.
 
-## Scope Of Persistence Evidence
+## Scope Of Persistence And Recovery Evidence
 
-Persistence, reopen, replay, and resume were verified within the synthetic P0 boundary. The claim is limited to the tested execution identity and authoritative persistence assumptions.
+P0 persistence/reopen/replay/resume evidence was synthetic and scope-bound. Later real-execution evidence validated one bounded durable SQLite WRITE in its declared scope. Neither result is a universal durability or exactly-once claim.
 
-If an effect may have occurred but the runtime cannot establish the outcome, `UNKNOWN_EFFECT` prevents blind automatic re-execution. Reconciliation is required. This conservative terminal state is a safety property, not a guarantee that the unknown external outcome can always be reconstructed.
+If an effect may have occurred but the runtime cannot establish the outcome, `UNKNOWN_EFFECT` prevents blind automatic re-execution. Reconciliation is required. This conservative terminal state is a safety posture, not a guarantee that the unknown external outcome can always be reconstructed.
 
-## Provider Limit
+## Provider And Pilot Limit
 
-`ModelPort` is provider-neutral as an architectural boundary. OpenAI is the first real provider validated, with exact model `gpt-5.6-sol`. This does not imply validated parity across other providers or models.
+`ModelPort` is provider-neutral as an architectural boundary. OpenAI is the first real provider validated, and `gpt-5.6-sol` is the exact model used in the published pilot evidence. This does not imply validated parity across other providers or models.
 
-The single live invocation is evidence of one successful governed path, not a latency, scale, availability, cost, or reliability benchmark.
+The pilot is evidence of one successful governed end-to-end path and a focused 10-test gate. It is not a latency, scale, availability, cost, reliability, or security benchmark.
 
 ## Public/Private Boundary
 
@@ -70,6 +72,6 @@ The public repository follows **bounded technical disclosure**. It publishes arc
 
 For the complete disclosure policy, see [Public vs Private Boundary](../../public-vs-private-boundary.md).
 
-## Historical V2 Evidence
+## Historical Evidence
 
-AIOS V2 documentation, public demonstrations, public proof tests, ANDY field tests, and at-most-once evidence remain available as historical evidence for the governed execution backbone milestone. V3 adds the governed agent runtime; it does not erase the V2 record.
+The completed P0 record remains available in the P0 overview and evidence documents. AIOS V2 documentation, public demonstrations, public proof tests, ANDY field tests, and at-most-once evidence remain available as historical evidence for the governed execution backbone milestone. Later milestones do not erase or broaden those earlier results.

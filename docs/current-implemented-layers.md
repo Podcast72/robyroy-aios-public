@@ -1,22 +1,28 @@
 # Current Implemented Layers
 
-This page separates the current private V3 P0 architecture from the preserved V2 public demonstration surface. Status terms describe the declared validation or public-evidence scope, not unrestricted production readiness.
+This page separates the source-private V3 architecture and capability evidence from the preserved V2 public demonstration surface. Status terms describe declared validation scopes, not unrestricted production readiness.
 
-## Current V3 P0 Layers
+## Current Private V3 Layers And Capabilities
 
-| Layer | Public status | Role | Authority limit |
+| Layer or capability | Public status | Role | Authority limit |
 | --- | --- | --- | --- |
-| AgentLoop | P0 completed and covered by targeted private validation | Coordinates turns, requests governed model/tool work, and produces the final answer | Does not possess execution authority |
-| ModelPort / GovernedModelPort | Provider-neutral boundary validated in P0 | Decouples the runtime from a model provider and routes inference through governance | Does not let a provider or agent loop bypass `ExecutionEngine` |
-| ExecutionEngine | P0 execution authority | Admits and executes governed model or tool work | Remains the authoritative execution path |
-| Governed model/tool execution | Round-trip verified in the P0 scope | Performs admitted inference or capability work | Does not self-authorize |
-| RunStore | Persistence/reopen/resume verified in the synthetic P0 scope | Holds authoritative execution truth | Raw schema and internals are not public |
-| Conversation/checkpoint state | Present as a separate concern | Supports continuation of the agent interaction | Cannot rewrite execution truth |
-| ResultGate | Governed round-trip and live path evidence include result gating | Controls outward result release | Underlying success alone does not authorize release |
-| Audit | Aggregate P0 evidence confirms reviewable governed execution | Records evidence for review | Raw audit/log/trace material is private |
-| Execution identity and accounting | P0 property validated in the declared scope | Binds executable/artifact identity and authoritative budget accounting to governed execution | Enforcement mechanisms are private |
-| Egress and provenance governance | P0 property validated in the declared scope | Governs credential egress and content provenance | Does not support a universal no-leak claim |
-| Composition Root | P0 assembly completed | Wires the runtime so authority boundaries remain explicit | Source, configuration, and trust-boundary details remain private |
+| AgentLoop | P0 foundation completed; exercised in the real pilot | Coordinates turns, requests governed model/tool work, and produces the final answer | Does not possess execution authority |
+| ModelPort / GovernedModelPort | Provider-neutral boundary validated with OpenAI | Decouples the runtime from a model provider and routes inference through governance | Does not let a provider or agent loop bypass `ExecutionEngine` |
+| ExecutionEngine | Execution authority across the declared P0/P1 scopes | Admits and executes governed model or tool work | Remains the authoritative execution path |
+| Governed READ | Validated in a real-execution milestone | Reads only admitted state within the capability scope | Does not imply unrestricted visibility |
+| Bounded governed WRITE | Validated in a later real-execution milestone | Performs one admitted mutation within a bounded action scope | Does not self-authorize or imply arbitrary write access |
+| Durable SQLite WRITE | Validated in its declared scope | Persists an admitted bounded change durably | Does not establish universal durability or distributed exactly-once semantics |
+| Approval path | Explicit approval observed for the pilot WRITE | Separates proposed action from authorization to execute | Implementation and policy internals remain private |
+| RunStore | Authoritative execution-truth boundary | Supports governed state and fail-closed replay/recovery decisions | Raw schema and internals are not public |
+| Conversation/checkpoint state | Exercised in the end-to-end pilot at an aggregate level | Supports interaction continuity without replacing execution truth | Raw state structures are private |
+| ResultGate | Exercised in governed round trips and the real pilot | Controls outward result release | Underlying success alone does not authorize release |
+| Structured trace / audit | Aggregate evidence confirms reviewable governed execution | Preserves evidence for review | Raw audit, log, and trace material is private |
+| Recovery / replay / resume | Verified in the declared synthetic scope | Replays terminal truth and stops uncertain effects | No universal exactly-once claim |
+| Composition Root | P0 assembly foundation completed | Wires the runtime so authority boundaries remain explicit | Source, configuration, and trust-boundary details remain private |
+
+Persistence/reopen/replay/resume recovery evidence remains synthetic and scope-bound. Later real-execution evidence is limited to a bounded durable SQLite WRITE and the focused end-to-end pilot; it does not extend the recovery claim.
+
+P2.0 — initial natural-language governed interaction — is implemented and validated in its declared scope. Further P2 work remains in progress; no broad P2 completion claim is made.
 
 ## Preserved V2 Public Layers
 

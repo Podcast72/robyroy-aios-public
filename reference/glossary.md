@@ -10,7 +10,15 @@ Its documentation, mock runtime, proof tests, and field-test evidence remain pre
 
 ## AIOS V3 P0 — Governed Agent Runtime
 
-The current milestone in which agent coordination, model calls, and tool calls operate through a governed runtime while `ExecutionEngine` remains the execution authority.
+The foundational V3 milestone, completed in its declared scope, in which agent coordination, model calls, and tool calls operate through a governed runtime while `ExecutionEngine` remains the execution authority.
+
+## P1 — Governed Real Execution
+
+The completed phase, in its declared scope, that extended the governed V3 path to real admitted capabilities, including governed READ, bounded governed WRITE, and a durable SQLite WRITE.
+
+## P2.0 — Initial natural-language governed interaction
+
+The initial natural-language governed interaction milestone, implemented and validated in its declared scope. Further P2 work remains in progress; this status does not imply broad P2 completion or unrestricted production readiness.
 
 ## AgentLoop
 
@@ -28,11 +36,27 @@ The V3 boundary that keeps model work on the governed execution path.
 
 The execution authority for governed model and tool work. In V2 documents it appears as `execution_engine`; V3 public architecture uses the component name `ExecutionEngine`.
 
+## governed READ
+
+An admitted read capability limited to allowed state and the declared operation scope. It does not mean unrestricted visibility.
+
+## bounded governed WRITE
+
+An admitted mutation constrained by an explicit capability scope, applicable authority, and approval requirements. It does not mean arbitrary write access.
+
+## durable SQLite WRITE
+
+A bounded SQLite mutation observed through the governed durable path in its declared scope. It is not a universal durability or distributed exactly-once claim.
+
+## explicit approval
+
+A required authorization step for an applicable proposed action. Model prose is not approval, and approval does not broaden the action's scope.
+
 ## RunStore
 
 The authoritative execution-truth boundary for governed runs. This glossary defines its public role, not its private schema.
 
-## conversation state
+## conversation or session state
 
 State used to continue the agent interaction or checkpoint. It remains separate from authoritative execution truth.
 
@@ -54,7 +78,7 @@ An architectural property of `ModelPort`: the provider can be replaced behind th
 
 ## Composition Root
 
-The assembly boundary that wires P0 components and their allowed dependencies. Its public meaning is architectural; implementation and configuration remain private.
+The assembly boundary established in the P0 foundation. Its public meaning is architectural; implementation and configuration remain private.
 
 ## execution identity
 
@@ -62,7 +86,7 @@ The governed identity that binds admitted work, executable/artifact identity, ac
 
 ## budget accounting
 
-Authoritative consumption accounting attached to governed execution in the declared P0 scope.
+Authoritative consumption accounting attached to governed execution in its declared scope.
 
 ## credential egress
 
@@ -83,6 +107,14 @@ Returning or reconstructing an authoritative prior terminal outcome without exec
 ## resume
 
 Continuing a persisted run according to authoritative execution truth rather than conversational intent alone.
+
+## synthetic evidence
+
+Controlled validation evidence that isolates runtime properties or failure handling. It is not by itself evidence of a real provider and real admitted effect in one path.
+
+## real end-to-end evidence
+
+An observed path joining a real provider, admitted capability, applicable approval, governed execution, persistence/context boundaries, and result handling. A single observation is not a benchmark or broad deployment claim.
 
 ## runtime_guard
 

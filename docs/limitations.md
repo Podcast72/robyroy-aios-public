@@ -1,10 +1,10 @@
 # Limitations
 
-AIOS V3 P0 is complete in its declared validation scope, but this public repository and the evidence it publishes remain intentionally limited.
+AIOS V3 P0 and P1 are complete in their respective declared scopes. P2.0 — initial natural-language governed interaction — is implemented and validated in its declared scope, while further P2 work remains in progress. This public repository and the evidence it publishes remain intentionally limited.
 
 ## Milestone Limit
 
-`AIOS_V3_P0_GATE=PASS`, **562/562 targeted P0 tests PASS**, and **354/354 Adversarial Remediation Gate PASS** describe named private validation scopes.
+The existing P0 gate results remain historical aggregate evidence. P1 completion, P2.0 validation, governed READ, bounded governed WRITE, durable SQLite WRITE, and the focused pilot-gate **10/10 PASS** result describe later named scopes.
 
 They do not mean:
 
@@ -14,17 +14,21 @@ They do not mean:
 - elimination of every failure, bypass, or adversarial condition;
 - correctness in every deployment environment.
 
-The named test counts are separate gate results and are not presented as one combined unique-test total.
+Test counts refer only to their named gates. They must not be combined into a new unique-test total.
 
-## Live Provider Limit
+## Capability Limit
 
-One real OpenAI provider invocation through the governed path used exact model `gpt-5.6-sol` and returned `AIOS_LIVE_OK`.
+Governed READ does not imply unrestricted state visibility. Bounded governed WRITE does not imply arbitrary filesystem, database, API, or external-system mutation. The durable SQLite result applies only to its declared admitted operation and persistence assumptions.
 
-That observation is not a latency, cost, scale, availability, reliability, or provider-security benchmark. “No raw-secret leak observed” applies only to that observed path; it is not a universal no-leak guarantee.
+## Real-Pilot Limit
+
+One real OpenAI pilot used exact model `gpt-5.6-sol` to read allowed state, select one bounded WRITE, request explicit approval, and complete the governed end-to-end path. The focused pilot gate reported **10/10 tests PASS**.
+
+That observation is not a latency, cost, scale, availability, reliability, provider-security, or broad autonomy benchmark. It does not establish completion of later P2 work.
 
 ## Persistence And Recovery Limit
 
-Persistence, reopen, replay, and resume were verified in the synthetic P0 scope. The result depends on the tested execution identity and authoritative persistence assumptions.
+P0 persistence, reopen, replay, and resume evidence was synthetic and scope-bound. Later evidence added one bounded durable SQLite WRITE. Both results depend on their tested execution identity and authoritative persistence assumptions.
 
 `UNKNOWN_EFFECT` prevents blind automatic re-execution when an external effect may have occurred but cannot be proven. It does not guarantee that the external outcome can always be reconstructed. The public evidence does not claim distributed exactly-once semantics or independent multi-host correctness.
 
@@ -34,13 +38,13 @@ The private V3 runtime is not distributed here. This repository does not publish
 
 - V3 source or implementation-sensitive details;
 - private test source or fixtures;
-- raw `RunStore` schema;
+- raw `RunStore`, conversation/checkpoint-state, context, or trace schemas;
 - private authorization, approval, and trust-boundary mechanisms;
 - exploit or adversarial probe details;
 - private prompts or operator internals;
 - local paths, credentials, raw audit/log/trace data, private configuration, or deployment internals.
 
-As a result, the V3 gate evidence cannot be reproduced from this public repository alone.
+As a result, the V3 evidence cannot be reproduced from this public repository alone.
 
 ## Public Demonstration Limit
 
@@ -52,7 +56,7 @@ They are not a reduced V3 runtime and must not be used to infer private V3 imple
 
 ## Historical Evidence Limit
 
-The V2 field tests, proof tests, at-most-once evidence, and enterprise-suite snapshots retain the claim limits stated in their own documents. V3 does not broaden those historical results.
+The V2 field tests, proof tests, at-most-once evidence, and enterprise-suite snapshots retain the claim limits stated in their own documents. P0, P1, and P2.0 do not broaden those historical results.
 
 ## Disclosure Model
 

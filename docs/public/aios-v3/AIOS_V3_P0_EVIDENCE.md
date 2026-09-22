@@ -1,12 +1,14 @@
 # AIOS V3 P0 Evidence
 
+> **Historical milestone record:** this page preserves the P0 evidence snapshot. For the current V3 status, including P2.0 and real-pilot evidence, see [AIOS V3 Current Evidence](AIOS_V3_CURRENT_EVIDENCE.md).
+
 This page publishes aggregate, public-safe evidence for the AIOS V3 P0 milestone. It does not publish private source, test fixtures, raw logs, traces, schemas, prompts, credentials, or configuration.
 
 ## P0 Gate
 
 | Evidence | Public-safe result |
 | --- | --- |
-| Milestone | AIOS V3 P0 completed |
+| Milestone | AIOS V3 P0 completed in its declared scope |
 | P0 gate | `AIOS_V3_P0_GATE=PASS` |
 | Targeted P0 tests | **562/562 PASS** |
 | Adversarial Remediation Gate | **354/354 PASS** |

@@ -1,6 +1,6 @@
 # AIOS Public Documentation Index
 
-> **Historical milestone notice:** this directory preserves the public record for **AIOS V2 — Governed Execution Backbone**. Statements described here as “current” belong to that V2 evidence snapshot. For the current milestone, see [AIOS V3 P0 — Governed Agent Runtime](../aios-v3/README.md).
+> **Historical milestone notice:** this directory preserves the public record for **AIOS V2 — Governed Execution Backbone**. Statements described here as “current” belong to that V2 evidence snapshot. For the current V3 status, see the [AIOS V3 public index](../aios-v3/README.md) and [current evidence](../aios-v3/AIOS_V3_CURRENT_EVIDENCE.md).
 
 AIOS is presented publicly as **a governed execution layer for AI agents**.
 
