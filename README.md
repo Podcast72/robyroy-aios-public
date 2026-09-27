@@ -1,52 +1,4 @@
-# AIOS — Governed Agent Runtime & Execution Layer
 
-![AIOS demo architecture](assets/aios-demo-hero.png)
-
-[![V3 Core](https://img.shields.io/badge/P2.7%20%2F%20R2.7-FROZEN-1f7a4d)](docs/public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md)
-[![Agent-ready](https://img.shields.io/badge/Governed%20Core-AGENT--READY-1f7a4d)](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md)
-[![Scope](https://img.shields.io/badge/disclosure-bounded-lightgrey)](docs/public-vs-private-boundary.md)
-[![History](https://img.shields.io/badge/AIOS%20V2-evidence%20preserved-6f42c1)](docs/public/aios-v2/README.md)
-
-**Because AI agents need brakes, not just engines.**
-
-AIOS is a governed agent runtime and execution layer for systems in which models can propose actions, call models, use tools, and affect real workflows.
-
-> **Models propose. AIOS governs. AIOS executes.**
-
-This repository is the public technical documentation and demonstration package for a source-private AIOS track. It publishes architecture, properties, limits, aggregate validation evidence, and small V2-shaped public demonstrations. It does not publish the private V3 runtime.
-
-## Current Status
-
-**P2.7 / R2.7 — FROZEN · Governed Core — AGENT-READY**
-
-AIOS V3 completed P0, P1, and the P2.0–P2.7 progression in their declared scopes. The next engineering phase is a **provider-neutral Agent Integration Architecture**. **OpenAI is the first planned external agent integration**; that integration is not yet implemented. Future agent systems can use the same boundary without acquiring AIOS execution authority.
-
-| Signal | Public-safe result |
-| --- | --- |
-| V3 P0 foundation | Completed in its declared validation scope |
-| P1 governed real execution | Completed in its declared scope |
-| P2.0–P2.7 progression | Accepted through P2.7 in declared scopes; R2.7 closeout completed |
-| Governed capabilities | READ, bounded governed WRITE, durable SQLite WRITE, and governed filesystem WRITE validated in their declared scopes |
-| Latest recorded full private regression | **2510 passed, 1 skipped, 11350 subtests passed** |
-| Targeted P2.7/R2.7 closeout retest | **5 passed** |
-| Recovery posture | Fail-closed; `UNKNOWN_EFFECT` blocks blind retry |
-| Governed Core | **P2.7 / R2.7 FROZEN · AGENT-READY** |
-
-The latest recorded full regression preceded the final documentation-only closeout; it was not rerun for documentation changes. The targeted retests covered relevant filesystem ambiguity/recovery and result-exposure properties. These are aggregate, scope-bound results.
-
-These results do not establish unrestricted production readiness, security certification, formal verification, universal provider support, or distributed exactly-once semantics.
-
-### Where to go next
-
-[Evaluator guide](FOR_EVALUATORS.md) · [AIOS in 5 minutes](docs/public/AIOS_IN_5_MINUTES.md) · [V3 index](docs/public/aios-v3/README.md) · [Current evidence](docs/public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md) · [Architecture](docs/public/aios-v3/AIOS_V3_ARCHITECTURE.md) · [Status and limits](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md) · [Integration model](docs/public/AIOS_INTEGRATION_MODEL.md) · [Roadmap](docs/roadmap.md)
-
-## Proposed Restack Project — Separate Open Kernel
-
-The **Open Governed Capability Execution Kernel** is a proposed future Restack project, not a claim about functionality already implemented in this repository. The proposed work would extract and develop a standalone, model-neutral capability-execution kernel for general networked software. It would govern explicitly declared capabilities, authorization, execution state, audit evidence, result release, and fail-closed recovery without requiring an AI model, an agent framework, OpenAI, or the private AIOS V3 runtime.
-
-If selected, all software, tests, specifications, documentation, and other project results funded through Restack would be developed publicly and released in their entirety under the Apache License 2.0. The funded scope would exclude LLM or model development, integration, evaluation, and AI-specific orchestration. Existing AIOS material would provide background and prior engineering evidence only; it would not be a closed dependency of the proposed kernel.
-
-[Read the proposed Restack project boundary](docs/public/restack/OPEN_GOVERNED_CAPABILITY_EXECUTION_KERNEL.md).
 
 ## What AIOS Is
 
@@ -125,6 +77,56 @@ The V2 private enterprise runtime was adversarially validated within its declare
 | Distributed/multi-host guarantee | **NOT CLAIMED** |
 
 [Read the V2 at-most-once evidence](docs/public/aios-v2/AT_MOST_ONCE_EXECUTION_EVIDENCE.md).
+
+# AIOS — Governed Agent Runtime & Execution Layer
+
+![AIOS demo architecture](assets/aios-demo-hero.png)
+
+[![V3 Core](https://img.shields.io/badge/P2.7%20%2F%20R2.7-FROZEN-1f7a4d)](docs/public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md)
+[![Agent-ready](https://img.shields.io/badge/Governed%20Core-AGENT--READY-1f7a4d)](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md)
+[![Scope](https://img.shields.io/badge/disclosure-bounded-lightgrey)](docs/public-vs-private-boundary.md)
+[![History](https://img.shields.io/badge/AIOS%20V2-evidence%20preserved-6f42c1)](docs/public/aios-v2/README.md)
+
+**Because AI agents need brakes, not just engines.**
+
+AIOS is a governed agent runtime and execution layer for systems in which models can propose actions, call models, use tools, and affect real workflows.
+
+> **Models propose. AIOS governs. AIOS executes.**
+
+This repository is the public technical documentation and demonstration package for a source-private AIOS track. It publishes architecture, properties, limits, aggregate validation evidence, and small V2-shaped public demonstrations. It does not publish the private V3 runtime.
+
+## Current Status
+
+**P2.7 / R2.7 — FROZEN · Governed Core — AGENT-READY**
+
+AIOS V3 completed P0, P1, and the P2.0–P2.7 progression in their declared scopes. The next engineering phase is a **provider-neutral Agent Integration Architecture**. **OpenAI is the first planned external agent integration**; that integration is not yet implemented. Future agent systems can use the same boundary without acquiring AIOS execution authority.
+
+| Signal | Public-safe result |
+| --- | --- |
+| V3 P0 foundation | Completed in its declared validation scope |
+| P1 governed real execution | Completed in its declared scope |
+| P2.0–P2.7 progression | Accepted through P2.7 in declared scopes; R2.7 closeout completed |
+| Governed capabilities | READ, bounded governed WRITE, durable SQLite WRITE, and governed filesystem WRITE validated in their declared scopes |
+| Latest recorded full private regression | **2510 passed, 1 skipped, 11350 subtests passed** |
+| Targeted P2.7/R2.7 closeout retest | **5 passed** |
+| Recovery posture | Fail-closed; `UNKNOWN_EFFECT` blocks blind retry |
+| Governed Core | **P2.7 / R2.7 FROZEN · AGENT-READY** |
+
+The latest recorded full regression preceded the final documentation-only closeout; it was not rerun for documentation changes. The targeted retests covered relevant filesystem ambiguity/recovery and result-exposure properties. These are aggregate, scope-bound results.
+
+These results do not establish unrestricted production readiness, security certification, formal verification, universal provider support, or distributed exactly-once semantics.
+
+### Where to go next
+
+[Evaluator guide](FOR_EVALUATORS.md) · [AIOS in 5 minutes](docs/public/AIOS_IN_5_MINUTES.md) · [V3 index](docs/public/aios-v3/README.md) · [Current evidence](docs/public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md) · [Architecture](docs/public/aios-v3/AIOS_V3_ARCHITECTURE.md) · [Status and limits](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md) · [Integration model](docs/public/AIOS_INTEGRATION_MODEL.md) · [Roadmap](docs/roadmap.md)
+
+## Proposed Restack Project — Separate Open Kernel
+
+The **Open Governed Capability Execution Kernel** is a proposed future Restack project, not a claim about functionality already implemented in this repository. The proposed work would extract and develop a standalone, model-neutral capability-execution kernel for general networked software. It would govern explicitly declared capabilities, authorization, execution state, audit evidence, result release, and fail-closed recovery without requiring an AI model, an agent framework, OpenAI, or the private AIOS V3 runtime.
+
+If selected, all software, tests, specifications, documentation, and other project results funded through Restack would be developed publicly and released in their entirety under the Apache License 2.0. The funded scope would exclude LLM or model development, integration, evaluation, and AI-specific orchestration. Existing AIOS material would provide background and prior engineering evidence only; it would not be a closed dependency of the proposed kernel.
+
+[Read the proposed Restack project boundary](docs/public/restack/OPEN_GOVERNED_CAPABILITY_EXECUTION_KERNEL.md).
 
 ### ANDY controlled field tests
 
