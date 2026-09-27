@@ -1,3 +1,6 @@
+# AIOS — Governed Agent Runtime & Execution Layer
+
+![AIOS demo architecture](assets/aios-demo-hero.png)
 
 
 ## What AIOS Is
@@ -77,10 +80,6 @@ The V2 private enterprise runtime was adversarially validated within its declare
 | Distributed/multi-host guarantee | **NOT CLAIMED** |
 
 [Read the V2 at-most-once evidence](docs/public/aios-v2/AT_MOST_ONCE_EXECUTION_EVIDENCE.md).
-
-# AIOS — Governed Agent Runtime & Execution Layer
-
-![AIOS demo architecture](assets/aios-demo-hero.png)
 
 [![V3 Core](https://img.shields.io/badge/P2.7%20%2F%20R2.7-FROZEN-1f7a4d)](docs/public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md)
 [![Agent-ready](https://img.shields.io/badge/Governed%20Core-AGENT--READY-1f7a4d)](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md)
