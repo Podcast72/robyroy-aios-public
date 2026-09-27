@@ -51,6 +51,8 @@ The V2 path remains the basis of the small public mock runtime and its public in
 
 ## Current V3 Evidence
 
+![AIOS demo architecture](assets/aios-demo-hero2.png)
+
 The current public evidence is deliberately aggregate.
 
 - P0 completed the governed agent-runtime foundation in its declared scope.
