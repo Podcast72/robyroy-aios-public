@@ -1,10 +1,12 @@
 # Limitations
 
-AIOS V3 P0 and P1 are complete in their respective declared scopes. P2.0 — initial natural-language governed interaction — is implemented and validated in its declared scope, while further P2 work remains in progress. This public repository and the evidence it publishes remain intentionally limited.
+AIOS V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 remediation and closeout completed. **P2.7 / R2.7 is FROZEN; the governed Core is AGENT-READY.** This public repository and its evidence remain intentionally limited.
 
 ## Milestone Limit
 
-The existing P0 gate results remain historical aggregate evidence. P1 completion, P2.0 validation, governed READ, bounded governed WRITE, durable SQLite WRITE, and the focused pilot-gate **10/10 PASS** result describe later named scopes.
+The existing P0 gate results remain historical aggregate evidence. P1 and P2.0–P2.7 acceptance, governed READ, bounded governed WRITE, durable SQLite WRITE, and governed filesystem WRITE describe later named scopes. The historical focused pilot-gate **10/10 PASS** result retains its original scope.
+
+The latest recorded full private regression was **2510 passed, 1 skipped, 11350 subtests passed**. The targeted P2.7/R2.7 closeout retest was **5 passed**. The full regression preceded the final documentation-only closeout and was not rerun for it.
 
 They do not mean:
 
@@ -18,17 +20,17 @@ Test counts refer only to their named gates. They must not be combined into a ne
 
 ## Capability Limit
 
-Governed READ does not imply unrestricted state visibility. Bounded governed WRITE does not imply arbitrary filesystem, database, API, or external-system mutation. The durable SQLite result applies only to its declared admitted operation and persistence assumptions.
+Governed READ does not imply unrestricted state visibility. Bounded governed WRITE, including filesystem WRITE, does not imply arbitrary filesystem, database, API, or external-system mutation. The durable SQLite and filesystem results apply only to their declared admitted operations and assumptions.
 
 ## Real-Pilot Limit
 
 One real OpenAI pilot used exact model `gpt-5.6-sol` to read allowed state, select one bounded WRITE, request explicit approval, and complete the governed end-to-end path. The focused pilot gate reported **10/10 tests PASS**.
 
-That observation is not a latency, cost, scale, availability, reliability, provider-security, or broad autonomy benchmark. It does not establish completion of later P2 work.
+That observation is not a latency, cost, scale, availability, reliability, provider-security, or broad autonomy benchmark. It is historical evidence distinct from later accepted P2 milestones and from the planned external OpenAI Agent integration.
 
 ## Persistence And Recovery Limit
 
-P0 persistence, reopen, replay, and resume evidence was synthetic and scope-bound. Later evidence added one bounded durable SQLite WRITE. Both results depend on their tested execution identity and authoritative persistence assumptions.
+P0 persistence, reopen, replay, and resume evidence was synthetic and scope-bound. Later milestones added bounded durable SQLite and filesystem WRITE, effect reconciliation, and durable effect evidence in declared scopes. These results depend on their tested identity and persistence assumptions.
 
 `UNKNOWN_EFFECT` prevents blind automatic re-execution when an external effect may have occurred but cannot be proven. It does not guarantee that the external outcome can always be reconstructed. The public evidence does not claim distributed exactly-once semantics or independent multi-host correctness.
 
@@ -56,7 +58,7 @@ They are not a reduced V3 runtime and must not be used to infer private V3 imple
 
 ## Historical Evidence Limit
 
-The V2 field tests, proof tests, at-most-once evidence, and enterprise-suite snapshots retain the claim limits stated in their own documents. P0, P1, and P2.0 do not broaden those historical results.
+The V2 field tests, proof tests, at-most-once evidence, and enterprise-suite snapshots retain the claim limits stated in their own documents. V3 milestones do not broaden those historical results.
 
 ## Disclosure Model
 

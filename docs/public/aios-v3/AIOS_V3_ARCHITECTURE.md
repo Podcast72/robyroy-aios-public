@@ -1,6 +1,6 @@
 # AIOS V3 Architecture
 
-AIOS V3 is a governed agent runtime in which the model can propose work but cannot grant itself execution authority. P0 established the governed runtime foundation; P1 extended it to governed real execution in a declared, bounded scope. P2.0 implemented and validated initial natural-language governed interaction in its declared scope; further P2 work remains in progress.
+AIOS V3 is a governed agent runtime in which the model can propose work but cannot grant itself execution authority. P0 and P1 completed in declared scopes; P2.0–P2.7 were accepted in declared scopes; R2.7 closeout completed. **P2.7 / R2.7 is FROZEN and the governed Core is AGENT-READY.**
 
 > **Models propose. AIOS governs. AIOS executes.**
 
@@ -65,9 +65,19 @@ The public architecture does not expose private action formats or adapter wiring
 
 ## Provider-Neutral Model Boundary
 
-`ModelPort` makes the provider replaceable without making the provider the source of execution authority. `GovernedModelPort` places inference on the governed path. OpenAI is the first real provider validated through this boundary; `gpt-5.6-sol` is the exact model used in the published pilot evidence.
+`ModelPort` keeps model/provider concerns separate from execution authority. `GovernedModelPort` places inference on the governed path. OpenAI is the first real model provider validated through this boundary; `gpt-5.6-sol` was used in the historical pilot evidence. Authority remains with AIOS / `ExecutionEngine`.
 
 This is not a claim that all model providers are implemented, equivalent, or certified.
+
+## Next Agent Integration Phase
+
+The planned engineering direction is:
+
+```text
+Governed Core -> provider-neutral agent integration boundary -> external agent systems
+```
+
+OpenAI is the first planned external agent integration; it is **not yet implemented**. Other systems, such as Hermes, may later use an appropriate boundary. No external agent system acquires execution authority from the Core. This direction is separate from the proposed Restack open kernel.
 
 ## State And Execution Truth
 
@@ -93,6 +103,8 @@ These statements apply only to the verified identity and persistence scopes. The
 P1 adds public-safe evidence for governed READ, bounded governed WRITE, and durable SQLite WRITE. These are capability claims, not implementation disclosures. Each remains limited to its admitted operation, approval posture, persistence assumptions, and observed scope.
 
 The architecture does not claim arbitrary write access, universal transactional guarantees, or correctness across independent hosts.
+
+P2.7 added governed filesystem WRITE in a bounded declared scope. R2.7 remediation and closeout completed. The public architectural claim is limited to governed admission, effect observation, fail-closed uncertainty, and controlled result exposure. It does not disclose private mechanisms or imply arbitrary filesystem WRITE.
 
 ## Identity, Accounting, Egress, And Provenance
 

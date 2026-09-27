@@ -1,6 +1,6 @@
 # Roadmap
 
-The public roadmap starts from two completed, scope-bound V3 milestones: **P0 — Governed Agent Runtime** and **P1 — Governed Real Execution**. **P2.0 — initial natural-language governed interaction** is implemented and validated in its declared scope. AIOS V2 remains the historical governed-execution backbone.
+The governed Core reached **P2.7 / R2.7 FROZEN** and is **AGENT-READY**. V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 remediation and closeout completed. AIOS V2 remains the historical governed-execution backbone.
 
 ## Completed Milestones
 
@@ -26,9 +26,9 @@ P0 and P1 completion refers only to the declared milestone scopes. It does not e
 
 P2.0 validation refers only to its declared scope. It does not establish unrestricted production readiness.
 
-## Further P2 Work
+## P2.1–P2.7 And R2.7
 
-Further P2 work remains in progress. No broader P2 completion, autonomous-operation, or deployment claim is implied.
+P2.1–P2.7 accepted governed WRITE approval, OpenAI live runtime, canonical action/approval binding, approval consumption and replay safety, authoritative effect reconciliation, durable effect receipt journal, and bounded governed filesystem WRITE in their declared scopes. R2.7 remediation and closeout completed. The Core is frozen and agent-ready; no unrestricted deployment claim is implied.
 
 ## Near-Term Public Work
 
@@ -40,7 +40,7 @@ Further P2 work remains in progress. No broader P2 completion, autonomous-operat
 
 ## Future Engineering Direction
 
-Future work may broaden natural-language interaction, provider, tool, persistence, recovery, deployment, and integration validation. Any result should be published only after its scope is verified and its disclosure risk reviewed.
+The next phase is **provider-neutral Agent Integration Architecture**: Governed Core -> provider-neutral agent integration boundary -> external agent systems. OpenAI is the first planned implementation; it is not yet implemented. Other systems may follow behind an appropriate boundary. `ModelPort` separates provider concerns from execution authority, which remains with AIOS / `ExecutionEngine`. Any result should be published only after its scope is verified and its disclosure risk reviewed.
 
 No future capability is implied complete by this roadmap.
 

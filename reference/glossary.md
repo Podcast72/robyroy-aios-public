@@ -18,7 +18,15 @@ The completed phase, in its declared scope, that extended the governed V3 path t
 
 ## P2.0 — Initial natural-language governed interaction
 
-The initial natural-language governed interaction milestone, implemented and validated in its declared scope. Further P2 work remains in progress; this status does not imply broad P2 completion or unrestricted production readiness.
+The initial natural-language governed interaction milestone, accepted in its declared scope. The current progression reached P2.7 / R2.7; P2.0 is a historical milestone, not the latest status.
+
+## P2.7 — Governed filesystem WRITE
+
+The accepted bounded filesystem WRITE milestone. It does not imply arbitrary filesystem access or universal duplicate-effect prevention.
+
+## AGENT-READY
+
+The frozen P2.7 / R2.7 governed Core baseline for future provider-neutral agent integration engineering. It does not mean an external OpenAI Agent integration is implemented or that unrestricted production readiness has been established.
 
 ## AgentLoop
 

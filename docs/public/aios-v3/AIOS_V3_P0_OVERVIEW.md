@@ -1,6 +1,6 @@
 # AIOS V3 P0 Overview
 
-> **Historical milestone record:** P0 remains the governed-runtime foundation completed in its declared scope. For the current V3 status, including P2.0 and real-pilot evidence, see [AIOS V3 Current Evidence](AIOS_V3_CURRENT_EVIDENCE.md).
+> **Historical milestone record:** P0 remains the governed-runtime foundation completed in its declared scope. For current V3 status and evidence, see [AIOS V3 Current Evidence](AIOS_V3_CURRENT_EVIDENCE.md).
 
 AIOS V3 P0 is a governed agent runtime built on the execution discipline established by AIOS V2.
 

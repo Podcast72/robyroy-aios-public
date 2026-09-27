@@ -2,7 +2,7 @@
 
 ## Current Status
 
-AIOS V3 P0 completed the governed agent-runtime foundation in its declared validation scope. **P1 — Governed Real Execution** is also complete in its declared scope. **P2.0 — initial natural-language governed interaction** is implemented and validated in its declared scope; further P2 work remains in progress.
+**P2.7 / R2.7 — FROZEN · Governed Core — AGENT-READY.** V3 P0 and P1 completed in their declared scopes; P2.0–P2.7 were accepted in declared scopes; R2.7 remediation and closeout completed. The next phase is provider-neutral Agent Integration Architecture, with OpenAI as the first planned external agent integration, not a completed integration.
 
 > **Models propose. AIOS governs. AIOS executes.**
 
@@ -11,15 +11,18 @@ AIOS V3 P0 completed the governed agent-runtime foundation in its declared valid
 | Governed agent runtime | P0 completed in its declared scope |
 | Governed real execution | P1 completed in its declared scope |
 | Initial governed interaction | P2.0 implemented and validated in its declared scope |
+| P2 progression | P2.1–P2.7 accepted in declared scopes; R2.7 completed |
 | Governed READ | Validated in a successive real-execution milestone |
 | Bounded governed WRITE | Validated with applicable authority and approval requirements |
 | Durable persistence | Bounded SQLite WRITE validated in its declared scope |
+| Governed filesystem WRITE | Validated in a bounded declared scope |
 | Execution authority | `ExecutionEngine` remains authoritative |
 | Agent loop | Coordinates work; does not own execution authority |
 | State model | Conversation/session state and execution truth remain separate |
 | Recovery | Fail-closed; `UNKNOWN_EFFECT` blocks blind re-execution |
 | Real-provider pilot | One OpenAI `gpt-5.6-sol` governed pilot completed |
-| Focused pilot gate | **10/10 tests PASS** |
+| Latest recorded full private regression | **2510 passed, 1 skipped, 11350 subtests passed** |
+| Targeted P2.7/R2.7 closeout | **5 passed** |
 | Public distribution | Documentation and minimal V2 demonstrations only; private V3 runtime not distributed |
 
 ## Current Claim Boundary
@@ -29,15 +32,18 @@ The published evidence supports engineering milestone and observed-pilot claims,
 The public material may state that:
 
 - P0 and P1 completed in their respective declared scopes;
-- P2.0 implemented and validated initial natural-language governed interaction in its declared scope;
+- P2.0–P2.7 were accepted in declared scopes and R2.7 closeout completed;
 - governed READ, bounded governed WRITE, and a durable SQLite WRITE were validated in successive scopes;
 - recovery remains fail-closed and uncertain effects stop at `UNKNOWN_EFFECT`;
 - one `gpt-5.6-sol` end-to-end pilot read allowed state, selected one bounded WRITE, obtained explicit approval, and completed through the governed runtime;
-- the focused pilot gate reported **10/10 tests PASS**.
+- the latest recorded full regression reported **2510 passed, 1 skipped, 11350 subtests passed**;
+- the targeted P2.7/R2.7 closeout retest reported **5 passed** for relevant filesystem ambiguity/recovery and result-exposure properties.
+
+The full regression preceded the final documentation-only closeout and was not rerun merely for documentation changes.
 
 ## P2 Progression Posture
 
-P2.0 — initial natural-language governed interaction — is implemented and validated in its declared scope. Further P2 work remains in progress. This does not establish completion of a broad P2 phase, general autonomous operation, or unrestricted deployment readiness.
+P2.7 / R2.7 is frozen and the governed Core is agent-ready in its declared scope. This does not establish general autonomous operation or unrestricted deployment readiness.
 
 ## Limits And Non-Claims
 
@@ -46,8 +52,10 @@ This public status does not claim:
 - production readiness or release readiness for unrestricted deployment;
 - security certification, penetration-test certification, or formal verification;
 - that all providers, tools, integrations, or environments are supported;
+- that the planned external OpenAI Agent integration is already implemented;
 - that every possible failure, bypass, or adversarial condition has been eliminated;
 - arbitrary READ or WRITE access outside the admitted capability scope;
+- arbitrary filesystem, database, or API WRITE;
 - universal persistence or transactional guarantees;
 - distributed exactly-once behavior or independent multi-host correctness;
 - correctness after loss or corruption of authoritative persistence;
@@ -62,7 +70,7 @@ If an effect may have occurred but the runtime cannot establish the outcome, `UN
 
 ## Provider And Pilot Limit
 
-`ModelPort` is provider-neutral as an architectural boundary. OpenAI is the first real provider validated, and `gpt-5.6-sol` is the exact model used in the published pilot evidence. This does not imply validated parity across other providers or models.
+`ModelPort` is provider-neutral as an architectural boundary. OpenAI is the first real model provider validated, and `gpt-5.6-sol` is the exact model used in the historical pilot evidence. The external OpenAI Agent integration is planned for the next phase and is not yet implemented. Execution authority remains with AIOS / `ExecutionEngine`.
 
 The pilot is evidence of one successful governed end-to-end path and a focused 10-test gate. It is not a latency, scale, availability, cost, reliability, or security benchmark.
 

@@ -2,7 +2,7 @@
 
 ## What AIOS Is
 
-AIOS is a governed agent runtime and execution layer. Its V3 progression has completed the P0 governed-runtime foundation and P1 governed real execution in their declared scopes. P2.0 — initial natural-language governed interaction — is implemented and validated in its declared scope, while further P2 work remains in progress.
+AIOS is a governed agent runtime and execution layer. V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed. **P2.7 / R2.7 is FROZEN; the governed Core is AGENT-READY.**
 
 > **Models propose. AIOS governs. AIOS executes.**
 
@@ -22,6 +22,8 @@ User
 ```
 
 This is an architecture-level description, not a public implementation map.
+
+The next phase is provider-neutral Agent Integration Architecture. OpenAI is the first planned external agent integration, not a completed one. `ModelPort` separates provider concerns from execution authority, which remains with AIOS / `ExecutionEngine`.
 
 ## What AIOS Evolved From
 

@@ -2,8 +2,8 @@
 
 ![AIOS demo architecture](assets/aios-demo-hero.png)
 
-[![V3 P1 scope](https://img.shields.io/badge/AIOS%20V3%20P1-scope--complete-1f7a4d)](docs/public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md)
-[![Pilot](https://img.shields.io/badge/focused%20pilot%20gate-10%2F10%20PASS-1f7a4d)](docs/public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md)
+[![V3 Core](https://img.shields.io/badge/P2.7%20%2F%20R2.7-FROZEN-1f7a4d)](docs/public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md)
+[![Agent-ready](https://img.shields.io/badge/Governed%20Core-AGENT--READY-1f7a4d)](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md)
 [![Scope](https://img.shields.io/badge/disclosure-bounded-lightgrey)](docs/public-vs-private-boundary.md)
 [![History](https://img.shields.io/badge/AIOS%20V2-evidence%20preserved-6f42c1)](docs/public/aios-v2/README.md)
 
@@ -15,6 +15,31 @@ AIOS is a governed agent runtime and execution layer for systems in which models
 
 This repository is the public technical documentation and demonstration package for a source-private AIOS track. It publishes architecture, properties, limits, aggregate validation evidence, and small V2-shaped public demonstrations. It does not publish the private V3 runtime.
 
+## Current Status
+
+**P2.7 / R2.7 — FROZEN · Governed Core — AGENT-READY**
+
+AIOS V3 completed P0, P1, and the P2.0–P2.7 progression in their declared scopes. The next engineering phase is a **provider-neutral Agent Integration Architecture**. **OpenAI is the first planned external agent integration**; that integration is not yet implemented. Future agent systems can use the same boundary without acquiring AIOS execution authority.
+
+| Signal | Public-safe result |
+| --- | --- |
+| V3 P0 foundation | Completed in its declared validation scope |
+| P1 governed real execution | Completed in its declared scope |
+| P2.0–P2.7 progression | Accepted through P2.7 in declared scopes; R2.7 closeout completed |
+| Governed capabilities | READ, bounded governed WRITE, durable SQLite WRITE, and governed filesystem WRITE validated in their declared scopes |
+| Latest recorded full private regression | **2510 passed, 1 skipped, 11350 subtests passed** |
+| Targeted P2.7/R2.7 closeout retest | **5 passed** |
+| Recovery posture | Fail-closed; `UNKNOWN_EFFECT` blocks blind retry |
+| Governed Core | **P2.7 / R2.7 FROZEN · AGENT-READY** |
+
+The latest recorded full regression preceded the final documentation-only closeout; it was not rerun for documentation changes. The targeted retests covered relevant filesystem ambiguity/recovery and result-exposure properties. These are aggregate, scope-bound results.
+
+These results do not establish unrestricted production readiness, security certification, formal verification, universal provider support, or distributed exactly-once semantics.
+
+### Where to go next
+
+[Evaluator guide](FOR_EVALUATORS.md) · [AIOS in 5 minutes](docs/public/AIOS_IN_5_MINUTES.md) · [V3 index](docs/public/aios-v3/README.md) · [Current evidence](docs/public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md) · [Architecture](docs/public/aios-v3/AIOS_V3_ARCHITECTURE.md) · [Status and limits](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md) · [Integration model](docs/public/AIOS_INTEGRATION_MODEL.md) · [Roadmap](docs/roadmap.md)
+
 ## Proposed Restack Project — Separate Open Kernel
 
 The **Open Governed Capability Execution Kernel** is a proposed future Restack project, not a claim about functionality already implemented in this repository. The proposed work would extract and develop a standalone, model-neutral capability-execution kernel for general networked software. It would govern explicitly declared capabilities, authorization, execution state, audit evidence, result release, and fail-closed recovery without requiring an AI model, an agent framework, OpenAI, or the private AIOS V3 runtime.
@@ -23,33 +48,11 @@ If selected, all software, tests, specifications, documentation, and other proje
 
 [Read the proposed Restack project boundary](docs/public/restack/OPEN_GOVERNED_CAPABILITY_EXECUTION_KERNEL.md).
 
-## Current Status
-
-AIOS has progressed beyond the completed **V3 P0 — Governed Agent Runtime** foundation. **P1 — Governed Real Execution** is complete in its declared scope. **P2.0 — initial natural-language governed interaction** is implemented and validated in its declared scope; further P2 work remains in progress.
-
-| Signal | Public-safe result |
-| --- | --- |
-| V3 P0 foundation | Completed in its declared validation scope |
-| P1 governed real execution | Completed in its declared scope |
-| P2.0 initial governed interaction | Implemented and validated in its declared scope |
-| Governed capabilities | READ and bounded WRITE validated in successive milestones |
-| Durable persistence | Bounded SQLite WRITE validated in its declared scope |
-| Real end-to-end pilot | One observed governed OpenAI pilot completed |
-| Exact pilot model | `gpt-5.6-sol` |
-| Focused pilot gate | **10/10 tests PASS** |
-| Recovery posture | Fail-closed; no universal exactly-once claim |
-
-In the observed pilot, the model read allowed state, proposed one bounded WRITE, requested explicit approval, and completed the admitted action through `ExecutionEngine` and the governed persistence, context, trace, and result boundaries.
-
-These statements are aggregate, scope-bound engineering evidence. They do not establish unrestricted production readiness, security certification, formal proof, universal provider support, or distributed exactly-once semantics.
-
-[Read the current V3 evidence](docs/public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md).
-
 ## What AIOS Is
 
 AIOS separates model proposals and agent coordination from execution authority.
 
-Across the P0 and P1 capabilities completed within their declared scopes:
+Across the V3 capabilities completed within their declared scopes:
 
 - `AgentLoop` coordinates a run but does not possess execution authority;
 - model calls and tool calls traverse the governed execution backbone;
@@ -97,9 +100,10 @@ The current public evidence is deliberately aggregate.
 
 - P0 completed the governed agent-runtime foundation in its declared scope.
 - P1 validated governed READ, bounded governed WRITE, and a durable SQLite WRITE in their declared scopes.
-- P2.0 implemented and validated initial natural-language governed interaction in its declared scope; further P2 work remains in progress.
+- P2.0–P2.7 completed their declared scopes; R2.7 closeout is complete and the Core is frozen and agent-ready.
+- Governed filesystem WRITE was validated in its bounded declared scope.
 - One real end-to-end pilot used OpenAI model `gpt-5.6-sol` to read allowed state, select one bounded WRITE, request explicit approval, and complete the governed path.
-- The focused pilot gate reported **10/10 tests PASS**.
+- The latest recorded full private regression reported **2510 passed, 1 skipped, 11350 subtests passed**; targeted P2.7/R2.7 closeout retests reported **5 passed**.
 
 The pilot is one observed governed run, not a reliability benchmark, formal proof, certification, or broad deployment claim. See [Current Evidence](docs/public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md) and [Status and Limits](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md).
 
@@ -147,6 +151,7 @@ These are controlled V2 field-test snapshots, not production-readiness or securi
 | V3 status and limits | [AIOS_V3_STATUS_AND_LIMITS.md](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md) |
 | Historical P0 evidence | [AIOS_V3_P0_EVIDENCE.md](docs/public/aios-v3/AIOS_V3_P0_EVIDENCE.md) |
 | Integration model | [docs/public/AIOS_INTEGRATION_MODEL.md](docs/public/AIOS_INTEGRATION_MODEL.md) |
+| Roadmap | [docs/roadmap.md](docs/roadmap.md) |
 | V2 historical index | [docs/public/aios-v2/README.md](docs/public/aios-v2/README.md) |
 | Public/private boundary | [docs/public-vs-private-boundary.md](docs/public-vs-private-boundary.md) |
 
@@ -239,7 +244,7 @@ The existing presentation is an AIOS V2 historical artifact. It explains the gov
 
 ## Status
 
-The current public narrative is **P1 — Governed Real Execution completed in its declared scope**, built on the V3 P0 governed-runtime foundation completed in its declared scope. **P2.0 — initial natural-language governed interaction** is implemented and validated in its declared scope, while further P2 work remains in progress. One real governed end-to-end pilot has completed with a focused pilot-gate result of **10/10 PASS**.
+The current public narrative is **P2.7 / R2.7 FROZEN** and **Governed Core AGENT-READY**, following P0, P1, and P2.0–P2.7 acceptance in declared scopes. The next phase is the provider-neutral Agent Integration Architecture, with OpenAI as the first planned integration.
 
 The public repository remains a documentation and demonstration package, not a V3 runtime distribution. V2 evidence remains historical and testable. V3 implementation and validation internals remain private.
 

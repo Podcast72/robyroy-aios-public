@@ -2,7 +2,7 @@
 
 ## What is AIOS now?
 
-AIOS is a governed agent runtime and execution layer. V3 P0 completed the governed-runtime foundation in its declared scope, P1 completed governed real execution in its declared scope, and P2.0 implemented and validated initial natural-language governed interaction in its declared scope.
+AIOS is a governed agent runtime and execution layer. V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed. **P2.7 / R2.7 is FROZEN; the governed Core is AGENT-READY.**
 
 > **Models propose. AIOS governs. AIOS executes.**
 
@@ -43,13 +43,13 @@ No. `AgentLoop` coordinates the run but does not possess execution authority. Mo
 
 ## What real capabilities have been validated?
 
-Public-safe aggregate evidence supports governed READ, bounded governed WRITE, and durable SQLite WRITE in their declared scopes. It does not support unrestricted visibility, arbitrary mutation, or universal durability.
+Public-safe aggregate evidence supports governed READ, bounded governed WRITE, durable SQLite WRITE, and governed filesystem WRITE in their declared scopes. It does not support unrestricted visibility, arbitrary mutation, or universal durability.
 
 ## Is AIOS tied to OpenAI?
 
 The architectural model boundary is provider-neutral through `ModelPort`. OpenAI is the first real provider validated, and `gpt-5.6-sol` is the exact model used for the published pilot evidence.
 
-That does not mean every provider or model is already supported or validated.
+The next phase plans a provider-neutral agent integration boundary, with OpenAI as the first external agent integration. That integration is not yet implemented. Other agent systems may later use the boundary; AIOS / `ExecutionEngine` retains execution authority.
 
 ## What happened in the end-to-end pilot?
 
@@ -59,7 +59,7 @@ This is one observed governed pilot, not a benchmark or certification.
 
 ## What is the P2 status?
 
-P2.0 — initial natural-language governed interaction — is implemented and validated in its declared scope. Further P2 work remains in progress. This does not establish broad P2 completion or unrestricted deployment readiness.
+P2.0–P2.7 were accepted in declared scopes. R2.7 remediation and closeout completed. The Core is frozen and agent-ready, which does not establish unrestricted deployment readiness. The latest recorded full private regression was **2510 passed, 1 skipped, 11350 subtests passed**; targeted closeout retests were **5 passed**. The full regression preceded the final documentation-only closeout and was not rerun for it.
 
 ## What does UNKNOWN_EFFECT mean?
 
@@ -77,7 +77,7 @@ The mock is intentionally a small demonstration of the previous governed-backbon
 
 ## Do completed milestones mean production-ready or security-certified?
 
-No. P0 and P1 completion claims, P2.0 validation, and PASS claims refer to named scopes. They do not establish production readiness, formal verification, security certification, distributed exactly-once behavior, or validation in every environment.
+No. P0, P1, and P2 milestone claims and PASS results refer to named scopes. They do not establish production readiness, formal verification, security certification, distributed exactly-once behavior, or validation in every environment.
 
 ## What does bounded technical disclosure mean?
 

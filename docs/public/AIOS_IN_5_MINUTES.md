@@ -2,7 +2,7 @@
 
 ## 1. What AIOS is now
 
-AIOS is a governed agent runtime and execution layer. Its V3 track has completed the P0 governed-runtime foundation and **P1 — Governed Real Execution** in their declared scopes. P2.0 — initial natural-language governed interaction — is implemented and validated in its declared scope.
+AIOS is a governed agent runtime and execution layer. V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed. **P2.7 / R2.7 is FROZEN; the governed Core is AGENT-READY.**
 
 > **Models propose. AIOS governs. AIOS executes.**
 
@@ -17,12 +17,13 @@ AIOS V2 — Governed Execution Backbone
 -> AIOS V3 P0 — Governed Agent Runtime
 -> P1 — Governed Real Execution
 -> P2.0 — Initial natural-language governed interaction
--> Further P2 work — In progress
+-> P2.1–P2.7 — Accepted in declared scopes
+-> R2.7 — Closed; Core FROZEN / AGENT-READY
 ```
 
 V2 made the governed tool-execution path explicit and publicly testable. P0 carried that principle into the agent loop and model-provider path. P1 validated governed READ, bounded governed WRITE, and durable SQLite WRITE in successive declared scopes.
 
-P2.0 is implemented and validated in its declared scope. Further P2 work remains in progress; the current evidence does not support broad P2 completion.
+The next engineering phase is a provider-neutral Agent Integration Architecture, with OpenAI as the first planned external agent integration. That integration is not yet implemented.
 
 ## 3. The problem
 
@@ -77,13 +78,18 @@ One observed OpenAI `gpt-5.6-sol` pilot connected natural-language interpretatio
 | V3 P0 foundation | Completed in its declared scope |
 | P1 governed real execution | Completed in its declared scope |
 | P2.0 initial governed interaction | Implemented and validated in its declared scope |
+| P2.1–P2.7 and R2.7 | Accepted in declared scopes; remediation and closeout completed |
 | Governed READ | Validated |
 | Bounded governed WRITE | Validated |
 | Durable SQLite WRITE | Validated in its declared scope |
+| Governed filesystem WRITE | Validated in its bounded declared scope |
 | Real-provider pilot | One governed OpenAI `gpt-5.6-sol` pilot completed |
-| Focused pilot gate | **10/10 tests PASS** |
+| Latest recorded full private regression | **2510 passed, 1 skipped, 11350 subtests passed** |
+| Targeted P2.7/R2.7 closeout retest | **5 passed** |
 
-The pilot passed through `ExecutionEngine` and governed persistence, trace, controlled execution-context, and result-release boundaries. That is one observed governed path, not a benchmark, certification, or unrestricted production-readiness claim.
+The full regression preceded the final documentation-only closeout and was not rerun for documentation changes. The targeted retests covered relevant filesystem ambiguity/recovery and result-exposure properties at an aggregate level.
+
+The historical pilot passed through `ExecutionEngine` and governed persistence, trace, controlled execution-context, and result-release boundaries. That is one observed governed path, not a benchmark, certification, or unrestricted production-readiness claim. It is separate from the planned external OpenAI Agent integration.
 
 ## 8. Synthetic and real evidence
 

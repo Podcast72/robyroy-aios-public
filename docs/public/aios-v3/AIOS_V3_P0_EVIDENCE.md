@@ -1,6 +1,6 @@
 # AIOS V3 P0 Evidence
 
-> **Historical milestone record:** this page preserves the P0 evidence snapshot. For the current V3 status, including P2.0 and real-pilot evidence, see [AIOS V3 Current Evidence](AIOS_V3_CURRENT_EVIDENCE.md).
+> **Historical milestone record:** this page preserves the P0 evidence snapshot. For current V3 status and evidence, see [AIOS V3 Current Evidence](AIOS_V3_CURRENT_EVIDENCE.md).
 
 This page publishes aggregate, public-safe evidence for the AIOS V3 P0 milestone. It does not publish private source, test fixtures, raw logs, traces, schemas, prompts, credentials, or configuration.
 

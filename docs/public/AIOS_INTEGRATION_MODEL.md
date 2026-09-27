@@ -1,6 +1,6 @@
 # AIOS Integration Model
 
-AIOS is designed to sit between model or agent intent and operational execution. The P0 foundation established the governed agent-runtime boundary; P1 validated bounded real execution in its declared scope.
+AIOS is designed to sit between model or agent intent and operational execution. P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed. **P2.7 / R2.7 is FROZEN; the governed Core is AGENT-READY.**
 
 > **Models propose. AIOS governs. AIOS executes.**
 
@@ -19,7 +19,15 @@ User
   -> final answer
 ```
 
-The `AgentLoop` coordinates work but does not own execution authority. The provider-neutral `ModelPort` keeps a model provider replaceable, while `GovernedModelPort` routes model work through `ExecutionEngine`. Governed READ and bounded governed WRITE cross the same authority boundary as separately admitted capabilities.
+The `AgentLoop` coordinates work but does not own execution authority. The provider-neutral `ModelPort` keeps model/provider concerns separate from execution authority, while `GovernedModelPort` routes model work through `ExecutionEngine`. Governed READ and bounded governed WRITE cross the same authority boundary as separately admitted capabilities.
+
+## Next Agent Integration Direction
+
+```text
+Governed Core -> provider-neutral agent integration boundary -> external agent systems
+```
+
+OpenAI is the first planned external agent integration, but it is **not yet implemented**. Other systems, such as Hermes, may later use an appropriate boundary. AIOS / `ExecutionEngine` retains execution authority. This direction does not make AIOS OpenAI-specific and is separate from the proposed Restack open kernel.
 
 The public diagram does not define a private API, payload schema, deployment topology, or implementation recipe.
 
@@ -118,6 +126,6 @@ AIOS does not replace:
 
 ## Public Status
 
-P0 and P1 are completed in their declared scopes. P2.0 — initial natural-language governed interaction — is implemented and validated in its declared scope. Further P2 work remains in progress; no broad P2 phase or unrestricted deployment capability is claimed.
+P0 and P1 completed in declared scopes. P2.0–P2.7 were accepted in declared scopes; R2.7 remediation and closeout completed. The latest recorded full private regression was **2510 passed, 1 skipped, 11350 subtests passed** and the targeted P2.7/R2.7 closeout retest was **5 passed**. The full regression preceded the final documentation-only closeout and was not rerun for it. No unrestricted deployment capability is claimed.
 
 The private runtime source and integration internals are not distributed here. Public materials support architecture review and bounded technical evaluation, not deployment from this repository alone.

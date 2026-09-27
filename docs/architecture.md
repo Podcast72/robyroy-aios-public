@@ -11,10 +11,11 @@ AIOS V2 — Governed Execution Backbone
 -> AIOS V3 P0 — Governed Agent Runtime
 -> P1 — Governed Real Execution
 -> P2.0 — Initial natural-language governed interaction
--> Further P2 work — In progress
+-> P2.1–P2.7 — Accepted in declared scopes
+-> R2.7 — Closed; Core FROZEN / AGENT-READY
 ```
 
-P0 and P1 are complete in their declared scopes. P2.0 is implemented and validated in its declared scope. Further P2 work remains in progress; P2 is not presented as broadly complete.
+P0 and P1 completed in their declared scopes. P2.0–P2.7 were accepted in declared scopes; R2.7 remediation and closeout completed. The next phase is provider-neutral Agent Integration Architecture, with OpenAI as the first planned external agent integration. That integration is not yet implemented.
 
 ## Current V3 Architecture
 
@@ -37,7 +38,7 @@ This is a high-level authority and data-flow view, not a copy of the private imp
 - Model calls and tool calls traverse the governed execution backbone.
 - Governed READ and bounded governed WRITE are separately admitted and scope-bound.
 - Explicit approval is required where the governed action requires it.
-- `ModelPort` makes the model provider replaceable.
+- `ModelPort` keeps model/provider concerns separate from execution authority.
 - `ExecutionEngine` remains the execution authority.
 - `ResultGate` controls outward result release.
 - Conversation/session state remains separate from authoritative execution truth.
@@ -52,8 +53,11 @@ The public architecture describes these properties without exposing their privat
 - `UNKNOWN_EFFECT` prevents blind automatic re-execution when an effect may have occurred;
 - terminal outcomes can be replayed from authoritative state within the verified scope;
 - durable SQLite WRITE has been validated in a bounded declared scope;
+- governed filesystem WRITE has been validated in a bounded declared scope;
 - persistence and recovery claims do not establish distributed exactly-once semantics;
 - executable identity, accounting, credential egress, content provenance, and result release remain governed.
+
+The planned direction is `Governed Core -> provider-neutral agent integration boundary -> external agent systems`. Future external agents cannot grant themselves execution authority; AIOS / `ExecutionEngine` remains authoritative.
 
 ## Historical V2 Public Backbone
 

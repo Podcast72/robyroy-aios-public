@@ -13,12 +13,13 @@ AIOS V2 — Governed Execution Backbone
 -> AIOS V3 P0 — Governed Agent Runtime
 -> P1 — Governed Real Execution
 -> P2.0 — Initial natural-language governed interaction
--> Further P2 work — In progress
+-> P2.1–P2.7 — Accepted in declared scopes
+-> R2.7 — Closed; Core FROZEN / AGENT-READY
 ```
 
 V2 remains public historical evidence. Its documentation, public mock runtime, proof tests, ANDY field tests, and public-safe validation summaries are not erased or presented as if they were V3.
 
-V3 is documented through architecture-level descriptions, claim limits, and aggregate evidence only. P2.0 is implemented and validated in its declared scope. Further P2 work remains in progress; current public evidence does not support broad phase completion.
+V3 is documented through architecture-level descriptions, claim limits, and aggregate evidence only. P2.0–P2.7 were accepted in declared scopes; R2.7 remediation and closeout completed. The next provider-neutral agent integration phase is planned, with OpenAI first; no external agent integration is claimed complete.
 
 ## What Is Public For V3
 
@@ -29,10 +30,11 @@ The public V3 surface includes:
 - `AgentLoop`, `ModelPort`, `ExecutionEngine`, `RunStore`, and `ResultGate` as architectural roles;
 - separation of conversation/session state from execution truth;
 - fail-closed retry/recovery and `UNKNOWN_EFFECT` posture;
-- the completed P0 and P1 milestone statements in their declared scopes, and P2.0 implemented and validated in its declared scope;
-- aggregate validation of governed READ, bounded governed WRITE, and durable SQLite WRITE;
+- the P0 and P1 completion and P2.0–P2.7 acceptance statements in declared scopes, plus R2.7 closeout;
+- aggregate validation of governed READ, bounded governed WRITE, durable SQLite WRITE, and governed filesystem WRITE;
 - the fact that explicit approval was observed where required in the bounded pilot;
 - the aggregate result of one OpenAI `gpt-5.6-sol` end-to-end pilot and its focused **10/10 PASS** gate;
+- the latest recorded full private regression **2510 passed, 1 skipped, 11350 subtests passed** and targeted closeout **5 passed**, with the full regression predating the final documentation-only closeout;
 - explicit scope limits and non-claims.
 
 Named boundaries in the pilot describe aggregate passage through the runtime. They do not publish schemas, interfaces, action formats, or implementation relationships.

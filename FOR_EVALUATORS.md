@@ -27,6 +27,8 @@ Read:
 
 Together they distinguish completed milestones, aggregate synthetic evidence, one observed real end-to-end pilot, and the claims those results do not support.
 
+The current status is **P2.7 / R2.7 FROZEN; Governed Core AGENT-READY**. The next provider-neutral agent integration phase is planned, with OpenAI first; no external agent integration is claimed complete.
+
 ### Technical deep dive
 
 - [V3 architecture](docs/public/aios-v3/AIOS_V3_ARCHITECTURE.md)
@@ -56,12 +58,16 @@ Public-safe aggregate evidence supports the following bounded statements:
 
 - V3 P0 completed the governed agent-runtime foundation in its declared scope;
 - P1 completed the governed real-execution phase in its declared scope;
-- P2.0 implemented and validated initial natural-language governed interaction in its declared scope;
+- P2.0–P2.7 were accepted in declared scopes and R2.7 closeout completed;
 - governed READ and bounded governed WRITE were validated in successive milestones;
 - a durable SQLite WRITE was validated in its declared scope;
+- governed filesystem WRITE was validated in its bounded declared scope;
 - retry, replay, reopen, and resume follow a fail-closed posture in their verified scopes;
 - one observed OpenAI `gpt-5.6-sol` pilot completed a natural-language-to-bounded-WRITE path with explicit approval;
-- the focused pilot gate reported **10/10 tests PASS**.
+- the latest recorded full private regression reported **2510 passed, 1 skipped, 11350 subtests passed**;
+- the targeted P2.7/R2.7 closeout retest reported **5 passed**.
+
+The full regression preceded the final documentation-only closeout and was not rerun merely for documentation changes. The targeted retests covered relevant filesystem ambiguity/recovery and result-exposure properties at an aggregate level.
 
 ## What Is Not Claimed
 
@@ -73,7 +79,7 @@ The published evidence does not establish:
 - universal provider, model, tool, integration, or environment support;
 - universal prevention of duplicate external effects;
 - distributed exactly-once semantics or independent multi-host correctness;
-- that later P2 capabilities are implemented or verified.
+- that the planned external OpenAI Agent integration is already implemented.
 
 ## What Is Public And What Remains Private
 
