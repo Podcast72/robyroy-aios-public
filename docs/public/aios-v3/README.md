@@ -1,8 +1,8 @@
 # AIOS V3 Public Documentation
 
-**P2.7 / R2.7 — FROZEN · Governed Core — AGENT-READY.** P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed.
+**P2.7 / R2.7 — FROZEN · Governed Core — AGENT-READY · P3 native multi-agent ACCEPTED.** P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed.
 
-> **Models propose. AIOS governs. AIOS executes.**
+> **Models/agents propose. AIOS governs. AIOS executes admitted actions. AIOS verifies the observed effect.**
 
 V3 evolves the governed execution backbone documented for AIOS V2 into a governed agent runtime. The `AgentLoop` can request model or tool work, but it does not own execution authority. P1 extends that governed path to scoped real execution, including validated governed READ, bounded governed WRITE, and durable SQLite WRITE capabilities.
 
@@ -12,22 +12,25 @@ V3 evolves the governed execution backbone documented for AIOS V2 into a governe
 - P1 governed real execution completed in its declared scope
 - P2.0–P2.7 accepted in their declared scopes; R2.7 remediation and closeout completed
 - P2.7 / R2.7 frozen; governed Core agent-ready
+- P3 native multi-agent accepted in its declared sequential scope; live pilot observed one governed effect
 - governed READ and bounded governed WRITE validated in successive milestones
 - durable SQLite WRITE validated in its declared scope
 - governed filesystem WRITE validated in its bounded declared scope
 - one real OpenAI `gpt-5.6-sol` end-to-end pilot completed
-- latest recorded full private regression: **2510 passed, 1 skipped, 11350 subtests passed**
+- historical P2.7/R2.7 full private regression: **2510 passed, 1 skipped, 11350 subtests passed**
 - targeted P2.7/R2.7 closeout retest: **5 passed**
+- separate P3 `tests_v3` gate: **1753 passed, 1 skipped, 1209 subtests passed**
 - recovery remains fail-closed; `UNKNOWN_EFFECT` blocks blind re-execution
 - no unrestricted production-readiness, certification, formal-proof, or distributed exactly-once claim
 
-The full regression preceded the final documentation-only closeout and was not rerun for documentation changes. The targeted retests covered relevant filesystem ambiguity/recovery and result-exposure properties at an aggregate level. The next phase is provider-neutral Agent Integration Architecture, with OpenAI as the first planned external agent integration; that integration is not yet implemented.
+The historical P2.7/R2.7 full regression preceded its documentation-only closeout. A separate P3 `tests_v3` gate reported **1753 passed, 1 skipped, 1209 subtests passed** after the native multi-agent live pilot. OpenAI is a validated model provider; OpenAI Agents SDK remains unimplemented. Hermes decision-source evidence remains experimental.
 
 ## Documents
 
 | Document | Purpose |
 | --- | --- |
-| [AIOS_V3_CURRENT_EVIDENCE.md](AIOS_V3_CURRENT_EVIDENCE.md) | Canonical P0-to-P2.7 progression, aggregate validation, and claim boundaries. |
+| [AIOS_V3_CURRENT_EVIDENCE.md](AIOS_V3_CURRENT_EVIDENCE.md) | Canonical P0-to-P3 progression and separately scoped gates. |
+| [AIOS_V3_POST_CORE_EVIDENCE.md](AIOS_V3_POST_CORE_EVIDENCE.md) | External review, P3 live pilot, Hermes A/B experiments, and limits. |
 | [AIOS_V3_ARCHITECTURE.md](AIOS_V3_ARCHITECTURE.md) | High-level V3 architecture, authority boundaries, and illustrative public flow. |
 | [AIOS_V3_STATUS_AND_LIMITS.md](AIOS_V3_STATUS_AND_LIMITS.md) | Current status, verified scope, non-claims, and disclosure limits. |
 | [AIOS_V3_P0_OVERVIEW.md](AIOS_V3_P0_OVERVIEW.md) | Historical overview of the completed P0 foundation. |
@@ -42,9 +45,10 @@ V2 — Governed Execution Backbone
 -> P2.0 — Initial natural-language governed interaction
 -> P2.1–P2.7 — Accepted in declared scopes
 -> R2.7 — Closed; Core FROZEN / AGENT-READY
+-> P3 — Native multi-agent ACCEPTED in its declared scope
 ```
 
-Each milestone claim is limited to its declared scope. Agent-ready is a baseline for future integration engineering, not unrestricted deployment readiness.
+P3 native multi-agent is accepted above the unchanged frozen core baseline. Each milestone claim is limited to its declared scope; neither agent-ready nor P3 is unrestricted deployment readiness.
 
 ## Evolution, Not Replacement
 

@@ -1,8 +1,8 @@
 # AIOS V3 Architecture
 
-AIOS V3 is a governed agent runtime in which the model can propose work but cannot grant itself execution authority. P0 and P1 completed in declared scopes; P2.0–P2.7 were accepted in declared scopes; R2.7 closeout completed. **P2.7 / R2.7 is FROZEN and the governed Core is AGENT-READY.**
+AIOS V3 is a governed agent runtime in which the model can propose work but cannot grant itself execution authority. P0 and P1 completed in declared scopes; P2.0–P2.7 were accepted in declared scopes; R2.7 closeout completed. **P2.7 / R2.7 remains FROZEN and AGENT-READY; P3 native multi-agent is accepted in its declared scope above that baseline.**
 
-> **Models propose. AIOS governs. AIOS executes.**
+> **Models/agents propose. AIOS governs. AIOS executes admitted actions. AIOS verifies the observed effect.**
 
 ## Current High-Level Flow
 
@@ -69,7 +69,7 @@ The public architecture does not expose private action formats or adapter wiring
 
 This is not a claim that all model providers are implemented, equivalent, or certified.
 
-## Next Agent Integration Phase
+## External Agent Integration Boundary
 
 The planned engineering direction is:
 
@@ -77,7 +77,11 @@ The planned engineering direction is:
 Governed Core -> provider-neutral agent integration boundary -> external agent systems
 ```
 
-OpenAI is the first planned external agent integration; it is **not yet implemented**. Other systems, such as Hermes, may later use an appropriate boundary. No external agent system acquires execution authority from the Core. This direction is separate from the proposed Restack open kernel.
+P3 implemented native sequential multi-agent orchestration within AIOS. OpenAI is a validated model provider; OpenAI Agents SDK is **not implemented**. Hermes was tested as an experimental decision source through an artifact adapter, not a production integration. External agent proposals do not acquire Core execution authority. This is separate from the proposed Restack open kernel.
+
+## Native multi-agent authority
+
+P3 coordinates Coordinator, Analyst, Challenger, and Operator roles sequentially inside one AIOS `AgentLoop`, session, root run, and root budget. Delegation changes the active specialist and allowed task surface; it does not create a new authority principal. The bounded live pilot followed Coordinator → Analyst → Coordinator → Challenger → Coordinator → Operator → governed WRITE → Operator → Coordinator → final. [Post-Core Evidence](AIOS_V3_POST_CORE_EVIDENCE.md) records its gates and limits.
 
 ## State And Execution Truth
 

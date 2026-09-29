@@ -2,11 +2,11 @@
 
 ## 1. What AIOS is now
 
-AIOS is a governed agent runtime and execution layer. V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed. **P2.7 / R2.7 is FROZEN; the governed Core is AGENT-READY.**
+AIOS is a governed agent runtime and execution layer. V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed. **P2.7 / R2.7 remains FROZEN and AGENT-READY; P3 native multi-agent is accepted in its declared scope above that baseline.**
 
-> **Models propose. AIOS governs. AIOS executes.**
+> **Models/agents propose. AIOS governs. AIOS executes admitted actions. AIOS verifies the observed effect.**
 
-The model can propose the next step and the `AgentLoop` can coordinate a run, but neither owns execution authority. Model calls, READ capabilities, and bounded WRITE capabilities cross the governed execution backbone, with `ExecutionEngine` remaining authoritative.
+The model can propose the next step and the native `AgentLoop` can coordinate sequential roles, but neither owns execution authority. Model calls, READ capabilities, and bounded WRITE capabilities cross the governed execution backbone, with `ExecutionEngine` remaining authoritative.
 
 This repository publishes a bounded technical disclosure of that architecture and evidence. It preserves the earlier V2 public demonstrations but does not publish the private V3 runtime.
 
@@ -19,11 +19,12 @@ AIOS V2 — Governed Execution Backbone
 -> P2.0 — Initial natural-language governed interaction
 -> P2.1–P2.7 — Accepted in declared scopes
 -> R2.7 — Closed; Core FROZEN / AGENT-READY
+-> P3 — Native multi-agent ACCEPTED in its declared scope
 ```
 
 V2 made the governed tool-execution path explicit and publicly testable. P0 carried that principle into the agent loop and model-provider path. P1 validated governed READ, bounded governed WRITE, and durable SQLite WRITE in successive declared scopes.
 
-The next engineering phase is a provider-neutral Agent Integration Architecture, with OpenAI as the first planned external agent integration. That integration is not yet implemented.
+P3 implemented native sequential multi-agent orchestration within AIOS. OpenAI is a validated model provider, while OpenAI Agents SDK remains unimplemented. An experimental Hermes decision source was tested separately; it is not a production integration.
 
 ## 3. The problem
 
@@ -55,6 +56,26 @@ User
 
 This diagram is deliberately architectural. Private data structures and mechanisms are not disclosed.
 
+### Practical components
+
+| Component | What it does |
+| --- | --- |
+| `GovernedActionPort` | Carries agent intent to the governed action boundary. |
+| `ExecutionEngine` / ExecutionAuthority | AIOS admits and executes the action; model text grants no authority. |
+| Policy | Defines what is allowed for the configured run. |
+| Capability | Defines the admitted action surface. |
+| Budget | Limits admitted model, tool, and action work. |
+| Approval | Holds sensitive work pending authorization where required. |
+| Approval one-shot | Consumes the grant only for its admitted binding. |
+| `TrustPlane` | Keeps host-owned authority separate from agent claims. |
+| `RunStore` | Preserves authoritative execution truth. |
+| Effect observation | Checks the real effect within the validated capability scope. |
+| `ResultGate` | Prevents an unverified result from being released as success. |
+| Recovery / reconciliation | Treats uncertain effects conservatively. |
+| Replay safety | Avoids blind duplicate execution in validated scopes. |
+| Session / checkpoint | Supports bounded pause, resume, and recovery. |
+| Native multi-agent | Coordinates specialists under the same governed authority and root budget. |
+
 ## 5. Pilot flow summary
 
 One observed OpenAI `gpt-5.6-sol` pilot connected natural-language interpretation, a governed READ, one bounded WRITE proposal, explicit approval, governed execution, result gating, and a final response. The canonical [illustrative public flow](aios-v3/AIOS_V3_ARCHITECTURE.md#illustrative-public-flow) is documented in the V3 architecture and is not a replica of the private runtime.
@@ -84,12 +105,14 @@ One observed OpenAI `gpt-5.6-sol` pilot connected natural-language interpretatio
 | Durable SQLite WRITE | Validated in its declared scope |
 | Governed filesystem WRITE | Validated in its bounded declared scope |
 | Real-provider pilot | One governed OpenAI `gpt-5.6-sol` pilot completed |
-| Latest recorded full private regression | **2510 passed, 1 skipped, 11350 subtests passed** |
+| Historical P2.7/R2.7 full private regression | **2510 passed, 1 skipped, 11350 subtests passed** |
 | Targeted P2.7/R2.7 closeout retest | **5 passed** |
+| P3 native multi-agent pilot | One governed effect in a sequential specialist run |
+| P3 `tests_v3` gate | **1753 passed, 1 skipped, 1209 subtests passed** |
 
-The full regression preceded the final documentation-only closeout and was not rerun for documentation changes. The targeted retests covered relevant filesystem ambiguity/recovery and result-exposure properties at an aggregate level.
+The P2.7/R2.7 full regression preceded its documentation-only closeout. The separate P3 `tests_v3` gate reported **1753 passed, 1 skipped, 1209 subtests passed** after its live pilot; the two scopes must not be combined.
 
-The historical pilot passed through `ExecutionEngine` and governed persistence, trace, controlled execution-context, and result-release boundaries. That is one observed governed path, not a benchmark, certification, or unrestricted production-readiness claim. It is separate from the planned external OpenAI Agent integration.
+The historical pilot passed through `ExecutionEngine` and governed result-release boundaries. The later P3 multi-agent pilot used the same governance for sequential specialist roles. Neither pilot is a benchmark, certification, or unrestricted production-readiness claim.
 
 ## 8. Synthetic and real evidence
 
@@ -97,7 +120,11 @@ Synthetic evidence isolates invariants, state handling, and failure posture unde
 
 The two evidence types answer different questions. Neither establishes universal behavior beyond its declared scope.
 
-## 9. Historical V2 public surface
+## 9. Post-core experiments and limits
+
+The [Post-Core Evidence](aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md) summarizes the external read-only Hermes/DeepSeek review, remediation, P3 live multi-agent pilot, and the Hermes direct-versus-governed experiments. The Hermes decision-source adapter is experimental; OpenAI Agents SDK is not implemented.
+
+## 10. Historical V2 public surface
 
 The V2 reference path remains:
 
@@ -107,7 +134,7 @@ request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool
 
 The public mock runtime demonstrates V2-shaped `ALLOW`, `WARN`, and `BLOCK` behavior. The V2 package also preserves public proof tests, ANDY field-test results, and scoped at-most-once evidence. Those artifacts do not publish or reproduce V3.
 
-## 10. Public, private, and claim limits
+## 11. Public, private, and claim limits
 
 Public material includes V3 architecture, properties, status, limits, aggregate evidence, and preserved V2 demonstrations.
 

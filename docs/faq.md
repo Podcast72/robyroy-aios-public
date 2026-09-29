@@ -2,9 +2,9 @@
 
 ## What is AIOS now?
 
-AIOS is a governed agent runtime and execution layer. V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed. **P2.7 / R2.7 is FROZEN; the governed Core is AGENT-READY.**
+AIOS is a governed agent runtime and execution layer. V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed. **P2.7 / R2.7 remains FROZEN and AGENT-READY; P3 native multi-agent is accepted in its declared scope above that baseline.**
 
-> **Models propose. AIOS governs. AIOS executes.**
+> **Models/agents propose. AIOS governs. AIOS executes admitted actions. AIOS verifies the observed effect.**
 
 The model can propose work and the `AgentLoop` can coordinate it, but `ExecutionEngine` remains the execution authority.
 
@@ -49,7 +49,7 @@ Public-safe aggregate evidence supports governed READ, bounded governed WRITE, d
 
 The architectural model boundary is provider-neutral through `ModelPort`. OpenAI is the first real provider validated, and `gpt-5.6-sol` is the exact model used for the published pilot evidence.
 
-The next phase plans a provider-neutral agent integration boundary, with OpenAI as the first external agent integration. That integration is not yet implemented. Other agent systems may later use the boundary; AIOS / `ExecutionEngine` retains execution authority.
+P3 native multi-agent is implemented and accepted inside AIOS. OpenAI is the first validated model provider, while OpenAI Agents SDK is not implemented. Hermes supplied a decision in an experimental adapter pilot, not through a production integration; AIOS / `ExecutionEngine` retained execution authority.
 
 ## What happened in the end-to-end pilot?
 
@@ -57,9 +57,17 @@ One real `gpt-5.6-sol` pilot read allowed state, selected one bounded WRITE, req
 
 This is one observed governed pilot, not a benchmark or certification.
 
-## What is the P2 status?
+## What is the P2 and P3 status?
 
-P2.0–P2.7 were accepted in declared scopes. R2.7 remediation and closeout completed. The Core is frozen and agent-ready, which does not establish unrestricted deployment readiness. The latest recorded full private regression was **2510 passed, 1 skipped, 11350 subtests passed**; targeted closeout retests were **5 passed**. The full regression preceded the final documentation-only closeout and was not rerun for it.
+P2.0–P2.7 were accepted in declared scopes. R2.7 remediation and closeout completed. The Core is frozen and agent-ready, which does not establish unrestricted deployment readiness. The historical P2.7/R2.7 full private regression was **2510 passed, 1 skipped, 11350 subtests passed**; targeted closeout retests were **5 passed**. The P2.7/R2.7 full regression preceded its documentation-only closeout. The separate later P3 `tests_v3` gate was **1753 passed, 1 skipped, 1209 subtests passed**. The suites have different scopes and are not additive.
+
+## Is native multi-agent the same as OpenAI Agents SDK?
+
+No. P3 uses AIOS native sequential specialist roles within one root run. It did not introduce the OpenAI Agents SDK or an external agent runtime. The P3 live pilot and `tests_v3` gate are documented in [Post-Core Evidence](public/aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md).
+
+## What did the Hermes experiments show?
+
+The direct pilot let Hermes use its own tools to create an effect outside AIOS. In the governed experiments Hermes proposed a decision while AIOS admitted, executed, observed, and result-gated the effect. This is bounded experimental evidence, not production Hermes integration or certification.
 
 ## What does UNKNOWN_EFFECT mean?
 

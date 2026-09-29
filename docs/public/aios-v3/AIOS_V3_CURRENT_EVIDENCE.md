@@ -1,6 +1,6 @@
 # AIOS V3 Current Evidence
 
-This is the canonical aggregate, public-safe record of AIOS V3 progression through P2.7 / R2.7 as of 27 September 2026. It does not publish private source, tests, schemas, traces, credentials, local paths, authority mechanisms, or adversarial procedures.
+This is the canonical aggregate, public-safe record of AIOS V3 progression through P3 as of 29 September 2026. The P2.7 / R2.7 governed-core baseline remains frozen and valid. It does not publish private source, tests, schemas, traces, credentials, local paths, authority mechanisms, or adversarial procedures.
 
 ## Milestone Narrative
 
@@ -12,9 +12,10 @@ V2 — Governed Execution Backbone
 -> P2.1–P2.7 — Accepted in declared scopes
 -> R2.7 — Remediation and closeout completed
 -> Governed Core — FROZEN / AGENT-READY
+-> P3 native multi-agent — ACCEPTED in its declared sequential scope
 ```
 
-V3 P0 and P1 completed in their declared scopes. P2.0–P2.7 were accepted in declared scopes. P2.7 / R2.7 is **FROZEN**, and the governed Core is **AGENT-READY** for the next engineering phase. Agent-ready does not establish unrestricted deployment readiness.
+V3 P0 and P1 completed in their declared scopes. P2.0–P2.7 were accepted in declared scopes. P2.7 / R2.7 remains **FROZEN**, and the governed Core remains **AGENT-READY**. P3 native multi-agent is accepted in its declared sequential scope above that baseline. Neither status establishes unrestricted deployment readiness.
 
 ## P2 Milestone Record
 
@@ -29,6 +30,7 @@ V3 P0 and P1 completed in their declared scopes. P2.0–P2.7 were accepted in de
 | P2.6 — Durable effect receipt journal | Accepted |
 | P2.7 — Governed filesystem WRITE | Accepted in bounded declared scope |
 | R2.7 — Remediation and closeout | Completed; Core frozen and agent-ready |
+| P3 — Native multi-agent | Sequential specialist roles accepted inside one AIOS root run; authority remains with AIOS |
 
 These names state architectural outcomes, not private implementation procedures.
 
@@ -45,10 +47,12 @@ These names state architectural outcomes, not private implementation procedures.
 | Approval path | Explicit approval was required and observed for the pilot WRITE | Does not disclose approval implementation or policy internals |
 | Recovery posture | Historical synthetic P0 replay, reopen, and resume evidence plus later scoped effect reconciliation remain fail-closed; uncertain effects stop at `UNKNOWN_EFFECT` | Does not guarantee reconstruction of every external outcome or universal duplicate-effect prevention |
 | Real-provider pilot | One OpenAI `gpt-5.6-sol` end-to-end pilot completed; historical focused gate **10/10 PASS** | One observed governed pilot, not an implemented external agent integration |
-| Latest recorded full private regression | **2510 passed, 1 skipped, 11350 subtests passed** | Preceded final documentation-only closeout |
+| Historical P2.7/R2.7 `tests_v2 + tests_v3` regression | **2510 passed, 1 skipped, 11350 subtests passed** | Preceded final documentation-only closeout |
 | Targeted P2.7/R2.7 closeout | **5 passed** | Focused filesystem ambiguity/recovery and result-exposure properties |
+| P3 targeted multi-agent gate, 29 September 2026 | **164 passed, 77 subtests passed** | Slice 1–4 and related focused families |
+| P3 `tests_v3` gate, 29 September 2026 | **1753 passed, 1 skipped, 1209 subtests passed**, exit 0 | Post-pilot final runtime/test tree; different suite from historical P2.7/R2.7 gate |
 
-The full regression was not rerun solely for the final documentation-only closeout. The five targeted retests are a separate, narrower result. Neither result establishes security certification or formal verification.
+The P2.7/R2.7 full regression was not rerun solely for its final documentation-only closeout. The five targeted retests are narrower. The later P3 `tests_v3` result is a separate suite and must not be added to or directly trended against the historical `tests_v2 + tests_v3` result. None establishes security certification or formal verification.
 
 ## Governed READ
 
@@ -106,9 +110,13 @@ Synthetic evidence isolates runtime properties and failure handling under contro
 
 The pilot evidence is end to end in a narrower sense: a real model provider interpreted allowed state, proposed one bounded action, obtained explicit approval, and completed the governed durable path. That broader path does not invalidate the limits of the synthetic evidence or turn one pilot into a deployment claim.
 
-## Next Engineering Phase
+## Post-core P3 and external decision evidence
 
-`ModelPort` keeps provider concerns separate from execution authority, which remains with AIOS / `ExecutionEngine`. The next phase is a **provider-neutral Agent Integration Architecture**: Governed Core -> provider-neutral agent integration boundary -> external agent systems. OpenAI is the first planned external agent integration, but it is **not yet implemented**. Other agent systems may later use an appropriate boundary without changing the authority model.
+The accepted P3 native multi-agent pilot used OpenAI `gpt-5.6-sol` on a synthetic task with Coordinator, Analyst, Challenger, and Operator roles in one AIOS session/root run. It recorded 10 governed model inferences, 10 network calls, 3 governed tool calls (2 READ, 1 WRITE), zero retries, ordinary approval, one observed effect, and replay without duplicate WRITE. Its first separate attempt failed closed before READ, WRITE, or approval. The later successful pilot did not inject a live crash.
+
+A separate external model-assisted read-only technical review through Hermes with DeepSeek V4 Pro provided findings for private remediation. Hermes direct and governed A/B pilots, then an experimental Hermes-decision / AIOS-authority pilot, provide bounded evidence for the distinction between agent decision and AIOS execution authority. [Post-Core Evidence](AIOS_V3_POST_CORE_EVIDENCE.md) records the review, remediation sequence, pilots, and limits.
+
+`ModelPort` keeps provider concerns separate from AIOS / `ExecutionEngine` execution authority. Native AIOS multi-agent support and validated OpenAI model-provider use do **not** imply OpenAI Agents SDK integration; that SDK is not implemented. The Hermes decision source was an experimental adapter, not a production Hermes integration. The separate P3.6a `approval_wait_already_resumed` limitation remains open for further steps in the same root run after that wait.
 
 ## Evidence Boundary
 

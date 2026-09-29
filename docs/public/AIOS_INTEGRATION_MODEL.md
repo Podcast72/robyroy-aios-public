@@ -1,8 +1,8 @@
 # AIOS Integration Model
 
-AIOS is designed to sit between model or agent intent and operational execution. P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed. **P2.7 / R2.7 is FROZEN; the governed Core is AGENT-READY.**
+AIOS is designed to sit between model or agent intent and operational execution. P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed. **P2.7 / R2.7 remains FROZEN and AGENT-READY; P3 native multi-agent is accepted in its declared scope above that baseline.**
 
-> **Models propose. AIOS governs. AIOS executes.**
+> **Models/agents propose. AIOS governs. AIOS executes admitted actions. AIOS verifies the observed effect.**
 
 AIOS does not replace an AI model, agent framework, business application, identity system, or protected infrastructure. It provides the governed runtime path through which model calls and tool calls are admitted, executed, persisted, and result-gated.
 
@@ -27,9 +27,19 @@ The `AgentLoop` coordinates work but does not own execution authority. The provi
 Governed Core -> provider-neutral agent integration boundary -> external agent systems
 ```
 
-OpenAI is the first planned external agent integration, but it is **not yet implemented**. Other systems, such as Hermes, may later use an appropriate boundary. AIOS / `ExecutionEngine` retains execution authority. This direction does not make AIOS OpenAI-specific and is separate from the proposed Restack open kernel.
+OpenAI is the first validated model provider, not an OpenAI Agents SDK integration; that SDK remains unimplemented. A Hermes decision artifact was used experimentally to propose one action while AIOS retained execution authority. A production Hermes adapter remains unimplemented. This integration model is separate from the proposed Restack open kernel.
 
 The public diagram does not define a private API, payload schema, deployment topology, or implementation recipe.
+
+## Experimental external decision source
+
+```text
+DIRECT:   Hermes -> native tool authority -> filesystem effect
+GOVERNED: Hermes -> proposed decision -> AIOS admission/execution
+        -> effect observation -> ResultGate
+```
+
+The [bounded Hermes pilots](aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md#4-hermes-direct-and-governed-experiments) support this authority separation. They do not demonstrate a production Hermes connection. P3 native multi-agent orchestration is a separate AIOS capability.
 
 ## Illustrative Natural-Language Integration
 
@@ -126,6 +136,6 @@ AIOS does not replace:
 
 ## Public Status
 
-P0 and P1 completed in declared scopes. P2.0–P2.7 were accepted in declared scopes; R2.7 remediation and closeout completed. The latest recorded full private regression was **2510 passed, 1 skipped, 11350 subtests passed** and the targeted P2.7/R2.7 closeout retest was **5 passed**. The full regression preceded the final documentation-only closeout and was not rerun for it. No unrestricted deployment capability is claimed.
+P0 and P1 completed in declared scopes; P2.0–P2.7 and R2.7 closed in their scopes. P3 native multi-agent is accepted in its declared scope. The historical P2.7/R2.7 full gate was **2510 passed, 1 skipped, 11350 subtests passed** and its targeted closeout was **5 passed**; the separate P3 `tests_v3` gate was **1753 passed, 1 skipped, 1209 subtests passed**. No unrestricted deployment capability is claimed.
 
 The private runtime source and integration internals are not distributed here. Public materials support architecture review and bounded technical evaluation, not deployment from this repository alone.

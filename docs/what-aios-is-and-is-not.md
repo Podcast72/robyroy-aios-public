@@ -2,9 +2,9 @@
 
 ## What AIOS Is
 
-AIOS is a governed agent runtime and execution layer. V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed. **P2.7 / R2.7 is FROZEN; the governed Core is AGENT-READY.**
+AIOS is a governed agent runtime and execution layer. V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed. **P2.7 / R2.7 remains FROZEN and AGENT-READY; P3 native multi-agent is accepted in its declared scope above that baseline.**
 
-> **Models propose. AIOS governs. AIOS executes.**
+> **Models/agents propose. AIOS governs. AIOS executes admitted actions. AIOS verifies the observed effect.**
 
 The model can propose work and the `AgentLoop` can coordinate a run, but `ExecutionEngine` remains the execution authority. Governed READ and bounded governed WRITE remain separately admitted, explicit approval applies where required, conversation/session state remains separate from authoritative execution truth, and result release remains governed.
 
@@ -23,7 +23,7 @@ User
 
 This is an architecture-level description, not a public implementation map.
 
-The next phase is provider-neutral Agent Integration Architecture. OpenAI is the first planned external agent integration, not a completed one. `ModelPort` separates provider concerns from execution authority, which remains with AIOS / `ExecutionEngine`.
+P3 native multi-agent is accepted inside AIOS. OpenAI is a validated model provider, while OpenAI Agents SDK is unimplemented. Hermes was an experimental decision source, not a production connector. `ModelPort` separates provider concerns from AIOS / `ExecutionEngine` authority.
 
 ## What AIOS Evolved From
 

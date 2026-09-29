@@ -1,12 +1,12 @@
 # Limitations
 
-AIOS V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 remediation and closeout completed. **P2.7 / R2.7 is FROZEN; the governed Core is AGENT-READY.** This public repository and its evidence remain intentionally limited.
+AIOS V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 remediation and closeout completed. **P2.7 / R2.7 remains FROZEN and AGENT-READY; P3 native multi-agent is accepted in its declared scope above that baseline.** This public repository and its evidence remain intentionally limited.
 
 ## Milestone Limit
 
 The existing P0 gate results remain historical aggregate evidence. P1 and P2.0–P2.7 acceptance, governed READ, bounded governed WRITE, durable SQLite WRITE, and governed filesystem WRITE describe later named scopes. The historical focused pilot-gate **10/10 PASS** result retains its original scope.
 
-The latest recorded full private regression was **2510 passed, 1 skipped, 11350 subtests passed**. The targeted P2.7/R2.7 closeout retest was **5 passed**. The full regression preceded the final documentation-only closeout and was not rerun for it.
+The historical P2.7/R2.7 full private regression was **2510 passed, 1 skipped, 11350 subtests passed**. The targeted P2.7/R2.7 closeout retest was **5 passed**. The P2.7/R2.7 regression preceded its documentation-only closeout. The separate P3 `tests_v3` gate is reported in the P3 section below; the suites are not additive.
 
 They do not mean:
 
@@ -18,6 +18,10 @@ They do not mean:
 
 Test counts refer only to their named gates. They must not be combined into a new unique-test total.
 
+## P3 and external-agent limit
+
+P3 native multi-agent was accepted for sequential roles and one bounded live pilot; it does not prove parallel or arbitrary agent orchestration. Its `tests_v3` gate was **1753 passed, 1 skipped, 1209 subtests passed**, separate from the P2.7/R2.7 `tests_v2 + tests_v3` historical gate. The P3.6a further-step-after-wait limitation remains open. Hermes decision-source evidence is experimental, not a production connector. OpenAI Agents SDK remains unimplemented.
+
 ## Capability Limit
 
 Governed READ does not imply unrestricted state visibility. Bounded governed WRITE, including filesystem WRITE, does not imply arbitrary filesystem, database, API, or external-system mutation. The durable SQLite and filesystem results apply only to their declared admitted operations and assumptions.
@@ -26,7 +30,7 @@ Governed READ does not imply unrestricted state visibility. Bounded governed WRI
 
 One real OpenAI pilot used exact model `gpt-5.6-sol` to read allowed state, select one bounded WRITE, request explicit approval, and complete the governed end-to-end path. The focused pilot gate reported **10/10 tests PASS**.
 
-That observation is not a latency, cost, scale, availability, reliability, provider-security, or broad autonomy benchmark. It is historical evidence distinct from later accepted P2 milestones and from the planned external OpenAI Agent integration.
+That observation is not a latency, cost, scale, availability, reliability, provider-security, or broad autonomy benchmark. It is historical evidence distinct from later accepted P2 milestones and from the separate P3 native multi-agent milestone. OpenAI Agents SDK remains unimplemented.
 
 ## Persistence And Recovery Limit
 

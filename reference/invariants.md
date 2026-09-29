@@ -21,6 +21,9 @@ The public invariants are version-aware. V3 is the current source-private archit
 15. Composition must not create an alternate authority path for the agent loop, provider, or tools.
 16. Public V3 claims remain aggregate, scoped, conservative, and non-certifying.
 17. The private V3 implementation is not reconstructed in the public repository.
+18. P3 specialist delegation preserves the single AIOS execution-authority path and shared root budget.
+19. An external decision artifact cannot self-authorize a governed effect.
+20. Effect claims remain bounded by the authoritative observation and ResultGate decision.
 
 ## Preserved V2 Public Invariants
 

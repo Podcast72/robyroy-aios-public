@@ -18,7 +18,7 @@ The completed phase, in its declared scope, that extended the governed V3 path t
 
 ## P2.0 — Initial natural-language governed interaction
 
-The initial natural-language governed interaction milestone, accepted in its declared scope. The current progression reached P2.7 / R2.7; P2.0 is a historical milestone, not the latest status.
+The initial natural-language governed interaction milestone, accepted in its declared scope. The current progression includes accepted P3 native multi-agent above the frozen P2.7 / R2.7 baseline; P2.0 remains a historical milestone.
 
 ## P2.7 — Governed filesystem WRITE
 
@@ -26,7 +26,15 @@ The accepted bounded filesystem WRITE milestone. It does not imply arbitrary fil
 
 ## AGENT-READY
 
-The frozen P2.7 / R2.7 governed Core baseline for future provider-neutral agent integration engineering. It does not mean an external OpenAI Agent integration is implemented or that unrestricted production readiness has been established.
+The frozen P2.7 / R2.7 governed Core baseline on which the accepted P3 native multi-agent work was built. It does not mean OpenAI Agents SDK or production Hermes integration is implemented, or that unrestricted production readiness has been established.
+
+## P3 — Native multi-agent
+
+The accepted sequential Coordinator/Analyst/Challenger/Operator arrangement within one AIOS `AgentLoop`, session, root run, and shared budget. Specialist proposals do not acquire execution authority.
+
+## Experimental Hermes decision source
+
+A bounded Pilot 03 in which Hermes supplied a decision artifact while AIOS retained execution, approval, observation, ResultGate, and authoritative evidence. This is not a production Hermes integration.
 
 ## AgentLoop
 
