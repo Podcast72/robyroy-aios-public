@@ -16,11 +16,13 @@ AIOS V2 — Governed Execution Backbone
 -> P2.1–P2.7 — Accepted in declared scopes
 -> R2.7 — Closed; Core FROZEN / AGENT-READY
 -> P3 — Native multi-agent ACCEPTED in its declared scope
+-> EA-0A — Governed preformed proposal admission ACCEPTED
+-> EA-0B — External-host governance READ/WRITE and tested OS isolation ACCEPTED
 ```
 
 V2 remains public historical evidence. Its documentation, public mock runtime, proof tests, ANDY field tests, and public-safe validation summaries are not erased or presented as if they were V3.
 
-V3 is documented through architecture-level descriptions, claim limits, and aggregate evidence only. P2.0–P2.7 were accepted, R2.7 closed, and P3 native multi-agent was accepted in declared scopes. OpenAI model-provider use is validated. OpenAI Agents SDK and production Hermes integration are not implemented.
+V3 is documented through architecture-level descriptions, claim limits, and aggregate evidence only. P2.0–P2.7 were accepted, R2.7 closed, and P3 native multi-agent, EA-0A preformed proposal admission, and EA-0B Slices 1–3 were accepted in declared scopes. OpenAI model-provider use is validated. OpenAI Agents SDK and production Hermes integration are not implemented.
 
 ## What Is Public For V3
 
@@ -37,6 +39,7 @@ The public V3 surface includes:
 - the aggregate result of one OpenAI `gpt-5.6-sol` end-to-end pilot and its focused **10/10 PASS** gate;
 - the historical P2.7/R2.7 full private regression **2510 passed, 1 skipped, 11350 subtests passed** and targeted closeout **5 passed**, with the full regression predating the final documentation-only closeout;
 - the bounded P3 native multi-agent gate and live pilot;
+- aggregate EA-0A/EA-0B admission, external READ/WRITE, approval/resume, replay/restart, and tested macOS two-principal OS-isolation results;
 - aggregate external read-only review/remediation and Hermes direct/governed experiments;
 - explicit scope limits and non-claims.
 
@@ -58,6 +61,7 @@ Do not publish:
 - credentials or credential fragments;
 - raw audit records, logs, or traces;
 - raw Hermes proposals, evidence artifacts, and approval/RunStore databases;
+- private external-host contracts, schemas, approval references, and OS provisioning details;
 - private configuration;
 - deployment internals.
 
@@ -102,7 +106,8 @@ A public claim must not imply:
 - universal provider, capability, or deployment support;
 - arbitrary READ or WRITE access;
 - distributed exactly-once guarantees;
-- universal absence of secret leakage or bypasses.
+- universal absence of secret leakage or bypasses;
+- universal hostile-host isolation or denial on unobserved storage sidecars.
 
 ## Why The Boundary Exists
 

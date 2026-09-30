@@ -2,7 +2,7 @@
 
 ## Current Status
 
-**P2.7 / R2.7 — FROZEN · Governed Core — AGENT-READY · P3 native multi-agent ACCEPTED in its declared sequential scope.** V3 P0 and P1 completed in their declared scopes; P2.0–P2.7 were accepted and R2.7 closed in declared scopes. P3 was built and validated above that unchanged frozen baseline.
+**P2.7 / R2.7 Core FROZEN and AGENT-READY · P3 native multi-agent ACCEPTED · EA-0A and EA-0B external-host milestones ACCEPTED in declared scopes.** V3 P0 and P1 completed in their declared scopes; P2.0–P2.7 were accepted and R2.7 closed in declared scopes. P3 was built and validated above that unchanged frozen baseline.
 
 > **Models/agents propose. AIOS governs. AIOS executes admitted actions. AIOS verifies the observed effect.**
 
@@ -13,6 +13,9 @@
 | Initial governed interaction | P2.0 implemented and validated in its declared scope |
 | P2 progression | P2.1–P2.7 accepted in declared scopes; R2.7 completed |
 | P3 native multi-agent | Sequential Coordinator/Analyst/Challenger/Operator path accepted inside one AIOS root run |
+| EA-0A preformed proposal admission | Accepted; non-authoritative external proposal, zero inference |
+| EA-0B external-host boundary | Vendor-neutral contract and real process boundary; governed READ and WRITE/approval/resume accepted |
+| EA-0B tested OS isolation | macOS two-principal configuration accepted in tested scope |
 | Governed READ | Validated in a successive real-execution milestone |
 | Bounded governed WRITE | Validated with applicable authority and approval requirements |
 | Durable persistence | Bounded SQLite WRITE validated in its declared scope |
@@ -25,6 +28,7 @@
 | Historical P2.7/R2.7 `tests_v2 + tests_v3` regression | **2510 passed, 1 skipped, 11350 subtests passed** |
 | Targeted P2.7/R2.7 closeout | **5 passed** |
 | P3 `tests_v3` gate, 29 September 2026 | **1753 passed, 1 skipped, 1209 subtests passed**, exit 0 |
+| EA-0B Slice 3 canonical full-repository gate, 30 September 2026 | **2,888 collected, 2,887 passed, 1 skipped, 0 failed/errors, 12,407 subtests passed** |
 | Public distribution | Documentation and minimal V2 demonstrations only; private V3 runtime not distributed |
 
 ## Current Claim Boundary
@@ -41,9 +45,12 @@ The public material may state that:
 - the historical P2.7/R2.7 `tests_v2 + tests_v3` regression reported **2510 passed, 1 skipped, 11350 subtests passed**;
 - the targeted P2.7/R2.7 closeout retest reported **5 passed** for relevant filesystem ambiguity/recovery and result-exposure properties;
 - P3 native sequential multi-agent was accepted with one bounded live pilot and a separate `tests_v3` gate of **1753 passed, 1 skipped, 1209 subtests passed**;
-- the Hermes direct/governed experiment and experimental decision-source pilot support a bounded agent-decision / AIOS-authority distinction.
+- the Hermes direct/governed experiment and experimental decision-source pilot support a bounded agent-decision / AIOS-authority distinction;
+- EA-0A admitted preformed proposals with zero inference while preserving the Core authority model;
+- EA-0B accepted a vendor-neutral external process boundary, governed READ, governed WRITE with authoritative approval/resume, and replay/restart behavior in tested scope;
+- a macOS two-principal pilot observed OS denial of direct host access to the protected resources covered by the test, while governed READ/WRITE continued through EA-0B.
 
-The historical P2.7/R2.7 full regression preceded its documentation-only closeout. The P3 gate covered a different suite and date; counts are not additive.
+The historical P2.7/R2.7 full regression preceded its documentation-only closeout. The P3 and EA-0B gates covered different suites and dates; counts are not additive. [External Host Evidence](AIOS_V3_EXTERNAL_HOST_EVIDENCE.md) records the EA-0B gate and bounded OS result.
 
 ## P2 Progression Posture
 
@@ -53,6 +60,10 @@ P2.7 / R2.7 is frozen and the governed Core is agent-ready in its declared scope
 
 P3 native multi-agent is accepted for sequential roles in one AIOS root run and one synthetic-task live pilot. OpenAI is a validated model provider, while OpenAI Agents SDK is not implemented. Hermes supplied an experimental decision artifact; no production Hermes integration is claimed. The separate P3.6a `approval_wait_already_resumed` limitation remains open for further steps after that wait in the same root run. See [Post-Core Evidence](AIOS_V3_POST_CORE_EVIDENCE.md).
 
+## External Host Progression Posture
+
+EA-0A and EA-0B are accepted in their declared scopes. The external host proposes; AIOS keeps policy, capability, budget, approval, execution, recovery, and outward-result authority. In the tested macOS two-principal configuration, direct host access to the protected AIOS resources covered by the pilot was denied. This is scope-bound evidence, not general hostile-process containment.
+
 ## Limits And Non-Claims
 
 This public status does not claim:
@@ -60,13 +71,18 @@ This public status does not claim:
 - production readiness or release readiness for unrestricted deployment;
 - security certification, penetration-test certification, or formal verification;
 - that all providers, tools, integrations, or environments are supported;
-- that OpenAI Agents SDK or production Hermes integration is implemented;
+- that OpenAI Agents SDK, production Hermes/Codex/OpenCode/Anthropic adapters, or MCP integration is implemented;
+- universal external-agent compatibility or universal provider support;
+- a universal sandbox, general hostile-process containment, or protection against root/admin compromise or kernel exploits;
+- correctness for every filesystem or storage configuration;
+- universal crash recovery;
 - that the external Hermes/DeepSeek read-only review is a security certification, penetration-test certification, formal verification, or independent commercial certification;
 - that every possible failure, bypass, or adversarial condition has been eliminated;
 - arbitrary READ or WRITE access outside the admitted capability scope;
 - arbitrary filesystem, database, or API WRITE;
 - universal persistence or transactional guarantees;
 - distributed exactly-once behavior or independent multi-host correctness;
+- verified access denial for existing SQLite WAL/SHM/journal sidecars at the final EA-0B checkpoint, because none was present;
 - correctness after loss or corruption of authoritative persistence;
 - that no secret could ever leak under a different configuration or threat model;
 - that the public mock runtime is the private V3 runtime.

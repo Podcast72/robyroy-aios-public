@@ -1,6 +1,6 @@
 # Current Implemented Layers
 
-This page separates the source-private V3 architecture and capability evidence from the preserved V2 public demonstration surface. **P2.7 / R2.7 remains FROZEN and AGENT-READY; P3 native multi-agent is accepted in its declared scope above that baseline.** Status terms describe declared validation scopes, not unrestricted production readiness.
+This page separates the source-private V3 architecture and capability evidence from the preserved V2 public demonstration surface. **P2.7 / R2.7 remains FROZEN and AGENT-READY; P3 native multi-agent, EA-0A proposal admission, and EA-0B external-host governance are accepted in their declared scopes above that baseline.** Status terms describe declared validation scopes, not unrestricted production readiness.
 
 ## Current Private V3 Layers And Capabilities
 
@@ -20,11 +20,13 @@ This page separates the source-private V3 architecture and capability evidence f
 | Structured trace / audit | Aggregate evidence confirms reviewable governed execution | Preserves evidence for review | Raw audit, log, and trace material is private |
 | Recovery / replay / resume | Verified in the declared synthetic scope | Replays terminal truth and stops uncertain effects | No universal exactly-once claim |
 | Native multi-agent | P3 accepted in declared sequential scope | Coordinates specialists within one AIOS root run | Delegation does not grant execution authority |
+| Preformed proposal admission | EA-0A accepted in declared scope | Admits an already formed external proposal | Proposal does not carry authority |
+| External Host Boundary | EA-0B READ/WRITE and tested OS isolation accepted in declared scopes | Connects an external process to governed execution | External host cannot self-approve or execute through this path |
 | Composition Root | P0 assembly foundation completed | Wires the runtime so authority boundaries remain explicit | Source, configuration, and trust-boundary details remain private |
 
 Historical P0 persistence/reopen/replay/resume evidence remains synthetic and scope-bound. Later accepted milestones add scoped effect reconciliation, durable evidence, and governed filesystem WRITE. They do not create a universal recovery or exactly-once claim.
 
-P2.0–P2.7 were accepted and R2.7 closed in declared scopes. P3 native multi-agent is accepted above the frozen Core. OpenAI is a validated model provider, while OpenAI Agents SDK and production Hermes integration remain unimplemented. [Post-Core Evidence](public/aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md) summarizes the bounded results.
+P2.0–P2.7 were accepted and R2.7 closed in declared scopes. P3 native multi-agent, EA-0A, and EA-0B are accepted above the frozen Core in declared scopes. OpenAI is a validated model provider, while OpenAI Agents SDK and production Hermes integration remain unimplemented. [Post-Core Evidence](public/aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md) preserves the P3 and Hermes record; [External Host Evidence](public/aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md) summarizes the later bounded external-host results.
 
 ## Preserved V2 Public Layers
 

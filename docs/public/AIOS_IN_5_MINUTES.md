@@ -2,7 +2,7 @@
 
 ## 1. What AIOS is now
 
-AIOS is a governed agent runtime and execution layer. V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed. **P2.7 / R2.7 remains FROZEN and AGENT-READY; P3 native multi-agent is accepted in its declared scope above that baseline.**
+AIOS is a governed agent runtime and execution layer. V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed. **P2.7 / R2.7 remains FROZEN and AGENT-READY; P3 native multi-agent, EA-0A admission, and EA-0B external-host governance are accepted in their declared scopes above that baseline.**
 
 > **Models/agents propose. AIOS governs. AIOS executes admitted actions. AIOS verifies the observed effect.**
 
@@ -20,11 +20,13 @@ AIOS V2 — Governed Execution Backbone
 -> P2.1–P2.7 — Accepted in declared scopes
 -> R2.7 — Closed; Core FROZEN / AGENT-READY
 -> P3 — Native multi-agent ACCEPTED in its declared scope
+-> EA-0A — Governed preformed proposal admission ACCEPTED
+-> EA-0B — External-host governance READ/WRITE and tested OS isolation ACCEPTED
 ```
 
 V2 made the governed tool-execution path explicit and publicly testable. P0 carried that principle into the agent loop and model-provider path. P1 validated governed READ, bounded governed WRITE, and durable SQLite WRITE in successive declared scopes.
 
-P3 implemented native sequential multi-agent orchestration within AIOS. OpenAI is a validated model provider, while OpenAI Agents SDK remains unimplemented. An experimental Hermes decision source was tested separately; it is not a production integration.
+P3 implemented native sequential multi-agent orchestration within AIOS. OpenAI is a validated model provider, while OpenAI Agents SDK remains unimplemented. An experimental Hermes decision source was tested separately; it is not a production integration. EA-0B separately lets an external process propose bounded READ/WRITE through AIOS while AIOS retains approval, execution, replay, recovery, and result authority. In a tested macOS two-principal configuration, direct host access to the protected AIOS resources covered by the pilot was denied. See [External Host Evidence](aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md).
 
 ## 3. The problem
 
@@ -109,6 +111,9 @@ One observed OpenAI `gpt-5.6-sol` pilot connected natural-language interpretatio
 | Targeted P2.7/R2.7 closeout retest | **5 passed** |
 | P3 native multi-agent pilot | One governed effect in a sequential specialist run |
 | P3 `tests_v3` gate | **1753 passed, 1 skipped, 1209 subtests passed** |
+| EA-0A preformed proposal admission | Accepted with zero inference and AIOS authority retained |
+| EA-0B external READ/WRITE and tested OS isolation | Accepted in declared scopes |
+| EA-0B Slice 3 canonical full-repository gate | **2,888 collected, 2,887 passed, 1 skipped, 0 failed/errors, 12,407 subtests passed** |
 
 The P2.7/R2.7 full regression preceded its documentation-only closeout. The separate P3 `tests_v3` gate reported **1753 passed, 1 skipped, 1209 subtests passed** after its live pilot; the two scopes must not be combined.
 
@@ -122,7 +127,7 @@ The two evidence types answer different questions. Neither establishes universal
 
 ## 9. Post-core experiments and limits
 
-The [Post-Core Evidence](aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md) summarizes the external read-only Hermes/DeepSeek review, remediation, P3 live multi-agent pilot, and the Hermes direct-versus-governed experiments. The Hermes decision-source adapter is experimental; OpenAI Agents SDK is not implemented.
+The [Post-Core Evidence](aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md) summarizes the external read-only Hermes/DeepSeek review, remediation, P3 live multi-agent pilot, and the Hermes direct-versus-governed experiments. The Hermes decision-source adapter is experimental; OpenAI Agents SDK is not implemented. EA-0B is a vendor-neutral boundary, not a ready-made vendor adapter or security certification.
 
 ## 10. Historical V2 public surface
 

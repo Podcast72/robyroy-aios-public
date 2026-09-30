@@ -18,7 +18,7 @@ The completed phase, in its declared scope, that extended the governed V3 path t
 
 ## P2.0 — Initial natural-language governed interaction
 
-The initial natural-language governed interaction milestone, accepted in its declared scope. The current progression includes accepted P3 native multi-agent above the frozen P2.7 / R2.7 baseline; P2.0 remains a historical milestone.
+The initial natural-language governed interaction milestone, accepted in its declared scope. The current progression includes accepted P3 native multi-agent, EA-0A, and EA-0B above the frozen P2.7 / R2.7 baseline; P2.0 remains a historical milestone.
 
 ## P2.7 — Governed filesystem WRITE
 
@@ -31,6 +31,14 @@ The frozen P2.7 / R2.7 governed Core baseline on which the accepted P3 native mu
 ## P3 — Native multi-agent
 
 The accepted sequential Coordinator/Analyst/Challenger/Operator arrangement within one AIOS `AgentLoop`, session, root run, and shared budget. Specialist proposals do not acquire execution authority.
+
+## EA-0A — Preformed proposal admission
+
+Accepted admission of already formed, non-authoritative proposals through existing AIOS governance, without model inference in that path.
+
+## EA-0B — External Host Boundary
+
+Accepted vendor-neutral external process boundary for governed READ, approval-bound WRITE/resume, and tested macOS two-principal isolation in declared scopes. It is not a ready-made vendor adapter, universal sandbox, or exactly-once guarantee.
 
 ## Experimental Hermes decision source
 

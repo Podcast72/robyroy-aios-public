@@ -24,11 +24,12 @@ Read:
 
 1. [AIOS V3 Current Evidence](docs/public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md)
 2. [AIOS V3 Post-Core Evidence](docs/public/aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md)
-3. [AIOS V3 Status and Limits](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md)
+3. [External Host Evidence](docs/public/aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md)
+4. [AIOS V3 Status and Limits](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md)
 
-Together they distinguish the frozen core, P3 native multi-agent, the separate P2 and P3 pilots, external read-only review, Hermes experiments, and explicit limits.
+Together they distinguish the frozen core, P3 native multi-agent, EA-0A/EA-0B external-host governance, separate P2/P3/EA-0B gates, Hermes experiments, and explicit limits.
 
-The current status is **P2.7 / R2.7 FROZEN; Governed Core AGENT-READY; P3 native multi-agent accepted in its declared scope**. OpenAI is a validated model provider. OpenAI Agents SDK is unimplemented; Hermes decision-source evidence is experimental.
+The current status is **P2.7 / R2.7 Core FROZEN and AGENT-READY; P3 native multi-agent, EA-0A proposal admission, and EA-0B external-host governance accepted in their declared scopes**. OpenAI is a validated model provider. OpenAI Agents SDK is unimplemented; Hermes decision-source evidence is experimental.
 
 ### Technical deep dive
 
@@ -69,6 +70,9 @@ Public-safe aggregate evidence supports the following bounded statements:
 - the targeted P2.7/R2.7 closeout retest reported **5 passed**;
 - the separate P3 `tests_v3` gate reported **1753 passed, 1 skipped, 1209 subtests passed**;
 - the P3 live pilot observed sequential specialist roles, ordinary approval, one effect, and no duplicate effect on replay;
+- EA-0A admitted non-authoritative preformed proposals with zero inference;
+- EA-0B tested governed external READ, WRITE with AIOS approval/resume, replay/restart, and a macOS two-principal hostile probe in its bounded scope;
+- the final EA-0B Slice 3 canonical full-repository gate recorded **2,888 collected, 2,887 passed, 1 skipped, 0 failed/errors, 12,407 subtests passed**;
 - the Hermes A/B and Pilot 03 experiments support the bounded decision/authority separation described in [Post-Core Evidence](docs/public/aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md).
 
 The full regression preceded the final documentation-only closeout and was not rerun merely for documentation changes. The targeted retests covered relevant filesystem ambiguity/recovery and result-exposure properties at an aggregate level.
@@ -83,7 +87,8 @@ The published evidence does not establish:
 - universal provider, model, tool, integration, or environment support;
 - universal prevention of duplicate external effects;
 - distributed exactly-once semantics or independent multi-host correctness;
-- that OpenAI Agents SDK or production Hermes integration is implemented;
+- that OpenAI Agents SDK, production Hermes/Codex/OpenCode adapters, or MCP integration is implemented;
+- universal sandboxing, hostile-process containment, or resistance to root/admin compromise;
 - that the external read-only model-assisted review is a certification.
 
 ## What Is Public And What Remains Private

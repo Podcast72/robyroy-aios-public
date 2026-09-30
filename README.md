@@ -20,7 +20,7 @@ Across the V3 capabilities completed within their declared scopes:
 - persistence, replay, reopen, and resume remain limited to their verified identity and persistence scope;
 - `ResultGate` controls outward result release.
 
-The model can propose work. It cannot make its proposal self-authorizing.
+The model or an external host can propose work. Neither can make its proposal self-authorizing.
 
 ## What AIOS Actually Does
 
@@ -44,6 +44,18 @@ AIOS  -> verifies what actually happened -> ResultGate -> RESULT
 | `TrustPlane` / `RunStore` | Keep host authority separate from agent claims and preserve authoritative execution truth. |
 | Effect observation / `ResultGate` | Check the observed effect before releasing a success result. |
 | Recovery / replay / session checkpoint | Pause or resume bounded work conservatively without blind duplicate execution. |
+
+## External Agent / Host Governance
+
+AIOS now has accepted, bounded evidence for a vendor-neutral external-host boundary. An external process may submit scoped READ or WRITE proposals; AIOS retains policy, capability, budget, approval, execution, replay, recovery, and result-release authority. The external host remains a proposer, including when it supplies provenance or resumes a pending action.
+
+```text
+external agent / harness → proposal → AIOS external-host boundary
+                                   → governed Core → ExecutionEngine
+                                   → observed effect / ResultGate
+```
+
+EA-0A admitted preformed proposals without model inference. EA-0B then validated external READ, approval-bound WRITE and replay/restart behavior; Slice 3 added a tested macOS two-principal isolation boundary. These milestones are accepted in their declared scopes and do not establish unrestricted production readiness or universal security. **[Read the External Host Evidence →](docs/public/aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md)**
 
 **Hermes A/B example:** `Hermes -> native tool authority -> filesystem effect` in the direct pilot. In the governed experiment, `Hermes -> proposed decision -> AIOS governance -> admitted execution -> effect observation -> ResultGate`. An external agent can supply the decision while AIOS retains execution authority and verifies the admitted effect. **This is experimental integration evidence, not a production Hermes integration.** [Read the scoped post-core evidence](docs/public/aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md).
 
@@ -88,8 +100,10 @@ The current public evidence is deliberately aggregate.
 - The later P3 native multi-agent pilot used the same model on a synthetic task with sequential specialist roles, ordinary approval, and one effect without duplication on replay.
 - The historical P2.7/R2.7 `tests_v2 + tests_v3` gate reported **2510 passed, 1 skipped, 11350 subtests passed**; its targeted closeout reported **5 passed**.
 - P3 native multi-agent is accepted in its declared scope; its later `tests_v3` gate reported **1753 passed, 1 skipped, 1209 subtests passed**.
+- EA-0A preformed proposal admission and EA-0B external READ, WRITE/approval/resume, and tested macOS two-principal isolation were accepted in declared scopes.
+- The latest EA-0B Slice 3 canonical full-repository gate recorded **2,888 collected, 2,887 passed, 1 skipped, 0 failed/errors, 12,407 subtests passed**.
 
-The P2 pilot and later P3 multi-agent pilot are separate observed runs, not reliability benchmarks or broad deployment claims. See [Post-Core Evidence](docs/public/aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md), [Current Evidence](docs/public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md), and [Status and Limits](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md).
+The P2 pilot, later P3 multi-agent pilot, and EA-0B external-host pilots are separate observed runs, not reliability benchmarks or broad deployment claims. See [Post-Core Evidence](docs/public/aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md), [Current Evidence](docs/public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md), and [Status and Limits](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md).
 
 ## V2 Historical Evidence Preserved
 
@@ -126,9 +140,9 @@ This repository is the public technical documentation and demonstration package 
 
 ## Current Status
 
-**P2.7 / R2.7 — FROZEN · Governed Core — AGENT-READY · P3 native multi-agent ACCEPTED**
+**P2.7 / R2.7 Core FROZEN and AGENT-READY · P3 native multi-agent ACCEPTED · EA-0A proposal admission ACCEPTED · EA-0B external-host governance ACCEPTED in tested scope**
 
-AIOS V3 completed P0, P1, and P2.0–P2.7 in their declared scopes. The P2.7/R2.7 governed Core remains frozen. **P3 native multi-agent is now accepted in its declared sequential scope** above that baseline. OpenAI is a validated model provider; OpenAI Agents SDK integration remains unimplemented. Hermes was tested as an experimental decision source, without production integration.
+AIOS V3 completed P0, P1, and P2.0–P2.7 in their declared scopes. The P2.7/R2.7 governed Core remains frozen. **P3 native multi-agent is accepted in its declared sequential scope** above that baseline. OpenAI is a validated model provider; OpenAI Agents SDK integration remains unimplemented. Hermes was tested as an experimental decision source, without production integration. EA-0A admits already formed external proposals as non-authoritative. EA-0B validates a vendor-neutral external process boundary for governed READ and WRITE, with tested macOS two-principal isolation.
 
 | Signal | Public-safe result |
 | --- | --- |
@@ -140,16 +154,19 @@ AIOS V3 completed P0, P1, and P2.0–P2.7 in their declared scopes. The P2.7/R2.
 | Targeted P2.7/R2.7 closeout retest | **5 passed** |
 | P3 native multi-agent | Accepted; one synthetic-task live pilot with 10 governed inferences, 10 network calls, 3 governed tool calls, 0 retries, and one effect |
 | P3 `tests_v3` gate (29 September 2026) | **1753 passed, 1 skipped, 1209 subtests passed** |
+| EA-0A external preformed proposal admission | Accepted; zero inference in the admitted proposal path |
+| EA-0B external-host boundary | READ and approval-bound WRITE accepted; tested macOS two-principal isolation |
+| EA-0B Slice 3 full-repository gate (30 September 2026) | **2,888 collected; 2,887 passed; 1 skipped; 0 failed/errors; 12,407 subtests passed** |
 | Recovery posture | Fail-closed; `UNKNOWN_EFFECT` blocks blind retry |
 | Governed Core | **P2.7 / R2.7 FROZEN · AGENT-READY** |
 
 The historical P2.7/R2.7 full regression preceded the final documentation-only closeout; it was not rerun for documentation changes. The targeted retests covered relevant filesystem ambiguity/recovery and result-exposure properties. These are aggregate, scope-bound results.
 
-These results do not establish unrestricted production readiness, security certification, formal verification, universal provider support, or distributed exactly-once semantics.
+The P2, P3, and EA-0B gates are separate runs with different scope and counts. These results do not establish unrestricted production readiness, security certification, formal verification, universal provider support, universal hostile-host containment, or distributed exactly-once semantics.
 
 ### Where to go next
 
-[Evaluator guide](FOR_EVALUATORS.md) · [AIOS in 5 minutes](docs/public/AIOS_IN_5_MINUTES.md) · [V3 index](docs/public/aios-v3/README.md) · [Post-core evidence](docs/public/aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md) · [Current evidence](docs/public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md) · [Architecture](docs/public/aios-v3/AIOS_V3_ARCHITECTURE.md) · [Status and limits](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md) · [Integration model](docs/public/AIOS_INTEGRATION_MODEL.md) · [Roadmap](docs/roadmap.md)
+[Evaluator guide](FOR_EVALUATORS.md) · [AIOS in 5 minutes](docs/public/AIOS_IN_5_MINUTES.md) · [V3 index](docs/public/aios-v3/README.md) · [Post-core evidence](docs/public/aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md) · [External Host Evidence](docs/public/aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md) · [Current evidence](docs/public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md) · [Architecture](docs/public/aios-v3/AIOS_V3_ARCHITECTURE.md) · [Status and limits](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md) · [Integration model](docs/public/AIOS_INTEGRATION_MODEL.md) · [Roadmap](docs/roadmap.md)
 
 ## Proposed Restack Project — Separate Open Kernel
 
@@ -175,6 +192,7 @@ These are controlled V2 field-test snapshots, not production-readiness or securi
 
 | Area | Link |
 | --- | --- |
+| External agent / host governance | [AIOS_V3_EXTERNAL_HOST_EVIDENCE.md](docs/public/aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md) |
 | Proposed Restack project boundary | [Open Governed Capability Execution Kernel](docs/public/restack/OPEN_GOVERNED_CAPABILITY_EXECUTION_KERNEL.md) |
 | Evaluator guide | [FOR_EVALUATORS.md](FOR_EVALUATORS.md) |
 | AIOS in 5 minutes | [docs/public/AIOS_IN_5_MINUTES.md](docs/public/AIOS_IN_5_MINUTES.md) |
@@ -277,7 +295,7 @@ The existing presentation is an AIOS V2 historical artifact. It explains the gov
 
 ## Status
 
-The current public narrative retains **P2.7 / R2.7 FROZEN** and **Governed Core AGENT-READY** as the baseline, then records **P3 native multi-agent accepted** in its declared scope. OpenAI model-provider use is validated; OpenAI Agents SDK and production Hermes integration are not implemented.
+The current public narrative retains **P2.7 / R2.7 FROZEN** and **Governed Core AGENT-READY** as the baseline, followed by **P3 native multi-agent, EA-0A proposal admission, and EA-0B external-host governance accepted in their declared scopes**. OpenAI model-provider use is validated; OpenAI Agents SDK and production Hermes integration are not implemented.
 
 The public repository remains a documentation and demonstration package, not a V3 runtime distribution. V2 evidence remains historical and testable. V3 implementation and validation internals remain private.
 

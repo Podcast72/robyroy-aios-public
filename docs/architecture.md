@@ -14,9 +14,11 @@ AIOS V2 — Governed Execution Backbone
 -> P2.1–P2.7 — Accepted in declared scopes
 -> R2.7 — Closed; Core FROZEN / AGENT-READY
 -> P3 — Native multi-agent ACCEPTED in its declared scope
+-> EA-0A — Governed preformed proposal admission ACCEPTED
+-> EA-0B — External-host governance READ/WRITE and tested OS isolation ACCEPTED
 ```
 
-P0 and P1 completed in their declared scopes. P2.0–P2.7 were accepted and R2.7 closed in declared scopes. P3 native multi-agent is accepted above the frozen Core. OpenAI model-provider use is validated; OpenAI Agents SDK is not implemented. Hermes was tested as an experimental decision source, not a production integration.
+P0 and P1 completed in their declared scopes. P2.0–P2.7 were accepted and R2.7 closed in declared scopes. P3 native multi-agent, EA-0A, and EA-0B are accepted above the frozen Core in declared scopes. OpenAI model-provider use is validated; OpenAI Agents SDK is not implemented. Hermes was tested as an experimental decision source, not a production integration.
 
 ## Current V3 Architecture
 
@@ -58,7 +60,7 @@ The public architecture describes these properties without exposing their privat
 - persistence and recovery claims do not establish distributed exactly-once semantics;
 - executable identity, accounting, credential egress, content provenance, and result release remain governed.
 
-P3 native specialists share the governed Core and one root budget. The Hermes experimental decision-source pilot showed an external proposal admitted and executed by AIOS, while AIOS / `ExecutionEngine` remained authoritative. See [Post-Core Evidence](public/aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md).
+P3 native specialists share the governed Core and one root budget. The Hermes experimental decision-source pilot showed an external proposal admitted and executed by AIOS, while AIOS / `ExecutionEngine` remained authoritative. See [Post-Core Evidence](public/aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md) for P3/Hermes history and [External Host Evidence](public/aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md) for the later external-host boundary.
 
 ## Historical V2 Public Backbone
 

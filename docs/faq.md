@@ -2,7 +2,7 @@
 
 ## What is AIOS now?
 
-AIOS is a governed agent runtime and execution layer. V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed. **P2.7 / R2.7 remains FROZEN and AGENT-READY; P3 native multi-agent is accepted in its declared scope above that baseline.**
+AIOS is a governed agent runtime and execution layer. V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed. **P2.7 / R2.7 remains FROZEN and AGENT-READY; P3 native multi-agent, EA-0A proposal admission, and EA-0B external-host governance are accepted in their declared scopes above that baseline.**
 
 > **Models/agents propose. AIOS governs. AIOS executes admitted actions. AIOS verifies the observed effect.**
 
@@ -68,6 +68,10 @@ No. P3 uses AIOS native sequential specialist roles within one root run. It did 
 ## What did the Hermes experiments show?
 
 The direct pilot let Hermes use its own tools to create an effect outside AIOS. In the governed experiments Hermes proposed a decision while AIOS admitted, executed, observed, and result-gated the effect. This is bounded experimental evidence, not production Hermes integration or certification.
+
+## Can an external agent use AIOS today?
+
+EA-0A admitted already formed proposals without giving the proposer authority. EA-0B accepted a vendor-neutral external process boundary for scoped READ and approval-bound WRITE. A tested macOS two-principal configuration denied direct host access to the protected AIOS resources in the pilot. This is a bounded boundary result; production Hermes/Codex/OpenCode adapters, MCP integration, universal compatibility, and security certification are not claimed. See [External Host Evidence](public/aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md).
 
 ## What does UNKNOWN_EFFECT mean?
 

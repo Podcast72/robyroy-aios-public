@@ -1,6 +1,6 @@
 # Roadmap
 
-The governed Core reached **P2.7 / R2.7 FROZEN** and is **AGENT-READY**. V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 remediation and closeout completed. P3 native multi-agent is accepted above that frozen baseline. AIOS V2 remains the historical governed-execution backbone.
+The governed Core reached **P2.7 / R2.7 FROZEN** and is **AGENT-READY**. V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 remediation and closeout completed. P3 native multi-agent, EA-0A preformed proposal admission, and EA-0B external-host governance are accepted above that frozen baseline in their declared scopes. AIOS V2 remains the historical governed-execution backbone.
 
 ## Completed Milestones
 
@@ -33,6 +33,10 @@ P2.1–P2.7 accepted governed WRITE approval, OpenAI live runtime, canonical act
 ## P3 — Native Multi-Agent
 
 Accepted in its declared sequential scope at `P3_NATIVE_MULTI_AGENT_LIVE_ACCEPTED`. The bounded live pilot exercised Coordinator, Analyst, Challenger, and Operator with one governed effect. The separate P3 `tests_v3` gate reported **1753 passed, 1 skipped, 1209 subtests passed**. [Post-Core Evidence](public/aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md) gives the limits.
+
+## EA-0A and EA-0B — External Host Governance
+
+EA-0A accepted non-authoritative preformed proposals. EA-0B accepted a vendor-neutral external process boundary for governed READ, WRITE with AIOS approval/resume, and tested macOS two-principal isolation. See [External Host Evidence](public/aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md) for aggregate evidence and limits. Vendor-specific adapters and MCP integration remain future work.
 
 ## Near-Term Public Work
 

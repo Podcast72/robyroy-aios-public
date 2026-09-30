@@ -1,6 +1,6 @@
 # AIOS V3 Current Evidence
 
-This is the canonical aggregate, public-safe record of AIOS V3 progression through P3 as of 29 September 2026. The P2.7 / R2.7 governed-core baseline remains frozen and valid. It does not publish private source, tests, schemas, traces, credentials, local paths, authority mechanisms, or adversarial procedures.
+This is the canonical aggregate, public-safe record of AIOS V3 progression through EA-0B Slice 3 as of 30 September 2026. The P2.7 / R2.7 governed-core baseline remains frozen and valid. It does not publish private source, tests, schemas, traces, credentials, local paths, authority mechanisms, or adversarial procedures.
 
 ## Milestone Narrative
 
@@ -13,9 +13,13 @@ V2 — Governed Execution Backbone
 -> R2.7 — Remediation and closeout completed
 -> Governed Core — FROZEN / AGENT-READY
 -> P3 native multi-agent — ACCEPTED in its declared sequential scope
+-> EA-0A — Governed preformed proposal admission ACCEPTED
+-> EA-0B Slice 1 — External governed READ ACCEPTED
+-> EA-0B Slice 2 — External governed WRITE/approval/resume ACCEPTED
+-> EA-0B Slice 3 — Tested macOS two-principal isolation ACCEPTED
 ```
 
-V3 P0 and P1 completed in their declared scopes. P2.0–P2.7 were accepted in declared scopes. P2.7 / R2.7 remains **FROZEN**, and the governed Core remains **AGENT-READY**. P3 native multi-agent is accepted in its declared sequential scope above that baseline. Neither status establishes unrestricted deployment readiness.
+V3 P0 and P1 completed in their declared scopes. P2.0–P2.7 were accepted in declared scopes. P2.7 / R2.7 remains **FROZEN**, and the governed Core remains **AGENT-READY**. P3 native multi-agent, EA-0A, and EA-0B Slices 1–3 are accepted in their declared scopes above that baseline. These statuses do not establish unrestricted deployment readiness.
 
 ## P2 Milestone Record
 
@@ -31,6 +35,10 @@ V3 P0 and P1 completed in their declared scopes. P2.0–P2.7 were accepted in de
 | P2.7 — Governed filesystem WRITE | Accepted in bounded declared scope |
 | R2.7 — Remediation and closeout | Completed; Core frozen and agent-ready |
 | P3 — Native multi-agent | Sequential specialist roles accepted inside one AIOS root run; authority remains with AIOS |
+| EA-0A — Preformed proposal admission | External proposal admitted as non-authoritative; existing governance retained with zero inference |
+| EA-0B Slice 1 — External READ | Vendor-neutral external process boundary, durable proposal binding, observational status, one observed READ dispatch |
+| EA-0B Slice 2 — External WRITE | Durable approval wait, AIOS-only approval, identity-based resume, one observed dispatch |
+| EA-0B Slice 3 — Tested OS isolation | Two-principal macOS pilot; tested direct bypass denied and governed READ/WRITE retained |
 
 These names state architectural outcomes, not private implementation procedures.
 
@@ -51,8 +59,12 @@ These names state architectural outcomes, not private implementation procedures.
 | Targeted P2.7/R2.7 closeout | **5 passed** | Focused filesystem ambiguity/recovery and result-exposure properties |
 | P3 targeted multi-agent gate, 29 September 2026 | **164 passed, 77 subtests passed** | Slice 1–4 and related focused families |
 | P3 `tests_v3` gate, 29 September 2026 | **1753 passed, 1 skipped, 1209 subtests passed**, exit 0 | Post-pilot final runtime/test tree; different suite from historical P2.7/R2.7 gate |
+| EA-0A governed admission | Preformed READ and approval-bound WRITE/replay with zero inference | Existing Core authority; no external gateway yet |
+| EA-0B Slice 1 full-repository gate | **2,843 collected, 2,842 passed, 1 skipped, 12,240 subtests passed** | External READ; separate private run |
+| EA-0B Slice 2 full-repository gate | **2,880 collected, 2,879 passed, 1 skipped, 12,282 subtests passed** | External WRITE/approval/resume; separate private run |
+| **EA-0B Slice 3 canonical full-repository gate, 30 September 2026** | **2,888 collected, 2,887 passed, 1 skipped, 0 failed/errors, 12,407 subtests passed** | Latest complete private gate; 469 monitored source/test files byte-stable |
 
-The P2.7/R2.7 full regression was not rerun solely for its final documentation-only closeout. The five targeted retests are narrower. The later P3 `tests_v3` result is a separate suite and must not be added to or directly trended against the historical `tests_v2 + tests_v3` result. None establishes security certification or formal verification.
+The P2.7/R2.7 full regression was not rerun solely for its final documentation-only closeout. The five targeted retests are narrower. The later P3 `tests_v3` result is a separate suite and must not be added to or directly trended against the historical `tests_v2 + tests_v3` result. The EA-0B full-repository gates are later private runs and are not additive with the P2 or P3 gates. The Slice 3 canonical gate followed a separately recorded sandbox-environment failure; that earlier run is not a passing gate. None establishes security certification or formal verification.
 
 ## Governed READ
 
@@ -117,6 +129,12 @@ The accepted P3 native multi-agent pilot used OpenAI `gpt-5.6-sol` on a syntheti
 A separate external model-assisted read-only technical review through Hermes with DeepSeek V4 Pro provided findings for private remediation. Hermes direct and governed A/B pilots, then an experimental Hermes-decision / AIOS-authority pilot, provide bounded evidence for the distinction between agent decision and AIOS execution authority. [Post-Core Evidence](AIOS_V3_POST_CORE_EVIDENCE.md) records the review, remediation sequence, pilots, and limits.
 
 `ModelPort` keeps provider concerns separate from AIOS / `ExecutionEngine` execution authority. Native AIOS multi-agent support and validated OpenAI model-provider use do **not** imply OpenAI Agents SDK integration; that SDK is not implemented. The Hermes decision source was an experimental adapter, not a production Hermes integration. The separate P3.6a `approval_wait_already_resumed` limitation remains open for further steps in the same root run after that wait.
+
+## External Agent / Host Evidence
+
+EA-0A admitted preformed external proposals as proposals, preserving AIOS authority and the existing governed path with zero inference. EA-0B added a vendor-neutral external process boundary. Slice 1 observed one governed READ dispatch and historical result replay after restart rather than a fresh target read. Slice 2 observed zero dispatch before AIOS approval, then one governed WRITE dispatch after resume of the same durable action; replay remained safe in the tested scope and canonical target drift was blocked. Slice 3 tested two distinct macOS OS principals: direct access to protected AIOS resources in the pilot was denied, while governed READ and WRITE remained available through EA-0B. The final probe observed 487 denied operations and an unchanged protected tree; a 31-file/60-value leakage audit found no leakage. This is a bounded configuration claim, not a universal sandbox or exactly-once claim. See [External Host Evidence](AIOS_V3_EXTERNAL_HOST_EVIDENCE.md).
+
+The earlier Hermes experiments in [Post-Core Evidence](AIOS_V3_POST_CORE_EVIDENCE.md) remain distinct from EA-0B; they do not constitute a production Hermes adapter.
 
 ## Evidence Boundary
 

@@ -1,6 +1,6 @@
 # AIOS V3 Architecture
 
-AIOS V3 is a governed agent runtime in which the model can propose work but cannot grant itself execution authority. P0 and P1 completed in declared scopes; P2.0–P2.7 were accepted in declared scopes; R2.7 closeout completed. **P2.7 / R2.7 remains FROZEN and AGENT-READY; P3 native multi-agent is accepted in its declared scope above that baseline.**
+AIOS V3 is a governed agent runtime in which the model can propose work but cannot grant itself execution authority. P0 and P1 completed in declared scopes; P2.0–P2.7 were accepted in declared scopes; R2.7 closeout completed. **P2.7 / R2.7 remains FROZEN and AGENT-READY; P3 native multi-agent, EA-0A admission, and EA-0B external-host governance are accepted in their declared scopes above that baseline.**
 
 > **Models/agents propose. AIOS governs. AIOS executes admitted actions. AIOS verifies the observed effect.**
 
@@ -24,6 +24,7 @@ This is an architectural disclosure. It intentionally omits private class relati
 | Component | Public role | Authority boundary |
 | --- | --- | --- |
 | `User` | Supplies the request and receives the final answer. | Does not directly invoke a private runtime capability through this public model. |
+| External Host Boundary | Admits a bounded proposal from another process and exposes observational status. | Host claims and provenance do not grant AIOS authority. |
 | `AgentLoop` | Coordinates turns, requests inference or tool work, and builds the final answer. | Does not possess execution authority and cannot make a proposal self-authorizing. |
 | `ModelPort` | Defines the provider-neutral model boundary. | Keeps provider selection separate from runtime authority. |
 | `GovernedModelPort` | Routes model work through the governed execution path. | Does not bypass `ExecutionEngine` for provider calls. |
@@ -71,13 +72,23 @@ This is not a claim that all model providers are implemented, equivalent, or cer
 
 ## External Agent Integration Boundary
 
-The planned engineering direction is:
+The current public entry model is:
 
 ```text
-Governed Core -> provider-neutral agent integration boundary -> external agent systems
+Native AgentLoop / Multi-Agent → native proposal ─────────────┐
+External Agent / Harness      → external proposal             │
+                               ↓                             │
+                       External Host Boundary                 │
+                               └──────────────┬──────────────┘
+                                              ↓
+                                         Governed Core
+                                              ↓
+                                   ExecutionEngine / authority
+                                              ↓
+                                  observed effect / ResultGate
 ```
 
-P3 implemented native sequential multi-agent orchestration within AIOS. OpenAI is a validated model provider; OpenAI Agents SDK is **not implemented**. Hermes was tested as an experimental decision source through an artifact adapter, not a production integration. External agent proposals do not acquire Core execution authority. This is separate from the proposed Restack open kernel.
+EA-0A admits an externally formed proposal as non-authoritative. EA-0B supplies the vendor-neutral external process boundary for governed READ and approval-bound WRITE. Host provenance does not create authority; approval, execution, replay/recovery, and outward result remain AIOS responsibilities. OpenAI is a validated model provider; OpenAI Agents SDK is **not implemented**. Earlier Hermes decision-source evidence is experimental, not a production adapter. Vendor-specific adapters and MCP integration remain future work. See [External Host Evidence](AIOS_V3_EXTERNAL_HOST_EVIDENCE.md). This is separate from the proposed Restack open kernel.
 
 ## Native multi-agent authority
 
