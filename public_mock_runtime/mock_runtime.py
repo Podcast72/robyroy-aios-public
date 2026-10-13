@@ -118,7 +118,8 @@ def result_gate(result: dict[str, Any] | None, context: RuntimeContext) -> dict[
 def resolve_public_path(target_path: str) -> Path:
     resolved = Path(target_path)
     if not resolved.is_absolute():
-        resolved = (REPO_ROOT / resolved).resolve()
+        resolved = REPO_ROOT / resolved
+    resolved = resolved.resolve()
     public_root = ROOT_DIR.resolve()
     if public_root not in resolved.parents and resolved != public_root:
         raise ValueError("mock_reader_only_reads_public_mock_runtime_files")
@@ -181,6 +182,40 @@ def mock_delete(plan: dict[str, Any], context: RuntimeContext) -> dict[str, Any]
     }
 
 
+def valid_request(request: Any) -> bool:
+    """Validate only the independent public demo's input shape."""
+    return (isinstance(request, dict)
+            and all(isinstance(request.get(key), str) and request[key].strip()
+                    for key in ("action", "tool", "target_path"))
+            and isinstance(request.get("arguments", {}), dict))
+
+
+def valid_rules(ruleset: Any) -> bool:
+    """Reject malformed demo policy instead of ignoring unknown match fields."""
+    verdicts = ("ALLOW", "WARN", "BLOCK")
+    if not isinstance(ruleset, dict) or ruleset.get("default_verdict") not in verdicts:
+        return False
+    if not isinstance(ruleset.get("rules"), list):
+        return False
+    list_fields = {"intent_in", "tool_in", "path_contains"}
+    string_fields = {"path_exact", "path_endswith", "flag_true"}
+    for rule in ruleset["rules"]:
+        if not isinstance(rule, dict) or rule.get("verdict") not in verdicts:
+            return False
+        if not isinstance(rule.get("id"), str) or not rule["id"].strip():
+            return False
+        match = rule.get("match")
+        if not isinstance(match, dict) or set(match) - list_fields - string_fields:
+            return False
+        for key, value in match.items():
+            if key in list_fields:
+                if not isinstance(value, list) or not value or not all(isinstance(item, str) and item for item in value):
+                    return False
+            elif not isinstance(value, str) or not value:
+                return False
+    return True
+
+
 def execute_request(
     request: dict[str, Any],
     *,
@@ -188,7 +223,21 @@ def execute_request(
     context: RuntimeContext | None = None,
 ) -> tuple[dict[str, Any], RuntimeContext]:
     runtime_context = context or RuntimeContext()
-    active_rules = ruleset or load_rules()
+    def reject(error: str) -> tuple[dict[str, Any], RuntimeContext]:
+        result_gate(None, runtime_context)
+        runtime_context.observed_path.append("result")
+        return build_response(status="error", guard_verdict="BLOCK", matched_rules=[],
+                              observed_path=runtime_context.observed_path,
+                              result=None, error=error), runtime_context
+
+    if not valid_request(request):
+        return reject("invalid_request")
+    try:
+        active_rules = load_rules() if ruleset is None else ruleset
+    except (OSError, ValueError, TypeError):
+        return reject("rules_unavailable")
+    if not valid_rules(active_rules):
+        return reject("invalid_rules")
     plan = planner(request, runtime_context)
     runtime_context.observed_path.append("execution_engine")
 
@@ -240,7 +289,7 @@ def execute_request(
             ),
             runtime_context,
         )
-    except Exception as exc:  # pragma: no cover - defensive fallback
+    except Exception:  # Return a stable code without local paths or exception text.
         result_gate(None, runtime_context)
         runtime_context.observed_path.append("result")
         return (
@@ -250,14 +299,14 @@ def execute_request(
                 matched_rules=matched_rules,
                 observed_path=runtime_context.observed_path,
                 result=None,
-                error=str(exc),
+                error="tool_failed",
             ),
             runtime_context,
         )
 
 
 def main(argv: list[str] | None = None) -> int:
-    args = argv or sys.argv[1:]
+    args = sys.argv[1:] if argv is None else argv
     if len(args) != 1:
         print(
             json.dumps(
@@ -275,8 +324,13 @@ def main(argv: list[str] | None = None) -> int:
         )
         return 1
 
-    request = load_request(args[0])
-    response, _ = execute_request(request)
+    try:
+        request = load_request(args[0])
+    except (OSError, ValueError, TypeError):
+        response = build_response(status="error", guard_verdict="BLOCK", matched_rules=[],
+                                  observed_path=[], result=None, error="invalid_request_file")
+    else:
+        response, _ = execute_request(request)
     print(json.dumps(response, indent=2, ensure_ascii=False))
     return 0 if response["status"] == "success" else 1
 
