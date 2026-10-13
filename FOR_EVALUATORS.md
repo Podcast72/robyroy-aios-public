@@ -1,5 +1,7 @@
 # AIOS For Technical And Grant Evaluators
 
+**Status review — 13 October 2026:** RM-21 is ACCEPTED for its corrected offline candidate; RM-22 remains BLOCKED before LIVE. The Hermes governed plugin is implemented and offline verified. OpenAI uses the Responses API SDK; OpenAI Agents SDK remains deferred. [Current qualification and integration record](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md).
+
 This page provides a time-boxed path through the public AIOS evidence. The repository is a **bounded technical disclosure**: it is intended to support technical evaluation without publishing the private V3 runtime or the internals needed to reconstruct it.
 
 ## Restack Proposal Boundary
@@ -22,14 +24,15 @@ Read [AIOS in 5 Minutes](docs/public/AIOS_IN_5_MINUTES.md) for the authority mod
 
 Read:
 
-1. [AIOS V3 Current Evidence](docs/public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md)
-2. [AIOS V3 Post-Core Evidence](docs/public/aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md)
-3. [External Host Evidence](docs/public/aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md)
-4. [AIOS V3 Status and Limits](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md)
+1. [Latest release qualification and integration status](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md)
+2. [AIOS V3 Current Evidence](docs/public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md)
+3. [AIOS V3 Post-Core Evidence](docs/public/aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md)
+4. [External Host Evidence](docs/public/aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md)
+5. [AIOS V3 Status and Limits](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md)
 
 Together they distinguish the frozen core, P3 native multi-agent, EA-0A/EA-0B external-host governance, separate P2/P3/EA-0B gates, Hermes experiments, and explicit limits.
 
-The current status is **P2.7 / R2.7 Core FROZEN and AGENT-READY; P3 native multi-agent, EA-0A proposal admission, and EA-0B external-host governance accepted in their declared scopes**. OpenAI is a validated model provider. OpenAI Agents SDK is unimplemented; Hermes decision-source evidence is experimental.
+The historical progression reached the P2.7/R2.7 frozen baseline, followed by P3 and EA-0A/EA-0B acceptance in their declared scopes.. OpenAI is a validated model provider. OpenAI Agents SDK remains deferred; the Hermes governed plugin has offline RM-18/RM-21 verification beyond the earlier decision-source experiments.
 
 ### Technical deep dive
 
@@ -87,7 +90,7 @@ The published evidence does not establish:
 - universal provider, model, tool, integration, or environment support;
 - universal prevention of duplicate external effects;
 - distributed exactly-once semantics or independent multi-host correctness;
-- that OpenAI Agents SDK, production Hermes/Codex/OpenCode adapters, or MCP integration is implemented;
+- that OpenAI Agents SDK, production-qualified Hermes or other vendor adapters, or MCP integration is implemented;
 - universal sandboxing, hostile-process containment, or resistance to root/admin compromise;
 - that the external read-only model-assisted review is a certification.
 
@@ -98,3 +101,7 @@ Public material includes high-level architecture, public invariants, explicit li
 Private material includes V3 source, private test source and fixtures, raw schemas, implementation-sensitive authorization and approval logic, trust-boundary internals, adversarial probes, private prompts, raw logs and traces, deployment configuration, credentials, and operational paths.
 
 The [public/private boundary](docs/public-vs-private-boundary.md) is the controlling disclosure policy for this repository.
+
+## Reproduce The Public Package Checks
+
+Run the three commands in the [public mock guide](public_mock_runtime/README.md#public-demo-corrections--october-2026). They check the runnable V2 demo, independent public regressions and local documentation links without a provider or credentials. Private aggregate results cannot be reproduced with those commands. Hosted CI is not yet verified by this local update.

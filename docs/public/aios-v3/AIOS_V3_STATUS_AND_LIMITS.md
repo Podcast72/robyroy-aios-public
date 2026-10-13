@@ -2,109 +2,52 @@
 
 ## Current Status
 
-**P2.7 / R2.7 Core FROZEN and AGENT-READY · P3 native multi-agent ACCEPTED · EA-0A and EA-0B external-host milestones ACCEPTED in declared scopes.** V3 P0 and P1 completed in their declared scopes; P2.0–P2.7 were accepted and R2.7 closed in declared scopes. P3 was built and validated above that unchanged frozen baseline.
+**Reviewed 13 October 2026: RM-21 ACCEPTED for the corrected offline candidate of 8 October 2026. RM-22 remains BLOCKED before LIVE.** The [qualification record](AIOS_V3_RELEASE_QUALIFICATION.md) defines IMPLEMENTED, TESTED, OFFLINE VERIFIED, LIVE VERIFIED, ACCEPTED and PLANNED, identifies the candidate, records milestone dates and separates every test scope.
 
-> **Models/agents propose. AIOS governs. AIOS executes admitted actions. AIOS verifies the observed effect.**
+> **Models propose. AIOS governs. AIOS executes.**
 
-| Area | Public status |
+P0/P1, P2.0–P2.7, R2.7, P3 and EA-0A/EA-0B retain their historical declared acceptance scopes. P2.7/R2.7 is a historical frozen baseline, not a statement that later corrected artifacts are unchanged.
+
+## Implemented And Verified Scope
+
+| Area | Evidence and limit |
 | --- | --- |
-| Governed agent runtime | P0 completed in its declared scope |
-| Governed real execution | P1 completed in its declared scope |
-| Initial governed interaction | P2.0 implemented and validated in its declared scope |
-| P2 progression | P2.1–P2.7 accepted in declared scopes; R2.7 completed |
-| P3 native multi-agent | Sequential Coordinator/Analyst/Challenger/Operator path accepted inside one AIOS root run |
-| EA-0A preformed proposal admission | Accepted; non-authoritative external proposal, zero inference |
-| EA-0B external-host boundary | Vendor-neutral contract and real process boundary; governed READ and WRITE/approval/resume accepted |
-| EA-0B tested OS isolation | macOS two-principal configuration accepted in tested scope |
-| Governed READ | Validated in a successive real-execution milestone |
-| Bounded governed WRITE | Validated with applicable authority and approval requirements |
-| Durable persistence | Bounded SQLite WRITE validated in its declared scope |
-| Governed filesystem WRITE | Validated in a bounded declared scope |
-| Execution authority | `ExecutionEngine` remains authoritative |
-| Agent loop | Coordinates work; does not own execution authority |
-| State model | Conversation/session state and execution truth remain separate |
-| Recovery | Fail-closed; `UNKNOWN_EFFECT` blocks blind re-execution |
-| Real-provider pilot | One OpenAI `gpt-5.6-sol` governed pilot completed |
-| Historical P2.7/R2.7 `tests_v2 + tests_v3` regression | **2510 passed, 1 skipped, 11350 subtests passed** |
-| Targeted P2.7/R2.7 closeout | **5 passed** |
-| P3 `tests_v3` gate, 29 September 2026 | **1753 passed, 1 skipped, 1209 subtests passed**, exit 0 |
-| EA-0B Slice 3 canonical full-repository gate, 30 September 2026 | **2,888 collected, 2,887 passed, 1 skipped, 0 failed/errors, 12,407 subtests passed** |
-| Public distribution | Documentation and minimal V2 demonstrations only; private V3 runtime not distributed |
+| Governed execution, AgentLoop and model inference | Implemented; tested offline and in bounded historical provider-live pilots. Models and orchestration hold no execution authority. |
+| Governed READ / bounded WRITE | Verified in named capability scopes, including corrected installed-host composition; no arbitrary mutation. |
+| Persistent approval binding | Implemented and tested; canonical approval is distinct from persuasive model text and agent provenance. |
+| Replay / crash recovery | Verified at stated Core, installed and functional levels; uncertain effects prohibit blind redispatch. |
+| SQLite RunStore / ResultGate | Authoritative execution truth and controlled result release remain separate from conversation state. |
+| Host configuration/lifecycle and separate administration | RM-09–RM-12 implemented and qualified in declared local scopes. |
+| macOS isolation | Tested named two-principal profiles, including RM-21 protected-resource denials; no universal sandbox or changed-candidate qualification. |
+| Integrity, failure views and backup/restore | RM-13 design; RM-14–RM-16 implementation and bounded qualification. No distributed rollback guarantee. |
+| Gateway client / Hermes governed plugin | RM-17/RM-18 implemented; RM-21 installed local boundary offline verified. Production/provider-live qualification remains open. |
+| OpenAI provider | Implemented via the Responses API SDK; historical bounded real-provider pilots. |
+| OpenAI Agents SDK / other unqualified adapters / MCP | Deferred or planned; native AIOS orchestration and API SDK use do not implement these integrations. |
 
-## Current Claim Boundary
+## Separate Evidence Scopes
 
-The published evidence supports engineering milestone and observed-pilot claims, not assurance claims. `PASS`, `verified`, and `completed` refer only to the named gate, capability, or tested scope.
+RM-21's retained canonical private result is **3,233 passed, 0 failed, 1 skipped; 13,654 subtests passed; exit 0**. Its separate installed replay suite reports **202 passed, 0 failed, 0 skipped; exit 0**. Focused checks and parent-only coverage are recorded separately in the [qualification table](AIOS_V3_RELEASE_QUALIFICATION.md#rm-21-candidate-and-aggregate-evidence).
 
-The public material may state that:
+The one canonical skip requires a case-sensitive filesystem unavailable on the measured host. Parent coverage excludes worker, CLI, host, registry, broker and OS processes from its numerator. Functional observations cover stated boundaries separately. The final operational controller exited before all scenarios; only the reached subset has a passing assertion. No whole-controller success is inferred.
 
-- P0 and P1 completed in their respective declared scopes;
-- P2.0–P2.7 were accepted in declared scopes and R2.7 closeout completed;
-- governed READ, bounded governed WRITE, and a durable SQLite WRITE were validated in successive scopes;
-- recovery remains fail-closed and uncertain effects stop at `UNKNOWN_EFFECT`;
-- one `gpt-5.6-sol` end-to-end pilot read allowed state, selected one bounded WRITE, obtained explicit approval, and completed through the governed runtime;
-- the historical P2.7/R2.7 `tests_v2 + tests_v3` regression reported **2510 passed, 1 skipped, 11350 subtests passed**;
-- the targeted P2.7/R2.7 closeout retest reported **5 passed** for relevant filesystem ambiguity/recovery and result-exposure properties;
-- P3 native sequential multi-agent was accepted with one bounded live pilot and a separate `tests_v3` gate of **1753 passed, 1 skipped, 1209 subtests passed**;
-- the Hermes direct/governed experiment and experimental decision-source pilot support a bounded agent-decision / AIOS-authority distinction;
-- EA-0A admitted preformed proposals with zero inference while preserving the Core authority model;
-- EA-0B accepted a vendor-neutral external process boundary, governed READ, governed WRITE with authoritative approval/resume, and replay/restart behavior in tested scope;
-- a macOS two-principal pilot observed OS denial of direct host access to the protected resources covered by the test, while governed READ/WRITE continued through EA-0B.
+[Earlier P2/P3 evidence](AIOS_V3_CURRENT_EVIDENCE.md) and [EA-0B results](AIOS_V3_EXTERNAL_HOST_EVIDENCE.md) are historical, separately scoped and never summed with RM-21. Private suites were not rerun for this public refresh.
 
-The historical P2.7/R2.7 full regression preceded its documentation-only closeout. The P3 and EA-0B gates covered different suites and dates; counts are not additive. [External Host Evidence](AIOS_V3_EXTERNAL_HOST_EVIDENCE.md) records the EA-0B gate and bounded OS result.
+## RM-22 And Candidate Changes
 
-## P2 Progression Posture
+Later local preparation has narrower passing synthetic/local functional tests. Effective deployment isolation, real-provider bindings, attributable usage/accounting sources and economic authorization remain open. RM-22 is BLOCKED; absent usage or cost is not available, never assumed zero.
 
-P2.7 / R2.7 is frozen and the governed Core is agent-ready in its declared scope. This does not establish general autonomous operation or unrestricted deployment readiness.
+Neither RM-21 acceptance nor an earlier installed OS-boundary slice automatically qualifies modified source, a new wheel or a changed deployment. No accepted later LIVE milestone or final production release is established.
 
-## P3 Progression Posture
+## Recovery And Integration Limits
 
-P3 native multi-agent is accepted for sequential roles in one AIOS root run and one synthetic-task live pilot. OpenAI is a validated model provider, while OpenAI Agents SDK is not implemented. Hermes supplied an experimental decision artifact; no production Hermes integration is claimed. The separate P3.6a `approval_wait_already_resumed` limitation remains open for further steps after that wait in the same root run. See [Post-Core Evidence](AIOS_V3_POST_CORE_EVIDENCE.md).
+`UNKNOWN_EFFECT` remains terminal against blind automatic re-execution. It does not guarantee reconstruction of every external effect. The native multi-agent pilot was sequential, on a synthetic task, with a bounded real-provider run; it was not a reliability benchmark. The historical native approval-wait continuation limitation remains scoped to that path; the Hermes gateway flow does not silently close it.
 
-## External Host Progression Posture
+Earlier Hermes decision-artifact experiments, the implemented offline plugin, and a future provider-live production qualification are separate evidence categories.
 
-EA-0A and EA-0B are accepted in their declared scopes. The external host proposes; AIOS keeps policy, capability, budget, approval, execution, recovery, and outward-result authority. In the tested macOS two-principal configuration, direct host access to the protected AIOS resources covered by the pilot was denied. This is scope-bound evidence, not general hostile-process containment.
+## Non-Claims And Disclosure
 
-## Limits And Non-Claims
+The evidence does not establish unrestricted production readiness, security or compliance certification, formal proof, universal provider/tool/deployment support, hostile-admin containment, or distributed exactly-once effects.
 
-This public status does not claim:
+The executable public mock remains V2-shaped. It has no private V3 source, durable approval, persistent recovery, provider integration or OS isolation. Its public path checks are not a filesystem race-proof sandbox.
 
-- production readiness or release readiness for unrestricted deployment;
-- security certification, penetration-test certification, or formal verification;
-- that all providers, tools, integrations, or environments are supported;
-- that OpenAI Agents SDK, production Hermes/Codex/OpenCode/Anthropic adapters, or MCP integration is implemented;
-- universal external-agent compatibility or universal provider support;
-- a universal sandbox, general hostile-process containment, or protection against root/admin compromise or kernel exploits;
-- correctness for every filesystem or storage configuration;
-- universal crash recovery;
-- that the external Hermes/DeepSeek read-only review is a security certification, penetration-test certification, formal verification, or independent commercial certification;
-- that every possible failure, bypass, or adversarial condition has been eliminated;
-- arbitrary READ or WRITE access outside the admitted capability scope;
-- arbitrary filesystem, database, or API WRITE;
-- universal persistence or transactional guarantees;
-- distributed exactly-once behavior or independent multi-host correctness;
-- verified access denial for existing SQLite WAL/SHM/journal sidecars at the final EA-0B checkpoint, because none was present;
-- correctness after loss or corruption of authoritative persistence;
-- that no secret could ever leak under a different configuration or threat model;
-- that the public mock runtime is the private V3 runtime.
-
-## Scope Of Persistence And Recovery Evidence
-
-P0 persistence/reopen/replay/resume evidence was synthetic and scope-bound. Later real-execution evidence validated one bounded durable SQLite WRITE in its declared scope. Neither result is a universal durability or exactly-once claim.
-
-If an effect may have occurred but the runtime cannot establish the outcome, `UNKNOWN_EFFECT` prevents blind automatic re-execution. Reconciliation is required. This conservative terminal state is a safety posture, not a guarantee that the unknown external outcome can always be reconstructed.
-
-## Provider And Pilot Limit
-
-`ModelPort` is provider-neutral as an architectural boundary. OpenAI is the first real model provider validated, and `gpt-5.6-sol` is the exact model used in the historical pilot evidence. OpenAI Agents SDK is not integrated or accepted; native AIOS multi-agent is a distinct capability. Execution authority remains with AIOS / `ExecutionEngine`.
-
-The historical P2 pilot is evidence of one successful governed end-to-end path and a focused 10-test gate. The later P3 pilot separately exercised native sequential specialists. Neither is a latency, scale, availability, cost, reliability, or security benchmark.
-
-## Public/Private Boundary
-
-The public repository follows **bounded technical disclosure**. It publishes architectural roles, properties, limits, and aggregate evidence. It does not publish the private V3 runtime or the mechanisms that would allow the public documents to become a replica of it.
-
-For the complete disclosure policy, see [Public vs Private Boundary](../../public-vs-private-boundary.md).
-
-## Historical Evidence
-
-The completed P0 record remains available in the P0 overview and evidence documents. AIOS V2 documentation, public demonstrations, public proof tests, ANDY field tests, and at-most-once evidence remain available as historical evidence for the governed execution backbone milestone. Later milestones do not erase or broaden those earlier results.
+[Bounded technical disclosure](../../public-vs-private-boundary.md) remains unchanged: private source, tests, fixtures, schemas, approval mechanisms, security probes, raw artifacts, personal data, paths, credentials and deployment internals are withheld.

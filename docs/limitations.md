@@ -1,6 +1,8 @@
 # Limitations
 
-AIOS V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 remediation and closeout completed. **P2.7 / R2.7 remains FROZEN and AGENT-READY; P3 native multi-agent, EA-0A proposal admission, and EA-0B external-host governance are accepted in their declared scopes above that baseline.** This public repository and its evidence remain intentionally limited.
+**Status review — 13 October 2026:** RM-21 is ACCEPTED for its corrected offline candidate; RM-22 remains BLOCKED before LIVE. The Hermes governed plugin is implemented and offline verified. OpenAI uses the Responses API SDK; OpenAI Agents SDK remains deferred. [Current qualification and integration record](public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md).
+
+AIOS V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 remediation and closeout completed. **Historical progression: P2.7/R2.7 frozen baseline; P3 and EA-0A/EA-0B accepted in their declared scopes.** This public repository and its evidence remain intentionally limited.
 
 ## Milestone Limit
 
@@ -20,7 +22,7 @@ Test counts refer only to their named gates. They must not be combined into a ne
 
 ## P3 and external-agent limit
 
-P3 native multi-agent was accepted for sequential roles and one bounded live pilot; it does not prove parallel or arbitrary agent orchestration. Its `tests_v3` gate was **1753 passed, 1 skipped, 1209 subtests passed**, separate from the P2.7/R2.7 `tests_v2 + tests_v3` historical gate. The P3.6a further-step-after-wait limitation remains open. Hermes decision-source evidence is experimental, not a production connector. OpenAI Agents SDK remains unimplemented.
+P3 native multi-agent was accepted for sequential roles and one bounded live pilot; it does not prove parallel or arbitrary agent orchestration. Its `tests_v3` gate was **1753 passed, 1 skipped, 1209 subtests passed**, separate from the P2.7/R2.7 `tests_v2 + tests_v3` historical gate. The P3.6a further-step-after-wait limitation remains open. Earlier Hermes decision-source evidence is experimental; the later plugin is implemented and offline verified, without production qualification. OpenAI Agents SDK remains unimplemented.
 
 EA-0A and EA-0B are accepted in declared scopes. The EA-0B Slice 3 canonical private full-repository gate recorded **2,888 collected, 2,887 passed, 1 skipped, 0 failed/errors, 12,407 subtests passed**. It is separate from the P2 and P3 gates. The macOS two-principal denial and leakage observations apply only to the tested configuration; they do not establish a universal sandbox, ready-made vendor adapters, security certification, universal recovery, or distributed exactly-once effects. See [External Host Evidence](public/aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md).
 

@@ -1,6 +1,8 @@
 # AIOS V3 Architecture
 
-AIOS V3 is a governed agent runtime in which the model can propose work but cannot grant itself execution authority. P0 and P1 completed in declared scopes; P2.0–P2.7 were accepted in declared scopes; R2.7 closeout completed. **P2.7 / R2.7 remains FROZEN and AGENT-READY; P3 native multi-agent, EA-0A admission, and EA-0B external-host governance are accepted in their declared scopes above that baseline.**
+**Status review — 13 October 2026:** RM-21 is ACCEPTED for its corrected offline candidate; RM-22 remains BLOCKED before LIVE. The Hermes governed plugin is implemented and offline verified. OpenAI uses the Responses API SDK; OpenAI Agents SDK remains deferred. [Current qualification and integration record](AIOS_V3_RELEASE_QUALIFICATION.md).
+
+AIOS V3 is a governed agent runtime in which the model can propose work but cannot grant itself execution authority. P0 and P1 completed in declared scopes; P2.0–P2.7 were accepted in declared scopes; R2.7 closeout completed. **Historical progression: P2.7/R2.7 frozen baseline; P3 and EA-0A/EA-0B accepted in their declared scopes.**
 
 > **Models/agents propose. AIOS governs. AIOS executes admitted actions. AIOS verifies the observed effect.**
 
@@ -28,6 +30,9 @@ This is an architectural disclosure. It intentionally omits private class relati
 | `AgentLoop` | Coordinates turns, requests inference or tool work, and builds the final answer. | Does not possess execution authority and cannot make a proposal self-authorizing. |
 | `ModelPort` | Defines the provider-neutral model boundary. | Keeps provider selection separate from runtime authority. |
 | `GovernedModelPort` | Routes model work through the governed execution path. | Does not bypass `ExecutionEngine` for provider calls. |
+| `GovernedActionPort` | Carries model/action intent into the existing governed path. | Proposals do not grant authority. |
+| `TrustPlane` | Holds trusted host authority and applicable approval decisions. | Agent claims cannot issue approval or change authority. |
+| External Agent Adapters | Translate bounded vendor proposals toward host admission. | Hermes is offline verified; adapters remain non-authoritative. |
 | `ExecutionEngine` | Admits and executes governed model or tool work. | Remains the execution authority. |
 | Governed model or tool execution | Performs the admitted capability. | Runs only after the governed path accepts the work and applicable approval is present. |
 | `RunStore` | Holds authoritative execution truth for governed runs. | Is separate from conversation/checkpoint state. Raw schema is private. |
@@ -88,7 +93,7 @@ External Agent / Harness      → external proposal             │
                                   observed effect / ResultGate
 ```
 
-EA-0A admits an externally formed proposal as non-authoritative. EA-0B supplies the vendor-neutral external process boundary for governed READ and approval-bound WRITE. Host provenance does not create authority; approval, execution, replay/recovery, and outward result remain AIOS responsibilities. OpenAI is a validated model provider; OpenAI Agents SDK is **not implemented**. Earlier Hermes decision-source evidence is experimental, not a production adapter. Vendor-specific adapters and MCP integration remain future work. See [External Host Evidence](AIOS_V3_EXTERNAL_HOST_EVIDENCE.md). This is separate from the proposed Restack open kernel.
+EA-0A admits an externally formed proposal as non-authoritative. EA-0B supplies the vendor-neutral external process boundary for governed READ and approval-bound WRITE. Host provenance does not create authority; approval, execution, replay/recovery, and outward result remain AIOS responsibilities. OpenAI is a validated model provider; OpenAI Agents SDK is **not implemented**. Earlier Hermes decision-source evidence is historical and experimental. RM-18 now supplies a governed Hermes plugin, offline verified with the installed RM-21 boundary; production qualification remains open. Other unqualified vendor adapters and MCP remain future work. See [External Host Evidence](AIOS_V3_EXTERNAL_HOST_EVIDENCE.md). This is separate from the proposed Restack open kernel.
 
 ## Native multi-agent authority
 
@@ -148,3 +153,7 @@ request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool
 ```
 
 The V3 diagrams do not retroactively redefine V2 proof artifacts. They show how the current V3 track carries governed execution into the agent loop, model-provider path, and bounded real-execution capabilities.
+
+## Installed Host And Operational Qualification
+
+RM-09–RM-12 add validated configuration, governed host lifecycle, tested macOS isolation and separate approval administration. RM-14–RM-16 add execution-history integrity, conservative failure views and local backup/restore. SQLite RunStore remains the execution truth boundary, separate from conversation state. These capabilities preserve ExecutionEngine authority and do not create an alternate dispatcher. RM-21 qualifies the identified corrected host offline; later RM-22 candidates and deployments require their own applicable checks. [Qualification and limits](AIOS_V3_RELEASE_QUALIFICATION.md).

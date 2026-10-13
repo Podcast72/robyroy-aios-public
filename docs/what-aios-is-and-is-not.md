@@ -1,8 +1,10 @@
 # What AIOS Is and Is Not
 
+**Status review — 13 October 2026:** RM-21 is ACCEPTED for its corrected offline candidate; RM-22 remains BLOCKED before LIVE. The Hermes governed plugin is implemented and offline verified. OpenAI uses the Responses API SDK; OpenAI Agents SDK remains deferred. [Current qualification and integration record](public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md).
+
 ## What AIOS Is
 
-AIOS is a governed agent runtime and execution layer. V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed. **P2.7 / R2.7 remains FROZEN and AGENT-READY; P3 native multi-agent, EA-0A proposal admission, and EA-0B external-host governance are accepted in their declared scopes above that baseline.**
+AIOS is a governed agent runtime and execution layer. V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed. **Historical progression: P2.7/R2.7 frozen baseline; P3 and EA-0A/EA-0B accepted in their declared scopes.**
 
 > **Models/agents propose. AIOS governs. AIOS executes admitted actions. AIOS verifies the observed effect.**
 
@@ -23,7 +25,7 @@ User
 
 This is an architecture-level description, not a public implementation map.
 
-P3 native multi-agent is accepted inside AIOS. EA-0A and EA-0B add non-authoritative external proposal admission and a tested external-host boundary for governed READ/WRITE. See [External Host Evidence](public/aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md). OpenAI is a validated model provider, while OpenAI Agents SDK is unimplemented. Hermes was an experimental decision source, not a production connector. `ModelPort` separates provider concerns from AIOS / `ExecutionEngine` authority.
+P3 native multi-agent is accepted inside AIOS. EA-0A and EA-0B add non-authoritative external proposal admission and a tested external-host boundary for governed READ/WRITE. See [External Host Evidence](public/aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md). OpenAI is a validated model provider, while OpenAI Agents SDK is unimplemented. Earlier Hermes decision-source experiments are historical. The later Hermes governed plugin is implemented and offline verified; production qualification is not claimed. `ModelPort` separates provider concerns from AIOS / `ExecutionEngine` authority.
 
 ## What AIOS Evolved From
 

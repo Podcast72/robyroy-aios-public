@@ -1,6 +1,8 @@
 # Current Implemented Layers
 
-This page separates the source-private V3 architecture and capability evidence from the preserved V2 public demonstration surface. **P2.7 / R2.7 remains FROZEN and AGENT-READY; P3 native multi-agent, EA-0A proposal admission, and EA-0B external-host governance are accepted in their declared scopes above that baseline.** Status terms describe declared validation scopes, not unrestricted production readiness.
+**Status review — 13 October 2026:** RM-21 is ACCEPTED for its corrected offline candidate; RM-22 remains BLOCKED before LIVE. The Hermes governed plugin is implemented and offline verified. OpenAI uses the Responses API SDK; OpenAI Agents SDK remains deferred. [Current qualification and integration record](public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md).
+
+This page separates the source-private V3 architecture and capability evidence from the preserved V2 public demonstration surface. **Historical progression: P2.7/R2.7 frozen baseline; P3 and EA-0A/EA-0B accepted in their declared scopes.** Status terms describe declared validation scopes, not unrestricted production readiness.
 
 ## Current Private V3 Layers And Capabilities
 
@@ -22,11 +24,15 @@ This page separates the source-private V3 architecture and capability evidence f
 | Native multi-agent | P3 accepted in declared sequential scope | Coordinates specialists within one AIOS root run | Delegation does not grant execution authority |
 | Preformed proposal admission | EA-0A accepted in declared scope | Admits an already formed external proposal | Proposal does not carry authority |
 | External Host Boundary | EA-0B READ/WRITE and tested OS isolation accepted in declared scopes | Connects an external process to governed execution | External host cannot self-approve or execute through this path |
+| GovernedActionPort / TrustPlane | Implemented and exercised in bounded qualification | Carries proposals to trusted governance | Agent intent cannot grant authority |
+| Host and separate approval administration | RM-09–RM-12; corrected host offline qualified in RM-21 | Validated configuration, lifecycle and canonical approval review | No provider-live qualification |
+| Execution-history integrity and recovery operations | RM-14–RM-16 implemented and verified in declared scopes | Conservative state integrity, failure views and backup/restore | No universal distributed or hostile-admin guarantee |
+| Gateway client / Hermes plugin | RM-17/RM-18 implemented; RM-21 installed offline boundary verified | External proposals reach existing governed authority | Provider-live and production integration unqualified |
 | Composition Root | P0 assembly foundation completed | Wires the runtime so authority boundaries remain explicit | Source, configuration, and trust-boundary details remain private |
 
 Historical P0 persistence/reopen/replay/resume evidence remains synthetic and scope-bound. Later accepted milestones add scoped effect reconciliation, durable evidence, and governed filesystem WRITE. They do not create a universal recovery or exactly-once claim.
 
-P2.0–P2.7 were accepted and R2.7 closed in declared scopes. P3 native multi-agent, EA-0A, and EA-0B are accepted above the frozen Core in declared scopes. OpenAI is a validated model provider, while OpenAI Agents SDK and production Hermes integration remain unimplemented. [Post-Core Evidence](public/aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md) preserves the P3 and Hermes record; [External Host Evidence](public/aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md) summarizes the later bounded external-host results.
+P2.0–P2.7 were accepted and R2.7 closed in declared scopes. P3 native multi-agent, EA-0A, and EA-0B are accepted above the frozen Core in declared scopes. OpenAI is a validated model provider, while OpenAI Agents SDK remains deferred. The Hermes governed plugin is implemented and offline verified in RM-18/RM-21; production qualification remains open. [Post-Core Evidence](public/aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md) preserves the P3 and Hermes record; [External Host Evidence](public/aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md) summarizes the later bounded external-host results.
 
 ## Preserved V2 Public Layers
 

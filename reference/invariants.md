@@ -1,5 +1,7 @@
 # Invariants
 
+**Status review — 13 October 2026:** RM-21 is ACCEPTED for its corrected offline candidate; RM-22 remains BLOCKED before LIVE. The Hermes governed plugin is implemented and offline verified. OpenAI uses the Responses API SDK; OpenAI Agents SDK remains deferred. [Current qualification and integration record](../docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md).
+
 The public invariants are version-aware. V3 is the current source-private architecture and evidence track; V2 remains the historical public demonstration.
 
 ## Current V3 Invariants

@@ -99,3 +99,19 @@ To extend the demo without changing its positioning:
 Keep the mediation model intact and visible:
 
 `planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result`
+
+## Public Demo Corrections — October 2026
+
+The V2 demonstration now normalizes both relative and absolute paths before checking its public directory, rejects malformed request/rule inputs before tool dispatch, and returns stable error codes instead of raw exception text. Explicit invalid policies do not silently select the bundled defaults. The JSON response envelope and ALLOW/WARN/BLOCK examples remain compatible.
+
+These are independent fixes to this small public demo. Path checks are not an OS sandbox or protection against concurrent filesystem changes. The demo has no persistent approval, durable replay, private V3 governance, or provider integration.
+
+Run all public reference and regression tests, executable proofs, and the offline Markdown checker from the repository root with Python 3.11 or later:
+
+```bash
+python3 -B -m unittest discover -s tests -v
+python3 -B -m unittest discover -s public_mock_runtime/proof_tests -v
+python3 -B scripts/check_markdown_links.py
+```
+
+No third-party Python packages, provider credentials, model calls, or customer data are required. GitHub Actions runs these same commands; hosted CI results exist only after the branch is published and the workflow completes.

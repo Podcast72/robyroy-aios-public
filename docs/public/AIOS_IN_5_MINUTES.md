@@ -1,8 +1,10 @@
 # AIOS in 5 Minutes
 
+**Status review — 13 October 2026:** RM-21 is ACCEPTED for its corrected offline candidate; RM-22 remains BLOCKED before LIVE. The Hermes governed plugin is implemented and offline verified. OpenAI uses the Responses API SDK; OpenAI Agents SDK remains deferred. [Current qualification and integration record](aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md).
+
 ## 1. What AIOS is now
 
-AIOS is a governed agent runtime and execution layer. V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed. **P2.7 / R2.7 remains FROZEN and AGENT-READY; P3 native multi-agent, EA-0A admission, and EA-0B external-host governance are accepted in their declared scopes above that baseline.**
+AIOS is a governed agent runtime and execution layer. V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed. **Historical progression: P2.7/R2.7 frozen baseline; P3 and EA-0A/EA-0B accepted in their declared scopes.**
 
 > **Models/agents propose. AIOS governs. AIOS executes admitted actions. AIOS verifies the observed effect.**
 
@@ -26,7 +28,7 @@ AIOS V2 — Governed Execution Backbone
 
 V2 made the governed tool-execution path explicit and publicly testable. P0 carried that principle into the agent loop and model-provider path. P1 validated governed READ, bounded governed WRITE, and durable SQLite WRITE in successive declared scopes.
 
-P3 implemented native sequential multi-agent orchestration within AIOS. OpenAI is a validated model provider, while OpenAI Agents SDK remains unimplemented. An experimental Hermes decision source was tested separately; it is not a production integration. EA-0B separately lets an external process propose bounded READ/WRITE through AIOS while AIOS retains approval, execution, replay, recovery, and result authority. In a tested macOS two-principal configuration, direct host access to the protected AIOS resources covered by the pilot was denied. See [External Host Evidence](aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md).
+P3 implemented native sequential multi-agent orchestration within AIOS. OpenAI is a validated model provider, while OpenAI Agents SDK remains unimplemented. An earlier experimental Hermes decision source was tested separately. RM-18 later implemented a governed plugin, offline verified with the RM-21 installed boundary; production qualification remains open. EA-0B separately lets an external process propose bounded READ/WRITE through AIOS while AIOS retains approval, execution, replay, recovery, and result authority. In a tested macOS two-principal configuration, direct host access to the protected AIOS resources covered by the pilot was denied. See [External Host Evidence](aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md).
 
 ## 3. The problem
 
@@ -127,7 +129,7 @@ The two evidence types answer different questions. Neither establishes universal
 
 ## 9. Post-core experiments and limits
 
-The [Post-Core Evidence](aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md) summarizes the external read-only Hermes/DeepSeek review, remediation, P3 live multi-agent pilot, and the Hermes direct-versus-governed experiments. The Hermes decision-source adapter is experimental; OpenAI Agents SDK is not implemented. EA-0B is a vendor-neutral boundary, not a ready-made vendor adapter or security certification.
+The [Post-Core Evidence](aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md) summarizes the external read-only Hermes/DeepSeek review, remediation, P3 live multi-agent pilot, and the Hermes direct-versus-governed experiments. The Hermes decision-source adapter is experimental; OpenAI Agents SDK is not implemented. EA-0B supplies the vendor-neutral boundary; RM-18 later supplies a governed Hermes plugin with offline RM-21 verification. Neither establishes production qualification or security certification.
 
 ## 10. Historical V2 public surface
 
@@ -148,3 +150,7 @@ Private material includes V3 source, private tests and fixtures, raw schemas, lo
 The evidence does not establish security certification, formal verification, universal provider support, arbitrary capability access, distributed exactly-once execution, or validation across every environment.
 
 Start with the [V3 public index](aios-v3/README.md), review the [current evidence](aios-v3/AIOS_V3_CURRENT_EVIDENCE.md), then read the [architecture](aios-v3/AIOS_V3_ARCHITECTURE.md) and [status limits](aios-v3/AIOS_V3_STATUS_AND_LIMITS.md).
+
+## Latest Installed Qualification
+
+RM-21 was accepted offline on 8 October 2026 for its corrected candidate, including the installed local host and Hermes registry boundary. The canonical private result is **3,233 passed, 1 skipped, 13,654 subtests passed**; the separate installed replay suite is **202 passed**. RM-22 has later narrower offline progress and remains BLOCKED before LIVE. [Candidate, dates, result scopes and limitations](aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md).

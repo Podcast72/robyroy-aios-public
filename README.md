@@ -2,108 +2,112 @@
 
 ![AIOS demo architecture](assets/aios-demo-hero.png)
 
+> **Models propose. AIOS governs. AIOS executes.**
 
 ## What AIOS Is
 
-AIOS separates model proposals and agent coordination from execution authority.
+AIOS is a governed agent runtime and execution layer. It separates model proposals and agent coordination from the authority to execute actions, records execution truth independently of the conversation, and controls which results may be released.
 
-Across the V3 capabilities completed within their declared scopes:
+This repository contains public technical documentation, aggregate evidence and a runnable V2 demonstration. The V3 product runtime remains private under [bounded technical disclosure](docs/public-vs-private-boundary.md).
 
-- `AgentLoop` coordinates a run but does not possess execution authority;
-- model calls and tool calls traverse the governed execution backbone;
-- `ModelPort` keeps the provider replaceable;
-- `ExecutionEngine` remains the execution authority;
-- conversation state and execution truth remain separate;
-- bounded WRITE requires the applicable authority and explicit approval where required;
-- retry and recovery fail closed;
-- `UNKNOWN_EFFECT` blocks blind re-execution;
-- persistence, replay, reopen, and resume remain limited to their verified identity and persistence scope;
-- `ResultGate` controls outward result release.
+## Current Status
 
-The model or an external host can propose work. Neither can make its proposal self-authorizing.
+**Reviewed 13 October 2026 · RM-21 ACCEPTED OFFLINE for its corrected candidate · RM-22 BLOCKED before LIVE.**
+
+The private track has progressed beyond P3 and EA-0B: installed host lifecycle, approval administration, execution-history integrity, conservative failure operations, backup/restore, a gateway client, and a governed Hermes plugin are implemented and verified in their declared scopes. RM-21's final decision of **8 October 2026** qualifies an identified corrected development candidate offline. Later local RM-22 preparation has narrower passing functional evidence and open deployment/provider/authorization gates.
+
+**OpenAI integration:** the OpenAI Python SDK and Responses API support the implemented model provider. AIOS owns native orchestration. **OpenAI Agents SDK remains deferred and not implemented.** The Hermes governed plugin is implemented and verified offline; provider-live and production Hermes qualification remain open.
+
+[![RM-21](https://img.shields.io/badge/RM--21-accepted%20offline-1f7a4d)](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md)
+[![RM-22](https://img.shields.io/badge/RM--22-blocked%20before%20live-b85c00)](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#rm-22-narrow-progress-open-gates)
+[![V3 Core baseline](https://img.shields.io/badge/P2.7%20%2F%20R2.7-historical%20frozen%20baseline-1f7a4d)](docs/public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md)
+[![Agent-ready](https://img.shields.io/badge/Governed%20Core-AGENT--READY-1f7a4d)](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md)
+[![P3](https://img.shields.io/badge/P3-native%20multi--agent%20accepted-2456a6)](docs/public/aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md)
+[![Scope](https://img.shields.io/badge/disclosure-bounded-lightgrey)](docs/public-vs-private-boundary.md)
+[![History](https://img.shields.io/badge/AIOS%20V2-evidence%20preserved-6f42c1)](docs/public/aios-v2/README.md)
+
+[Latest qualification and integration record](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md) · [Evaluator guide](FOR_EVALUATORS.md) · [Architecture](docs/public/aios-v3/AIOS_V3_ARCHITECTURE.md) · [Status and limits](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md) · [Roadmap](docs/roadmap.md)
 
 ## What AIOS Actually Does
 
-The agent decides what it wants to do. AIOS decides whether that intent may become a real effect, executes the admitted action, and verifies what actually happened. This describes the bounded capabilities validated in the private runtime.
-
-```text
-AGENT -> proposes an action
-AIOS  -> policy -> capability -> budget -> approval where required
-      -> approval authenticity and one-shot consumption -> effect/replay checks
-      -> governed execution
-REAL EFFECT -> effect observation
-AIOS  -> verifies what actually happened -> ResultGate -> RESULT
-```
+An agent proposes work. AIOS checks whether that work is admitted under the applicable policy, capability, budget and approval, executes the admitted action, records the observed outcome and controls result release. The following describes architectural roles, not internal interfaces or an implementation recipe.
 
 | Component | Practical role |
 | --- | --- |
-| `AgentLoop` / native multi-agent | Coordinates one bounded run and its specialist roles; agents do not execute effects directly. |
-| `GovernedActionPort` / `ExecutionEngine` | Separates intent from the AIOS authority that admits and executes work. |
-| Policy / capability / budget | Decide which action is allowed, which surface is admitted, and how much work may occur. |
-| Approval / one-shot binding | Sensitive actions wait; the authorization is consumed only for its admitted action. |
-| `TrustPlane` / `RunStore` | Keep host authority separate from agent claims and preserve authoritative execution truth. |
-| Effect observation / `ResultGate` | Check the observed effect before releasing a success result. |
-| Recovery / replay / session checkpoint | Pause or resume bounded work conservatively without blind duplicate execution. |
-
-## External Agent / Host Governance
-
-AIOS now has accepted, bounded evidence for a vendor-neutral external-host boundary. An external process may submit scoped READ or WRITE proposals; AIOS retains policy, capability, budget, approval, execution, replay, recovery, and result-release authority. The external host remains a proposer, including when it supplies provenance or resumes a pending action.
-
-```text
-external agent / harness → proposal → AIOS external-host boundary
-                                   → governed Core → ExecutionEngine
-                                   → observed effect / ResultGate
-```
-
-EA-0A admitted preformed proposals without model inference. EA-0B then validated external READ, approval-bound WRITE and replay/restart behavior; Slice 3 added a tested macOS two-principal isolation boundary. These milestones are accepted in their declared scopes and do not establish unrestricted production readiness or universal security. **[Read the External Host Evidence →](docs/public/aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md)**
-
-**Hermes A/B example:** `Hermes -> native tool authority -> filesystem effect` in the direct pilot. In the governed experiment, `Hermes -> proposed decision -> AIOS governance -> admitted execution -> effect observation -> ResultGate`. An external agent can supply the decision while AIOS retains execution authority and verifies the admitted effect. **This is experimental integration evidence, not a production Hermes integration.** [Read the scoped post-core evidence](docs/public/aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md).
+| `AgentLoop` / native multi-agent | Coordinates bounded turns and specialist roles; coordination grants no execution authority. |
+| `ModelPort` / governed inference | Keeps provider concerns separate and routes model work through governance. |
+| `GovernedActionPort` | Carries proposals toward the existing governed authority path. |
+| `ExecutionEngine` | Admits and executes governed model and tool work. |
+| `TrustPlane` / approval | Keeps trusted host authority separate from agent claims and binds approval to the admitted action. |
+| SQLite `RunStore` | Preserves authoritative execution truth independently of conversation state. |
+| `ResultGate` | Controls outward result release; a tool's output alone does not prove success. |
+| External Agent Adapters | Translate bounded external proposals; they cannot approve or execute effects directly through this path. |
+| Recovery / replay | Uses authoritative state and stops blind repetition when an effect is uncertain. |
 
 ## Governed Execution Backbone
 
 ### Current V3 architecture
 
-```text
-User
-  -> AgentLoop
-  -> ModelPort / GovernedModelPort
-  -> ExecutionEngine
-  -> governed model or tool execution
-  -> RunStore / ResultGate / audit
-  -> AgentLoop
-  -> final answer
+```mermaid
+flowchart TD
+  U[User] --> A[AgentLoop / native specialists]
+  A --> P[Model and action proposals]
+  X[External agent / Hermes adapter] --> H[External Host Admission]
+  H --> P
+  P --> G[AIOS governance / TrustPlane / applicable approval]
+  G --> E[ExecutionEngine]
+  E --> W[Admitted model or tool work]
+  W --> R[Authoritative RunStore / observed outcome]
+  R --> Q[ResultGate]
+  Q --> F[Controlled result / final answer]
 ```
 
-This is a high-level authority and data-flow description. Private class structure, schemas, authorization and approval mechanisms, trust-boundary details, probes, configuration, and deployment wiring are intentionally not disclosed.
+This is a high-level authority and data-flow diagram. Model calls and tool calls are governed work; external provenance and persuasive text do not create authority. Private schemas, contracts, approval mechanisms and deployment wiring remain private.
 
 ### V2 public backbone
-
-AIOS V2 established the public governed-execution reference path:
 
 ```text
 request -> planner -> execution_engine -> tool_registry -> runtime_guard -> tool -> result_gate -> result
 ```
 
-The V2 path remains the basis of the small public mock runtime and its public invariant tests. V3 extends governance into the agent loop, model-call path, and bounded real execution; it does not retroactively rewrite V2 evidence.
+The public mock preserves this V2 path. Its safety corrections improve the demonstration without turning it into a private V3 replica.
+
+## External Agent / Host Governance
+
+EA-0A and EA-0B established scoped external proposal admission, governed READ, approval-bound WRITE, replay/restart and tested macOS two-principal isolation. RM-17 added the gateway client; RM-18 added an actual Hermes plugin; RM-21 verified the installed local host/registry boundary offline using synthetic resources and real local processes.
+
+Hermes remains a proposer. AIOS retains policy, capability, budget, approval, execution, replay, recovery and result-release authority. Earlier Hermes A/B decision-source experiments remain historical evidence, distinct from the implemented plugin and from a future provider-live qualification.
+
+[External Host Evidence](docs/public/aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md) · [Historical Hermes experiments](docs/public/aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md) · [Current integration status](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#integration-status)
 
 ## Current V3 Evidence
 
 ![AIOS demo architecture](assets/aios-demo-hero2.png)
 
-The current public evidence is deliberately aggregate.
+| Capability | Implemented / verified state | Limit |
+| --- | --- | --- |
+| Governed execution, AgentLoop and inference | Implemented; offline and bounded historical provider-live evidence | AIOS native orchestration, not OpenAI Agents SDK. |
+| Governed READ and bounded WRITE | Verified in successive named scopes; corrected installed host qualified by RM-21 | Explicit approval where required; no arbitrary filesystem access. |
+| Persistent approval binding, replay and crash recovery | Implemented and tested in declared persistence scopes | `UNKNOWN_EFFECT` remains terminal against blind re-execution; no distributed exactly-once claim. |
+| SQLite RunStore and ResultGate | Implemented; authoritative truth and controlled result release | Conversation state and agent claims cannot substitute for execution evidence. |
+| macOS host isolation | Verified in named local two-principal profiles | Neither a universal sandbox nor qualification of later changed deployments. |
+| Hermes plugin and gateway client | Implemented and offline verified | Production and provider-live qualification remain open. |
+| OpenAI Agents SDK | Planned / explicitly deferred | OpenAI API SDK use is a separate implemented integration. |
+| RM-22 campaign preparation | Narrow offline functional progress | Overall BLOCKED before LIVE; no approved spend or final release. |
 
-- P0 completed the governed agent-runtime foundation in its declared scope.
-- P1 validated governed READ, bounded governed WRITE, and a durable SQLite WRITE in their declared scopes.
-- P2.0–P2.7 completed their declared scopes; R2.7 closeout is complete and the Core is frozen and agent-ready.
-- Governed filesystem WRITE was validated in its bounded declared scope.
-- The historical P2 pilot used OpenAI model `gpt-5.6-sol` to read allowed state, select one bounded WRITE, request explicit approval, and complete the governed path.
-- The later P3 native multi-agent pilot used the same model on a synthetic task with sequential specialist roles, ordinary approval, and one effect without duplication on replay.
-- The historical P2.7/R2.7 `tests_v2 + tests_v3` gate reported **2510 passed, 1 skipped, 11350 subtests passed**; its targeted closeout reported **5 passed**.
-- P3 native multi-agent is accepted in its declared scope; its later `tests_v3` gate reported **1753 passed, 1 skipped, 1209 subtests passed**.
-- EA-0A preformed proposal admission and EA-0B external READ, WRITE/approval/resume, and tested macOS two-principal isolation were accepted in declared scopes.
-- The latest EA-0B Slice 3 canonical full-repository gate recorded **2,888 collected, 2,887 passed, 1 skipped, 0 failed/errors, 12,407 subtests passed**.
+### Separate verification snapshots
 
-The P2 pilot, later P3 multi-agent pilot, and EA-0B external-host pilots are separate observed runs, not reliability benchmarks or broad deployment claims. See [Post-Core Evidence](docs/public/aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md), [Current Evidence](docs/public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md), and [Status and Limits](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md).
+| Milestone and date | Result | Scope |
+| --- | --- | --- |
+| Historical P2.7/R2.7 | **2,510 passed, 1 skipped; 11,350 subtests passed** | Private `tests_v2 + tests_v3`; targeted closeout separately **5 passed**. |
+| P3, 29 September 2026 | **1,753 passed, 1 skipped; 1,209 subtests passed** | Private `tests_v3`; sequential multi-agent, distinct historical live pilot. |
+| EA-0B Slice 3, 30 September 2026 | **2,888 collected; 2,887 passed; 1 skipped; 12,407 subtests passed** | Separate canonical full-repository run. |
+| **RM-21, 8 October 2026** | **3,233 passed, 0 failed, 1 skipped; 13,654 subtests passed; exit 0** | Corrected candidate, clean private `tests_v2 + tests_v3`. |
+| **RM-21 installed package, 8 October 2026** | **202 passed, 0 failed, 0 skipped; exit 0** | Identified installed candidate outside the checkout. |
+
+Counts are never summed. The RM-21 skip requires a case-sensitive volume unavailable on that host. Parent-only coverage and functional process evidence are separately delimited in the [qualification record](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md). The final operational controller did not finish every scenario; only its reached subset was asserted passing, with remaining applicable properties checked at their stated levels.
+
+The historical P2 OpenAI pilot and P3 multi-agent pilot were real provider runs on bounded synthetic tasks. RM-21 is an offline qualification, even where actual local processes and OS principals were used. No private suite or provider call was executed for this public refresh. Historical evidence does not qualify the locally modified RM-22 candidate.
 
 ## V2 Historical Evidence Preserved
 
@@ -123,50 +127,6 @@ The V2 private enterprise runtime was adversarially validated within its declare
 | Distributed/multi-host guarantee | **NOT CLAIMED** |
 
 [Read the V2 at-most-once evidence](docs/public/aios-v2/AT_MOST_ONCE_EXECUTION_EVIDENCE.md).
-
-[![V3 Core](https://img.shields.io/badge/P2.7%20%2F%20R2.7-FROZEN-1f7a4d)](docs/public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md)
-[![Agent-ready](https://img.shields.io/badge/Governed%20Core-AGENT--READY-1f7a4d)](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md)
-[![P3](https://img.shields.io/badge/P3-native%20multi--agent%20accepted-2456a6)](docs/public/aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md)
-[![Scope](https://img.shields.io/badge/disclosure-bounded-lightgrey)](docs/public-vs-private-boundary.md)
-[![History](https://img.shields.io/badge/AIOS%20V2-evidence%20preserved-6f42c1)](docs/public/aios-v2/README.md)
-
-**Because AI agents need brakes, not just engines.**
-
-AIOS is a governed agent runtime and execution layer for systems in which models can propose actions, call models, use tools, and affect real workflows.
-
-> **Models propose. AIOS governs. AIOS executes.**
-
-This repository is the public technical documentation and demonstration package for a source-private AIOS track. It publishes architecture, properties, limits, aggregate validation evidence, and small V2-shaped public demonstrations. It does not publish the private V3 runtime.
-
-## Current Status
-
-**P2.7 / R2.7 Core FROZEN and AGENT-READY · P3 native multi-agent ACCEPTED · EA-0A proposal admission ACCEPTED · EA-0B external-host governance ACCEPTED in tested scope**
-
-AIOS V3 completed P0, P1, and P2.0–P2.7 in their declared scopes. The P2.7/R2.7 governed Core remains frozen. **P3 native multi-agent is accepted in its declared sequential scope** above that baseline. OpenAI is a validated model provider; OpenAI Agents SDK integration remains unimplemented. Hermes was tested as an experimental decision source, without production integration. EA-0A admits already formed external proposals as non-authoritative. EA-0B validates a vendor-neutral external process boundary for governed READ and WRITE, with tested macOS two-principal isolation.
-
-| Signal | Public-safe result |
-| --- | --- |
-| V3 P0 foundation | Completed in its declared validation scope |
-| P1 governed real execution | Completed in its declared scope |
-| P2.0–P2.7 progression | Accepted through P2.7 in declared scopes; R2.7 closeout completed |
-| Governed capabilities | READ, bounded governed WRITE, durable SQLite WRITE, and governed filesystem WRITE validated in their declared scopes |
-| Historical P2.7/R2.7 full private regression | **2510 passed, 1 skipped, 11350 subtests passed** |
-| Targeted P2.7/R2.7 closeout retest | **5 passed** |
-| P3 native multi-agent | Accepted; one synthetic-task live pilot with 10 governed inferences, 10 network calls, 3 governed tool calls, 0 retries, and one effect |
-| P3 `tests_v3` gate (29 September 2026) | **1753 passed, 1 skipped, 1209 subtests passed** |
-| EA-0A external preformed proposal admission | Accepted; zero inference in the admitted proposal path |
-| EA-0B external-host boundary | READ and approval-bound WRITE accepted; tested macOS two-principal isolation |
-| EA-0B Slice 3 full-repository gate (30 September 2026) | **2,888 collected; 2,887 passed; 1 skipped; 0 failed/errors; 12,407 subtests passed** |
-| Recovery posture | Fail-closed; `UNKNOWN_EFFECT` blocks blind retry |
-| Governed Core | **P2.7 / R2.7 FROZEN · AGENT-READY** |
-
-The historical P2.7/R2.7 full regression preceded the final documentation-only closeout; it was not rerun for documentation changes. The targeted retests covered relevant filesystem ambiguity/recovery and result-exposure properties. These are aggregate, scope-bound results.
-
-The P2, P3, and EA-0B gates are separate runs with different scope and counts. These results do not establish unrestricted production readiness, security certification, formal verification, universal provider support, universal hostile-host containment, or distributed exactly-once semantics.
-
-### Where to go next
-
-[Evaluator guide](FOR_EVALUATORS.md) · [AIOS in 5 minutes](docs/public/AIOS_IN_5_MINUTES.md) · [V3 index](docs/public/aios-v3/README.md) · [Post-core evidence](docs/public/aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md) · [External Host Evidence](docs/public/aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md) · [Current evidence](docs/public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md) · [Architecture](docs/public/aios-v3/AIOS_V3_ARCHITECTURE.md) · [Status and limits](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md) · [Integration model](docs/public/AIOS_INTEGRATION_MODEL.md) · [Roadmap](docs/roadmap.md)
 
 ## Proposed Restack Project — Separate Open Kernel
 
@@ -225,38 +185,34 @@ Direct model-to-tool patterns are useful prototypes, but the model should not be
 
 ## What Can Be Tested
 
-The repository's executable public test surface remains intentionally small and V2-shaped:
+The public executable surface remains V2-shaped and requires only **Python 3.11 or later**, without provider credentials or third-party packages.
 
 | Testable area | Where |
 | --- | --- |
-| Public mock `ALLOW`, `WARN`, and `BLOCK` behavior | [public_mock_runtime/README.md](public_mock_runtime/README.md) |
-| V2 backbone consistency across docs and examples | [backbone_public_test/README.md](backbone_public_test/README.md) |
-| Result handling as an additive post-tool control | [examples/result-redaction-case.json](examples/result-redaction-case.json) |
-| Governance approval without automatic runtime effect | [examples/governance-override-example.json](examples/governance-override-example.json) |
-| Public proof artifacts | [docs/public-proof-tests/README.md](docs/public-proof-tests/README.md) |
-
-The V3 test suite and runtime source are private. The V3 evidence published here is aggregate and cannot be reproduced from the public mock runtime.
-
-Local public checks:
+| ALLOW/WARN/BLOCK, read-only demo and stable errors | [Public mock runtime](public_mock_runtime/README.md) |
+| Public backbone consistency and synthetic JSON examples | [Backbone guide](backbone_public_test/README.md) |
+| Input/rule validation and path containment regressions | [Independent public regressions](tests/test_mock_runtime_safety.py) |
+| Local Markdown targets and heading anchors | [Offline checker](scripts/check_markdown_links.py) |
+| Result redaction and approval without automatic runtime effect | [Examples](examples/) |
+| Historical proof artifacts | [V2 public proofs](docs/public-proof-tests/README.md) |
 
 ```bash
+python3 -B -m unittest discover -s tests -v
+python3 -B -m unittest discover -s public_mock_runtime/proof_tests -v
+python3 -B scripts/check_markdown_links.py
 python3 public_mock_runtime/mock_runtime.py public_mock_runtime/examples/allow.json
 python3 public_mock_runtime/mock_runtime.py public_mock_runtime/examples/warn.json
 python3 public_mock_runtime/mock_runtime.py public_mock_runtime/examples/block.json
-python3 -m unittest discover -s public_mock_runtime/proof_tests -p 'test_*.py'
-python3 -m unittest discover -s tests -p 'test_*_public.py'
 ```
 
-The `BLOCK` mock case is expected to stop before tool execution and can return a non-zero CLI exit code.
+The BLOCK example intentionally exits with code 1 before tool execution. GitHub Actions runs the public test/check commands on Python 3.11 and 3.13; hosted results are pending until publication and execution. The V3 suite and source remain private; public mock tests cannot reproduce private qualification.
 
 ## What Is Public Here
 
-- V3 architecture, properties, status, limits, and aggregate evidence;
-- the complete historical V2 public documentation package;
-- a small V2-shaped public mock runtime;
-- curated JSON examples and adapted public tests;
-- public proof artifacts and sanitized field-test evidence;
-- reference terminology and invariants.
+- High-level V3 architecture, status, aggregate milestone results and explicit limits.
+- Historical V2 documentation, proof tests, synthetic examples and sanitized field tests.
+- A small V2-shaped executable mock and independent public regressions.
+- An offline link checker and CI configuration without provider credentials.
 
 ## What Is Not Public
 
@@ -293,13 +249,15 @@ The existing presentation is an AIOS V2 historical artifact. It explains the gov
 | [tests/](tests/) | Public invariant tests for the V2 demonstration surface |
 | [reference/](reference/) | Version-aware glossary and public invariants |
 
+## What Comes Next
+
+Finish the remaining RM-22 candidate/deployment and provider-accounting gates, freeze the qualified candidate, and obtain explicit economic authorization before a paid LIVE qualification. OpenAI Agents SDK and other unqualified adapters remain future work. Publishing this public refresh is a separate owner-approved step.
+
+[Roadmap](docs/roadmap.md) · [Current limits](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md)
+
 ## Status
 
-The current public narrative retains **P2.7 / R2.7 FROZEN** and **Governed Core AGENT-READY** as the baseline, followed by **P3 native multi-agent, EA-0A proposal admission, and EA-0B external-host governance accepted in their declared scopes**. OpenAI model-provider use is validated; OpenAI Agents SDK and production Hermes integration are not implemented.
-
-The public repository remains a documentation and demonstration package, not a V3 runtime distribution. V2 evidence remains historical and testable. V3 implementation and validation internals remain private.
-
-The repository should not be interpreted as unrestricted deployment evidence, a security certification, legal or compliance approval, or a claim that every integration and environment has been validated.
+**RM-21 ACCEPTED within its identified offline scope; RM-22 BLOCKED before LIVE.** The private development package is not a final production release. Accepted milestones, isolated passing suites and historical pilots do not establish production readiness, certification, universal security or distributed exactly-once behavior.
 
 ## License
 

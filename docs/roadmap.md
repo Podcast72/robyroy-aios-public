@@ -1,6 +1,8 @@
 # Roadmap
 
-The governed Core reached **P2.7 / R2.7 FROZEN** and is **AGENT-READY**. V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 remediation and closeout completed. P3 native multi-agent, EA-0A preformed proposal admission, and EA-0B external-host governance are accepted above that frozen baseline in their declared scopes. AIOS V2 remains the historical governed-execution backbone.
+**Status review — 13 October 2026:** RM-21 is ACCEPTED for its corrected offline candidate; RM-22 remains BLOCKED before LIVE. The Hermes governed plugin is implemented and offline verified. OpenAI uses the Responses API SDK; OpenAI Agents SDK remains deferred. [Current qualification and integration record](public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md).
+
+The governed Core reached the historical **P2.7/R2.7 FROZEN / AGENT-READY** baseline. V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 remediation and closeout completed. P3 native multi-agent, EA-0A preformed proposal admission, and EA-0B external-host governance are accepted above that frozen baseline in their declared scopes. AIOS V2 remains the historical governed-execution backbone.
 
 ## Completed Milestones
 
@@ -36,7 +38,15 @@ Accepted in its declared sequential scope at `P3_NATIVE_MULTI_AGENT_LIVE_ACCEPTE
 
 ## EA-0A and EA-0B — External Host Governance
 
-EA-0A accepted non-authoritative preformed proposals. EA-0B accepted a vendor-neutral external process boundary for governed READ, WRITE with AIOS approval/resume, and tested macOS two-principal isolation. See [External Host Evidence](public/aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md) for aggregate evidence and limits. Vendor-specific adapters and MCP integration remain future work.
+EA-0A accepted non-authoritative preformed proposals. EA-0B accepted a vendor-neutral external process boundary for governed READ, WRITE with AIOS approval/resume, and tested macOS two-principal isolation. See [External Host Evidence](public/aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md) for aggregate evidence and limits. A Hermes governed plugin is now implemented and offline verified. Other unqualified vendor adapters and MCP remain future work.
+
+## RM-01 Through RM-21 — Installed And Operational Qualification
+
+The private track completed baseline and development-package work, host/configuration/approval administration, execution-history integrity and recovery operations, gateway client and Hermes plugin integration. RM-13 was a design milestone; implementation followed in RM-14. RM-20 records an offline report workflow and a reported second-operator repeat with limited traceability. **RM-21 was accepted offline on 8 October 2026 for the corrected installed candidate.** [Milestone dates, scopes and aggregate evidence](public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md).
+
+## RM-22 — Preparation, BLOCKED Before LIVE
+
+Local campaign and Hermes functional tests show narrower offline progress. Qualification of the changed candidate on the effective deployment, provider bindings, attributable accounting sources and explicit economic authorization remain open. No accepted RM-22 LIVE qualification or final production release is claimed. Historical RM-21 acceptance does not transfer automatically to new bytes.
 
 ## Near-Term Public Work
 
@@ -48,7 +58,7 @@ EA-0A accepted non-authoritative preformed proposals. EA-0B accepted a vendor-ne
 
 ## Future Engineering Direction
 
-P3 native sequential multi-agent has been implemented and accepted in its declared scope. Further external-agent adapter engineering remains future work. OpenAI is a validated model provider; OpenAI Agents SDK is not implemented. The Hermes decision-source experiment used an artifact adapter and is not production integration. `ModelPort` separates provider concerns from AIOS / `ExecutionEngine` authority. Future claims require their own verified scope and disclosure review.
+P3 native sequential multi-agent has been implemented and accepted in its declared scope. The gateway client and Hermes governed plugin are now implemented and offline verified; other adapter engineering remains future work. OpenAI is a validated model provider; OpenAI Agents SDK is not implemented. The earlier Hermes decision-source experiment used an artifact adapter. The later plugin/client path has separate RM-18/RM-21 offline verification, without production qualification. `ModelPort` separates provider concerns from AIOS / `ExecutionEngine` authority. Future claims require their own verified scope and disclosure review.
 
 No future capability is implied complete by this roadmap.
 

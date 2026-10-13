@@ -1,5 +1,7 @@
 # AIOS V3 — Post-Core Evidence
 
+> **Historical record:** the evidence and integration status below belong to the stated September 2026 milestone. Later RM-18 implemented the governed Hermes plugin and RM-21 accepted the corrected installed candidate offline. See [current qualification and integration status](AIOS_V3_RELEASE_QUALIFICATION.md); the historical results are not broadened.
+
 This page summarizes evidence after the frozen P2.7 / R2.7 governed-core baseline, as of 29 September 2026. It is an aggregate public record, not a runtime distribution, audit certificate, or claim of unrestricted production readiness.
 
 ## 1. Frozen governed-core baseline

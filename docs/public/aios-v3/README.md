@@ -1,12 +1,18 @@
 # AIOS V3 Public Documentation
 
-**P2.7 / R2.7 Core FROZEN and AGENT-READY · P3 native multi-agent ACCEPTED · EA-0A and EA-0B external-host milestones ACCEPTED in declared scopes.** P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed.
+**Status review — 13 October 2026:** RM-21 is ACCEPTED for its corrected offline candidate; RM-22 remains BLOCKED before LIVE. The Hermes governed plugin is implemented and offline verified. OpenAI uses the Responses API SDK; OpenAI Agents SDK remains deferred. [Current qualification and integration record](AIOS_V3_RELEASE_QUALIFICATION.md).
+
+**Historical progression: P2.7/R2.7 frozen baseline; P3 and EA-0A/EA-0B accepted in their declared scopes.** P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed.
 
 > **Models/agents propose. AIOS governs. AIOS executes admitted actions. AIOS verifies the observed effect.**
 
 V3 evolves the governed execution backbone documented for AIOS V2 into a governed agent runtime. The `AgentLoop` can request model or tool work, but it does not own execution authority. P1 extends that governed path to scoped real execution, including validated governed READ, bounded governed WRITE, and durable SQLite WRITE capabilities.
 
 ## Current Status
+
+- **RM-21 ACCEPTED OFFLINE** for the corrected candidate on 8 October 2026; separate canonical and installed-package evidence.
+- **RM-22 BLOCKED before LIVE**; narrower later functional tests do not qualify the changed deployment or approve spend.
+- RM-17 gateway client and RM-18 Hermes plugin implemented and offline verified; RM-13 was design-only.
 
 - V3 P0 governed agent-runtime foundation completed in its declared scope
 - P1 governed real execution completed in its declared scope
@@ -22,16 +28,17 @@ V3 evolves the governed execution backbone documented for AIOS V2 into a governe
 - historical P2.7/R2.7 full private regression: **2510 passed, 1 skipped, 11350 subtests passed**
 - targeted P2.7/R2.7 closeout retest: **5 passed**
 - separate P3 `tests_v3` gate: **1753 passed, 1 skipped, 1209 subtests passed**
-- latest EA-0B Slice 3 canonical full-repository gate: **2,888 collected, 2,887 passed, 1 skipped, 0 failed/errors, 12,407 subtests passed**
+- historical EA-0B Slice 3 canonical full-repository gate: **2,888 collected, 2,887 passed, 1 skipped, 0 failed/errors, 12,407 subtests passed**
 - recovery remains fail-closed; `UNKNOWN_EFFECT` blocks blind re-execution
 - no unrestricted production-readiness, certification, formal-proof, or distributed exactly-once claim
 
-The historical P2.7/R2.7 full regression preceded its documentation-only closeout. A separate P3 `tests_v3` gate reported **1753 passed, 1 skipped, 1209 subtests passed** after the native multi-agent live pilot. OpenAI is a validated model provider; OpenAI Agents SDK remains unimplemented. Hermes decision-source evidence remains experimental. The EA-0B gate is a separate, later full-repository run; these counts are not additive.
+The historical P2.7/R2.7 full regression preceded its documentation-only closeout. A separate P3 `tests_v3` gate reported **1753 passed, 1 skipped, 1209 subtests passed** after the native multi-agent live pilot. OpenAI is a validated model provider; OpenAI Agents SDK remains unimplemented. The earlier Hermes decision-source evidence remains experimental; the later governed plugin has separate RM-18/RM-21 offline verification. The EA-0B gate is a separate, later full-repository run; these counts are not additive.
 
 ## Documents
 
 | Document | Purpose |
 | --- | --- |
+| [AIOS_V3_RELEASE_QUALIFICATION.md](AIOS_V3_RELEASE_QUALIFICATION.md) | Latest RM milestone, candidate, installed/offline qualification, integration distinctions and RM-22 blockers. |
 | [AIOS_V3_CURRENT_EVIDENCE.md](AIOS_V3_CURRENT_EVIDENCE.md) | Canonical P0-to-EA-0B progression and separately scoped gates. |
 | [AIOS_V3_EXTERNAL_HOST_EVIDENCE.md](AIOS_V3_EXTERNAL_HOST_EVIDENCE.md) | EA-0A and EA-0B Slice 1–3 aggregate external-host evidence and limits. |
 | [AIOS_V3_POST_CORE_EVIDENCE.md](AIOS_V3_POST_CORE_EVIDENCE.md) | External review, P3 live pilot, Hermes A/B experiments, and limits. |
@@ -52,9 +59,12 @@ V2 — Governed Execution Backbone
 -> P3 — Native multi-agent ACCEPTED in its declared scope
 -> EA-0A — Governed preformed proposal admission ACCEPTED
 -> EA-0B — External-host governance READ/WRITE and tested OS isolation ACCEPTED in declared scope
+-> RM-01–RM-20 — Scoped distribution, host, governance operations and Hermes plugin progression
+-> RM-21 — Corrected installed candidate ACCEPTED OFFLINE, 8 October 2026
+-> RM-22 — Later preparation; BLOCKED before LIVE
 ```
 
-P3, EA-0A, and EA-0B build above the unchanged frozen core baseline. Each milestone claim is limited to its declared scope; none establishes unrestricted deployment readiness.
+P3, EA-0A, and EA-0B were built above the historical frozen core baseline; later RM qualification identifies its own corrected candidate. Each milestone claim is limited to its declared scope; none establishes unrestricted deployment readiness.
 
 ## Evolution, Not Replacement
 

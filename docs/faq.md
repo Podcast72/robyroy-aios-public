@@ -1,8 +1,10 @@
 # FAQ
 
+**Status review — 13 October 2026:** RM-21 is ACCEPTED for its corrected offline candidate; RM-22 remains BLOCKED before LIVE. The Hermes governed plugin is implemented and offline verified. OpenAI uses the Responses API SDK; OpenAI Agents SDK remains deferred. [Current qualification and integration record](public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md).
+
 ## What is AIOS now?
 
-AIOS is a governed agent runtime and execution layer. V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed. **P2.7 / R2.7 remains FROZEN and AGENT-READY; P3 native multi-agent, EA-0A proposal admission, and EA-0B external-host governance are accepted in their declared scopes above that baseline.**
+AIOS is a governed agent runtime and execution layer. V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed. **Historical progression: P2.7/R2.7 frozen baseline; P3 and EA-0A/EA-0B accepted in their declared scopes.**
 
 > **Models/agents propose. AIOS governs. AIOS executes admitted actions. AIOS verifies the observed effect.**
 
@@ -49,7 +51,7 @@ Public-safe aggregate evidence supports governed READ, bounded governed WRITE, d
 
 The architectural model boundary is provider-neutral through `ModelPort`. OpenAI is the first real provider validated, and `gpt-5.6-sol` is the exact model used for the published pilot evidence.
 
-P3 native multi-agent is implemented and accepted inside AIOS. OpenAI is the first validated model provider, while OpenAI Agents SDK is not implemented. Hermes supplied a decision in an experimental adapter pilot, not through a production integration; AIOS / `ExecutionEngine` retained execution authority.
+P3 native multi-agent is implemented and accepted inside AIOS. OpenAI is the first validated model provider, while OpenAI Agents SDK is not implemented. Earlier Hermes evidence used an experimental decision artifact; the later governed plugin is implemented and offline verified, without production qualification; AIOS / `ExecutionEngine` retained execution authority.
 
 ## What happened in the end-to-end pilot?
 
@@ -71,7 +73,7 @@ The direct pilot let Hermes use its own tools to create an effect outside AIOS. 
 
 ## Can an external agent use AIOS today?
 
-EA-0A admitted already formed proposals without giving the proposer authority. EA-0B accepted a vendor-neutral external process boundary for scoped READ and approval-bound WRITE. A tested macOS two-principal configuration denied direct host access to the protected AIOS resources in the pilot. This is a bounded boundary result; production Hermes/Codex/OpenCode adapters, MCP integration, universal compatibility, and security certification are not claimed. See [External Host Evidence](public/aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md).
+EA-0A admitted already formed proposals without giving the proposer authority. EA-0B accepted a vendor-neutral external process boundary for scoped READ and approval-bound WRITE. A tested macOS two-principal configuration denied direct host access to the protected AIOS resources in the pilot. This is a bounded boundary result; production-qualified Hermes or other vendor adapters, MCP integration, universal compatibility, and security certification are not claimed. See [External Host Evidence](public/aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md).
 
 ## What does UNKNOWN_EFFECT mean?
 

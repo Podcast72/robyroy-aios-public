@@ -1,5 +1,7 @@
 # Glossary
 
+**Status review — 13 October 2026:** RM-21 is ACCEPTED for its corrected offline candidate; RM-22 remains BLOCKED before LIVE. The Hermes governed plugin is implemented and offline verified. OpenAI uses the Responses API SDK; OpenAI Agents SDK remains deferred. [Current qualification and integration record](../docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md).
+
 ## AIOS V2 — Governed Execution Backbone
 
 The historical public milestone centered on this tool-oriented path:
@@ -171,3 +173,19 @@ A non-core path that remains outside the applicable governed reference path and 
 ## proof area
 
 A bounded repository area in which a specific public claim is supported by curated, version-scoped evidence.
+
+## RM-21 — Corrected Offline Candidate Qualification
+
+Accepted on 8 October 2026 for its identified corrected development artifact and declared offline boundary. Does not qualify a later candidate or provider LIVE operation.
+
+## RM-22 — Later Campaign Preparation
+
+Narrow offline functional progress with required deployment/provider/accounting and economic-authorization gates still open; overall BLOCKED before LIVE.
+
+## OpenAI API SDK And OpenAI Agents SDK
+
+The API SDK supports the implemented Responses provider. The separate Agents SDK orchestration runtime remains deferred. Native AIOS orchestration is its own implementation.
+
+## Hermes Governed Plugin
+
+Implemented private external adapter verified offline in RM-18 and the installed RM-21 boundary. An adapter translates proposals; it does not acquire AIOS approval or execution authority. Provider-live and production qualification remain open.

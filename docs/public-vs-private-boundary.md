@@ -1,5 +1,7 @@
 # Public vs Private Boundary
 
+**Status review — 13 October 2026:** RM-21 is ACCEPTED for its corrected offline candidate; RM-22 remains BLOCKED before LIVE. The Hermes governed plugin is implemented and offline verified. OpenAI uses the Responses API SDK; OpenAI Agents SDK remains deferred. [Current qualification and integration record](public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md).
+
 This repository follows **bounded technical disclosure**.
 
 It publishes enough architecture, properties, evidence, and limitations to support technical review without publishing the mechanisms required to reproduce the private AIOS V3 runtime.
@@ -18,11 +20,14 @@ AIOS V2 — Governed Execution Backbone
 -> P3 — Native multi-agent ACCEPTED in its declared scope
 -> EA-0A — Governed preformed proposal admission ACCEPTED
 -> EA-0B — External-host governance READ/WRITE and tested OS isolation ACCEPTED
+-> RM-01–RM-20 — Scoped package/host/governance operations and offline Hermes plugin
+-> RM-21 — Corrected candidate ACCEPTED OFFLINE
+-> RM-22 — Later preparation; BLOCKED before LIVE
 ```
 
 V2 remains public historical evidence. Its documentation, public mock runtime, proof tests, ANDY field tests, and public-safe validation summaries are not erased or presented as if they were V3.
 
-V3 is documented through architecture-level descriptions, claim limits, and aggregate evidence only. P2.0–P2.7 were accepted, R2.7 closed, and P3 native multi-agent, EA-0A preformed proposal admission, and EA-0B Slices 1–3 were accepted in declared scopes. OpenAI model-provider use is validated. OpenAI Agents SDK and production Hermes integration are not implemented.
+V3 is documented through architecture-level descriptions, claim limits, and aggregate evidence only. P2.0–P2.7 were accepted, R2.7 closed, and P3 native multi-agent, EA-0A preformed proposal admission, and EA-0B Slices 1–3 were accepted in declared scopes. OpenAI model-provider use is validated. OpenAI Agents SDK remains deferred. The Hermes governed plugin is implemented and offline verified in RM-18/RM-21; production qualification remains open.
 
 ## What Is Public For V3
 
@@ -41,6 +46,7 @@ The public V3 surface includes:
 - the bounded P3 native multi-agent gate and live pilot;
 - aggregate EA-0A/EA-0B admission, external READ/WRITE, approval/resume, replay/restart, and tested macOS two-principal OS-isolation results;
 - aggregate external read-only review/remediation and Hermes direct/governed experiments;
+- sanitized RM milestone status, identified RM-21 candidate and aggregate installed/offline results;
 - explicit scope limits and non-claims.
 
 Named boundaries in the pilot describe aggregate passage through the runtime. They do not publish schemas, interfaces, action formats, or implementation relationships.

@@ -1,5 +1,7 @@
 # External Host Governance
 
+> **Historical record:** the evidence and integration status below belong to the stated September 2026 milestone. Later RM-18 implemented the governed Hermes plugin and RM-21 accepted the corrected installed candidate offline. See [current qualification and integration status](AIOS_V3_RELEASE_QUALIFICATION.md); the historical results are not broadened.
+
 EA-0A and EA-0B are accepted in their declared scopes. This page records aggregate evidence through EA-0B Slice 3 as of 30 September 2026. The V3 runtime and its validation artifacts remain private.
 
 > **External agents can propose. AIOS remains the execution authority.**
@@ -71,7 +73,7 @@ The host proposes. AIOS decides authority, approval, execution, recovery, and ou
 | --- | --- | --- |
 | EA-0B Slice 1 full repository | 2,843 collected; 2,842 passed; 1 skipped; 0 failed; 12,240 subtests passed | External governed READ baseline |
 | EA-0B Slice 2 full repository | 2,880 collected; 2,879 passed; 1 skipped; 0 failed; 12,282 subtests passed | Adds governed WRITE/approval/resume |
-| **EA-0B Slice 3 canonical full repository** | **2,888 collected; 2,887 passed; 1 skipped; 0 failed/errors; 12,407 subtests passed** | Latest complete gate; **469 monitored source/test files byte-stable during the gate** |
+| **EA-0B Slice 3 canonical full repository** | **2,888 collected; 2,887 passed; 1 skipped; 0 failed/errors; 12,407 subtests passed** | Complete EA-0B gate at that date; **469 monitored source/test files byte-stable during the gate** |
 
 These are separate private runs and must not be added together. The Slice 3 canonical gate followed a separate full run that failed in a command-sandbox environment because its broker could not bind a local socket; that failed run is not presented as a green gate. The canonical repeat passed in the intended environment. These private gates cannot be reproduced from the public V2-shaped mock runtime. Historical P2 and P3 gates are recorded separately in [Current Evidence](AIOS_V3_CURRENT_EVIDENCE.md).
 

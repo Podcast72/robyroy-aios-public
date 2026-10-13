@@ -1,6 +1,8 @@
 # AIOS V3 Current Evidence
 
-This is the canonical aggregate, public-safe record of AIOS V3 progression through EA-0B Slice 3 as of 30 September 2026. The P2.7 / R2.7 governed-core baseline remains frozen and valid. It does not publish private source, tests, schemas, traces, credentials, local paths, authority mechanisms, or adversarial procedures.
+**Status review — 13 October 2026:** RM-21 is ACCEPTED for its corrected offline candidate; RM-22 remains BLOCKED before LIVE. The Hermes governed plugin is implemented and offline verified. OpenAI uses the Responses API SDK; OpenAI Agents SDK remains deferred. [Current qualification and integration record](AIOS_V3_RELEASE_QUALIFICATION.md).
+
+This record preserves aggregate progression through EA-0B and links the later RM qualification. The P2.7/R2.7 freeze describes the historical baseline, not a claim that later product candidates are unchanged. It does not publish private source, tests, schemas, traces, credentials, local paths, authority mechanisms, or adversarial procedures.
 
 ## Milestone Narrative
 
@@ -62,7 +64,7 @@ These names state architectural outcomes, not private implementation procedures.
 | EA-0A governed admission | Preformed READ and approval-bound WRITE/replay with zero inference | Existing Core authority; no external gateway yet |
 | EA-0B Slice 1 full-repository gate | **2,843 collected, 2,842 passed, 1 skipped, 12,240 subtests passed** | External READ; separate private run |
 | EA-0B Slice 2 full-repository gate | **2,880 collected, 2,879 passed, 1 skipped, 12,282 subtests passed** | External WRITE/approval/resume; separate private run |
-| **EA-0B Slice 3 canonical full-repository gate, 30 September 2026** | **2,888 collected, 2,887 passed, 1 skipped, 0 failed/errors, 12,407 subtests passed** | Latest complete private gate; 469 monitored source/test files byte-stable |
+| **EA-0B Slice 3 canonical full-repository gate, 30 September 2026** | **2,888 collected, 2,887 passed, 1 skipped, 0 failed/errors, 12,407 subtests passed** | Historical EA-0B complete private gate; 469 monitored source/test files byte-stable |
 
 The P2.7/R2.7 full regression was not rerun solely for its final documentation-only closeout. The five targeted retests are narrower. The later P3 `tests_v3` result is a separate suite and must not be added to or directly trended against the historical `tests_v2 + tests_v3` result. The EA-0B full-repository gates are later private runs and are not additive with the P2 or P3 gates. The Slice 3 canonical gate followed a separately recorded sandbox-environment failure; that earlier run is not a passing gate. None establishes security certification or formal verification.
 
@@ -128,16 +130,20 @@ The accepted P3 native multi-agent pilot used OpenAI `gpt-5.6-sol` on a syntheti
 
 A separate external model-assisted read-only technical review through Hermes with DeepSeek V4 Pro provided findings for private remediation. Hermes direct and governed A/B pilots, then an experimental Hermes-decision / AIOS-authority pilot, provide bounded evidence for the distinction between agent decision and AIOS execution authority. [Post-Core Evidence](AIOS_V3_POST_CORE_EVIDENCE.md) records the review, remediation sequence, pilots, and limits.
 
-`ModelPort` keeps provider concerns separate from AIOS / `ExecutionEngine` execution authority. Native AIOS multi-agent support and validated OpenAI model-provider use do **not** imply OpenAI Agents SDK integration; that SDK is not implemented. The Hermes decision source was an experimental adapter, not a production Hermes integration. The separate P3.6a `approval_wait_already_resumed` limitation remains open for further steps in the same root run after that wait.
+`ModelPort` keeps provider concerns separate from AIOS / `ExecutionEngine` execution authority. Native AIOS multi-agent support and validated OpenAI model-provider use do **not** imply OpenAI Agents SDK integration; that SDK is not implemented. The earlier Hermes decision source was experimental. RM-18 later implemented the governed plugin; RM-21 verified its installed local boundary offline. Production qualification remains open. The separate P3.6a `approval_wait_already_resumed` limitation remains open for further steps in the same root run after that wait.
 
 ## External Agent / Host Evidence
 
 EA-0A admitted preformed external proposals as proposals, preserving AIOS authority and the existing governed path with zero inference. EA-0B added a vendor-neutral external process boundary. Slice 1 observed one governed READ dispatch and historical result replay after restart rather than a fresh target read. Slice 2 observed zero dispatch before AIOS approval, then one governed WRITE dispatch after resume of the same durable action; replay remained safe in the tested scope and canonical target drift was blocked. Slice 3 tested two distinct macOS OS principals: direct access to protected AIOS resources in the pilot was denied, while governed READ and WRITE remained available through EA-0B. The final probe observed 487 denied operations and an unchanged protected tree; a 31-file/60-value leakage audit found no leakage. This is a bounded configuration claim, not a universal sandbox or exactly-once claim. See [External Host Evidence](AIOS_V3_EXTERNAL_HOST_EVIDENCE.md).
 
-The earlier Hermes experiments in [Post-Core Evidence](AIOS_V3_POST_CORE_EVIDENCE.md) remain distinct from EA-0B; they do not constitute a production Hermes adapter.
+The earlier Hermes experiments in [Post-Core Evidence](AIOS_V3_POST_CORE_EVIDENCE.md) remain historical, separate from the implemented RM-18 plugin and RM-21 installed offline qualification.
 
 ## Evidence Boundary
 
 No raw pilot trace, audit record, prompt, fixture, schema, policy implementation, approval mechanism, trust-boundary detail, credential, local path, or deployment configuration is published here. The named components describe aggregate passage through the governed runtime; they are not an implementation recipe.
 
 For the complete claim and disclosure limits, see [AIOS V3 Status and Limits](AIOS_V3_STATUS_AND_LIMITS.md) and [Public vs Private Boundary](../../public-vs-private-boundary.md).
+
+## Later Release Qualification — RM-01 Through RM-22
+
+[Release Qualification And Integration Status](AIOS_V3_RELEASE_QUALIFICATION.md) records milestone dates, candidate identity, status vocabulary, separate RM-21 results and RM-22 blockers. RM-21 was ACCEPTED offline on 8 October 2026: **3,233 passed, 1 skipped, 13,654 subtests passed** in the canonical private suite and **202 passed** in a separate installed replay suite. These are retained historical results, not tests rerun for this public update or qualification of the changed RM-22 candidate.

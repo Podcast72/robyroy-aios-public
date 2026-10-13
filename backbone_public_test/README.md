@@ -51,3 +51,15 @@ python3 -m unittest discover -s tests -p 'test_*_public.py'
 
 All tests should pass without extra setup.
 The passing result confirms the documented backbone path, public example traces, and `BLOCK`-before-tool behavior remain intact.
+
+## Complete Public Checks
+
+The historical command above selects the original reference tests. To also run the independent mock regressions and offline link checks, use:
+
+```bash
+python3 -B -m unittest discover -s tests -v
+python3 -B -m unittest discover -s public_mock_runtime/proof_tests -v
+python3 -B scripts/check_markdown_links.py
+```
+
+These check the public V2 demonstration and documentation, not the private V3 runtime.
