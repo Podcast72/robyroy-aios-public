@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+  <title id="title">Live Demonstration — Hermes × AIOS, 14 October 2026</title>
+  <desc id="desc">Hermes 0.21.0 with DeepSeek deepseek-v4-flash used the AIOS governed adapter. Authorized READ was allowed; out-of-scope READ was blocked by the runtime guard. A WRITE proposal waited for explicit human approval, then governed resume completed the WRITE. Filesystem evidence, RunStore and ResultGate verified execution independently of Hermes' final-response error. This bounded real-provider demo is not a security certification, LIVE RM-22 qualification, or proof of macOS user isolation. Only the AIOS tools used were governed.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b172b"/>
+      <stop offset="1" stop-color="#142c43"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M1 1 L6 4 L1 7" fill="none" stroke="#96abc1" stroke-width="1.5"/>
+    </marker>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; }
+      .eyebrow { font-size: 17px; font-weight: 700; letter-spacing: 2px; fill: #80dacf; }
+      .headline { font-size: 49px; font-weight: 700; fill: #ffffff; }
+      .sub { font-size: 22px; fill: #c3d1e1; }
+      .stage { font-size: 20px; font-weight: 700; fill: #d8e5f2; }
+      .label { font-size: 21px; font-weight: 700; fill: #ffffff; }
+      .body { font-size: 20px; fill: #c4d3e2; }
+      .state { font-size: 26px; font-weight: 700; }
+      .number { font-size: 17px; font-weight: 700; fill: #c4d3e2; }
+      .foot { font-size: 18px; fill: #b9c9da; }
+    </style>
+  </defs>
+  <rect width="1440" height="900" rx="24" fill="url(#bg)"/>
+  <rect x="50" y="45" width="5" height="124" rx="2" fill="#58d4bd"/>
+  <text x="75" y="66" class="eyebrow">REAL-PROVIDER DEMO · 14 OCTOBER 2026</text>
+  <text x="75" y="128" class="headline">Hermes proposes. AIOS verifies.</text>
+  <text x="75" y="166" class="sub">Hermes 0.21.0 · DeepSeek deepseek-v4-flash · AIOS governed adapter</text>
+  <line x1="50" y1="200" x2="1390" y2="200" stroke="#34516b"/>
+
+  <text x="50" y="242" class="stage">01 / SCOPE CHECKS</text>
+  <text x="510" y="242" class="stage">02 / HUMAN CONTROL</text>
+  <text x="970" y="242" class="stage">03 / VERIFIED EFFECT</text>
+  <path d="M470 425 H501" stroke="#96abc1" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M930 578 H950 V363 H961" fill="none" stroke="#96abc1" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="50" y="270" width="420" height="187" rx="16" fill="#173246" stroke="#467767"/>
+  <rect x="50" y="289" width="4" height="149" rx="2" fill="#71e3b1"/>
+  <text x="77" y="308" class="number">1</text>
+  <text x="107" y="308" class="label">Authorized READ</text>
+  <text x="77" y="355" class="state" fill="#8befbf">ALLOWED</text>
+  <text x="77" y="394" class="body">In-scope report returned.</text>
+  <text x="77" y="423" class="body">Original total: 2</text>
+
+  <rect x="50" y="485" width="420" height="187" rx="16" fill="#2d2639" stroke="#875e74"/>
+  <rect x="50" y="504" width="4" height="149" rx="2" fill="#f59ea9"/>
+  <text x="77" y="523" class="number">2</text>
+  <text x="107" y="523" class="label">Out-of-scope READ</text>
+  <text x="77" y="570" class="state" fill="#ffb6bf">BLOCKED BY GUARD</text>
+  <text x="77" y="609" class="body">Runtime guard rejected the read.</text>
+  <text x="77" y="638" class="body">No outside content returned.</text>
+
+  <rect x="510" y="270" width="420" height="187" rx="16" fill="#30313a" stroke="#8f7e54"/>
+  <rect x="510" y="289" width="4" height="149" rx="2" fill="#f3cc7b"/>
+  <text x="537" y="308" class="number">3</text>
+  <text x="567" y="308" class="label">WRITE proposal</text>
+  <text x="537" y="355" class="state" fill="#f9d998">WAITING_APPROVAL</text>
+  <text x="537" y="394" class="body">Change proposed: total 2 → 3</text>
+  <text x="537" y="423" class="body">File unchanged before consent.</text>
+  <path d="M720 458 V480" stroke="#96abc1" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="510" y="485" width="420" height="187" rx="16" fill="#173246" stroke="#467767"/>
+  <rect x="510" y="504" width="4" height="149" rx="2" fill="#71e3b1"/>
+  <text x="537" y="523" class="number">4</text>
+  <text x="567" y="523" class="label">Human approval</text>
+  <text x="537" y="570" class="state" fill="#8befbf">APPROVED</text>
+  <text x="537" y="609" class="body">Explicit approval of the request</text>
+  <text x="537" y="638" class="body">and its digest, separate from AI.</text>
+
+  <rect x="970" y="270" width="420" height="187" rx="16" fill="#173246" stroke="#467767"/>
+  <rect x="970" y="289" width="4" height="149" rx="2" fill="#71e3b1"/>
+  <text x="997" y="308" class="number">5</text>
+  <text x="1027" y="308" class="label">Governed resume</text>
+  <text x="997" y="355" class="state" fill="#8befbf">WRITE COMPLETED</text>
+  <text x="997" y="394" class="body">AIOS executed the approved change.</text>
+  <text x="997" y="423" class="body">26 bytes written · New total: 3</text>
+  <path d="M1180 458 V480" stroke="#96abc1" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="970" y="485" width="420" height="187" rx="16" fill="#173947" stroke="#58aeaa"/>
+  <rect x="970" y="504" width="4" height="149" rx="2" fill="#7ee5df"/>
+  <text x="997" y="523" class="number">6</text>
+  <text x="1027" y="523" class="label">RunStore / ResultGate</text>
+  <text x="997" y="570" class="state" fill="#9aefeb">EXECUTION VERIFIED</text>
+  <text x="997" y="609" class="body">Filesystem matched · ResultGate ALLOW</text>
+  <text x="997" y="638" class="body">RunStore SUCCEEDED / COMMITTED</text>
+
+  <rect x="50" y="710" width="1340" height="94" rx="14" fill="#0c1d31" stroke="#34516b"/>
+  <circle cx="80" cy="743" r="5" fill="#80dacf"/>
+  <text x="98" y="750" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#ffffff">Execution truth is independent of the agent's final answer.</text>
+  <text x="98" y="781" class="body">Hermes' final response failed; AIOS had verified the change. A provider rate limit is not established.</text>
+  <text x="50" y="842" class="foot">Bounded demo · No security certification · Not LIVE RM-22 · No macOS user-isolation proof</text>
+  <text x="50" y="871" class="foot">Only the AIOS tools used were governed. Outcome labels summarize the recorded evidence.</text>
+</svg>

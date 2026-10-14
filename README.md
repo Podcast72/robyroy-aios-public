@@ -1,5 +1,16 @@
 # AIOS — Governed Agent Runtime & Execution Layer
 
+## Live Demonstration — Hermes × AIOS
+
+[![Live Hermes × AIOS demonstration: scope checks, human approval, governed execution and independent verification.](docs/demos/hermes-aios-2026-10-14/demo-flow.svg)](docs/demos/hermes-aios-2026-10-14/README.md)
+
+AIOS doesn't trust what an AI agent says it did.
+It verifies what actually happened.
+
+On **14 October 2026**, Hermes **0.21.0** with DeepSeek **`deepseek-v4-flash`** used the AIOS governed adapter: an authorized READ succeeded, an out-of-scope READ was blocked by the runtime guard, and a WRITE waited for explicit human approval before AIOS executed and independently verified it. Hermes then encountered a final-response error; AIOS's execution evidence already confirmed the change. A rate limit is not established by that error.
+
+[Read the real experiment and its evidence summary](docs/demos/hermes-aios-2026-10-14/README.md). This bounded real-provider demo is not a security certification, the LIVE RM-22 qualification, or evidence of isolation between macOS users. Only the AIOS tools used are governed.
+
 ![AIOS demo architecture](assets/aios-demo-hero.png)
 
 > **Models propose. AIOS governs. AIOS executes.**
@@ -12,11 +23,11 @@ This repository contains public technical documentation, aggregate evidence and 
 
 ## Current Status
 
-**Reviewed 13 October 2026 · RM-21 ACCEPTED OFFLINE for its corrected candidate · RM-22 BLOCKED before LIVE.**
+**Reviewed 14 October 2026 · RM-21 ACCEPTED OFFLINE for its corrected candidate · RM-22 BLOCKED before LIVE.**
 
 The private track has progressed beyond P3 and EA-0B: installed host lifecycle, approval administration, execution-history integrity, conservative failure operations, backup/restore, a gateway client, and a governed Hermes plugin are implemented and verified in their declared scopes. RM-21's final decision of **8 October 2026** qualifies an identified corrected development candidate offline. Later local RM-22 preparation has narrower passing functional evidence and open deployment/provider/authorization gates.
 
-**OpenAI integration:** the OpenAI Python SDK and Responses API support the implemented model provider. AIOS owns native orchestration. **OpenAI Agents SDK remains deferred and not implemented.** The Hermes governed plugin is implemented and verified offline; provider-live and production Hermes qualification remain open.
+**OpenAI integration:** the OpenAI Python SDK and Responses API support the implemented model provider. AIOS owns native orchestration. **OpenAI Agents SDK remains deferred and not implemented.** The Hermes governed plugin is implemented and verified offline; the separate [14 October real-provider demonstration](docs/demos/hermes-aios-2026-10-14/README.md) adds bounded observed execution evidence. Formal provider-live and production Hermes qualification remain open.
 
 [![RM-21](https://img.shields.io/badge/RM--21-accepted%20offline-1f7a4d)](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md)
 [![RM-22](https://img.shields.io/badge/RM--22-blocked%20before%20live-b85c00)](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#rm-22-narrow-progress-open-gates)
@@ -91,7 +102,7 @@ Hermes remains a proposer. AIOS retains policy, capability, budget, approval, ex
 | Persistent approval binding, replay and crash recovery | Implemented and tested in declared persistence scopes | `UNKNOWN_EFFECT` remains terminal against blind re-execution; no distributed exactly-once claim. |
 | SQLite RunStore and ResultGate | Implemented; authoritative truth and controlled result release | Conversation state and agent claims cannot substitute for execution evidence. |
 | macOS host isolation | Verified in named local two-principal profiles | Neither a universal sandbox nor qualification of later changed deployments. |
-| Hermes plugin and gateway client | Implemented and offline verified | Production and provider-live qualification remain open. |
+| Hermes plugin and gateway client | Implemented and offline verified; separate bounded real-provider demo on 14 October 2026 | Production and formal provider-live qualification remain open; the demo is not LIVE RM-22. |
 | OpenAI Agents SDK | Planned / explicitly deferred | OpenAI API SDK use is a separate implemented integration. |
 | RM-22 campaign preparation | Narrow offline functional progress | Overall BLOCKED before LIVE; no approved spend or final release. |
 
