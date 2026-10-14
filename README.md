@@ -1,5 +1,15 @@
 # AIOS — Governed Agent Runtime & Execution Layer
 
+![AIOS demo architecture](assets/aios-demo-hero.png)
+
+> **Models propose. AIOS governs. AIOS executes.**
+
+## What AIOS Is
+
+AIOS is a governed agent runtime and execution layer. It separates model proposals and agent coordination from the authority to execute actions, records execution truth independently of the conversation, and controls which results may be released.
+
+This repository contains public technical documentation, aggregate evidence and a runnable V2 demonstration. The V3 product runtime remains private under [bounded technical disclosure](docs/public-vs-private-boundary.md).
+
 ## Live Demonstration — Hermes × AIOS
 
 [![Live Hermes × AIOS demonstration: scope checks, human approval, governed execution and independent verification.](docs/demos/hermes-aios-2026-10-14/demo-flow.svg)](docs/demos/hermes-aios-2026-10-14/README.md)
@@ -10,16 +20,6 @@ It verifies what actually happened.
 On **14 October 2026**, Hermes **0.21.0** with DeepSeek **`deepseek-v4-flash`** used the AIOS governed adapter: an authorized READ succeeded, an out-of-scope READ was blocked by the runtime guard, and a WRITE waited for explicit human approval before AIOS executed and independently verified it. Hermes then encountered a final-response error; AIOS's execution evidence already confirmed the change. A rate limit is not established by that error.
 
 [Read the real experiment and its evidence summary](docs/demos/hermes-aios-2026-10-14/README.md). This bounded real-provider demo is not a security certification, the LIVE RM-22 qualification, or evidence of isolation between macOS users. Only the AIOS tools used are governed.
-
-![AIOS demo architecture](assets/aios-demo-hero.png)
-
-> **Models propose. AIOS governs. AIOS executes.**
-
-## What AIOS Is
-
-AIOS is a governed agent runtime and execution layer. It separates model proposals and agent coordination from the authority to execute actions, records execution truth independently of the conversation, and controls which results may be released.
-
-This repository contains public technical documentation, aggregate evidence and a runnable V2 demonstration. The V3 product runtime remains private under [bounded technical disclosure](docs/public-vs-private-boundary.md).
 
 ## Current Status
 
