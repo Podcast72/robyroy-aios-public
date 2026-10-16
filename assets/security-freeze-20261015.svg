@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="132" viewBox="0 0 1200 132" role="img" aria-labelledby="title desc">
+  <title id="title">Security freeze — 15 October 2026</title>
+  <desc id="desc">Separate roles. Preserved evidence. Read the documented macOS laboratory results and their limits. Evidence preservation does not qualify the checkout, RM-21 or RM-22.</desc>
+  <rect width="1200" height="132" rx="12" fill="#0b172b"/>
+  <rect x="1" y="1" width="1198" height="130" rx="11" fill="none" stroke="#34516b"/>
+  <path d="M1 25V107" stroke="#80dacf" stroke-width="3"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="30" y="36" fill="#80dacf" font-size="19" font-weight="700" letter-spacing="1.4">SECURITY FREEZE · 15 OCTOBER 2026</text>
+    <text x="30" y="86" fill="#ffffff" font-size="37" font-weight="700">Separate roles. Preserved evidence.</text>
+    <text x="30" y="113" fill="#c3d1e1" font-size="18">Hermes · AIOS · Human operator</text>
+  </g>
+  <g fill="none" stroke="#34516b" stroke-width="2">
+    <path d="M940 28V104M988 28V104M1036 28V104"/>
+    <path d="M914 66H1062" stroke="#80dacf"/>
+    <circle cx="940" cy="66" r="5" fill="#0b172b" stroke="#80dacf"/>
+    <circle cx="988" cy="66" r="5" fill="#0b172b" stroke="#80dacf"/>
+    <circle cx="1036" cy="66" r="5" fill="#0b172b" stroke="#80dacf"/>
+    <path d="M1110 66H1155M1142 53L1155 66L1142 79" stroke="#c3d1e1"/>
+  </g>
+</svg>

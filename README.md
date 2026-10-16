@@ -21,6 +21,14 @@ On **14 October 2026**, Hermes **0.21.0** with DeepSeek **`deepseek-v4-flash`** 
 
 [Read the real experiment and its evidence summary](docs/demos/hermes-aios-2026-10-14/README.md). This bounded real-provider demo is not a security certification, the LIVE RM-22 qualification, or evidence of isolation between macOS users. Only the AIOS tools used are governed.
 
+## Security Freeze — 15 October 2026
+
+[![Security freeze, 15 October 2026: separate roles and preserved evidence. Read the scope and results.](assets/security-freeze-20261015.svg)](docs/public/security-freeze-2026-10-15/README.md)
+
+Hermes proposes, AIOS governs, and the operator decides on requests that require approval. The macOS laboratory record preserves policy denials, a separate human rejection, and OS access denials in the tested profile. The freeze secures the evidence and exact archived packages; it does **not** automatically qualify the repository checkout, RM-21 or RM-22.
+
+[What was achieved](docs/public/security-freeze-2026-10-15/README.md) · [How the roles are separated](docs/public/security-freeze-2026-10-15/isolation.md) · [Evidence and qualification limits](docs/public/security-freeze-2026-10-15/evidence-and-limits.md)
+
 ## Current Status
 
 **Reviewed 14 October 2026 · RM-21 ACCEPTED OFFLINE for its corrected candidate · RM-22 BLOCKED before LIVE.**

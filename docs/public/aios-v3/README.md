@@ -38,6 +38,7 @@ The historical P2.7/R2.7 full regression preceded its documentation-only closeou
 
 | Document | Purpose |
 | --- | --- |
+| [Security freeze — 15 October 2026](../security-freeze-2026-10-15/README.md) | Plain-language account of role separation, preserved evidence and qualification limits; no new RM qualification. |
 | [AIOS_V3_RELEASE_QUALIFICATION.md](AIOS_V3_RELEASE_QUALIFICATION.md) | Latest RM milestone, candidate, installed/offline qualification, integration distinctions and RM-22 blockers. |
 | [AIOS_V3_CURRENT_EVIDENCE.md](AIOS_V3_CURRENT_EVIDENCE.md) | Canonical P0-to-EA-0B progression and separately scoped gates. |
 | [AIOS_V3_EXTERNAL_HOST_EVIDENCE.md](AIOS_V3_EXTERNAL_HOST_EVIDENCE.md) | EA-0A and EA-0B Slice 1–3 aggregate external-host evidence and limits. |
