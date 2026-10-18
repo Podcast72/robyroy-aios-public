@@ -1,6 +1,6 @@
 # AIOS V3 Public Documentation
 
-**Status review — 13 October 2026:** RM-21 is ACCEPTED for its corrected offline candidate; RM-22 remains BLOCKED before LIVE. The Hermes governed plugin is implemented and offline verified. OpenAI uses the Responses API SDK; OpenAI Agents SDK remains deferred. [Current qualification and integration record](AIOS_V3_RELEASE_QUALIFICATION.md).
+**Status review — 18 October 2026:** RM-23 ACCEPTED in the serial synthetic macOS profile; RM-24 ACCEPTED in the technical macOS profile. Core c3-r3 technical freeze complete. Canonical snapshot: **3,288 PASS / 0 FAIL / 1 SKIP; 13,712 subtests**. [Dated changelog, evidence matrix and limits](CHANGELOG-2026-10-18.md).
 
 **Historical progression: P2.7/R2.7 frozen baseline; P3 and EA-0A/EA-0B accepted in their declared scopes.** P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed.
 
@@ -11,7 +11,8 @@ V3 evolves the governed execution backbone documented for AIOS V2 into a governe
 ## Current Status
 
 - **RM-21 ACCEPTED OFFLINE** for the corrected candidate on 8 October 2026; separate canonical and installed-package evidence.
-- **RM-22 BLOCKED before LIVE**; narrower later functional tests do not qualify the changed deployment or approve spend.
+- **RM-23 / RM-24 ACCEPTED** in their stated macOS scopes; technical freeze c3-r3 completed on 18 October 2026. Earlier RM-22 blocked statements are dated history.
+- Private fresh-clone recovery: **6,552 files** inventoried and offline runtime recovery verified; compatible macOS and Python prerequisites apply.
 - RM-17 gateway client and RM-18 Hermes plugin implemented and offline verified; RM-13 was design-only.
 
 - V3 P0 governed agent-runtime foundation completed in its declared scope
@@ -38,8 +39,9 @@ The historical P2.7/R2.7 full regression preceded its documentation-only closeou
 
 | Document | Purpose |
 | --- | --- |
+| [18 October macOS Core freeze changelog](CHANGELOG-2026-10-18.md) | Latest scoped acceptance, changes since 15 October, private evidence provenance, artifact identities and recovery limits. |
 | [Security freeze — 15 October 2026](../security-freeze-2026-10-15/README.md) | Plain-language account of role separation, preserved evidence and qualification limits; no new RM qualification. |
-| [AIOS_V3_RELEASE_QUALIFICATION.md](AIOS_V3_RELEASE_QUALIFICATION.md) | Latest RM milestone, candidate, installed/offline qualification, integration distinctions and RM-22 blockers. |
+| [AIOS_V3_RELEASE_QUALIFICATION.md](AIOS_V3_RELEASE_QUALIFICATION.md) | Latest macOS freeze pointer plus retained RM-01–RM-22 qualification history and integration distinctions. |
 | [AIOS_V3_CURRENT_EVIDENCE.md](AIOS_V3_CURRENT_EVIDENCE.md) | Canonical P0-to-EA-0B progression and separately scoped gates. |
 | [AIOS_V3_EXTERNAL_HOST_EVIDENCE.md](AIOS_V3_EXTERNAL_HOST_EVIDENCE.md) | EA-0A and EA-0B Slice 1–3 aggregate external-host evidence and limits. |
 | [AIOS_V3_POST_CORE_EVIDENCE.md](AIOS_V3_POST_CORE_EVIDENCE.md) | External review, P3 live pilot, Hermes A/B experiments, and limits. |
@@ -62,7 +64,9 @@ V2 — Governed Execution Backbone
 -> EA-0B — External-host governance READ/WRITE and tested OS isolation ACCEPTED in declared scope
 -> RM-01–RM-20 — Scoped distribution, host, governance operations and Hermes plugin progression
 -> RM-21 — Corrected installed candidate ACCEPTED OFFLINE, 8 October 2026
--> RM-22 — Later preparation; BLOCKED before LIVE
+-> RM-22 — Preparation status in the earlier 13 October public review; historical
+-> RM-23 — ACCEPTED, serial synthetic macOS profile
+-> RM-24 — ACCEPTED, technical macOS profile; c3-r3 freeze, 18 October 2026
 ```
 
 P3, EA-0A, and EA-0B were built above the historical frozen core baseline; later RM qualification identifies its own corrected candidate. Each milestone claim is limited to its declared scope; none establishes unrestricted deployment readiness.

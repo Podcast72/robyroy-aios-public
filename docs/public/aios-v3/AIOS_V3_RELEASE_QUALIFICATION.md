@@ -1,8 +1,14 @@
 # AIOS V3 Release Qualification And Integration Status
 
+**Latest review — 18 October 2026:** **RM-23 ACCEPTED** in the serial synthetic macOS profile; **RM-24 ACCEPTED** in the technical macOS profile. Core c3-r3 technical freeze complete. The [18 October changelog and evidence matrix](CHANGELOG-2026-10-18.md) define candidate identities, retained canonical results, separate TLS regressions, private recovery results and limits.
+
+The records below preserve the **13 October review** and its then-open RM-22 gates. They do not describe the later macOS candidate or override its stated RM-23/RM-24 decisions. Historical provider pilots remain separate from the current technical freeze; no new full provider-live qualification is inferred.
+
+## Historical review — 13 October 2026
+
 Public status reviewed on **13 October 2026**. This is a sanitized account of the private milestone records, retained test outputs, candidate identity checks, and final acceptance decision. Private tests were not rerun for this public update. Source, fixtures, operational instructions, raw audits, logs, databases, and deployment configuration remain private.
 
-**Latest accepted qualification: RM-21, 8 October 2026, OFFLINE ONLY, for its identified corrected candidate. RM-22 remains BLOCKED before LIVE.**
+**Latest accepted qualification at the 13 October review: RM-21, 8 October 2026, OFFLINE ONLY, for its identified corrected candidate. RM-22 remains BLOCKED before LIVE.**
 
 ## Status Vocabulary
 
@@ -79,9 +85,9 @@ The earlier Hermes decision-artifact experiments remain valid historical records
 
 Later local preparation has passing functional observations for campaign controls and Hermes integration using synthetic/local transports. An earlier installed OS-boundary slice was accepted only for its own candidate. Subsequent runtime changes and candidate artifacts require their own relevant qualification; RM-21 and that earlier slice do not transfer automatically.
 
-The current candidate still lacks qualification of the effective deployment isolation boundary, real-provider bindings and attributable usage/accounting sources. Economic execution authorization is not approved. Synthetic usage is not billed usage; missing consumption or cost is **not available**, never zero by assumption. Local TLS or functional process tests are OFFLINE VERIFIED in their narrow scope, not provider LIVE VERIFIED.
+At that review, the candidate still lacked qualification of the effective deployment isolation boundary, real-provider bindings and attributable usage/accounting sources. Economic execution authorization was not approved for that reviewed campaign. Synthetic usage is not billed usage; missing consumption or cost is **not available**, never zero by assumption. Local TLS or functional process tests are OFFLINE VERIFIED in their narrow scope, not provider LIVE VERIFIED.
 
-**RM-22 remains BLOCKED.** No later completed LIVE milestone or final production/distribution release is established by the reviewed evidence. Complete the remaining applicable gates and obtain separate explicit authorization before a paid qualification.
+**Historical decision at that review: RM-22 BLOCKED.** That reviewed evidence did not establish a later completed LIVE milestone or final production/distribution release. Later macOS technical acceptance is recorded separately in the [18 October update](CHANGELOG-2026-10-18.md); it does not make this historical campaign a new provider-live qualification.
 
 ## Disclosure And Reproducibility
 

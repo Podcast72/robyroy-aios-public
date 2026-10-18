@@ -1,6 +1,16 @@
 # AIOS V3 Current Evidence
 
-**Status review — 13 October 2026:** RM-21 is ACCEPTED for its corrected offline candidate; RM-22 remains BLOCKED before LIVE. The Hermes governed plugin is implemented and offline verified. OpenAI uses the Responses API SDK; OpenAI Agents SDK remains deferred. [Current qualification and integration record](AIOS_V3_RELEASE_QUALIFICATION.md).
+**Status review — 18 October 2026:** RM-23 ACCEPTED for serial synthetic macOS operation; RM-24 ACCEPTED for the technical macOS profile. The c3-r3 Core is technically frozen. [What changed since 15 October, evidence matrix and provenance](CHANGELOG-2026-10-18.md).
+
+## Latest macOS technical baseline
+
+The retained canonical c3 snapshot reports **3,288 PASS / 0 FAIL / 1 SKIP; 13,712 subtests; exit 0**. The c3 wheel remains unchanged. A separate broker/TLS correction reports **44 PASS installed** and **1 PASS source**; no new canonical full suite was run for the freeze or this public publication.
+
+Two real macOS OS principals were used with synthetic resources. The TLS 1.3 HTTPS HEAD check verified certificate chain and hostname and returned HTTP 421 without inference. Fresh private GitHub clone recovery reports **6,552 files** inventoried and offline installation verified. These are aggregate private results, not public reproducibility or independent certification.
+
+One user and one active run remain the qualified operating envelope; three broker handlers do not establish parallel-run capacity. `UNKNOWN_EFFECT` stays terminal. GUI, SaaS, Linux/VPS and unrestricted production readiness are outside the claim. The [18 October record](CHANGELOG-2026-10-18.md) identifies exact artifacts, recovery prerequisites and unresolved historical causal uncertainty.
+
+## Retained historical progression
 
 This record preserves aggregate progression through EA-0B and links the later RM qualification. The P2.7/R2.7 freeze describes the historical baseline, not a claim that later product candidates are unchanged. It does not publish private source, tests, schemas, traces, credentials, local paths, authority mechanisms, or adversarial procedures.
 
@@ -144,6 +154,6 @@ No raw pilot trace, audit record, prompt, fixture, schema, policy implementation
 
 For the complete claim and disclosure limits, see [AIOS V3 Status and Limits](AIOS_V3_STATUS_AND_LIMITS.md) and [Public vs Private Boundary](../../public-vs-private-boundary.md).
 
-## Later Release Qualification — RM-01 Through RM-22
+## Historical Release Qualification — RM-01 Through RM-22
 
-[Release Qualification And Integration Status](AIOS_V3_RELEASE_QUALIFICATION.md) records milestone dates, candidate identity, status vocabulary, separate RM-21 results and RM-22 blockers. RM-21 was ACCEPTED offline on 8 October 2026: **3,233 passed, 1 skipped, 13,654 subtests passed** in the canonical private suite and **202 passed** in a separate installed replay suite. These are retained historical results, not tests rerun for this public update or qualification of the changed RM-22 candidate.
+[Release Qualification And Integration Status](AIOS_V3_RELEASE_QUALIFICATION.md) retains milestone dates, candidate identity, status vocabulary, separate RM-21 results and the earlier RM-22 blockers, with a pointer to the later c3-r3 freeze. RM-21 was ACCEPTED offline on 8 October 2026: **3,233 passed, 1 skipped, 13,654 subtests passed** in the canonical private suite and **202 passed** in a separate installed replay suite. These are retained historical results, not tests rerun for this public update or qualification of the changed RM-22 candidate.

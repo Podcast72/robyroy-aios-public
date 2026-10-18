@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="132" viewBox="0 0 1200 132" role="img" aria-labelledby="title desc">
+  <title id="title">AIOS V3 macOS Core — test suite verified, technical freeze complete</title>
+  <desc id="desc">18 October 2026. Reported private qualification: 3,288 pass, zero fail, one skip. RM-23 accepted in the serial synthetic macOS profile; RM-24 accepted in the technical macOS profile. Read the evidence and limits.</desc>
+  <rect width="1200" height="132" rx="12" fill="#0b172b"/>
+  <rect x="1" y="1" width="1198" height="130" rx="11" fill="none" stroke="#34516b"/>
+  <path d="M1 25V107" stroke="#80dacf" stroke-width="3"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="30" y="31" fill="#80dacf" font-size="18" font-weight="700" letter-spacing="1.4">AIOS V3 · macOS CORE · 18 OCTOBER 2026</text>
+    <text x="30" y="70" fill="#ffffff" font-size="28" font-weight="700">TEST SUITE VERIFIED · TECHNICAL FREEZE COMPLETE</text>
+    <text x="30" y="104" fill="#c3d1e1" font-size="19">3,288 PASS · 0 FAIL · 1 SKIP</text>
+    <text x="560" y="104" fill="#80dacf" font-size="18">RM-23 / RM-24 ACCEPTED · SCOPED macOS PROFILE</text>
+  </g>
+</svg>

@@ -31,21 +31,21 @@ Hermes proposes, AIOS governs, and the operator decides on requests that require
 
 ## Current Status
 
-**Reviewed 14 October 2026 · RM-21 ACCEPTED OFFLINE for its corrected candidate · RM-22 BLOCKED before LIVE.**
+**Reviewed 18 October 2026 · RM-23 ACCEPTED in the serial synthetic macOS profile · RM-24 ACCEPTED in the technical macOS profile · Core c3-r3 technical freeze complete.**
 
-The private track has progressed beyond P3 and EA-0B: installed host lifecycle, approval administration, execution-history integrity, conservative failure operations, backup/restore, a gateway client, and a governed Hermes plugin are implemented and verified in their declared scopes. RM-21's final decision of **8 October 2026** qualifies an identified corrected development candidate offline. Later local RM-22 preparation has narrower passing functional evidence and open deployment/provider/authorization gates.
+The identified c3 snapshot records **3,288 PASS / 0 FAIL / 1 SKIP and 13,712 subtests**. The c3 wheel is unchanged; the r3 broker/bundle correction has separate **44 PASS** installed regressions. The private freeze record reports fresh-clone recovery of **6,552 files** and a successful offline runtime recovery. These are maintained private qualification results, summarized here with [provenance, artifact identities and limits](docs/public/aios-v3/CHANGELOG-2026-10-18.md); no private suite was rerun for this publication.
 
-**OpenAI integration:** the OpenAI Python SDK and Responses API support the implemented model provider. AIOS owns native orchestration. **OpenAI Agents SDK remains deferred and not implemented.** The Hermes governed plugin is implemented and verified offline; the separate [14 October real-provider demonstration](docs/demos/hermes-aios-2026-10-14/README.md) adds bounded observed execution evidence. Formal provider-live and production Hermes qualification remain open.
+**Operating envelope:** macOS, one user and one active execution, synthetic workloads for RM-23. Three broker handlers do not mean three parallel runs. This is a Core technical baseline; graphical application, SaaS, Linux/VPS and unrestricted production readiness are not established.
 
-[![RM-21](https://img.shields.io/badge/RM--21-accepted%20offline-1f7a4d)](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md)
-[![RM-22](https://img.shields.io/badge/RM--22-blocked%20before%20live-b85c00)](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#rm-22-narrow-progress-open-gates)
-[![V3 Core baseline](https://img.shields.io/badge/P2.7%20%2F%20R2.7-historical%20frozen%20baseline-1f7a4d)](docs/public/aios-v3/AIOS_V3_CURRENT_EVIDENCE.md)
-[![Agent-ready](https://img.shields.io/badge/Governed%20Core-AGENT--READY-1f7a4d)](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md)
-[![P3](https://img.shields.io/badge/P3-native%20multi--agent%20accepted-2456a6)](docs/public/aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md)
+**OpenAI integration:** the OpenAI Python SDK and Responses API support the implemented model provider; AIOS owns native orchestration. **OpenAI Agents SDK remains deferred.** The separate [14 October real-provider demonstration](docs/demos/hermes-aios-2026-10-14/README.md) remains historical evidence. The later TLS 1.3 HEAD check verifies transport, without a new inference or full provider-live campaign.
+
+[![RM-23](https://img.shields.io/badge/RM--23-accepted%20macOS%20serial-1f7a4d)](docs/public/aios-v3/CHANGELOG-2026-10-18.md)
+[![RM-24](https://img.shields.io/badge/RM--24-accepted%20macOS%20technical-1f7a4d)](docs/public/aios-v3/CHANGELOG-2026-10-18.md)
+[![Core freeze](https://img.shields.io/badge/macOS%20Core-c3--r3%20frozen-2456a6)](docs/public/aios-v3/CHANGELOG-2026-10-18.md#frozen-identity)
 [![Scope](https://img.shields.io/badge/disclosure-bounded-lightgrey)](docs/public-vs-private-boundary.md)
 [![History](https://img.shields.io/badge/AIOS%20V2-evidence%20preserved-6f42c1)](docs/public/aios-v2/README.md)
 
-[Latest qualification and integration record](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md) · [Evaluator guide](FOR_EVALUATORS.md) · [Architecture](docs/public/aios-v3/AIOS_V3_ARCHITECTURE.md) · [Status and limits](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md) · [Roadmap](docs/roadmap.md)
+[What changed on 18 October](docs/public/aios-v3/CHANGELOG-2026-10-18.md) · [Qualification history](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md) · [Evaluator guide](FOR_EVALUATORS.md) · [Architecture](docs/public/aios-v3/AIOS_V3_ARCHITECTURE.md) · [Status and limits](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md)
 
 ## What AIOS Actually Does
 
@@ -101,7 +101,13 @@ Hermes remains a proposer. AIOS retains policy, capability, budget, approval, ex
 
 ## Current V3 Evidence
 
+[![AIOS V3 macOS Core: test suite verified and technical freeze complete, 18 October 2026. Reported private result: 3,288 pass, zero fail, one skip; RM-23 and RM-24 accepted within their stated macOS scopes.](assets/macos-core-freeze-20261018.svg)](docs/public/aios-v3/CHANGELOG-2026-10-18.md)
+
+[18 October changelog, evidence matrix and freeze identities](docs/public/aios-v3/CHANGELOG-2026-10-18.md) · Reported private qualification; serial macOS scope; no independent certification.
+
 ![AIOS demo architecture](assets/aios-demo-hero2.png)
+
+*Historical P2.7/R2.7 illustration. The banner and dated record above describe the current macOS qualification; the illustration's future integration labels remain historical.*
 
 | Capability | Implemented / verified state | Limit |
 | --- | --- | --- |
@@ -110,9 +116,9 @@ Hermes remains a proposer. AIOS retains policy, capability, budget, approval, ex
 | Persistent approval binding, replay and crash recovery | Implemented and tested in declared persistence scopes | `UNKNOWN_EFFECT` remains terminal against blind re-execution; no distributed exactly-once claim. |
 | SQLite RunStore and ResultGate | Implemented; authoritative truth and controlled result release | Conversation state and agent claims cannot substitute for execution evidence. |
 | macOS host isolation | Verified in named local two-principal profiles | Neither a universal sandbox nor qualification of later changed deployments. |
-| Hermes plugin and gateway client | Implemented and offline verified; separate bounded real-provider demo on 14 October 2026 | Production and formal provider-live qualification remain open; the demo is not LIVE RM-22. |
+| Hermes plugin and gateway client | Implemented and offline verified; separate bounded real-provider demo on 14 October 2026 | Historical provider evidence is separate from c3-r3 technical qualification and does not establish production readiness. |
 | OpenAI Agents SDK | Planned / explicitly deferred | OpenAI API SDK use is a separate implemented integration. |
-| RM-22 campaign preparation | Narrow offline functional progress | Overall BLOCKED before LIVE; no approved spend or final release. |
+| RM-23 / RM-24 macOS qualification | ACCEPTED in the serial synthetic / technical macOS scopes respectively; c3-r3 frozen | One active execution; no GUI, SaaS, Linux/VPS or universal deployment qualification. |
 
 ### Separate verification snapshots
 
@@ -123,10 +129,13 @@ Hermes remains a proposer. AIOS retains policy, capability, budget, approval, ex
 | EA-0B Slice 3, 30 September 2026 | **2,888 collected; 2,887 passed; 1 skipped; 12,407 subtests passed** | Separate canonical full-repository run. |
 | **RM-21, 8 October 2026** | **3,233 passed, 0 failed, 1 skipped; 13,654 subtests passed; exit 0** | Corrected candidate, clean private `tests_v2 + tests_v3`. |
 | **RM-21 installed package, 8 October 2026** | **202 passed, 0 failed, 0 skipped; exit 0** | Identified installed candidate outside the checkout. |
+| **c3 canonical snapshot, retained for 18 October freeze** | **3,288 PASS / 0 FAIL / 1 SKIP; 13,712 subtests; exit 0** | Identified private snapshot; unchanged c3 wheel; no new full on the freeze commit. |
+| **c3-r3 broker/TLS correction, 18 October 2026** | **44 PASS installed; 1 PASS source separately** | Focused broker/bundle regression, distinct from the canonical suite. |
+| **c3-r3 private recovery, 18 October 2026** | **6,552 inventoried files; offline recovery PASS** | Fresh GitHub clone; compatible macOS/Python prerequisites, not qualification on another physical Mac. |
 
 Counts are never summed. The RM-21 skip requires a case-sensitive volume unavailable on that host. Parent-only coverage and functional process evidence are separately delimited in the [qualification record](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md). The final operational controller did not finish every scenario; only its reached subset was asserted passing, with remaining applicable properties checked at their stated levels.
 
-The historical P2 OpenAI pilot and P3 multi-agent pilot were real provider runs on bounded synthetic tasks. RM-21 is an offline qualification, even where actual local processes and OS principals were used. No private suite or provider call was executed for this public refresh. Historical evidence does not qualify the locally modified RM-22 candidate.
+The historical P2 OpenAI pilot and P3 multi-agent pilot were real provider runs on bounded synthetic tasks. RM-21 is an offline qualification, even where actual local processes and OS principals were used. No private suite or provider call was executed for this public refresh. Historical evidence does not automatically qualify changed candidates; the c3-r3 claim relies on its own identified records and applicable reuse, described in the [18 October update](docs/public/aios-v3/CHANGELOG-2026-10-18.md).
 
 ## V2 Historical Evidence Preserved
 
