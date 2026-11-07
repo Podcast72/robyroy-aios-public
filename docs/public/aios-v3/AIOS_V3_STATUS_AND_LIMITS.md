@@ -2,11 +2,11 @@
 
 ## Current Status
 
-**Reviewed 7 November 2026.** R7.1 passed LIVE for CREATE, MOVE and DELETE in the synthetic macOS profile. READ and REPLACE retain distinct historical LIVE evidence. `shell.execute` remains `CONTAINMENT_UNAVAILABLE`. [Current filesystem qualification](AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance)
+**Reviewed 7 November 2026.** One OpenAI GPT-4.1 campaign achieved `LIVE_PASS` for CREATE, READ, REPLACE, MOVE and DELETE in the tested synthetic macOS profile with separate agent and Core principals. This is a bounded operational qualification of the installed artifact and five governed filesystem capabilities. The earlier Hermes/DeepSeek and RM-22 campaigns retain their original scopes. `shell.execute` remains `CONTAINMENT_UNAVAILABLE`. [Current filesystem qualification](AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance)
 
 **18 October macOS technical freeze.** RM-23 was accepted for the serial synthetic macOS profile and RM-24 for the technical macOS profile. The [dated evidence matrix](CHANGELOG-2026-10-18.md) records private provenance, exact artifact identities, the canonical **3,288 PASS / 0 FAIL / 1 SKIP with 13,712 subtests**, separate TLS checks and fresh-clone offline recovery. No private suite was rerun for this publication.
 
-The qualified envelope is one user and one active execution on macOS; three broker handlers do not mean three parallel runs. Synthetic workloads, real OS-principal tests, historical provider-live pilots and the credential-free HTTPS transport check remain distinct. Recovery requires compatible macOS and the preserved Python runtime prerequisites. No GUI, SaaS, Linux/VPS or independent certification claim follows.
+The October Core freeze qualified one user and one active execution on macOS; three broker handlers do not mean three parallel runs. Synthetic workloads, real OS-principal tests, historical provider-live pilots and the credential-free HTTPS transport check remain distinct. Recovery requires compatible macOS and the preserved Python runtime prerequisites. No GUI, SaaS, Linux/VPS or independent certification claim follows.
 
 > **Models propose. AIOS governs. AIOS executes.**
 
@@ -16,8 +16,8 @@ P0/P1, P2.0–P2.7, R2.7, P3 and EA-0A/EA-0B retain their historical declared ac
 
 | Area | Evidence and limit |
 | --- | --- |
-| Governed execution, AgentLoop and model inference | Implemented; tested offline and in bounded historical provider-live pilots. Models and orchestration hold no execution authority. |
-| Unified filesystem governance | Five capabilities passed the installed test with separate macOS principals and dedicated test resources. |
+| Governed execution, AgentLoop and model inference | Implemented and verified in offline tests and bounded provider-live campaigns. Models and orchestration hold no execution authority. |
+| Unified filesystem governance | All five capabilities passed together in the OpenAI LIVE campaign and in a separate installed test. Both used synthetic resources and separate macOS principals. |
 | Persistent approval binding | Implemented and tested; canonical approval is distinct from persuasive model text and agent provenance. |
 | Replay / crash recovery | Verified at stated Core, installed and functional levels; uncertain effects prohibit blind redispatch. |
 | SQLite RunStore / ResultGate | Authoritative execution truth and controlled result release remain separate from conversation state. |
@@ -25,7 +25,7 @@ P0/P1, P2.0–P2.7, R2.7, P3 and EA-0A/EA-0B retain their historical declared ac
 | macOS isolation | Tested named two-principal profiles, including RM-21 protected-resource denials; no universal sandbox or changed-candidate qualification. |
 | Integrity, failure views and backup/restore | RM-13 design; RM-14–RM-16 implementation and bounded qualification. No distributed rollback guarantee. |
 | Gateway client / Hermes governed plugin | RM-17/RM-18 implemented, RM-21 installed boundary offline verified, and R7.1 used the plugin with Hermes and DeepSeek in the synthetic macOS profile. |
-| OpenAI provider | Implemented via the Responses API SDK; historical bounded real-provider pilots. |
+| OpenAI provider | Implemented via the Responses API SDK. The November 7 GPT-4.1 campaign reconciled usage and cost as part of formal closeout. |
 | OpenAI Agents SDK / other unqualified adapters / MCP | Deferred or planned; native AIOS orchestration and API SDK use do not implement these integrations. |
 
 ## Historical RM-21 Evidence Scopes

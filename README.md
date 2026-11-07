@@ -8,25 +8,17 @@ AIOS is a governed agent runtime and execution layer. It separates model proposa
 
 This repository contains public technical documentation, aggregate evidence and a runnable V2 demonstration. The V3 product runtime remains private under [bounded technical disclosure](docs/public-vs-private-boundary.md).
 
-## Five Governed Filesystem Capabilities — Live Validation
+## Five Governed Filesystem Capabilities — LIVE PASS
 
-> **Agents propose actions. AIOS governs whether they can execute.**
+[![5 governed capabilities, LIVE PASS on November 7, 2026. CREATE, READ, REPLACE, MOVE and DELETE all passed.](assets/aios-five-capabilities-live-20261107.svg)](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance)
 
-The agent plans its work and proposes each action. AIOS checks permissions, resource scope and limits, waits for human approval when policy requires it, and records the decision and verified effects in persistent evidence.
+On November 7, 2026, AIOS V3 Enterprise completed a bounded live validation of all five governed filesystem capabilities using OpenAI GPT-4.1 in a synthetic macOS profile.
 
-[![An agent proposes an action. AIOS governance checks the request and decides whether execution can proceed.](assets/filesystem-governance-r7-1.svg)](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance)
+CREATE, READ, REPLACE, MOVE and DELETE were exercised under AIOS governance. The campaign verified policy enforcement, human approval and rejection, observed effects and persistent Core receipts. Provider usage and cost were reconciled against OpenAI's records.
 
-| Capability | Governance |
-| --- | --- |
-| `files.read` | Policy-controlled reading |
-| `files.replace` | Governed content replacement |
-| `files.create` | Governed file creation |
-| `files.move` | Human approval when required |
-| `files.delete` | Governed deletion and explicit denial |
+**Agents decide what to propose. AIOS governs what is allowed to execute.**
 
-On **7 November 2026**, R7.1 validated CREATE, MOVE and DELETE LIVE with **Hermes 0.21.0 and DeepSeek `deepseek-v4-pro`**. Hermes proposed the actions. AIOS verified the creation, move and deletion of the same synthetic file, recorded the human approval for MOVE, and confirmed that a separate denied deletion left the protected file intact. The LIVE result covers the tested synthetic macOS profile.
-
-READ and REPLACE have earlier RM-22 LIVE results tied to their historical candidates. All five passed the installed test with separate macOS principals. `shell.execute` remains `CONTAINMENT_UNAVAILABLE`. [Qualification and scope](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance)
+[Technical qualification and scope](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance) · [November 7 changelog](docs/public/aios-v3/CHANGELOG-2026-11-07.md)
 
 ## Live Demonstration — Hermes × AIOS
 
@@ -49,7 +41,7 @@ Hermes proposes, AIOS governs, and the operator decides on requests that require
 
 ## Current Status
 
-**Reviewed 7 November 2026.** The unified filesystem policy has an installed PASS for all five capabilities and three scoped LIVE passes in R7.1. The preserved 6 November OFFLINE baseline records **3,961 PASS / 0 FAIL / 1 historical SKIP**. [Qualification record](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance)
+**Reviewed 7 November 2026.** All five governed filesystem capabilities earned **LIVE PASS** in one OpenAI GPT-4.1 campaign on synthetic macOS resources. The separate installed test also passed all five. `shell.execute` remains `CONTAINMENT_UNAVAILABLE`. The preserved 6 November OFFLINE baseline records **3,961 PASS / 0 FAIL / 1 historical SKIP**. [Qualification record](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance)
 
 **18 October macOS Core freeze.** RM-23 was accepted in the serial synthetic profile and RM-24 in the technical profile.
 
@@ -57,7 +49,7 @@ The identified c3 snapshot records **3,288 PASS / 0 FAIL / 1 SKIP and 13,712 sub
 
 **Operating envelope:** macOS, one user and one active execution, synthetic workloads for RM-23. Three broker handlers do not mean three parallel runs. This is a Core technical baseline; graphical application, SaaS, Linux/VPS and unrestricted production readiness are not established.
 
-**OpenAI integration:** the OpenAI Python SDK and Responses API support the implemented model provider; AIOS owns native orchestration. **OpenAI Agents SDK remains deferred.** The separate [14 October real-provider demonstration](docs/demos/hermes-aios-2026-10-14/README.md) remains historical evidence. The later TLS 1.3 HEAD check verifies transport, without a new inference or full provider-live campaign.
+**OpenAI integration:** the OpenAI Python SDK and Responses API support the implemented model provider; AIOS owns native orchestration. **OpenAI Agents SDK remains deferred.** The separate [14 October real-provider demonstration](docs/demos/hermes-aios-2026-10-14/README.md) remains historical evidence. The October TLS 1.3 HEAD check verified transport only. The November 7 GPT-4.1 campaign used the Responses API and reconciled nine requests.
 
 [![RM-23](https://img.shields.io/badge/RM--23-accepted%20macOS%20serial-1f7a4d)](docs/public/aios-v3/CHANGELOG-2026-10-18.md)
 [![RM-24](https://img.shields.io/badge/RM--24-accepted%20macOS%20technical-1f7a4d)](docs/public/aios-v3/CHANGELOG-2026-10-18.md)
@@ -115,7 +107,7 @@ The public mock preserves this V2 path. Its safety corrections improve the demon
 
 EA-0A and EA-0B established scoped external proposal admission, governed READ, approval-bound WRITE, replay/restart and tested macOS two-principal isolation. RM-17 added the gateway client; RM-18 added an actual Hermes plugin; RM-21 verified the installed local host/registry boundary offline using synthetic resources and real local processes.
 
-Hermes proposes work. AIOS retains authority over policy, capability, budget, approval, execution, replay, recovery and result release. The earlier Hermes A/B decision-source experiments and the October demo remain separate historical evidence from the R7.1 filesystem qualification.
+Hermes proposes work. AIOS retains authority over policy, capability, budget, approval, execution, replay, recovery and result release. The earlier Hermes A/B experiments, October demo and R7.1 Hermes/DeepSeek validation each have their own evidence scope. The November 7 OpenAI campaign has a separate verdict.
 
 [External Host Evidence](docs/public/aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md) · [Historical Hermes experiments](docs/public/aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md) · [Current integration status](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#integration-status)
 
@@ -127,12 +119,12 @@ Hermes proposes work. AIOS retains authority over policy, capability, budget, ap
 
 ![AIOS demo architecture](assets/aios-demo-hero2.png)
 
-*Historical P2.7/R2.7 illustration. The banner and dated record above describe the current macOS qualification; the illustration's future integration labels remain historical.*
+*Historical P2.7/R2.7 illustration. The banner above describes the 18 October macOS Core freeze. The illustration's future integration labels reflect the earlier P2.7/R2.7 milestone.*
 
 | Capability | Implemented / verified state | Limit |
 | --- | --- | --- |
-| Governed execution, AgentLoop and inference | Implemented; offline and bounded historical provider-live evidence | AIOS native orchestration, not OpenAI Agents SDK. |
-| [Unified filesystem governance](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance) | Five installed capability passes and three R7.1 LIVE passes, with separate historical LIVE evidence for READ and REPLACE | Synthetic macOS profile, enrolled resources and approval where policy requires it. |
+| Governed execution, AgentLoop and inference | Implemented and verified in offline tests and bounded provider-live campaigns | AIOS owns orchestration. OpenAI Agents SDK remains deferred. |
+| [Unified filesystem governance](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance) | Five LIVE passes in one GPT-4.1 campaign, with a separate five-capability installed PASS | Synthetic macOS profile, enrolled resources and approval where policy requires it. |
 | Persistent approval binding, replay and crash recovery | Implemented and tested in declared persistence scopes | `UNKNOWN_EFFECT` remains terminal against blind re-execution; no distributed exactly-once claim. |
 | SQLite RunStore and ResultGate | Implemented; authoritative truth and controlled result release | Conversation state and agent claims cannot substitute for execution evidence. |
 | macOS host isolation | Verified in named local two-principal profiles | Neither a universal sandbox nor qualification of later changed deployments. |

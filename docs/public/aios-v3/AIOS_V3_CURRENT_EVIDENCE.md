@@ -1,6 +1,18 @@
 # AIOS V3 Current Evidence
 
-**Status review — 7 November 2026.** The installed and LIVE R7.1 verdicts extend the filesystem evidence. [Current qualification and scope](AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance)
+## 7 November filesystem qualification
+
+| Evidence | Result | Scope |
+| --- | --- | --- |
+| OpenAI GPT-4.1 LIVE campaign | **LIVE_PASS for CREATE, READ, REPLACE, MOVE and DELETE** | One installed campaign on synthetic macOS resources with separate agent and Core principals. |
+| Provider reconciliation | **9 requests, 1,683 input tokens, 156 output tokens, 0.004614 USD** | Totals reconciled against OpenAI's project usage and official cost export for formal closeout. |
+| Installed filesystem test | **PASS for all five capabilities** | Separate two-principal test without a model provider. |
+| Canonical OFFLINE baseline, 6 November | **3,961 PASS / 0 FAIL / 1 historical SKIP** | Separate private canonical run. |
+| Historical provider-live filesystem results | R7.1 Hermes/DeepSeek CREATE, MOVE and DELETE, and earlier RM-22 READ and REPLACE | Each result retains its original campaign and candidate scope. |
+
+The OpenAI campaign verified allowed actions, required approvals, a human rejection, expected denials, observed results and persistent Core receipts. The verdict covers the tested profile and five filesystem capabilities. `shell.execute` remains `CONTAINMENT_UNAVAILABLE`.
+
+[Current qualification and scope](AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance) · [7 November changelog](CHANGELOG-2026-11-07.md)
 
 **18 October 2026.** RM-23 ACCEPTED for serial synthetic macOS operation; RM-24 ACCEPTED for the technical macOS profile. The c3-r3 Core is technically frozen. [What changed since 15 October, evidence matrix and provenance](CHANGELOG-2026-10-18.md).
 

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="150" viewBox="0 0 1100 150" role="img" aria-labelledby="title desc">
+  <title id="title">5 governed capabilities — LIVE PASS</title>
+  <desc id="desc">CREATE, READ, REPLACE, MOVE and DELETE passed in the same OpenAI live campaign on November 7, 2026.</desc>
+  <defs>
+    <linearGradient id="background">
+      <stop stop-color="#102239"/>
+      <stop offset="1" stop-color="#0a1424"/>
+    </linearGradient>
+    <g id="check">
+      <circle r="13" fill="#163d33" stroke="#71edaa" stroke-width="2"/>
+      <path d="m-5 0 3.5 3.5 6.5-7" fill="none" stroke="#8bf5b9" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </defs>
+  <rect x="1" y="1" width="1098" height="148" rx="14" fill="url(#background)" stroke="#35516c" stroke-width="2"/>
+  <path d="M2 28v94" stroke="#71edaa" stroke-width="4" stroke-linecap="round"/>
+  <g font-family="Arial, Helvetica, sans-serif" font-weight="700">
+    <text x="36" y="69" fill="#f1f6fc" font-size="48">5 GOVERNED CAPABILITIES</text>
+    <text x="1064" y="32" fill="#afc3d7" font-size="24" text-anchor="end">NOV 07, 2026</text>
+    <rect x="836" y="42" width="228" height="38" rx="8" fill="#163d33" stroke="#438364"/>
+    <text x="950" y="71" fill="#9ff8c5" font-size="30" text-anchor="middle">LIVE PASS</text>
+    <g fill="#142940" stroke="#36516a">
+      <rect x="36" y="92" width="196" height="42" rx="7"/>
+      <rect x="244" y="92" width="196" height="42" rx="7"/>
+      <rect x="452" y="92" width="196" height="42" rx="7"/>
+      <rect x="660" y="92" width="196" height="42" rx="7"/>
+      <rect x="868" y="92" width="196" height="42" rx="7"/>
+    </g>
+    <use href="#check" x="61" y="113"/>
+    <use href="#check" x="269" y="113"/>
+    <use href="#check" x="477" y="113"/>
+    <use href="#check" x="685" y="113"/>
+    <use href="#check" x="893" y="113"/>
+    <g fill="#edf4fc" font-size="30">
+      <text x="81" y="124">CREATE</text>
+      <text x="289" y="124">READ</text>
+      <text x="497" y="124">REPLACE</text>
+      <text x="705" y="124">MOVE</text>
+      <text x="913" y="124">DELETE</text>
+    </g>
+  </g>
+</svg>

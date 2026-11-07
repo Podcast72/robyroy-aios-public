@@ -23,7 +23,8 @@ AIOS V2 — Governed Execution Backbone
 -> RM-01–RM-20 — Scoped package/host/governance operations and offline Hermes plugin
 -> RM-21 — Corrected candidate ACCEPTED OFFLINE
 -> RM-22 — Historical LIVE evidence for READ and REPLACE
--> R7.1 — LIVE validation for CREATE, MOVE and DELETE in the synthetic macOS profile
+-> R7.1 Hermes/DeepSeek — LIVE validation for CREATE, MOVE and DELETE in the synthetic macOS profile
+-> OpenAI GPT-4.1 — LIVE_PASS for all five filesystem capabilities in one synthetic macOS campaign
 ```
 
 V2 remains public historical evidence. Its documentation, public mock runtime, proof tests, ANDY field tests, and public-safe validation summaries are not erased or presented as if they were V3.

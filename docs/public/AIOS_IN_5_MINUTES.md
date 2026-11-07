@@ -107,7 +107,7 @@ One observed OpenAI `gpt-5.6-sol` pilot connected natural-language interpretatio
 | Governed READ | Validated |
 | Bounded governed WRITE | Validated |
 | Durable SQLite WRITE | Validated in its declared scope |
-| [Unified filesystem governance](aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance) | Five capabilities passed installed testing. CREATE, MOVE and DELETE passed LIVE in R7.1. |
+| [Unified filesystem governance](aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance) | All five capabilities passed in one OpenAI GPT-4.1 LIVE campaign and in a separate installed test. |
 | Real-provider pilot | One governed OpenAI `gpt-5.6-sol` pilot completed |
 | Historical P2.7/R2.7 full private regression | **2510 passed, 1 skipped, 11350 subtests passed** |
 | Targeted P2.7/R2.7 closeout retest | **5 passed** |
@@ -153,4 +153,4 @@ Start with the [V3 public index](aios-v3/README.md), review the [current evidenc
 
 ## Latest Installed Qualification
 
-On 7 November 2026, all five filesystem capabilities passed on the installed Core with separate macOS principals and synthetic resources. The R7.1 LIVE campaign has a separate verdict. Earlier RM-21 and RM-22 results retain their candidate scopes. [Qualification, dates and limits](aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance)
+On 7 November 2026, all five filesystem capabilities passed on the installed Core with separate macOS principals and synthetic resources. The OpenAI GPT-4.1 LIVE campaign also passed all five together in the tested synthetic macOS profile. The earlier Hermes/DeepSeek, RM-21 and RM-22 results retain their separate scopes. [Qualification, dates and limits](aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance)

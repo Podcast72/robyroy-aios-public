@@ -1,6 +1,6 @@
 # AIOS V3 Public Documentation
 
-**Status review — 7 November 2026.** Five filesystem capabilities passed installed testing. R7.1 passed LIVE for CREATE, MOVE and DELETE in the synthetic macOS profile. [Current qualification and scope](AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance)
+**Status review — 7 November 2026.** All five governed filesystem capabilities achieved `LIVE_PASS` together in one OpenAI GPT-4.1 campaign in the tested synthetic macOS profile. [Current qualification and scope](AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance) · [7 November changelog](CHANGELOG-2026-11-07.md)
 
 **18 October technical freeze.** RM-23 ACCEPTED in the serial synthetic macOS profile; RM-24 ACCEPTED in the technical macOS profile. Core c3-r3 technical freeze complete. Canonical snapshot: **3,288 PASS / 0 FAIL / 1 SKIP; 13,712 subtests**. [Dated changelog, evidence matrix and limits](CHANGELOG-2026-10-18.md).
 
@@ -41,10 +41,11 @@ The historical P2.7/R2.7 full regression preceded its documentation-only closeou
 
 | Document | Purpose |
 | --- | --- |
+| [7 November filesystem LIVE changelog](CHANGELOG-2026-11-07.md) | Five-capability OpenAI closeout, reconciled cost, and separate historical evidence. |
 | [18 October macOS Core freeze changelog](CHANGELOG-2026-10-18.md) | Scoped acceptance, changes since 15 October, private evidence provenance, artifact identities and recovery limits. |
 | [Security freeze — 15 October 2026](../security-freeze-2026-10-15/README.md) | Plain-language account of role separation, preserved evidence and qualification limits; no new RM qualification. |
-| [AIOS_V3_RELEASE_QUALIFICATION.md](AIOS_V3_RELEASE_QUALIFICATION.md) | R7.1 filesystem qualification, macOS freeze and retained RM-01–RM-22 history. |
-| [AIOS_V3_CURRENT_EVIDENCE.md](AIOS_V3_CURRENT_EVIDENCE.md) | Canonical P0-to-EA-0B progression and separately scoped gates. |
+| [AIOS_V3_RELEASE_QUALIFICATION.md](AIOS_V3_RELEASE_QUALIFICATION.md) | OpenAI five-capability LIVE verdict, earlier Hermes/DeepSeek evidence, macOS freeze and retained RM-01–RM-22 history. |
+| [AIOS_V3_CURRENT_EVIDENCE.md](AIOS_V3_CURRENT_EVIDENCE.md) | Current OpenAI campaign, canonical OFFLINE baseline and separately scoped historical gates. |
 | [AIOS_V3_EXTERNAL_HOST_EVIDENCE.md](AIOS_V3_EXTERNAL_HOST_EVIDENCE.md) | EA-0A and EA-0B Slice 1–3 aggregate external-host evidence and limits. |
 | [AIOS_V3_POST_CORE_EVIDENCE.md](AIOS_V3_POST_CORE_EVIDENCE.md) | External review, P3 live pilot, Hermes A/B experiments, and limits. |
 | [AIOS_V3_ARCHITECTURE.md](AIOS_V3_ARCHITECTURE.md) | High-level V3 architecture, authority boundaries, and illustrative public flow. |
@@ -69,6 +70,8 @@ V2 — Governed Execution Backbone
 -> RM-22 — Preparation status in the earlier 13 October public review; historical
 -> RM-23 — ACCEPTED, serial synthetic macOS profile
 -> RM-24 — ACCEPTED, technical macOS profile; c3-r3 freeze, 18 October 2026
+-> R7.1 Hermes/DeepSeek — scoped LIVE PASS for CREATE, MOVE and DELETE
+-> OpenAI GPT-4.1 — LIVE_PASS for all five filesystem capabilities in one synthetic macOS campaign, 7 November 2026
 ```
 
 P3, EA-0A, and EA-0B were built above the historical frozen core baseline; later RM qualification identifies its own corrected candidate. Each milestone claim is limited to its declared scope; none establishes unrestricted deployment readiness.

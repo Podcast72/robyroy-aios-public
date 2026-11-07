@@ -50,7 +50,7 @@ The 13 October review recorded passing offline preparation and blocked deploymen
 
 ## Unified Files Policy Governance — 7 November 2026
 
-The installed test passed for all five filesystem capabilities with separate macOS principals. R7.1 passed LIVE for CREATE, MOVE and DELETE with Hermes and DeepSeek in the synthetic macOS profile. The qualification record describes the earlier READ and REPLACE evidence and the remaining scope limits. [R7.1 qualification](public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance)
+All five governed filesystem capabilities achieved `LIVE_PASS` together in one OpenAI GPT-4.1 campaign in the tested synthetic macOS profile. A separate installed test passed all five with separate macOS principals. Earlier Hermes/DeepSeek and RM-22 LIVE results retain their campaign scopes. [Filesystem qualification](public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance)
 
 ## Near-Term Public Work
 

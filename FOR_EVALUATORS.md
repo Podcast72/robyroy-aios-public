@@ -1,6 +1,6 @@
 # AIOS For Technical And Grant Evaluators
 
-**Status review — 7 November 2026.** See the [current filesystem qualification and scope](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance).
+**Status review — 7 November 2026.** CREATE, READ, REPLACE, MOVE and DELETE achieved `LIVE_PASS` in one OpenAI GPT-4.1 campaign in the tested synthetic macOS profile. See the [current filesystem qualification and scope](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance).
 
 This page provides a time-boxed path through the public AIOS evidence. The repository is a **bounded technical disclosure**: it is intended to support technical evaluation without publishing the private V3 runtime or the internals needed to reconstruct it.
 
@@ -30,9 +30,9 @@ Read:
 4. [External Host Evidence](docs/public/aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md)
 5. [AIOS V3 Status and Limits](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md)
 
-Together they distinguish the frozen core, P3 native multi-agent, EA-0A/EA-0B external-host governance, separate P2/P3/EA-0B gates, Hermes experiments, and explicit limits.
+Start with the [7 November changelog](docs/public/aios-v3/CHANGELOG-2026-11-07.md) for the five-capability result and reconciled OpenAI cost. The qualification record separates that campaign from the earlier Hermes/DeepSeek and RM-22 results, the canonical OFFLINE baseline, and the macOS Core freeze.
 
-The historical progression reached the P2.7/R2.7 frozen baseline, followed by P3 and EA-0A/EA-0B acceptance in their declared scopes.. OpenAI is a validated model provider. OpenAI Agents SDK remains deferred; the Hermes governed plugin has offline RM-18/RM-21 verification beyond the earlier decision-source experiments.
+The historical progression reached the P2.7/R2.7 frozen baseline, followed by P3 and EA-0A/EA-0B acceptance in their declared scopes. OpenAI is a validated model provider. OpenAI Agents SDK remains deferred; the Hermes governed plugin has offline RM-18/RM-21 verification beyond the earlier decision-source experiments.
 
 ### Technical deep dive
 
@@ -66,7 +66,7 @@ Public-safe aggregate evidence supports the following bounded statements:
 - P2.0–P2.7 were accepted in declared scopes and R2.7 closeout completed;
 - governed READ and bounded governed WRITE were validated in successive milestones;
 - a durable SQLite WRITE was validated in its declared scope;
-- governed filesystem WRITE was validated in its bounded declared scope;
+- the OpenAI GPT-4.1 campaign verified all five governed filesystem capabilities in one synthetic macOS profile, including policy enforcement, human approval and rejection, observed results and persistent Core receipts;
 - retry, replay, reopen, and resume follow a fail-closed posture in their verified scopes;
 - one observed OpenAI `gpt-5.6-sol` pilot completed a natural-language-to-bounded-WRITE path with explicit approval;
 - the historical P2.7/R2.7 full private regression reported **2510 passed, 1 skipped, 11350 subtests passed**;

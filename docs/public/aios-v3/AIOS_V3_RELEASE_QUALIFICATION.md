@@ -2,11 +2,33 @@
 
 ## Unified Files Policy Governance
 
-**7 November 2026 · R7.1 LIVE PASS in the tested synthetic macOS profile.** An installed test without a model provider passed for all five filesystem capabilities with separate macOS principals for the agent and Core. The policy can authorize an action with `ALLOW`, require separate human consent with `REQUIRE_APPROVAL`, or block the action with `DENY`.
+**7 November 2026 · Final verdict `LIVE_PASS`.** AIOS V3 Enterprise exercised all five governed filesystem capabilities in one campaign with OpenAI `gpt-4.1-2025-04-14` through the Responses API. The campaign used an installed R7.1 artifact, synthetic files and separate macOS principals for the agent and Core.
 
-Hermes 0.21.0 with DeepSeek `deepseek-v4-pro` proposed CREATE, MOVE and DELETE for the same synthetic file. AIOS verified the effects and durable receipts. Policy authorized CREATE and DELETE. MOVE waited for human approval of the specific request. A separate DELETE was denied and the protected test file remained intact. The campaign recorded five provider POSTs, five verified responses, 13,900 tokens and zero uncertain attempts.
+| Capability | Policy and operator decision in the passing case | Verdict |
+| --- | --- | --- |
+| CREATE | `ALLOW` | LIVE PASS |
+| READ | `ALLOW` | LIVE PASS |
+| REPLACE | `REQUIRE_APPROVAL`, approved by the operator | LIVE PASS |
+| MOVE | `REQUIRE_APPROVAL`, approved by the operator | LIVE PASS |
+| DELETE | `ALLOW` | LIVE PASS |
 
-READ and REPLACE retain their earlier RM-22 LIVE results on historical candidates distinct from R7.1. The 6 November canonical OFFLINE baseline remains intact at **3,961 PASS / 0 FAIL / 1 historical SKIP**. The installed and LIVE verdicts cover the named profile and dedicated test resources. `shell.execute` remains `CONTAINMENT_UNAVAILABLE`.
+AIOS verified the observed results and persistent Core receipts for the five successful operations. Three separate negative cases also passed. A policy-denied DELETE and an out-of-scope DELETE were blocked. An operator rejected a CREATE that required approval, so the action did not execute.
+
+**Provider reconciliation.** OpenAI project `aios-live-agent` recorded **9 API requests, 1,683 input tokens and 156 output tokens**. The campaign journal and OpenAI project usage totals matched. The official daily OpenAI cost export for the project and model reconciled to **0.004614 USD**. This reconciliation completed the formal campaign closeout.
+
+**Scope.** The verdict applies to the tested synthetic macOS profile, installed artifact and five governed filesystem capabilities. It is a bounded operational qualification. General security certification and universal production readiness remain outside its scope. `shell.execute` remains `CONTAINMENT_UNAVAILABLE`.
+
+[7 November changelog](CHANGELOG-2026-11-07.md) · [Status and limits](AIOS_V3_STATUS_AND_LIMITS.md)
+
+### Separate installed and historical evidence
+
+The **6 November canonical OFFLINE baseline** recorded **3,961 PASS / 0 FAIL / 1 historical SKIP**. A separate installed test without a model provider passed all five filesystem capabilities with separate macOS principals for the agent and Core.
+
+![Historical R7.1 governance illustration. The agent proposes work and AIOS checks policy and approval before allowing or denying execution.](../../../assets/filesystem-governance-r7-1.svg)
+
+**Earlier R7.1 Hermes/DeepSeek campaign.** Hermes 0.21.0 with DeepSeek `deepseek-v4-pro` proposed CREATE, MOVE and DELETE for the same synthetic file. AIOS verified the effects and durable receipts. Policy authorized CREATE and DELETE. MOVE waited for human approval of the specific request. A separate DELETE was denied and the protected test file remained intact. The campaign recorded five provider POSTs, five verified responses, 13,900 tokens and zero uncertain attempts.
+
+**Earlier RM-22 candidates.** READ and REPLACE retain their historical LIVE results on their respective candidates. The five-capability OpenAI verdict comes from the single campaign above.
 
 ## Earlier macOS technical freeze
 
@@ -83,7 +105,7 @@ These are separate observations and test groups. Do not sum them, compare their 
 | Integration | Actual state | Evidence boundary |
 | --- | --- | --- |
 | AIOS AgentLoop and native sequential multi-agent | IMPLEMENTED; historical P3 ACCEPTED and bounded LIVE VERIFIED pilot | Native AIOS orchestration; shared governed authority and scope-bound roles. |
-| OpenAI model provider | IMPLEMENTED; bounded historical LIVE VERIFIED pilots | Responses API through the OpenAI Python SDK. Historical model `gpt-5.6-sol`; no new provider call in this review. |
+| OpenAI model provider | IMPLEMENTED; 7 November five-capability `LIVE_PASS` and separate historical pilots | Responses API through the OpenAI Python SDK. The latest campaign used `gpt-4.1-2025-04-14`. The historical `gpt-5.6-sol` pilot retains its own scope. |
 | **OpenAI Agents SDK** | **PLANNED / deferred; not implemented** | The private dependency manifest, native integration source and accepted design exclude the Agents SDK runtime. The OpenAI API SDK is a different dependency. |
 | External host admission and gateway client | IMPLEMENTED; EA-0A/EA-0B accepted and RM-17 OFFLINE VERIFIED | The external process proposes work and reads governed status; AIOS retains authority. |
 | **Hermes governed plugin** | **IMPLEMENTED; RM-18 and RM-21 OFFLINE VERIFIED; scoped R7.1 LIVE PASS** | The R7.1 result covers the identified Hermes and DeepSeek composition in the synthetic macOS profile. |
