@@ -1,6 +1,6 @@
 # Limitations
 
-**Status review — 13 October 2026:** RM-21 is ACCEPTED for its corrected offline candidate; RM-22 remains BLOCKED before LIVE. The Hermes governed plugin is implemented and offline verified. OpenAI uses the Responses API SDK; OpenAI Agents SDK remains deferred. [Current qualification and integration record](public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md).
+**Status review — 7 November 2026.** See the [current filesystem qualification and scope](public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance).
 
 AIOS V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 remediation and closeout completed. **Historical progression: P2.7/R2.7 frozen baseline; P3 and EA-0A/EA-0B accepted in their declared scopes.** This public repository and its evidence remain intentionally limited.
 

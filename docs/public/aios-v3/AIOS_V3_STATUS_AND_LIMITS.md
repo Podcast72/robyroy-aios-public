@@ -2,7 +2,9 @@
 
 ## Current Status
 
-**Reviewed 18 October 2026: RM-23 ACCEPTED for the serial synthetic macOS profile; RM-24 ACCEPTED for the technical macOS profile; Core c3-r3 technically frozen.** The [dated evidence matrix](CHANGELOG-2026-10-18.md) records private provenance, exact artifact identities, the canonical **3,288 PASS / 0 FAIL / 1 SKIP with 13,712 subtests**, separate TLS checks and fresh-clone offline recovery. No private suite was rerun for this publication.
+**Reviewed 7 November 2026.** R7.1 passed LIVE for CREATE, MOVE and DELETE in the synthetic macOS profile. READ and REPLACE retain distinct historical LIVE evidence. `shell.execute` remains `CONTAINMENT_UNAVAILABLE`. [Current filesystem qualification](AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance)
+
+**18 October macOS technical freeze.** RM-23 was accepted for the serial synthetic macOS profile and RM-24 for the technical macOS profile. The [dated evidence matrix](CHANGELOG-2026-10-18.md) records private provenance, exact artifact identities, the canonical **3,288 PASS / 0 FAIL / 1 SKIP with 13,712 subtests**, separate TLS checks and fresh-clone offline recovery. No private suite was rerun for this publication.
 
 The qualified envelope is one user and one active execution on macOS; three broker handlers do not mean three parallel runs. Synthetic workloads, real OS-principal tests, historical provider-live pilots and the credential-free HTTPS transport check remain distinct. Recovery requires compatible macOS and the preserved Python runtime prerequisites. No GUI, SaaS, Linux/VPS or independent certification claim follows.
 
@@ -15,14 +17,14 @@ P0/P1, P2.0–P2.7, R2.7, P3 and EA-0A/EA-0B retain their historical declared ac
 | Area | Evidence and limit |
 | --- | --- |
 | Governed execution, AgentLoop and model inference | Implemented; tested offline and in bounded historical provider-live pilots. Models and orchestration hold no execution authority. |
-| Governed READ / bounded WRITE | Verified in named capability scopes, including corrected installed-host composition; no arbitrary mutation. |
+| Unified filesystem governance | Five capabilities passed the installed test with separate macOS principals and dedicated test resources. |
 | Persistent approval binding | Implemented and tested; canonical approval is distinct from persuasive model text and agent provenance. |
 | Replay / crash recovery | Verified at stated Core, installed and functional levels; uncertain effects prohibit blind redispatch. |
 | SQLite RunStore / ResultGate | Authoritative execution truth and controlled result release remain separate from conversation state. |
 | Host configuration/lifecycle and separate administration | RM-09–RM-12 implemented and qualified in declared local scopes. |
 | macOS isolation | Tested named two-principal profiles, including RM-21 protected-resource denials; no universal sandbox or changed-candidate qualification. |
 | Integrity, failure views and backup/restore | RM-13 design; RM-14–RM-16 implementation and bounded qualification. No distributed rollback guarantee. |
-| Gateway client / Hermes governed plugin | RM-17/RM-18 implemented; RM-21 installed local boundary offline verified, with separate later technical macOS evidence. Historical provider pilots do not establish c3-r3 production readiness. |
+| Gateway client / Hermes governed plugin | RM-17/RM-18 implemented, RM-21 installed boundary offline verified, and R7.1 used the plugin with Hermes and DeepSeek in the synthetic macOS profile. |
 | OpenAI provider | Implemented via the Responses API SDK; historical bounded real-provider pilots. |
 | OpenAI Agents SDK / other unqualified adapters / MCP | Deferred or planned; native AIOS orchestration and API SDK use do not implement these integrations. |
 

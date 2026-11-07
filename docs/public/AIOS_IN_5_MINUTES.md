@@ -1,6 +1,6 @@
 # AIOS in 5 Minutes
 
-**Status review — 13 October 2026:** RM-21 is ACCEPTED for its corrected offline candidate; RM-22 remains BLOCKED before LIVE. The Hermes governed plugin is implemented and offline verified. OpenAI uses the Responses API SDK; OpenAI Agents SDK remains deferred. [Current qualification and integration record](aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md).
+**Status review — 7 November 2026.** See the [current filesystem qualification and scope](aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance).
 
 ## 1. What AIOS is now
 
@@ -107,7 +107,7 @@ One observed OpenAI `gpt-5.6-sol` pilot connected natural-language interpretatio
 | Governed READ | Validated |
 | Bounded governed WRITE | Validated |
 | Durable SQLite WRITE | Validated in its declared scope |
-| Governed filesystem WRITE | Validated in its bounded declared scope |
+| [Unified filesystem governance](aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance) | Five capabilities passed installed testing. CREATE, MOVE and DELETE passed LIVE in R7.1. |
 | Real-provider pilot | One governed OpenAI `gpt-5.6-sol` pilot completed |
 | Historical P2.7/R2.7 full private regression | **2510 passed, 1 skipped, 11350 subtests passed** |
 | Targeted P2.7/R2.7 closeout retest | **5 passed** |
@@ -153,4 +153,4 @@ Start with the [V3 public index](aios-v3/README.md), review the [current evidenc
 
 ## Latest Installed Qualification
 
-RM-21 was accepted offline on 8 October 2026 for its corrected candidate, including the installed local host and Hermes registry boundary. The canonical private result is **3,233 passed, 1 skipped, 13,654 subtests passed**; the separate installed replay suite is **202 passed**. RM-22 has later narrower offline progress and remains BLOCKED before LIVE. [Candidate, dates, result scopes and limitations](aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md).
+On 7 November 2026, all five filesystem capabilities passed on the installed Core with separate macOS principals and synthetic resources. The R7.1 LIVE campaign has a separate verdict. Earlier RM-21 and RM-22 results retain their candidate scopes. [Qualification, dates and limits](aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance)

@@ -2,13 +2,31 @@
 
 ![AIOS demo architecture](assets/aios-demo-hero.png)
 
-> **Models propose. AIOS governs. AIOS executes.**
-
 ## What AIOS Is
 
 AIOS is a governed agent runtime and execution layer. It separates model proposals and agent coordination from the authority to execute actions, records execution truth independently of the conversation, and controls which results may be released.
 
 This repository contains public technical documentation, aggregate evidence and a runnable V2 demonstration. The V3 product runtime remains private under [bounded technical disclosure](docs/public-vs-private-boundary.md).
+
+## Five Governed Filesystem Capabilities — Live Validation
+
+> **Agents propose actions. AIOS governs whether they can execute.**
+
+The agent plans its work and proposes each action. AIOS checks permissions, resource scope and limits, waits for human approval when policy requires it, and records the decision and verified effects in persistent evidence.
+
+[![An agent proposes an action. AIOS governance checks the request and decides whether execution can proceed.](assets/filesystem-governance-r7-1.svg)](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance)
+
+| Capability | Governance |
+| --- | --- |
+| `files.read` | Policy-controlled reading |
+| `files.replace` | Governed content replacement |
+| `files.create` | Governed file creation |
+| `files.move` | Human approval when required |
+| `files.delete` | Governed deletion and explicit denial |
+
+On **7 November 2026**, R7.1 validated CREATE, MOVE and DELETE LIVE with **Hermes 0.21.0 and DeepSeek `deepseek-v4-pro`**. Hermes proposed the actions. AIOS verified the creation, move and deletion of the same synthetic file, recorded the human approval for MOVE, and confirmed that a separate denied deletion left the protected file intact. The LIVE result covers the tested synthetic macOS profile.
+
+READ and REPLACE have earlier RM-22 LIVE results tied to their historical candidates. All five passed the installed test with separate macOS principals. `shell.execute` remains `CONTAINMENT_UNAVAILABLE`. [Qualification and scope](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance)
 
 ## Live Demonstration — Hermes × AIOS
 
@@ -31,7 +49,9 @@ Hermes proposes, AIOS governs, and the operator decides on requests that require
 
 ## Current Status
 
-**Reviewed 18 October 2026 · RM-23 ACCEPTED in the serial synthetic macOS profile · RM-24 ACCEPTED in the technical macOS profile · Core c3-r3 technical freeze complete.**
+**Reviewed 7 November 2026.** The unified filesystem policy has an installed PASS for all five capabilities and three scoped LIVE passes in R7.1. The preserved 6 November OFFLINE baseline records **3,961 PASS / 0 FAIL / 1 historical SKIP**. [Qualification record](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance)
+
+**18 October macOS Core freeze.** RM-23 was accepted in the serial synthetic profile and RM-24 in the technical profile.
 
 The identified c3 snapshot records **3,288 PASS / 0 FAIL / 1 SKIP and 13,712 subtests**. The c3 wheel is unchanged; the r3 broker/bundle correction has separate **44 PASS** installed regressions. The private freeze record reports fresh-clone recovery of **6,552 files** and a successful offline runtime recovery. These are maintained private qualification results, summarized here with [provenance, artifact identities and limits](docs/public/aios-v3/CHANGELOG-2026-10-18.md); no private suite was rerun for this publication.
 
@@ -95,7 +115,7 @@ The public mock preserves this V2 path. Its safety corrections improve the demon
 
 EA-0A and EA-0B established scoped external proposal admission, governed READ, approval-bound WRITE, replay/restart and tested macOS two-principal isolation. RM-17 added the gateway client; RM-18 added an actual Hermes plugin; RM-21 verified the installed local host/registry boundary offline using synthetic resources and real local processes.
 
-Hermes remains a proposer. AIOS retains policy, capability, budget, approval, execution, replay, recovery and result-release authority. Earlier Hermes A/B decision-source experiments remain historical evidence, distinct from the implemented plugin and from a future provider-live qualification.
+Hermes proposes work. AIOS retains authority over policy, capability, budget, approval, execution, replay, recovery and result release. The earlier Hermes A/B decision-source experiments and the October demo remain separate historical evidence from the R7.1 filesystem qualification.
 
 [External Host Evidence](docs/public/aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md) · [Historical Hermes experiments](docs/public/aios-v3/AIOS_V3_POST_CORE_EVIDENCE.md) · [Current integration status](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#integration-status)
 
@@ -112,11 +132,11 @@ Hermes remains a proposer. AIOS retains policy, capability, budget, approval, ex
 | Capability | Implemented / verified state | Limit |
 | --- | --- | --- |
 | Governed execution, AgentLoop and inference | Implemented; offline and bounded historical provider-live evidence | AIOS native orchestration, not OpenAI Agents SDK. |
-| Governed READ and bounded WRITE | Verified in successive named scopes; corrected installed host qualified by RM-21 | Explicit approval where required; no arbitrary filesystem access. |
+| [Unified filesystem governance](docs/public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance) | Five installed capability passes and three R7.1 LIVE passes, with separate historical LIVE evidence for READ and REPLACE | Synthetic macOS profile, enrolled resources and approval where policy requires it. |
 | Persistent approval binding, replay and crash recovery | Implemented and tested in declared persistence scopes | `UNKNOWN_EFFECT` remains terminal against blind re-execution; no distributed exactly-once claim. |
 | SQLite RunStore and ResultGate | Implemented; authoritative truth and controlled result release | Conversation state and agent claims cannot substitute for execution evidence. |
 | macOS host isolation | Verified in named local two-principal profiles | Neither a universal sandbox nor qualification of later changed deployments. |
-| Hermes plugin and gateway client | Implemented and offline verified; separate bounded real-provider demo on 14 October 2026 | Historical provider evidence is separate from c3-r3 technical qualification and does not establish production readiness. |
+| Hermes plugin and gateway client | Implemented, offline verified and used in the scoped R7.1 LIVE qualification | The 14 October demo and c3-r3 technical freeze retain their own evidence scopes. |
 | OpenAI Agents SDK | Planned / explicitly deferred | OpenAI API SDK use is a separate implemented integration. |
 | RM-23 / RM-24 macOS qualification | ACCEPTED in the serial synthetic / technical macOS scopes respectively; c3-r3 frozen | One active execution; no GUI, SaaS, Linux/VPS or universal deployment qualification. |
 
@@ -279,13 +299,13 @@ The existing presentation is an AIOS V2 historical artifact. It explains the gov
 
 ## What Comes Next
 
-Finish the remaining RM-22 candidate/deployment and provider-accounting gates, freeze the qualified candidate, and obtain explicit economic authorization before a paid LIVE qualification. OpenAI Agents SDK and other unqualified adapters remain future work. Publishing this public refresh is a separate owner-approved step.
+Other agent integrations, providers and deployment profiles require separate qualification. OpenAI Agents SDK remains deferred.
 
 [Roadmap](docs/roadmap.md) · [Current limits](docs/public/aios-v3/AIOS_V3_STATUS_AND_LIMITS.md)
 
 ## Status
 
-**RM-21 ACCEPTED within its identified offline scope; RM-22 BLOCKED before LIVE.** The private development package is not a final production release. Accepted milestones, isolated passing suites and historical pilots do not establish production readiness, certification, universal security or distributed exactly-once behavior.
+The private development package is qualified within the published test scopes. The status and limits record defines the boundaries for deployment, security and recovery.
 
 ## License
 

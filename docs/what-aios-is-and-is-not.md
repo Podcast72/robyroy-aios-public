@@ -1,6 +1,6 @@
 # What AIOS Is and Is Not
 
-**Status review — 13 October 2026:** RM-21 is ACCEPTED for its corrected offline candidate; RM-22 remains BLOCKED before LIVE. The Hermes governed plugin is implemented and offline verified. OpenAI uses the Responses API SDK; OpenAI Agents SDK remains deferred. [Current qualification and integration record](public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md).
+**Status review — 7 November 2026.** See the [current filesystem qualification and scope](public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance).
 
 ## What AIOS Is
 

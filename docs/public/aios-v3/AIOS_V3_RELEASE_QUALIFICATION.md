@@ -1,14 +1,24 @@
 # AIOS V3 Release Qualification And Integration Status
 
-**Latest review — 18 October 2026:** **RM-23 ACCEPTED** in the serial synthetic macOS profile; **RM-24 ACCEPTED** in the technical macOS profile. Core c3-r3 technical freeze complete. The [18 October changelog and evidence matrix](CHANGELOG-2026-10-18.md) define candidate identities, retained canonical results, separate TLS regressions, private recovery results and limits.
+## Unified Files Policy Governance
 
-The records below preserve the **13 October review** and its then-open RM-22 gates. They do not describe the later macOS candidate or override its stated RM-23/RM-24 decisions. Historical provider pilots remain separate from the current technical freeze; no new full provider-live qualification is inferred.
+**7 November 2026 · R7.1 LIVE PASS in the tested synthetic macOS profile.** An installed test without a model provider passed for all five filesystem capabilities with separate macOS principals for the agent and Core. The policy can authorize an action with `ALLOW`, require separate human consent with `REQUIRE_APPROVAL`, or block the action with `DENY`.
+
+Hermes 0.21.0 with DeepSeek `deepseek-v4-pro` proposed CREATE, MOVE and DELETE for the same synthetic file. AIOS verified the effects and durable receipts. Policy authorized CREATE and DELETE. MOVE waited for human approval of the specific request. A separate DELETE was denied and the protected test file remained intact. The campaign recorded five provider POSTs, five verified responses, 13,900 tokens and zero uncertain attempts.
+
+READ and REPLACE retain their earlier RM-22 LIVE results on historical candidates distinct from R7.1. The 6 November canonical OFFLINE baseline remains intact at **3,961 PASS / 0 FAIL / 1 historical SKIP**. The installed and LIVE verdicts cover the named profile and dedicated test resources. `shell.execute` remains `CONTAINMENT_UNAVAILABLE`.
+
+## Earlier macOS technical freeze
+
+On 18 October 2026, RM-23 was accepted in the serial synthetic macOS profile and RM-24 in the technical macOS profile. The c3-r3 technical freeze has separate artifact identities, aggregate test results, TLS regressions and recovery limits. [18 October changelog and evidence matrix](CHANGELOG-2026-10-18.md)
+
+The records below preserve the 13 October review and the RM-22 gates that were open at that date.
 
 ## Historical review — 13 October 2026
 
 Public status reviewed on **13 October 2026**. This is a sanitized account of the private milestone records, retained test outputs, candidate identity checks, and final acceptance decision. Private tests were not rerun for this public update. Source, fixtures, operational instructions, raw audits, logs, databases, and deployment configuration remain private.
 
-**Latest accepted qualification at the 13 October review: RM-21, 8 October 2026, OFFLINE ONLY, for its identified corrected candidate. RM-22 remains BLOCKED before LIVE.**
+**Latest accepted qualification at the 13 October review: RM-21, 8 October 2026, OFFLINE ONLY, for its identified corrected candidate. RM-22 was BLOCKED before LIVE at that review.**
 
 ## Status Vocabulary
 
@@ -17,7 +27,7 @@ Public status reviewed on **13 October 2026**. This is a sanitized account of th
 | IMPLEMENTED | Relevant code exists; this alone is not validation. |
 | TESTED | Named tests ran against an identified scope; environment and limitations matter. |
 | OFFLINE VERIFIED | Declared scenarios passed without a real provider call; synthetic data and real local processes may coexist. |
-| LIVE VERIFIED | A real provider was invoked in the named historical pilot; no broader version or deployment is qualified. |
+| LIVE VERIFIED | The named scenario passed with a real provider. The verdict applies to the tested candidate and deployment. |
 | ACCEPTED | A recorded milestone decision accepted the stated candidate and scope. |
 | PLANNED | Design or future work; no implementation or passing gate is inferred. |
 | BLOCKED | Required qualification or authorization is missing; narrower passing tests do not close the gate. |
@@ -76,7 +86,7 @@ These are separate observations and test groups. Do not sum them, compare their 
 | OpenAI model provider | IMPLEMENTED; bounded historical LIVE VERIFIED pilots | Responses API through the OpenAI Python SDK. Historical model `gpt-5.6-sol`; no new provider call in this review. |
 | **OpenAI Agents SDK** | **PLANNED / deferred; not implemented** | The private dependency manifest, native integration source and accepted design exclude the Agents SDK runtime. The OpenAI API SDK is a different dependency. |
 | External host admission and gateway client | IMPLEMENTED; EA-0A/EA-0B accepted and RM-17 OFFLINE VERIFIED | The external process proposes work and reads governed status; AIOS retains authority. |
-| **Hermes governed plugin** | **IMPLEMENTED; RM-18 and RM-21 OFFLINE VERIFIED** | Real plugin-registry/gateway/installed-Core path using synthetic data; broader provider-live and production integration remain unqualified. |
+| **Hermes governed plugin** | **IMPLEMENTED; RM-18 and RM-21 OFFLINE VERIFIED; scoped R7.1 LIVE PASS** | The R7.1 result covers the identified Hermes and DeepSeek composition in the synthetic macOS profile. |
 | Other vendor adapters and MCP | PLANNED / not established by this evidence | Vendor neutrality is not proof of universal integration support. |
 
 The earlier Hermes decision-artifact experiments remain valid historical records. RM-18 adds an actual plugin/client integration beyond those experiments; this does not retroactively make the experiments production evidence.

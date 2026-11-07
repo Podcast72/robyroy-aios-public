@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="850" height="112" viewBox="0 0 850 112" role="img" aria-labelledby="title desc">
+  <title id="title">AIOS governed filesystem execution</title>
+  <desc id="desc">The agent proposes an action. AIOS governance checks its scope, limits and approval, then permits or denies execution.</desc>
+  <rect width="850" height="112" rx="12" fill="#0b172b"/>
+  <rect x="1" y="1" width="848" height="110" rx="11" fill="none" stroke="#34516b"/>
+  <path d="M1 23V89" stroke="#80dacf" stroke-width="3"/>
+  <rect x="269" y="17" width="257" height="78" rx="8" fill="#162940" stroke="#34516b"/>
+  <g fill="none" stroke="#80dacf" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M201 56H249M242 49L249 56L242 63"/>
+    <path d="M542 56H574M567 49L574 56L567 63"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <g fill="#ffffff" font-size="24" font-weight="700">
+      <text x="108" y="52">AGENT</text>
+      <text x="398" y="52" fill="#80dacf">AIOS GOVERNANCE</text>
+      <text x="709" y="52">APPROVED / DENIED</text>
+    </g>
+    <g fill="#c3d1e1" font-size="18">
+      <text x="108" y="78">Proposes an action</text>
+      <text x="398" y="78">Policy and approval</text>
+      <text x="709" y="78">Execution decision</text>
+    </g>
+  </g>
+</svg>

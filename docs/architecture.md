@@ -1,6 +1,6 @@
 # Architecture
 
-**Status review — 13 October 2026:** RM-21 is ACCEPTED for its corrected offline candidate; RM-22 remains BLOCKED before LIVE. The Hermes governed plugin is implemented and offline verified. OpenAI uses the Responses API SDK; OpenAI Agents SDK remains deferred. [Current qualification and integration record](public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md).
+**Status review — 7 November 2026.** See the [current filesystem qualification and scope](public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance).
 
 AIOS is documented as a **governed agent runtime and execution layer**.
 
@@ -20,7 +20,7 @@ AIOS V2 — Governed Execution Backbone
 -> EA-0B — External-host governance READ/WRITE and tested OS isolation ACCEPTED
 ```
 
-P0 and P1 completed in their declared scopes. P2.0–P2.7 were accepted and R2.7 closed in declared scopes. P3 native multi-agent, EA-0A, and EA-0B are accepted above the frozen Core in declared scopes. OpenAI model-provider use is validated; OpenAI Agents SDK is not implemented. Earlier Hermes decision-source experiments are historical; the later governed plugin is implemented and offline verified, with provider-live and production qualification still open.
+P0 and P1 completed in their declared scopes. P2.0–P2.7 were accepted and R2.7 closed in declared scopes. P3 native multi-agent, EA-0A, and EA-0B are accepted above the frozen Core in declared scopes. OpenAI model-provider use is validated; OpenAI Agents SDK is not implemented. Earlier Hermes decision-source experiments remain historical. The governed plugin has offline evidence and a scoped R7.1 LIVE result with Hermes and DeepSeek.
 
 ## Current V3 Architecture
 

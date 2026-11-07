@@ -1,6 +1,6 @@
 # AIOS V3 Architecture
 
-**Status review — 13 October 2026:** RM-21 is ACCEPTED for its corrected offline candidate; RM-22 remains BLOCKED before LIVE. The Hermes governed plugin is implemented and offline verified. OpenAI uses the Responses API SDK; OpenAI Agents SDK remains deferred. [Current qualification and integration record](AIOS_V3_RELEASE_QUALIFICATION.md).
+**Status review — 7 November 2026.** See the [current filesystem qualification and scope](AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance).
 
 AIOS V3 is a governed agent runtime in which the model can propose work but cannot grant itself execution authority. P0 and P1 completed in declared scopes; P2.0–P2.7 were accepted in declared scopes; R2.7 closeout completed. **Historical progression: P2.7/R2.7 frozen baseline; P3 and EA-0A/EA-0B accepted in their declared scopes.**
 

@@ -1,6 +1,6 @@
 # Public vs Private Boundary
 
-**Status review — 13 October 2026:** RM-21 is ACCEPTED for its corrected offline candidate; RM-22 remains BLOCKED before LIVE. The Hermes governed plugin is implemented and offline verified. OpenAI uses the Responses API SDK; OpenAI Agents SDK remains deferred. [Current qualification and integration record](public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md).
+**Status review — 7 November 2026.** See the [current filesystem qualification and scope](public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance).
 
 This repository follows **bounded technical disclosure**.
 
@@ -22,7 +22,8 @@ AIOS V2 — Governed Execution Backbone
 -> EA-0B — External-host governance READ/WRITE and tested OS isolation ACCEPTED
 -> RM-01–RM-20 — Scoped package/host/governance operations and offline Hermes plugin
 -> RM-21 — Corrected candidate ACCEPTED OFFLINE
--> RM-22 — Later preparation; BLOCKED before LIVE
+-> RM-22 — Historical LIVE evidence for READ and REPLACE
+-> R7.1 — LIVE validation for CREATE, MOVE and DELETE in the synthetic macOS profile
 ```
 
 V2 remains public historical evidence. Its documentation, public mock runtime, proof tests, ANDY field tests, and public-safe validation summaries are not erased or presented as if they were V3.

@@ -1,6 +1,6 @@
 # Roadmap
 
-**Status review — 13 October 2026:** RM-21 is ACCEPTED for its corrected offline candidate; RM-22 remains BLOCKED before LIVE. The Hermes governed plugin is implemented and offline verified. OpenAI uses the Responses API SDK; OpenAI Agents SDK remains deferred. [Current qualification and integration record](public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md).
+**Status review — 7 November 2026.** See the [current filesystem qualification and scope](public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance).
 
 The governed Core reached the historical **P2.7/R2.7 FROZEN / AGENT-READY** baseline. V3 P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 remediation and closeout completed. P3 native multi-agent, EA-0A preformed proposal admission, and EA-0B external-host governance are accepted above that frozen baseline in their declared scopes. AIOS V2 remains the historical governed-execution backbone.
 
@@ -38,15 +38,19 @@ Accepted in its declared sequential scope at `P3_NATIVE_MULTI_AGENT_LIVE_ACCEPTE
 
 ## EA-0A and EA-0B — External Host Governance
 
-EA-0A accepted non-authoritative preformed proposals. EA-0B accepted a vendor-neutral external process boundary for governed READ, WRITE with AIOS approval/resume, and tested macOS two-principal isolation. See [External Host Evidence](public/aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md) for aggregate evidence and limits. A Hermes governed plugin is now implemented and offline verified. Other unqualified vendor adapters and MCP remain future work.
+EA-0A accepted non-authoritative preformed proposals. EA-0B accepted a vendor-neutral external process boundary for governed READ, WRITE with AIOS approval/resume, and tested macOS two-principal isolation. See [External Host Evidence](public/aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md) for aggregate evidence and limits. The Hermes governed plugin has offline evidence from RM-18 and RM-21 and separate LIVE evidence in R7.1. Other unqualified vendor adapters and MCP remain future work.
 
 ## RM-01 Through RM-21 — Installed And Operational Qualification
 
 The private track completed baseline and development-package work, host/configuration/approval administration, execution-history integrity and recovery operations, gateway client and Hermes plugin integration. RM-13 was a design milestone; implementation followed in RM-14. RM-20 records an offline report workflow and a reported second-operator repeat with limited traceability. **RM-21 was accepted offline on 8 October 2026 for the corrected installed candidate.** [Milestone dates, scopes and aggregate evidence](public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md).
 
-## RM-22 — Preparation, BLOCKED Before LIVE
+## RM-22 — Historical Preparation And LIVE Evidence
 
-Local campaign and Hermes functional tests show narrower offline progress. Qualification of the changed candidate on the effective deployment, provider bindings, attributable accounting sources and explicit economic authorization remain open. No accepted RM-22 LIVE qualification or final production release is claimed. Historical RM-21 acceptance does not transfer automatically to new bytes.
+The 13 October review recorded passing offline preparation and blocked deployment, provider and authorization gates for the candidate then under review. Later RM-22 LIVE results for READ and REPLACE belong to their historical candidates.
+
+## Unified Files Policy Governance — 7 November 2026
+
+The installed test passed for all five filesystem capabilities with separate macOS principals. R7.1 passed LIVE for CREATE, MOVE and DELETE with Hermes and DeepSeek in the synthetic macOS profile. The qualification record describes the earlier READ and REPLACE evidence and the remaining scope limits. [R7.1 qualification](public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance)
 
 ## Near-Term Public Work
 

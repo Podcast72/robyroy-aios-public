@@ -1,6 +1,6 @@
 # AIOS Integration Model
 
-**Status review — 13 October 2026:** RM-21 is ACCEPTED for its corrected offline candidate; RM-22 remains BLOCKED before LIVE. The Hermes governed plugin is implemented and offline verified. OpenAI uses the Responses API SDK; OpenAI Agents SDK remains deferred. [Current qualification and integration record](aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md).
+**Status review — 7 November 2026.** See the [current filesystem qualification and scope](aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance).
 
 AIOS is designed to sit between model or agent intent and operational execution. P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed. **Historical progression: P2.7/R2.7 frozen baseline; P3 and EA-0A/EA-0B accepted in their declared scopes.**
 
@@ -21,7 +21,7 @@ User
   -> final answer
 ```
 
-The `AgentLoop` coordinates work but does not own execution authority. The provider-neutral `ModelPort` keeps model/provider concerns separate from execution authority, while `GovernedModelPort` routes model work through `ExecutionEngine`. Governed READ and bounded governed WRITE cross the same authority boundary as separately admitted capabilities.
+The `AgentLoop` coordinates work but does not own execution authority. The provider-neutral `ModelPort` keeps model/provider concerns separate from execution authority, while `GovernedModelPort` routes model work through `ExecutionEngine`. The five governed filesystem operations cross the same authority boundary as separately admitted capabilities.
 
 ## External Host Integration Boundary
 
@@ -34,7 +34,7 @@ external agent / harness -> non-authoritative proposal
 
 EA-0A accepted externally formed proposals through the existing governed path. EA-0B added a vendor-neutral external process contract and tested governed READ, approval-bound WRITE/resume, replay/restart, and macOS two-principal isolation in declared scopes. Approval and execution authority remain with AIOS. [External Host Evidence](aios-v3/AIOS_V3_EXTERNAL_HOST_EVIDENCE.md) records the bounded result. RM-17 supplies the gateway client and RM-18 supplies the Hermes plugin, verified offline in the installed RM-21 boundary. Other adapters require their own qualification.
 
-OpenAI is the first validated model provider, not an OpenAI Agents SDK integration; that SDK remains unimplemented. A Hermes decision artifact was used experimentally to propose one action while AIOS retained execution authority. The Hermes governed plugin is implemented and offline verified (RM-18/RM-21); provider-live and production qualification remain open. This integration model is separate from the proposed Restack open kernel.
+OpenAI was the first validated model provider. OpenAI Agents SDK remains deferred. The Hermes governed plugin has offline evidence from RM-18 and RM-21, plus LIVE evidence from the synthetic macOS R7.1 test. This integration model is separate from the proposed Restack open kernel. [R7.1 qualification](aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance)
 
 The public diagram does not define a private API, payload schema, deployment topology, or implementation recipe.
 

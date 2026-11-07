@@ -1,6 +1,6 @@
 # Current Implemented Layers
 
-**Status review — 13 October 2026:** RM-21 is ACCEPTED for its corrected offline candidate; RM-22 remains BLOCKED before LIVE. The Hermes governed plugin is implemented and offline verified. OpenAI uses the Responses API SDK; OpenAI Agents SDK remains deferred. [Current qualification and integration record](public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md).
+**Status review — 7 November 2026.** See the [current filesystem qualification and scope](public/aios-v3/AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance).
 
 This page separates the source-private V3 architecture and capability evidence from the preserved V2 public demonstration surface. **Historical progression: P2.7/R2.7 frozen baseline; P3 and EA-0A/EA-0B accepted in their declared scopes.** Status terms describe declared validation scopes, not unrestricted production readiness.
 
@@ -27,7 +27,7 @@ This page separates the source-private V3 architecture and capability evidence f
 | GovernedActionPort / TrustPlane | Implemented and exercised in bounded qualification | Carries proposals to trusted governance | Agent intent cannot grant authority |
 | Host and separate approval administration | RM-09–RM-12; corrected host offline qualified in RM-21 | Validated configuration, lifecycle and canonical approval review | No provider-live qualification |
 | Execution-history integrity and recovery operations | RM-14–RM-16 implemented and verified in declared scopes | Conservative state integrity, failure views and backup/restore | No universal distributed or hostile-admin guarantee |
-| Gateway client / Hermes plugin | RM-17/RM-18 implemented; RM-21 installed offline boundary verified | External proposals reach existing governed authority | Provider-live and production integration unqualified |
+| Gateway client / Hermes plugin | RM-17/RM-18 implemented, RM-21 offline verified and R7.1 LIVE in the synthetic macOS profile | External proposals reach existing governed authority | The verdict covers the tested Hermes and DeepSeek composition |
 | Composition Root | P0 assembly foundation completed | Wires the runtime so authority boundaries remain explicit | Source, configuration, and trust-boundary details remain private |
 
 Historical P0 persistence/reopen/replay/resume evidence remains synthetic and scope-bound. Later accepted milestones add scoped effect reconciliation, durable evidence, and governed filesystem WRITE. They do not create a universal recovery or exactly-once claim.

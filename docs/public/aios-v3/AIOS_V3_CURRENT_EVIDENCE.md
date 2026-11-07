@@ -1,8 +1,10 @@
 # AIOS V3 Current Evidence
 
-**Status review — 18 October 2026:** RM-23 ACCEPTED for serial synthetic macOS operation; RM-24 ACCEPTED for the technical macOS profile. The c3-r3 Core is technically frozen. [What changed since 15 October, evidence matrix and provenance](CHANGELOG-2026-10-18.md).
+**Status review — 7 November 2026.** The installed and LIVE R7.1 verdicts extend the filesystem evidence. [Current qualification and scope](AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance)
 
-## Latest macOS technical baseline
+**18 October 2026.** RM-23 ACCEPTED for serial synthetic macOS operation; RM-24 ACCEPTED for the technical macOS profile. The c3-r3 Core is technically frozen. [What changed since 15 October, evidence matrix and provenance](CHANGELOG-2026-10-18.md).
+
+## 18 October macOS technical baseline
 
 The retained canonical c3 snapshot reports **3,288 PASS / 0 FAIL / 1 SKIP; 13,712 subtests; exit 0**. The c3 wheel remains unchanged. A separate broker/TLS correction reports **44 PASS installed** and **1 PASS source**; no new canonical full suite was run for the freeze or this public publication.
 

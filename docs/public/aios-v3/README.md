@@ -1,6 +1,8 @@
 # AIOS V3 Public Documentation
 
-**Status review — 18 October 2026:** RM-23 ACCEPTED in the serial synthetic macOS profile; RM-24 ACCEPTED in the technical macOS profile. Core c3-r3 technical freeze complete. Canonical snapshot: **3,288 PASS / 0 FAIL / 1 SKIP; 13,712 subtests**. [Dated changelog, evidence matrix and limits](CHANGELOG-2026-10-18.md).
+**Status review — 7 November 2026.** Five filesystem capabilities passed installed testing. R7.1 passed LIVE for CREATE, MOVE and DELETE in the synthetic macOS profile. [Current qualification and scope](AIOS_V3_RELEASE_QUALIFICATION.md#unified-files-policy-governance)
+
+**18 October technical freeze.** RM-23 ACCEPTED in the serial synthetic macOS profile; RM-24 ACCEPTED in the technical macOS profile. Core c3-r3 technical freeze complete. Canonical snapshot: **3,288 PASS / 0 FAIL / 1 SKIP; 13,712 subtests**. [Dated changelog, evidence matrix and limits](CHANGELOG-2026-10-18.md).
 
 **Historical progression: P2.7/R2.7 frozen baseline; P3 and EA-0A/EA-0B accepted in their declared scopes.** P0 and P1 completed in declared scopes, P2.0–P2.7 were accepted in declared scopes, and R2.7 closeout completed.
 
@@ -39,9 +41,9 @@ The historical P2.7/R2.7 full regression preceded its documentation-only closeou
 
 | Document | Purpose |
 | --- | --- |
-| [18 October macOS Core freeze changelog](CHANGELOG-2026-10-18.md) | Latest scoped acceptance, changes since 15 October, private evidence provenance, artifact identities and recovery limits. |
+| [18 October macOS Core freeze changelog](CHANGELOG-2026-10-18.md) | Scoped acceptance, changes since 15 October, private evidence provenance, artifact identities and recovery limits. |
 | [Security freeze — 15 October 2026](../security-freeze-2026-10-15/README.md) | Plain-language account of role separation, preserved evidence and qualification limits; no new RM qualification. |
-| [AIOS_V3_RELEASE_QUALIFICATION.md](AIOS_V3_RELEASE_QUALIFICATION.md) | Latest macOS freeze pointer plus retained RM-01–RM-22 qualification history and integration distinctions. |
+| [AIOS_V3_RELEASE_QUALIFICATION.md](AIOS_V3_RELEASE_QUALIFICATION.md) | R7.1 filesystem qualification, macOS freeze and retained RM-01–RM-22 history. |
 | [AIOS_V3_CURRENT_EVIDENCE.md](AIOS_V3_CURRENT_EVIDENCE.md) | Canonical P0-to-EA-0B progression and separately scoped gates. |
 | [AIOS_V3_EXTERNAL_HOST_EVIDENCE.md](AIOS_V3_EXTERNAL_HOST_EVIDENCE.md) | EA-0A and EA-0B Slice 1–3 aggregate external-host evidence and limits. |
 | [AIOS_V3_POST_CORE_EVIDENCE.md](AIOS_V3_POST_CORE_EVIDENCE.md) | External review, P3 live pilot, Hermes A/B experiments, and limits. |
